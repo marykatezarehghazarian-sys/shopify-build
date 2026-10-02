@@ -103,10 +103,10 @@
     "variant_button_radius": 14,
     "variant_button_width": "equal-width-buttons",
     "color_palette": {
-      "background": "#F6F1EA",
-      "foreground": "#2B2620",
-      "color1": "#5E5449",
-      "color2": "#E3D7C6"
+      "background": "#000000",
+      "foreground": "#EDE3D4",
+      "color1": "#BFB3A2",
+      "color2": "#2E2A25"
     },
     "whatsapp_enabled": true,
     "whatsapp_number": "9613195171",

@@ -68,7 +68,7 @@ Common pattern to build for Mallo: announcement bar (free/flat delivery across L
 
 ## Decisions & notes
 - 2026-10-02: Created 7 tag-based collections (published) and draft pages: About Us (/pages/about), Visit Our Showroom (/pages/showroom), Custom Orders (/pages/custom-orders), all unpublished with [PLACEHOLDERS] to fill. Existing Contact page left as-is.
-- 2026-10-02: Theme work happens on "Mallo Gallery - Sand Preview" (gid://shopify/OnlineStoreTheme/161202470997), a themeDuplicate of live Horizon. Changes so far: sand palette (#F6F1EA bg, #2B2620 text, #5E5449, #E3D7C6), Jost headings, 2px button radius, floating WhatsApp button (Theme settings > WhatsApp).
+- 2026-10-02: Theme work happens on "Mallo Gallery - Sand Preview" (gid://shopify/OnlineStoreTheme/161202470997), a themeDuplicate of live Horizon. Changes so far: black palette per Joe (#000000 bg, #EDE3D4 sand text, #BFB3A2, #2E2A25), earlier sand version replaced, Jost headings, 2px button radius, floating WhatsApp button (Theme settings > WhatsApp).
   Preview: https://zcjd1f-ge.myshopify.com?preview_theme_id=161202470997
 - "Mallo Gallery - Draft" (161202438229) is a broken upload; delete it in Online Store > Themes.
 - Main menu not yet updated (it's shared with the live theme); do it when the new theme goes live.
