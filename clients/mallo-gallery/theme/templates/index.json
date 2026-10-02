@@ -15,12 +15,12 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<p>Browse our latest products</p>",
+            "text": "<h1>Furniture made for the way you live</h1><p>Designed and built in our own factory. Delivered all over Lebanon.</p>",
             "text_color": "{{ settings.color_palette.background }}",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
-            "type_preset": "h2",
+            "type_preset": "rte",
             "font": "var(--font-body--family)",
             "font_size": "1rem",
             "line_height": "normal",
@@ -41,7 +41,7 @@
           "type": "button",
           "name": "t:names.button",
           "settings": {
-            "label": "Shop all",
+            "label": "Shop now",
             "link": "shopify://collections/all",
             "open_in_new_tab": false,
             "style_class": "button-custom",
@@ -77,8 +77,8 @@
         "horizontal_alignment_flex_direction_column": "center",
         "vertical_alignment_flex_direction_column": "flex-end",
         "gap": 24,
-        "section_width": "page-width",
-        "section_height": "medium",
+        "section_width": "full-width",
+        "section_height": "large",
         "section_height_custom": 50,
         "background_color": "rgba(0,0,0,0)",
         "toggle_overlay": true,
@@ -130,7 +130,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h3>{{ closest.collection.title }}</h3>",
+                "text": "<h3>New arrivals</h3>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -276,10 +276,161 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "mallo_rooms": {
+      "type": "mallo-rooms",
+      "settings": {
+        "heading": "Shop by room",
+        "subheading": "Showroom pieces and made-to-order furniture"
+      },
+      "blocks": {
+        "room_0": {
+          "type": "room",
+          "settings": {
+            "collection": "living-room-sofas",
+            "title": "Living Room & Sofas"
+          }
+        },
+        "room_1": {
+          "type": "room",
+          "settings": {
+            "collection": "bedroom",
+            "title": "Bedroom"
+          }
+        },
+        "room_2": {
+          "type": "room",
+          "settings": {
+            "collection": "dining",
+            "title": "Dining"
+          }
+        },
+        "room_3": {
+          "type": "room",
+          "settings": {
+            "collection": "office",
+            "title": "Office"
+          }
+        },
+        "room_4": {
+          "type": "room",
+          "settings": {
+            "collection": "outdoor",
+            "title": "Outdoor"
+          }
+        },
+        "room_5": {
+          "type": "room",
+          "settings": {
+            "collection": "decor-accessories",
+            "title": "Decor & Accessories"
+          }
+        },
+        "room_6": {
+          "type": "room",
+          "settings": {
+            "collection": "custom-made-to-order",
+            "title": "Custom Made"
+          }
+        }
+      },
+      "block_order": [
+        "room_0",
+        "room_1",
+        "room_2",
+        "room_3",
+        "room_4",
+        "room_5",
+        "room_6"
+      ]
+    },
+    "mallo_trust": {
+      "type": "mallo-trust",
+      "settings": {},
+      "blocks": {
+        "pt_0": {
+          "type": "point",
+          "settings": {
+            "icon": "factory",
+            "title": "Made in our factory",
+            "text": "Quality you can see and feel"
+          }
+        },
+        "pt_1": {
+          "type": "point",
+          "settings": {
+            "icon": "truck",
+            "title": "Delivery all over Lebanon",
+            "text": "Carefully delivered to your door"
+          }
+        },
+        "pt_2": {
+          "type": "point",
+          "settings": {
+            "icon": "cash",
+            "title": "Pay your way",
+            "text": "Cash on delivery, Whish or OMT"
+          }
+        },
+        "pt_3": {
+          "type": "point",
+          "settings": {
+            "icon": "chat",
+            "title": "Order on WhatsApp",
+            "text": "03 195 171"
+          }
+        }
+      },
+      "block_order": [
+        "pt_0",
+        "pt_1",
+        "pt_2",
+        "pt_3"
+      ]
+    },
+    "mallo_custom": {
+      "type": "mallo-band",
+      "settings": {
+        "eyebrow": "Custom & made to order",
+        "heading": "Made to your size, fabric and finish",
+        "text": "<p>Send us a photo, sketch or measurements and our factory will build it for you. We also design and execute complete interiors.</p>",
+        "button_label": "How it works",
+        "button_link": "shopify://pages/custom-orders",
+        "whatsapp_label": "Start on WhatsApp",
+        "whatsapp_text": "Hello Mallo Gallery, I would like a custom order."
+      }
+    },
+    "mallo_showroom": {
+      "type": "mallo-band",
+      "settings": {
+        "image_right": true,
+        "eyebrow": "Visit us",
+        "heading": "Our showroom in Zahle",
+        "text": "<p>See, touch and try our furniture in person. Our team will walk you through materials and finishes.</p>",
+        "button_label": "Get directions",
+        "button_link": "shopify://pages/showroom",
+        "whatsapp_label": "Book a visit",
+        "whatsapp_text": "Hello Mallo Gallery, I would like to visit the showroom."
+      }
+    },
+    "mallo_story": {
+      "type": "mallo-band",
+      "settings": {
+        "eyebrow": "Our story",
+        "heading": "From our factory to your home",
+        "text": "<p>Mallo Gallery designs and builds furniture for homes and workspaces across Lebanon, and our design team creates complete interiors, from a single room to a whole home.</p>",
+        "button_label": "About us",
+        "button_link": "shopify://pages/about"
+      }
     }
   },
   "order": [
     "hero_jVaWmY",
-    "product_list_fa6P9H"
+    "mallo_rooms",
+    "mallo_trust",
+    "product_list_fa6P9H",
+    "mallo_custom",
+    "mallo_showroom",
+    "mallo_story"
   ]
 }

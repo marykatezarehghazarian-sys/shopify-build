@@ -72,3 +72,4 @@ Common pattern to build for Mallo: announcement bar (free/flat delivery across L
   Preview: https://zcjd1f-ge.myshopify.com?preview_theme_id=161202470997
 - "Mallo Gallery - Draft" (161202438229) is a broken upload; delete it in Online Store > Themes.
 - Main menu not yet updated (it's shared with the live theme); do it when the new theme goes live.
+- 2026-10-02: Homepage built on Sand Preview: announcement bar → hero ("Furniture made for the way you live") → Shop by room (mallo-rooms, 7 collections) → trust row (mallo-trust) → New arrivals (product-list, all) → Custom orders band → Zahle showroom band → Our story band (mallo-band). Custom sections are editable in the theme editor; images are placeholders until Joe's photos arrive. Storefront is password-protected, so render checks need the admin preview.

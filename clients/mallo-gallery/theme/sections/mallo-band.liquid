@@ -1,0 +1,56 @@
+{%- comment -%} Mallo Gallery: image + text band (custom orders, showroom, story). {%- endcomment -%}
+<div class="mallo-band mallo-wrap{% if section.settings.image_right %} mallo-band--right{% endif %}" style="padding-block: {{ section.settings.padding }}px;">
+  <div class="mallo-band__media">
+    {%- if section.settings.image -%}
+      {{ section.settings.image | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '600,900,1200,1400', sizes: '(min-width: 750px) 50vw, 100vw' }}
+    {%- else -%}
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'mallo-band__placeholder' }}
+    {%- endif -%}
+  </div>
+  <div class="mallo-band__content">
+    {%- if section.settings.eyebrow != blank %}<p class="mallo-band__eyebrow">{{ section.settings.eyebrow | escape }}</p>{% endif -%}
+    <h2 class="h3">{{ section.settings.heading | escape }}</h2>
+    <div class="mallo-band__text">{{ section.settings.text }}</div>
+    <div class="mallo-band__buttons">
+      {%- if section.settings.button_label != blank -%}
+        <a class="button" href="{{ section.settings.button_link | default: '#' }}">{{ section.settings.button_label | escape }}</a>
+      {%- endif -%}
+      {%- if section.settings.whatsapp_label != blank and settings.whatsapp_number != blank -%}
+        <a class="button button-secondary" target="_blank" rel="noopener"
+          href="https://wa.me/{{ settings.whatsapp_number | remove: '+' | remove: ' ' }}?text={{ section.settings.whatsapp_text | url_encode }}">{{ section.settings.whatsapp_label | escape }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+<style>
+  .mallo-wrap { max-width: 1400px; margin-inline: auto; padding-inline: max(20px, 4vw); box-sizing: border-box; }
+  .mallo-band { display: grid; gap: 32px; align-items: center; }
+  @media (min-width: 750px) {
+    .mallo-band { grid-template-columns: 1fr 1fr; gap: 64px; }
+    .mallo-band--right .mallo-band__media { order: 2; }
+  }
+  .mallo-band__media { aspect-ratio: 5 / 4; overflow: hidden; background: #e3d7c6; }
+  .mallo-band__media img, .mallo-band__placeholder { width: 100%; height: 100%; object-fit: cover; }
+  .mallo-band__placeholder { fill: rgb(0 0 0 / .25); }
+  .mallo-band__eyebrow { text-transform: uppercase; letter-spacing: .14em; font-size: .78em; opacity: .7; margin: 0 0 8px; }
+  .mallo-band__text { margin: 12px 0 24px; opacity: .85; }
+  .mallo-band__buttons { display: flex; flex-wrap: wrap; gap: 12px; }
+</style>
+{% schema %}
+{
+  "name": "Mallo: image + text",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "checkbox", "id": "image_right", "label": "Image on the right", "default": false },
+    { "type": "text", "id": "eyebrow", "label": "Small label" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Heading" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Tell your story.</p>" },
+    { "type": "text", "id": "button_label", "label": "Button label" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "text", "id": "whatsapp_label", "label": "WhatsApp button label" },
+    { "type": "text", "id": "whatsapp_text", "label": "WhatsApp pre-filled message", "default": "Hello Mallo Gallery" },
+    { "type": "range", "id": "padding", "label": "Vertical padding", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 56 }
+  ],
+  "presets": [{ "name": "Mallo: image + text" }]
+}
+{% endschema %}

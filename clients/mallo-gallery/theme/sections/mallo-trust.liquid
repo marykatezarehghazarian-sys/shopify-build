@@ -1,0 +1,47 @@
+{%- comment -%} Mallo Gallery: row of trust points (icon + title + text). {%- endcomment -%}
+<div class="mallo-trust" style="background: {{ section.settings.background }}; padding-block: {{ section.settings.padding }}px;">
+  <div class="mallo-wrap mallo-trust__grid">
+    {%- for block in section.blocks -%}
+      <div class="mallo-trust__item" {{ block.shopify_attributes }}>
+        <span class="mallo-trust__icon" aria-hidden="true">
+          {%- case block.settings.icon -%}
+            {%- when 'factory' -%}<svg viewBox="0 0 24 24"><path d="M3 21V10l5 3V10l5 3V6h3v-3h3v18z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            {%- when 'truck' -%}<svg viewBox="0 0 24 24"><path d="M2 6h12v10H2zM14 10h4l3 3v3h-7zM6 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm11 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            {%- when 'cash' -%}<svg viewBox="0 0 24 24"><path d="M2 6h20v12H2zM12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM5 9v.01M19 15v.01" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            {%- when 'chat' -%}<svg viewBox="0 0 24 24"><path d="M4 20l1.4-4A8 8 0 1 1 8 18.6z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            {%- else -%}<svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          {%- endcase -%}
+        </span>
+        <p class="mallo-trust__title">{{ block.settings.title | escape }}</p>
+        {%- if block.settings.text != blank %}<p class="mallo-trust__text">{{ block.settings.text | escape }}</p>{% endif -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+<style>
+  .mallo-wrap { max-width: 1400px; margin-inline: auto; padding-inline: max(20px, 4vw); box-sizing: border-box; }
+  .mallo-trust__grid { display: grid; gap: 24px; grid-template-columns: repeat(2, 1fr); text-align: center; }
+  @media (min-width: 750px) { .mallo-trust__grid { grid-template-columns: repeat({{ section.blocks.size | at_least: 1 | at_most: 4 }}, 1fr); } }
+  .mallo-trust__icon svg { width: 32px; height: 32px; }
+  .mallo-trust__title { font-weight: 600; margin: 8px 0 2px; }
+  .mallo-trust__text { opacity: .75; font-size: .92em; margin: 0; }
+</style>
+{% schema %}
+{
+  "name": "Mallo: trust row",
+  "settings": [
+    { "type": "color", "id": "background", "label": "Background", "default": "#EDE3D4" },
+    { "type": "range", "id": "padding", "label": "Vertical padding", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 40 }
+  ],
+  "blocks": [
+    { "type": "point", "name": "Trust point", "settings": [
+      { "type": "select", "id": "icon", "label": "Icon", "default": "shield", "options": [
+        { "value": "factory", "label": "Factory" }, { "value": "truck", "label": "Delivery" },
+        { "value": "cash", "label": "Payment" }, { "value": "chat", "label": "Chat" }, { "value": "shield", "label": "Shield" } ] },
+      { "type": "text", "id": "title", "label": "Title", "default": "Title" },
+      { "type": "text", "id": "text", "label": "Text" }
+    ] }
+  ],
+  "presets": [{ "name": "Mallo: trust row" }]
+}
+{% endschema %}
