@@ -1,0 +1,4 @@
+<div class="section page-width"><h1>{{ blog.title | escape }}</h1>
+  {%- for article in blog.articles -%}<article><h2><a href="{{ article.url }}">{{ article.title | escape }}</a></h2>{{ article.excerpt_or_content }}</article>{%- endfor -%}
+</div>
+{% schema %}{ "name": "Blog" }{% endschema %}

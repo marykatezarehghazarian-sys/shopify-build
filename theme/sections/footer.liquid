@@ -1,0 +1,11 @@
+<footer class="footer"><div class="page-width">
+  {%- if section.settings.text != blank %}{{ section.settings.text }}{% endif -%}
+  <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}</p>
+</div></footer>
+{% schema %}
+{
+  "name": "Footer",
+  "enabled_on": { "groups": ["footer"] },
+  "settings": [{ "type": "richtext", "id": "text", "label": "Text" }]
+}
+{% endschema %}

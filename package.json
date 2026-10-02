@@ -1,0 +1,21 @@
+{
+  "name": "shopify-build",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Shopify theme development + Admin API tooling",
+  "engines": { "node": ">=20" },
+  "bin": { "shop": "bin/shop.js" },
+  "scripts": {
+    "shop": "node bin/shop.js",
+    "check:env": "node bin/shop.js shop:info",
+    "theme:dev": "shopify theme dev --path theme --store $SHOPIFY_STORE_DOMAIN",
+    "theme:pull": "shopify theme pull --path theme --store $SHOPIFY_STORE_DOMAIN",
+    "theme:push": "shopify theme push --path theme --store $SHOPIFY_STORE_DOMAIN --unpublished",
+    "theme:check": "shopify theme check --path theme",
+    "test": "node --test test/*.test.js"
+  },
+  "devDependencies": {
+    "@shopify/cli": "^3"
+  }
+}

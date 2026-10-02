@@ -1,0 +1,5 @@
+query RecentOrders($first: Int = 10) {
+  orders(first: $first, reverse: true) {
+    nodes { id name createdAt displayFinancialStatus displayFulfillmentStatus totalPriceSet { shopMoney { amount currencyCode } } }
+  }
+}
