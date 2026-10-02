@@ -2,6 +2,7 @@
 // Shopify Admin CLI. Usage: npm run shop -- <command> [args] [--flag value]
 // JSON flags (e.g. --json '{"title":"x"}' or --json @file.json) pass straight through to the API helpers.
 import { readFileSync } from 'node:fs';
+import { clientConfig } from '../lib/clients.js';
 import { gql, shop, products, inventory, collections, discounts, shipping } from '../lib/index.js';
 
 function parseArgs(argv) {
@@ -100,17 +101,20 @@ const commands = {
 };
 
 function usage() {
-  console.log('Usage: npm run shop -- <command> [args]\n');
+  console.log('Usage: npm run shop -- <command> [args] [--client slug]   (defaults to the active client)\n');
   for (const [name, c] of Object.entries(commands)) console.log(`  ${name.padEnd(20)} ${c.help}`);
 }
 
 const { pos, flags } = parseArgs(process.argv.slice(2));
+if (flags.client) process.env.SHOPIFY_CLIENT = flags.client;
 const name = pos.shift();
 if (!name || name === 'help' || !commands[name]) {
   usage();
   process.exit(name && name !== 'help' ? 1 : 0);
 }
 try {
+  const c = clientConfig();
+  console.error(`[${c.slug}] ${c.domain}`);
   const result = await commands[name].run({ pos, flags });
   console.log(JSON.stringify(result, null, 2));
 } catch (err) {

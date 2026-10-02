@@ -1,79 +1,76 @@
 # shopify-build
 
-Workspace for building a Shopify store: an Online Store 2.0 **theme** (`theme/`) plus an **Admin API toolkit** (`lib/`, `bin/shop.js`) for products, inventory, collections, discounts, shipping, and anything else via raw GraphQL.
+Multi-client Shopify workspace. Each client gets an isolated folder with its own credentials, theme and notes. Shared tooling covers theme development and the Admin API (products, inventory, collections, discounts, shipping, and raw GraphQL for everything else).
 
-## Setup
+```
+clients/<slug>/
+  client.json     name, store domain, API version          (committed)
+  .env            that client's tokens only                 (gitignored, chmod 600)
+  theme/          that client's theme                       (committed)
+  CONTEXT.md      brand, catalog conventions, decisions     (committed)
+starter-theme/    OS 2.0 base copied into each new client
+lib/              Admin API client + resource helpers
+bin/              client / shop / theme CLIs
+```
+
+## Clients
 
 ```bash
 npm install
-cp .env.example .env   # fill in your values
-npm run check:env      # prints store info + granted scopes
+npm run client -- new acme-co --name "Acme Co" --domain acme-co.myshopify.com
+npm run client -- set acme-co admin          # paste token on stdin, then Ctrl-D
+npm run client -- set acme-co theme          # Theme Access password (shptka_…)
+npm run client -- list                       # * marks the active client
+npm run client -- use acme-co                # switch active client
+npm run client -- show                       # settings, tokens masked
 ```
 
-### Tokens
+Every command runs against the **active client**; override per command with `--client <slug>`. Each command prints `[slug] store` first, so it's always clear which store is being touched.
 
-| Variable | Where it comes from |
-|---|---|
-| `SHOPIFY_STORE_DOMAIN` | `your-store.myshopify.com` |
-| `SHOPIFY_ADMIN_TOKEN` | Admin → Settings → Apps → Develop apps → custom app → Admin API access token (`shpat_…`) |
-| `SHOPIFY_API_VERSION` | Admin API version, default `2026-07` |
-| `SHOPIFY_CLI_THEME_TOKEN` | [Theme Access](https://apps.shopify.com/theme-access) app password (`shptka_…`), used by `shopify theme` commands |
+### Where credentials live
 
-Recommended Admin API scopes for the custom app:
+Credentials are resolved **only** for the selected client, in this order:
 
-```
-read_products, write_products
-read_inventory, write_inventory, read_locations
-read_discounts, write_discounts
-read_shipping, write_shipping
-read_publications, write_publications
-read_themes, write_themes
-read_content, write_content
-read_online_store_navigation, write_online_store_navigation
-read_orders, read_customers
-```
+1. Env vars prefixed with the client slug: `ACME_CO_SHOPIFY_ADMIN_TOKEN`, `ACME_CO_SHOPIFY_CLI_THEME_TOKEN` (slug uppercased, `-` → `_`).
+2. `clients/<slug>/.env`.
+
+Unprefixed `SHOPIFY_*` vars are ignored on purpose so one client's token can never be used against another client's store.
+
+> In Claude Code cloud sessions the container is temporary, so `.env` files disappear when it's reclaimed. For tokens that should persist, add the prefixed env vars in the cloud environment's settings.
+
+Recommended custom-app Admin API scopes:
+`read/write_products, read/write_inventory, read_locations, read/write_discounts, read/write_shipping, read/write_publications, read/write_themes, read/write_content, read/write_online_store_navigation, read_orders, read_customers`.
 
 ## Theme
 
 ```bash
-npm run theme:dev     # local preview with hot reload against your store
-npm run theme:check   # lint
-npm run theme:push    # upload as an unpublished theme
-npm run theme:pull    # pull editor changes back into theme/
+npm run theme -- dev        # preview the active client's theme against their store
+npm run theme -- check      # lint
+npm run theme -- push       # upload as unpublished (unless you pass --theme/--live)
+npm run theme -- pull       # pull editor changes back
+npm run theme -- list --client other-client
 ```
-
-Layout: `layout/` · `sections/` (incl. header/footer groups) · `snippets/` · `templates/*.json` · `config/` · `locales/` · `assets/`.
 
 ## Admin CLI
 
 ```bash
 npm run shop -- help
+npm run shop -- shop:info                     # store info + granted scopes
 npm run shop -- products:create --title "Linen Shirt" --price 48 --sku LS-01 --tags summer --status ACTIVE
-npm run shop -- products:get linen-shirt                 # id or handle; shows variant inventoryItem ids
+npm run shop -- products:get linen-shirt
 npm run shop -- locations
 npm run shop -- inventory:set <inventoryItemId> <locationId> 25
 npm run shop -- inventory:adjust <inventoryItemId> <locationId> -3
-npm run shop -- collections:create --title Summer --tag summer --publish   # smart collection
-npm run shop -- collections:create --title Picks --products 123,456         # manual collection
+npm run shop -- collections:create --title Summer --tag summer --publish
 npm run shop -- discounts:code --code SUMMER10 --percent 10 --once
 npm run shop -- discounts:auto --title "$10 off $75" --amount 10 --min 75
 npm run shop -- shipping:list
 npm run shop -- shipping:zone --name Canada --countries CA --amount 12.50 --currency CAD
-npm run shop -- gql '{ shop { name } }'
-npm run shop -- gql @queries/recent-orders.graphql --vars '{"first":5}'
+npm run shop -- gql @queries/recent-orders.graphql --vars '{"first":5}' --client acme-co
 ```
 
-Ids can be numeric or full `gid://shopify/...` strings. Add `--verbose` to see raw API errors.
-
-### As a library
-
-```js
-import { products, inventory, gql } from './lib/index.js';
-const p = await products.createProduct({ title: 'Mug', price: 18 });
-```
-
-The client (`lib/shopify.js`) retries throttled and 5xx responses, throws on `userErrors`, and `paginate()` walks connections.
+Ids can be numeric or `gid://shopify/...`. Add `--verbose` for raw API errors.
 
 ## Tests
 
-`npm test` runs the client unit tests (fetch is mocked, so no store is needed).
+`npm test`: client isolation and API client tests (no store needed).

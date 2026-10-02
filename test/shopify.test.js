@@ -1,8 +1,15 @@
 import { test, beforeEach } from 'node:test';
 import assert from 'node:assert/strict';
 
-process.env.SHOPIFY_STORE_DOMAIN = 'https://test-shop.myshopify.com/';
-process.env.SHOPIFY_ADMIN_TOKEN = 'shpat_test';
+import { rmSync } from 'node:fs';
+import { after } from 'node:test';
+const { createClient, setCredential, clientDir } = await import('../lib/clients.js');
+const SLUG = 'zz-test-gql';
+rmSync(clientDir(SLUG), { recursive: true, force: true });
+createClient(SLUG, { domain: 'https://test-shop.myshopify.com/', theme: false });
+setCredential(SLUG, 'SHOPIFY_ADMIN_TOKEN', 'shpat_test');
+process.env.SHOPIFY_CLIENT = SLUG;
+after(() => rmSync(clientDir(SLUG), { recursive: true, force: true }));
 const { gql, mutate, paginate, gid, ShopifyError } = await import('../lib/shopify.js');
 
 let calls;

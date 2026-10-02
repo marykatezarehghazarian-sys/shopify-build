@@ -1,7 +1,10 @@
 node_modules/
+# Credentials: every client's tokens stay local, never committed
 .env
 .env.*
-!.env.example
+clients/*/.env
+clients/*/.env.*
+.current-client
 .shopify/
 *.log
 .DS_Store
