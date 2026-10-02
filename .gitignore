@@ -4,6 +4,7 @@ node_modules/
 .env.*
 clients/*/.env
 clients/*/.env.*
+clients/*/.token-cache.json
 .current-client
 .shopify/
 *.log

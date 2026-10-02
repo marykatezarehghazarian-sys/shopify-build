@@ -39,3 +39,31 @@ test('unknown or missing client fails loudly', () => {
   assert.throws(() => clientConfig('nope-does-not-exist'), /Unknown client/);
   assert.throws(() => clientConfig('../etc'), /Unknown client/);
 });
+
+test('client credentials are exchanged, cached, and refreshed', async () => {
+  const { accessToken, clearToken } = await import('../lib/auth.js');
+  const C = 'zz-test-cc';
+  rmSync(clientDir(C), { recursive: true, force: true });
+  createClient(C, { domain: 'cc.myshopify.com', theme: false });
+  setCredential(C, 'SHOPIFY_CLIENT_ID', 'cid');
+  setCredential(C, 'SHOPIFY_CLIENT_SECRET', 'csecret');
+  const calls = [];
+  globalThis.fetch = async (url, init) => {
+    calls.push({ url, body: String(init.body) });
+    return { ok: true, status: 200, text: async () => JSON.stringify({ access_token: `tok${calls.length}`, scope: 'read_products', expires_in: 86399 }) };
+  };
+  try {
+    const c = config(C);
+    assert.equal(await accessToken(c), 'tok1');
+    assert.equal(calls[0].url, 'https://cc.myshopify.com/admin/oauth/access_token');
+    assert.match(calls[0].body, /grant_type=client_credentials/);
+    assert.equal(await accessToken(c), 'tok1');           // memory cache
+    clearToken(c);
+    assert.equal(await accessToken(c), 'tok1');           // disk cache
+    assert.equal(statSync(join(clientDir(C), '.token-cache.json')).mode & 0o777, 0o600);
+    assert.equal(await accessToken(c, { force: true }), 'tok2');
+    assert.equal(calls.length, 2);
+  } finally {
+    rmSync(clientDir(C), { recursive: true, force: true });
+  }
+});
