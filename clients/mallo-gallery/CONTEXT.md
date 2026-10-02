@@ -63,7 +63,7 @@ Common pattern to build for Mallo: announcement bar (free/flat delivery across L
 ## Open questions for Joe
 - Delivery fees (keep $4 flat? free over a threshold?)
 - Showroom exact address in Zahle, opening hours, Google Maps link
-- Logo file and product photos
+- Product photos (logo received 2026-10-02)
 - Reference site URL for "Wood and gas"
 
 ## Decisions & notes
@@ -73,3 +73,4 @@ Common pattern to build for Mallo: announcement bar (free/flat delivery across L
 - "Mallo Gallery - Draft" (161202438229) is a broken upload; delete it in Online Store > Themes.
 - Main menu not yet updated (it's shared with the live theme); do it when the new theme goes live.
 - 2026-10-02: Homepage built on Sand Preview: announcement bar → hero ("Furniture made for the way you live") → Shop by room (mallo-rooms, 7 collections) → trust row (mallo-trust) → New arrivals (product-list, all) → Custom orders band → Zahle showroom band → Our story band (mallo-band). Custom sections are editable in the theme editor; images are placeholders until Joe's photos arrive. Storefront is password-protected, so render checks need the admin preview.
+- 2026-10-02: Logo received ("Gallery Mallo · Discover A world Beyond..."). Transparent versions in assets-src/ (white, sand, black; watermark removed). White version uploaded to Shopify Files as mallo-gallery-logo-white.png and set as the theme logo (height 64px desktop / 44px mobile).
