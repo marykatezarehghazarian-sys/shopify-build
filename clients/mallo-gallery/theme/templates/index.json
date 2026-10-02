@@ -89,7 +89,8 @@
         "reflection_opacity": 75,
         "padding-block-start": 100,
         "padding-block-end": 72
-      }
+      },
+      "disabled": true
     },
     "product_list_fa6P9H": {
       "type": "product-list",
@@ -422,15 +423,27 @@
         "button_label": "About us",
         "button_link": "shopify://pages/about"
       }
+    },
+    "mallo_logo_hero": {
+      "type": "mallo-logo-hero",
+      "settings": {
+        "heading": "Furniture made for the way you live",
+        "text": "Designed and built in our own factory. Delivered all over Lebanon.",
+        "button_label": "Shop now",
+        "button_link": "shopify://collections/all",
+        "button2_label": "Custom orders",
+        "button2_link": "shopify://pages/custom-orders"
+      }
     }
   },
   "order": [
-    "hero_jVaWmY",
+    "mallo_logo_hero",
     "mallo_rooms",
     "mallo_trust",
     "product_list_fa6P9H",
     "mallo_custom",
     "mallo_showroom",
-    "mallo_story"
+    "mallo_story",
+    "hero_jVaWmY"
   ]
 }
