@@ -12,4 +12,5 @@ Multi-client Shopify workspace. See README.md for commands.
 - Store changes: prefer `npm run shop -- <cmd>`; otherwise `gql`, or add a helper in `lib/admin/<resource>.js` + command in `bin/shop.js`. Use `mutate()` so `userErrors` throw.
 - GraphQL Admin API only. Check input shapes against the client's API version.
 - Products are created as DRAFT. Confirm before publishing, deleting, bulk-changing live data, or publishing a live theme (`theme push` defaults to unpublished).
+- Horizon (and other Theme Store themes using `color_palette` settings) can't be uploaded as a brand-new theme: it fails validation. Instead `themeDuplicate` the live theme via `gql`, then `npm run theme -- push --theme <id> --only <changed files>`.
 - Run `npm run theme -- check` after theme edits, `npm test` after changing `lib/` or `bin/`.

@@ -1,0 +1,42 @@
+{%- comment -%}
+  Floating WhatsApp inquiry button. Settings: Theme settings > WhatsApp.
+  On product pages the message includes the product title and URL.
+{%- endcomment -%}
+{%- if settings.whatsapp_enabled and settings.whatsapp_number != blank -%}
+  {%- liquid
+    assign wa_number = settings.whatsapp_number | remove: '+' | remove: ' ' | remove: '-'
+    assign wa_text = settings.whatsapp_message
+    if product
+      assign wa_text = wa_text | append: ': ' | append: product.title | append: ' - ' | append: shop.url | append: product.url
+    endif
+  -%}
+  <a
+    class="whatsapp-float"
+    href="https://wa.me/{{ wa_number }}?text={{ wa_text | url_encode }}"
+    target="_blank"
+    rel="noopener"
+    aria-label="Chat with us on WhatsApp"
+  >
+    <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true" focusable="false"><path fill="currentColor" d="M16.04 3C9.4 3 4 8.36 4 14.97c0 2.11.56 4.17 1.62 5.99L4 29l8.24-1.6a12.1 12.1 0 0 0 3.8.61C22.68 28.01 28 22.65 28 16.04 28 9.43 22.68 3 16.04 3Zm0 22.8c-1.2 0-2.38-.2-3.5-.6l-.25-.09-4.9.95.98-4.77-.16-.26a9.73 9.73 0 0 1-1.5-5.07c0-5.4 4.4-9.78 9.83-9.78 5.42 0 9.6 4.38 9.6 9.86 0 5.47-4.44 9.76-10.1 9.76Zm5.4-7.3c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.14.3-.35.44-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.6-.92-2.2-.24-.57-.48-.5-.67-.5h-.57c-.2 0-.52.08-.79.37-.27.3-1.03 1-1.03 2.45s1.06 2.84 1.2 3.04c.15.2 2.08 3.17 5.04 4.45.7.3 1.25.48 1.68.62.7.22 1.35.19 1.85.12.57-.09 1.75-.72 2-1.4.24-.7.24-1.28.17-1.4-.07-.13-.27-.2-.57-.35Z"/></svg>
+  </a>
+  <style>
+    .whatsapp-float {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #25d366;
+      color: #fff;
+      box-shadow: 0 6px 20px rgb(0 0 0 / 0.18);
+      transition: transform 0.2s ease;
+    }
+    .whatsapp-float:hover { transform: scale(1.06); }
+    @media (max-width: 749px) { .whatsapp-float { right: 16px; bottom: 16px; width: 52px; height: 52px; } }
+  </style>
+{%- endif -%}
