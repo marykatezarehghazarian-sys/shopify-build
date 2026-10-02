@@ -109,6 +109,9 @@
       "color1": "#BFB3A2",
       "color2": "#2E2A25"
     },
+    "stars_enabled": true,
+    "stars_density": 160,
+    "stars_shooting": true,
     "whatsapp_enabled": true,
     "whatsapp_number": "9613195171",
     "whatsapp_message": "Hello Mallo Gallery, I'm interested in"

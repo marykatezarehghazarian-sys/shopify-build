@@ -2141,5 +2141,31 @@
         "default": "Hello Mallo Gallery, I'm interested in"
       }
     ]
+  },
+  {
+    "name": "Starry background",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "stars_enabled",
+        "label": "Show starry background",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "stars_density",
+        "label": "Number of stars",
+        "min": 40,
+        "max": 400,
+        "step": 20,
+        "default": 160
+      },
+      {
+        "type": "checkbox",
+        "id": "stars_shooting",
+        "label": "Occasional shooting star",
+        "default": true
+      }
+    ]
   }
 ]

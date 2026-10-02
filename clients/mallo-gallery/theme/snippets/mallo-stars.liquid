@@ -1,0 +1,59 @@
+{%- comment -%}
+  Mallo Gallery: luxury starfield across the whole site (Theme settings > Starry background).
+  A fixed canvas blended with "screen", so stars show on dark areas only and never cover content.
+{%- endcomment -%}
+{%- if settings.stars_enabled -%}
+  <canvas id="mallo-stars" aria-hidden="true"></canvas>
+  <style>
+    #mallo-stars { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 40; mix-blend-mode: screen; }
+  </style>
+  <script>
+    (() => {
+      const c = document.getElementById('mallo-stars');
+      if (!c) return;
+      const ctx = c.getContext('2d');
+      const density = {{ settings.stars_density | default: 140 }};
+      const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const colors = ['255,255,255', '237,227,212', '214,186,128', '201,169,110'];
+      let stars = [], shooting = null, w = 0, h = 0, dpr = 1;
+      function resize() {
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        w = c.width = innerWidth * dpr; h = c.height = innerHeight * dpr;
+        const n = Math.round(density * (innerWidth * innerHeight) / (1440 * 900));
+        stars = Array.from({ length: n }, () => ({
+          x: Math.random() * w, y: Math.random() * h,
+          r: (Math.random() ** 3 * 1.6 + 0.35) * dpr,
+          a: Math.random() * 0.6 + 0.2, s: Math.random() * 0.012 + 0.003, p: Math.random() * Math.PI * 2,
+          col: colors[Math.random() < 0.65 ? (Math.random() < 0.5 ? 0 : 1) : (Math.random() < 0.5 ? 2 : 3)],
+        }));
+      }
+      function star(x, y, r, alpha, col) {
+        ctx.fillStyle = `rgba(${col},${alpha})`;
+        ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill();
+        if (r > 1.3 * dpr) { // sparkle cross on the brightest stars
+          ctx.strokeStyle = `rgba(${col},${alpha * 0.45})`; ctx.lineWidth = 0.6 * dpr;
+          ctx.beginPath(); ctx.moveTo(x - r * 4, y); ctx.lineTo(x + r * 4, y); ctx.moveTo(x, y - r * 4); ctx.lineTo(x, y + r * 4); ctx.stroke();
+        }
+      }
+      function frame(t) {
+        ctx.clearRect(0, 0, w, h);
+        for (const s of stars) star(s.x, s.y, s.r, still ? s.a : s.a * (0.55 + 0.45 * Math.sin(t * s.s * 0.06 + s.p)), s.col);
+        {%- if settings.stars_shooting -%}
+        if (!still) {
+          if (!shooting && Math.random() < 0.0025) shooting = { x: Math.random() * w * 0.7, y: Math.random() * h * 0.4, l: 0 };
+          if (shooting) {
+            shooting.l += 14 * dpr; const len = 120 * dpr, x = shooting.x + shooting.l, y = shooting.y + shooting.l * 0.45;
+            const g = ctx.createLinearGradient(x - len, y - len * 0.45, x, y);
+            g.addColorStop(0, 'rgba(214,186,128,0)'); g.addColorStop(1, 'rgba(255,245,225,0.85)');
+            ctx.strokeStyle = g; ctx.lineWidth = 1.2 * dpr; ctx.beginPath(); ctx.moveTo(x - len, y - len * 0.45); ctx.lineTo(x, y); ctx.stroke();
+            if (x > w + len || y > h + len) shooting = null;
+          }
+        }
+        {%- endif -%}
+        if (!still) requestAnimationFrame(frame);
+      }
+      resize(); addEventListener('resize', resize);
+      requestAnimationFrame(frame);
+    })();
+  </script>
+{%- endif -%}
