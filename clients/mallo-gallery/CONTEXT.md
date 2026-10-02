@@ -56,6 +56,7 @@ Home, Shop, Collections, About us, Showroom / location, Contact, Custom orders.
 - Showroom exact address in Zahle, opening hours, Google Maps link
 - Logo file and product photos
 - Reference site URL for "Wood and gas"
+- Reference sites to study (blocked by network allowlist so far): mkatelier.club, 964dials.com, linksbeirut.com, nostalgiafridge.com, silvaura.org
 
 ## Decisions & notes
 - 2026-10-02: Created 7 tag-based collections (published) and draft pages: About Us (/pages/about), Visit Our Showroom (/pages/showroom), Custom Orders (/pages/custom-orders), all unpublished with [PLACEHOLDERS] to fill. Existing Contact page left as-is.
