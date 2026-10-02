@@ -12,10 +12,10 @@
     "client": "bin/client.js"
   },
   "scripts": {
-    "client": "node bin/client.js",
-    "shop": "node bin/shop.js",
-    "theme": "node bin/theme.js",
-    "check:env": "node bin/shop.js shop:info",
+    "client": "NODE_USE_ENV_PROXY=1 node --disable-warning=UNDICI-EHPA bin/client.js",
+    "shop": "NODE_USE_ENV_PROXY=1 node --disable-warning=UNDICI-EHPA bin/shop.js",
+    "theme": "NODE_USE_ENV_PROXY=1 node --disable-warning=UNDICI-EHPA bin/theme.js",
+    "check:env": "NODE_USE_ENV_PROXY=1 node --disable-warning=UNDICI-EHPA bin/shop.js shop:info",
     "theme:check-starter": "shopify theme check --path starter-theme",
     "test": "node --test test/*.test.js"
   },
