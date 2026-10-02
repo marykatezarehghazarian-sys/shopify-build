@@ -15,7 +15,7 @@ if (!sub) { console.log('Usage: npm run theme -- <dev|pull|push|check|list|...> 
 try {
   const c = clientConfig(explicit);
   const args = ['theme', sub, ...rest];
-  if (sub !== 'check' || !rest.includes('--path')) args.push('--path', c.themeDir);
+  if (!rest.includes('--path')) args.push('--path', c.themeDir);
   if (sub !== 'check') {
     if (!c.domain) throw new Error(`Client "${c.slug}" has no store domain`);
     args.push('--store', c.domain);
