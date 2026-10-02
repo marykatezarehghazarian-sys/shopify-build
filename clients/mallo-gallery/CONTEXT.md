@@ -4,7 +4,7 @@ Store: zcjd1f-ge.myshopify.com (live domain: https://mallogallery.com)
 Owner / contact: Joe Mallo · joemallo84@gmail.com · Phone/WhatsApp 03 195 171 (Lebanon, +961 3 195 171 → https://wa.me/9613195171)
 
 ## Business
-- Brand name as written by client: "GALLERY Mallo". Store name to set: "Mallo Gallery" (confirm final wording with Joe).
+- Brand name as written by client: "GALLERY Mallo". Store name confirmed: "Mallo Gallery".
 - Furniture: showroom stock + custom-made from their own factory. Also interior decoration design & execution services.
 - Based in Lebanon (phone, Whish/OMT payments). Primary market: Lebanon. Currency: USD (store currency change pending in admin).
 - Expected catalog size: 100–500 products. No spreadsheet yet. Has good photos and a logo (not yet received).
@@ -21,7 +21,7 @@ Owner / contact: Joe Mallo · joemallo84@gmail.com · Phone/WhatsApp 03 195 171 
 - OMT
 
 ## Delivery
-- Not specified yet. Ask Joe: delivery areas in Lebanon, fees, free-delivery threshold, lead time for made-to-order.
+- All over Lebanon. Existing setup: Domestic (LB) zone with two Arabic-named rates "قياسي" ($4 and $0); an International zone (26 countries, 1,700,000 LBP) that should be removed (pending Joe's OK). Fees / free threshold / made-to-order lead time still to confirm.
 
 ## Catalog structure
 Smart collections driven by product tags (tag a product → it appears in the collection):
@@ -52,10 +52,9 @@ Home, Shop, Collections, About us, Showroom / location, Contact, Custom orders.
 - Live theme: Horizon (gid://shopify/OnlineStoreTheme/161145880661)
 
 ## Open questions for Joe
-- Delivery areas and fees
-- Showroom address, opening hours, Google Maps link
+- Delivery fees (keep $4 flat? free over a threshold?)
+- Showroom exact address in Zahle, opening hours, Google Maps link
 - Logo file and product photos
-- Final store name wording ("Mallo Gallery" vs "Gallery Mallo")
 - Reference site URL for "Wood and gas"
 
 ## Decisions & notes
