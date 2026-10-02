@@ -45,6 +45,14 @@ Smart collections driven by product tags (tag a product → it appears in the co
 ## Pages
 Home, Shop, Collections, About us, Showroom / location, Contact, Custom orders.
 
+## Reference sites (reviewed 2026-10-02)
+- mkatelier.club (custom theme): announcement bar → big hero "Own What Others Admire" → category tiles → trust row (shipping/warranty/support) → New Drops grid → promo → Best Sellers → brand story → reviews.
+- nostalgiafridge.com (Horizon, Lebanon): "Free delivery anywhere in Lebanon. Pay cash when it arrives." bar → product-led hero with price "From $295 cash on delivery" → feature sections → gallery → trust (COD / free delivery 2–3 days / Order on WhatsApp).
+- linksbeirut.com (Glozin, Lebanon, USD): top bar (free delivery Lebanon) → slideshow → shop by category → featured collections → "Why choose us" → newsletter; mobile bottom nav, WhatsApp.
+- 964dials.com: dark luxury, hero "Exceptional watches, timeless service" → featured → shop by brand → story "Dubai, since 2018" → services (inspect/buy-sell/handover) → "What we stand behind" → Instagram.
+- silvaura.org: shop by category grid with images → shop by collection → material/quality trust points; WhatsApp button.
+Common pattern to build for Mallo: announcement bar (free/flat delivery across Lebanon · cash on delivery) → full-width lifestyle hero + CTA → shop by room (7 image tiles) → trust row (factory-made, delivery all Lebanon, COD/Whish/OMT, WhatsApp) → New arrivals grid → custom-order band → showroom in Zahle band → about/story → Instagram/reviews → footer.
+
 ## Store snapshot (2026-10-02)
 - Auth: Dev Dashboard app, client credentials grant (tokens auto-refresh every 24h). Full write scopes.
 - Plan: Basic. Name "My Store", currency LBP (both need changing in admin; no API for either).
@@ -56,7 +64,7 @@ Home, Shop, Collections, About us, Showroom / location, Contact, Custom orders.
 - Showroom exact address in Zahle, opening hours, Google Maps link
 - Logo file and product photos
 - Reference site URL for "Wood and gas"
-- Reference sites to study (blocked by network allowlist so far): mkatelier.club, 964dials.com, linksbeirut.com, nostalgiafridge.com, silvaura.org, velouriafashion.club
+- velouriafashion.club does not resolve; confirm the correct URL
 
 ## Decisions & notes
 - 2026-10-02: Created 7 tag-based collections (published) and draft pages: About Us (/pages/about), Visit Our Showroom (/pages/showroom), Custom Orders (/pages/custom-orders), all unpublished with [PLACEHOLDERS] to fill. Existing Contact page left as-is.
