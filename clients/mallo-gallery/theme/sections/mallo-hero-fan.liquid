@@ -21,6 +21,28 @@
   class="mhf {{ pad }} mhf--mobile-{{ s.mobile_layout }}{% if s.animation == 'subtle' %} mhf--animate{% endif %}"
   style="--mhf-bg: {{ s.background }}; --mhf-text: {{ s.text_color }}; --mhf-muted: {{ s.muted_color }}; --mhf-accent: {{ s.highlight_color }}; --mhf-heading-font: {{ s.heading_font.family }}, {{ s.heading_font.fallback_families }};"
 >
+  {%- if s.gradient_enabled -%}
+    <div
+      class="mhf__gradient"
+      aria-hidden="true"
+      data-mallo-gradient
+      data-color1="{{ s.gradient_color1 }}"
+      data-color2="{{ s.gradient_color2 }}"
+      data-color3="{{ s.gradient_color3 }}"
+      data-speed="{{ s.gradient_speed }}"
+      data-scale="0.45"
+      data-rotation="-20"
+      data-proportion="45"
+      data-softness="100"
+      data-distortion="4"
+      data-swirl="55"
+      data-swirl-iterations="6"
+      data-shape="0"
+      data-shape-size="30"
+      data-offset="-235"
+    ></div>
+    <script src="{{ 'mallo-animated-gradient.js' | asset_url }}" defer></script>
+  {%- endif -%}
   {%- if s.stars_enabled -%}
     <canvas
       class="mhf__stars"
@@ -102,6 +124,7 @@
 
 <style>
   #{{ sid }} { background: var(--mhf-bg); color: var(--mhf-text); position: relative; isolation: isolate; overflow: hidden; }
+  #{{ sid }} .mhf__gradient { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
   #{{ sid }} .mhf__stars { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
   #{{ sid }} .mhf__inner { position: relative; z-index: 1; max-width: 1152px; margin: 0 auto; padding-inline: 24px; display: flex; flex-direction: column; align-items: center; text-align: center; }
   #{{ sid }}.mhf--standard .mhf__inner { padding-block: 80px; gap: 40px; }
@@ -402,6 +425,44 @@
       "id": "highlight_color",
       "label": "Highlighted words",
       "default": "#B8965A"
+    },
+    {
+      "type": "header",
+      "content": "Animated gradient background"
+    },
+    {
+      "type": "checkbox",
+      "id": "gradient_enabled",
+      "label": "Show animated wave background",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "gradient_color1",
+      "label": "Wave colour 1 (base)",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "gradient_color2",
+      "label": "Wave colour 2",
+      "default": "#F3EBDF"
+    },
+    {
+      "type": "color",
+      "id": "gradient_color3",
+      "label": "Wave colour 3 (deepest)",
+      "default": "#E6D7C0"
+    },
+    {
+      "type": "range",
+      "id": "gradient_speed",
+      "label": "Wave speed",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "default": 10,
+      "info": "Lower is slower. The original component used 30."
     },
     {
       "type": "header",
