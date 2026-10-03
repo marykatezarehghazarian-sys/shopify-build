@@ -436,7 +436,8 @@
         "button2_label": "Custom orders",
         "button2_link": "shopify://pages/custom-orders",
         "background": "#FFFFFF"
-      }
+      },
+      "disabled": true
     },
     "mallo_hero_fan": {
       "type": "mallo-hero-fan",
@@ -458,8 +459,8 @@
     }
   },
   "order": [
-    "mallo_logo_hero",
     "mallo_hero_fan",
+    "mallo_logo_hero",
     "mallo_rooms",
     "mallo_trust",
     "product_list_fa6P9H",
