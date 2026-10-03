@@ -13,7 +13,9 @@
     assign pad = 'mhf--standard'
   endif
 -%}
-{{ s.heading_font | font_face: font_display: 'swap' }}
+<style>
+  {{ s.heading_font | font_face: font_display: 'swap' }}
+</style>
 <section
   id="{{ sid }}"
   class="mhf {{ pad }} mhf--mobile-{{ s.mobile_layout }}{% if s.animation == 'subtle' %} mhf--animate{% endif %}"
