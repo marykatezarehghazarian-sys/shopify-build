@@ -437,10 +437,20 @@
         "button2_link": "shopify://pages/custom-orders",
         "background": "#FFFFFF"
       }
+    },
+    "mallo_hero_fan": {
+      "type": "mallo-hero-fan",
+      "settings": {
+        "primary_link": "shopify://collections/all",
+        "secondary_link": "shopify://pages/custom-orders",
+        "mobile_layout": "scroll",
+        "animation": "subtle"
+      }
     }
   },
   "order": [
     "mallo_logo_hero",
+    "mallo_hero_fan",
     "mallo_rooms",
     "mallo_trust",
     "product_list_fa6P9H",

@@ -1,0 +1,224 @@
+{%- comment -%}
+  Mallo Gallery: "Hero 10" fan hero, ported from the React/shadcn Hero10 component to native Liquid.
+  Serif headline with a highlighted second line, description, CTAs, social proof and a fan of 3 images.
+  Images are left empty on purpose until the client picks them (placeholders show meanwhile).
+  Mobile: choose fan (scaled), swipe carousel, or stacked in the section settings.
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign sid = section.id | prepend: 'mhf-'
+  if s.variant == 'compact'
+    assign pad = 'mhf--compact'
+  else
+    assign pad = 'mhf--standard'
+  endif
+-%}
+{{ s.heading_font | font_face: font_display: 'swap' }}
+<section
+  id="{{ sid }}"
+  class="mhf {{ pad }} mhf--mobile-{{ s.mobile_layout }}{% if s.animation == 'subtle' %} mhf--animate{% endif %}"
+  style="--mhf-bg: {{ s.background }}; --mhf-text: {{ s.text_color }}; --mhf-muted: {{ s.muted_color }}; --mhf-accent: {{ s.highlight_color }}; --mhf-heading-font: {{ s.heading_font.family }}, {{ s.heading_font.fallback_families }};"
+>
+  <div class="mhf__inner">
+    <div class="mhf__header mhf__reveal">
+      {%- if s.title != blank -%}
+        <h1 class="mhf__title">
+          <span>{{ s.title | escape }}</span>
+          {%- if s.title_line2_prefix != blank or s.title_highlight != blank -%}
+            <br>
+            <span>
+              {%- if s.title_line2_prefix != blank %}{{ s.title_line2_prefix | escape }} {% endif -%}
+              {%- if s.title_highlight != blank %}<span class="mhf__highlight">{{ s.title_highlight | escape }}</span>{% endif -%}
+            </span>
+          {%- endif -%}
+        </h1>
+      {%- endif -%}
+      {%- if s.description != blank -%}<p class="mhf__desc">{{ s.description | escape }}</p>{%- endif -%}
+    </div>
+
+    <div class="mhf__actions mhf__reveal">
+      {%- if s.primary_label != blank or s.secondary_label != blank -%}
+        <div class="mhf__ctas">
+          {%- if s.primary_label != blank -%}
+            <a class="mhf__btn mhf__btn--primary" href="{{ s.primary_link | default: routes.all_products_collection_url }}">{{ s.primary_label | escape }}</a>
+          {%- endif -%}
+          {%- if s.secondary_label != blank -%}
+            <a class="mhf__btn mhf__btn--outline" href="{{ s.secondary_link | default: '#' }}">{{ s.secondary_label | escape }}</a>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+      {%- if s.social_proof != blank -%}<p class="mhf__proof">{{ s.social_proof | escape }}</p>{%- endif -%}
+    </div>
+
+    <div class="mhf__fan" role="list">
+      {%- for i in (1..3) -%}
+        {%- capture img_key %}image_{{ i }}{% endcapture -%}
+        {%- capture alt_key %}alt_{{ i }}{% endcapture -%}
+        {%- capture link_key %}link_{{ i }}{% endcapture -%}
+        {%- assign img = s[img_key] -%}
+        {%- assign link = s[link_key] -%}
+        {%- assign img_alt = s[alt_key] | default: img.alt | escape -%}
+        <div class="mhf__card mhf__card--{{ i }}" role="listitem">
+          {%- if link != blank %}<a href="{{ link }}" class="mhf__card-link">{% endif -%}
+          {%- if img != blank -%}
+            {{ img | image_url: width: 1200 | image_tag:
+              widths: '360,540,720,900,1200',
+              sizes: '(min-width: 750px) 30vw, 70vw',
+              loading: 'lazy',
+              alt: img_alt,
+              class: 'mhf__img'
+            }}
+          {%- else -%}
+            <div class="mhf__placeholder">
+              {{ 'lifestyle-1' | placeholder_svg_tag: 'mhf__placeholder-svg' }}
+              <span>Image {{ i }}</span>
+            </div>
+          {%- endif -%}
+          {%- if link != blank %}</a>{% endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<style>
+  #{{ sid }} { background: var(--mhf-bg); color: var(--mhf-text); position: relative; isolation: isolate; overflow: hidden; }
+  #{{ sid }} .mhf__inner { position: relative; z-index: 1; max-width: 1152px; margin: 0 auto; padding-inline: 24px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  #{{ sid }}.mhf--standard .mhf__inner { padding-block: 80px; gap: 40px; }
+  #{{ sid }}.mhf--compact .mhf__inner { padding-block: 56px; gap: 28px; }
+  @media (min-width: 640px) {
+    #{{ sid }}.mhf--standard .mhf__inner { padding-block: 112px; }
+    #{{ sid }}.mhf--compact .mhf__inner { padding-block: 80px; }
+  }
+  #{{ sid }} .mhf__header { display: flex; flex-direction: column; align-items: center; gap: 20px; width: 100%; max-width: 672px; }
+  #{{ sid }} .mhf__title { margin: 0; font-family: var(--mhf-heading-font); font-weight: 400; letter-spacing: -0.02em; line-height: 1.1; text-wrap: balance; color: var(--mhf-text); }
+  #{{ sid }}.mhf--standard .mhf__title { font-size: clamp(1.9rem, 5.5vw, 3rem); }
+  #{{ sid }}.mhf--compact .mhf__title { font-size: clamp(1.6rem, 4.5vw, 2.25rem); }
+  #{{ sid }} .mhf__highlight { color: var(--mhf-accent); }
+  #{{ sid }} .mhf__desc { margin: 0; max-width: 32rem; color: var(--mhf-muted); font-size: 1rem; line-height: 1.6; text-wrap: balance; }
+  #{{ sid }} .mhf__actions { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  #{{ sid }} .mhf__ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 16px; }
+  #{{ sid }} .mhf__btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 22px; border-radius: 6px; font-size: .9rem; font-weight: 500; text-decoration: none; transition: opacity .2s, background .2s, color .2s; white-space: nowrap; }
+  #{{ sid }} .mhf__btn--primary { background: var(--mhf-text); color: var(--mhf-bg); border: 1px solid var(--mhf-text); }
+  #{{ sid }} .mhf__btn--primary:hover { opacity: .88; }
+  #{{ sid }} .mhf__btn--outline { background: transparent; color: var(--mhf-text); border: 1px solid color-mix(in srgb, var(--mhf-text) 30%, transparent); }
+  #{{ sid }} .mhf__btn--outline:hover { background: color-mix(in srgb, var(--mhf-text) 6%, transparent); }
+  #{{ sid }} .mhf__proof { margin: 0; font-size: .75rem; font-weight: 500; color: var(--mhf-muted); letter-spacing: .02em; }
+
+  /* Image fan (desktop and "fan" mobile layout) */
+  #{{ sid }} .mhf__fan { width: 100%; margin: 0 auto; display: flex; align-items: center; justify-content: center; }
+  #{{ sid }}.mhf--standard .mhf__fan { max-width: 768px; }
+  #{{ sid }}.mhf--compact .mhf__fan { max-width: 672px; }
+  #{{ sid }} .mhf__card { position: relative; flex-shrink: 0; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 12px; box-shadow: 0 20px 40px rgb(0 0 0 / .14); outline: 1px solid rgb(0 0 0 / .08); background: #EFE9DF; transition: transform .5s cubic-bezier(.22,1,.36,1); }
+  #{{ sid }} .mhf__card--1 { width: 38%; margin-right: -32px; z-index: 1; transform: translateY(24px) rotate(-6deg); }
+  #{{ sid }} .mhf__card--2 { width: 42%; z-index: 2; transform: translateY(-8px); }
+  #{{ sid }} .mhf__card--3 { width: 38%; margin-left: -32px; z-index: 1; transform: translateY(24px) rotate(6deg); }
+  #{{ sid }} .mhf__card-link { display: block; height: 100%; }
+  #{{ sid }} .mhf__img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  #{{ sid }} .mhf__placeholder { width: 100%; height: 100%; display: grid; place-items: center; position: relative; color: var(--mhf-muted); }
+  #{{ sid }} .mhf__placeholder-svg { position: absolute; inset: 0; width: 100%; height: 100%; fill: rgb(0 0 0 / .12); }
+  #{{ sid }} .mhf__placeholder span { position: relative; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; background: rgb(255 255 255 / .8); padding: 4px 10px; border-radius: 99px; }
+
+  /* Mobile layouts */
+  @media (max-width: 749px) {
+    #{{ sid }} .mhf__inner { padding-inline: 20px; }
+    #{{ sid }} .mhf__btn { flex: 1 1 auto; min-width: 140px; }
+    #{{ sid }}.mhf--mobile-fan .mhf__card--1, #{{ sid }}.mhf--mobile-fan .mhf__card--3 { margin-inline: -16px; }
+    #{{ sid }}.mhf--mobile-fan .mhf__card--1 { transform: translateY(14px) rotate(-6deg); }
+    #{{ sid }}.mhf--mobile-fan .mhf__card--3 { transform: translateY(14px) rotate(6deg); }
+    #{{ sid }}.mhf--mobile-fan .mhf__card { border-radius: 10px; }
+
+    /* Swipe carousel: big cards, snap scrolling, middle image first */
+    #{{ sid }}.mhf--mobile-scroll .mhf__inner { padding-inline: 0; }
+    #{{ sid }}.mhf--mobile-scroll .mhf__header, #{{ sid }}.mhf--mobile-scroll .mhf__actions { padding-inline: 20px; }
+    #{{ sid }}.mhf--mobile-scroll .mhf__fan { justify-content: flex-start; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 20px 16px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+    #{{ sid }}.mhf--mobile-scroll .mhf__fan::-webkit-scrollbar { display: none; }
+    #{{ sid }}.mhf--mobile-scroll .mhf__card { width: 78%; margin: 0; transform: none !important; scroll-snap-align: center; }
+    #{{ sid }}.mhf--mobile-scroll .mhf__card--2 { order: -1; }
+
+    /* Stacked: one large image, two below side by side */
+    #{{ sid }}.mhf--mobile-stack .mhf__fan { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    #{{ sid }}.mhf--mobile-stack .mhf__card { width: 100%; margin: 0; transform: none !important; }
+    #{{ sid }}.mhf--mobile-stack .mhf__card--2 { grid-column: 1 / -1; order: -1; aspect-ratio: 4 / 3; }
+  }
+
+  /* Subtle entrance animation (respects reduced motion) */
+  @media (prefers-reduced-motion: no-preference) {
+    #{{ sid }}.mhf--animate .mhf__reveal { opacity: 0; transform: translateY(12px); filter: blur(6px); transition: opacity .5s cubic-bezier(.22,1,.36,1), transform .5s cubic-bezier(.22,1,.36,1), filter .5s cubic-bezier(.22,1,.36,1); }
+    #{{ sid }}.mhf--animate .mhf__actions { transition-delay: .1s; }
+    #{{ sid }}.mhf--animate .mhf__fan { opacity: 0; transform: translateY(12px); filter: blur(6px); transition: opacity .5s .4s cubic-bezier(.22,1,.36,1), transform .5s .4s cubic-bezier(.22,1,.36,1), filter .5s .4s cubic-bezier(.22,1,.36,1); }
+    #{{ sid }}.mhf--animate:not(.mhf--mobile-scroll) .mhf__card--1 { transform: translate(48px, 24px) rotate(-6deg); }
+    #{{ sid }}.mhf--animate:not(.mhf--mobile-scroll) .mhf__card--3 { transform: translate(-48px, 24px) rotate(6deg); }
+    #{{ sid }}.mhf--animate .mhf__card--1 { transition-delay: .5s; }
+    #{{ sid }}.mhf--animate .mhf__card--2 { transition-delay: .6s; }
+    #{{ sid }}.mhf--animate .mhf__card--3 { transition-delay: .7s; }
+    #{{ sid }}.mhf--animate.is-visible .mhf__reveal,
+    #{{ sid }}.mhf--animate.is-visible .mhf__fan { opacity: 1; transform: none; filter: none; }
+    #{{ sid }}.mhf--animate.is-visible .mhf__card--1 { transform: translateY(24px) rotate(-6deg); }
+    #{{ sid }}.mhf--animate.is-visible .mhf__card--3 { transform: translateY(24px) rotate(6deg); }
+  }
+  @media (prefers-reduced-motion: no-preference) and (max-width: 749px) {
+    #{{ sid }}.mhf--animate.mhf--mobile-fan.is-visible .mhf__card--1 { transform: translateY(14px) rotate(-6deg); }
+    #{{ sid }}.mhf--animate.mhf--mobile-fan.is-visible .mhf__card--3 { transform: translateY(14px) rotate(6deg); }
+    #{{ sid }}.mhf--animate.mhf--mobile-stack .mhf__card { transform: none !important; }
+  }
+</style>
+
+{%- if s.animation == 'subtle' -%}
+  <script>
+    (() => {
+      const el = document.getElementById('{{ sid }}');
+      if (!el) return;
+      if (!('IntersectionObserver' in window) || Shopify.designMode) { el.classList.add('is-visible'); return; }
+      const io = new IntersectionObserver((entries) => {
+        if (entries.some((e) => e.isIntersecting)) { el.classList.add('is-visible'); io.disconnect(); }
+      }, { rootMargin: '-80px' });
+      io.observe(el);
+    })();
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Mallo: hero image fan",
+  "class": "section-mallo-hero-fan",
+  "settings": [
+    { "type": "header", "content": "Text" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Furniture made" },
+    { "type": "text", "id": "title_line2_prefix", "label": "Second line, start", "default": "for the way" },
+    { "type": "text", "id": "title_highlight", "label": "Second line, highlighted words", "default": "you live" },
+    { "type": "textarea", "id": "description", "label": "Description", "default": "Designed and built in our own factory in Lebanon. Showroom pieces and made-to-order furniture, delivered all over Lebanon." },
+    { "type": "text", "id": "social_proof", "label": "Small line under the buttons", "default": "Showroom in Zahle · Delivery all over Lebanon" },
+    { "type": "header", "content": "Buttons" },
+    { "type": "text", "id": "primary_label", "label": "Main button label", "default": "Shop now" },
+    { "type": "url", "id": "primary_link", "label": "Main button link" },
+    { "type": "text", "id": "secondary_label", "label": "Second button label", "default": "Custom orders" },
+    { "type": "url", "id": "secondary_link", "label": "Second button link" },
+    { "type": "header", "content": "Images (left, centre, right)" },
+    { "type": "image_picker", "id": "image_1", "label": "Left image" },
+    { "type": "text", "id": "alt_1", "label": "Left image description (for accessibility)" },
+    { "type": "url", "id": "link_1", "label": "Left image link" },
+    { "type": "image_picker", "id": "image_2", "label": "Centre image (largest)" },
+    { "type": "text", "id": "alt_2", "label": "Centre image description" },
+    { "type": "url", "id": "link_2", "label": "Centre image link" },
+    { "type": "image_picker", "id": "image_3", "label": "Right image" },
+    { "type": "text", "id": "alt_3", "label": "Right image description" },
+    { "type": "url", "id": "link_3", "label": "Right image link" },
+    { "type": "header", "content": "Layout" },
+    { "type": "select", "id": "variant", "label": "Size", "default": "standard", "options": [
+      { "value": "standard", "label": "Standard" }, { "value": "compact", "label": "Compact" } ] },
+    { "type": "select", "id": "mobile_layout", "label": "Mobile layout", "default": "scroll",
+      "info": "Fan keeps the overlapping look; Swipe shows large images you can slide through; Stacked shows one large image with two below.",
+      "options": [ { "value": "fan", "label": "Fan (same as desktop)" }, { "value": "scroll", "label": "Swipe carousel" }, { "value": "stack", "label": "Stacked" } ] },
+    { "type": "select", "id": "animation", "label": "Animation", "default": "subtle", "options": [
+      { "value": "none", "label": "None" }, { "value": "subtle", "label": "Subtle fade and fan-out" } ] },
+    { "type": "header", "content": "Style" },
+    { "type": "font_picker", "id": "heading_font", "label": "Title font (serif recommended)", "default": "playfair_display_n4" },
+    { "type": "color", "id": "background", "label": "Background", "default": "#FFFFFF" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#1A1714" },
+    { "type": "color", "id": "muted_color", "label": "Description text", "default": "#6B6156" },
+    { "type": "color", "id": "highlight_color", "label": "Highlighted words", "default": "#B8965A" }
+  ],
+  "presets": [{ "name": "Mallo: hero image fan" }]
+}
+{% endschema %}
