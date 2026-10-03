@@ -347,7 +347,9 @@
     },
     "mallo_trust": {
       "type": "mallo-trust",
-      "settings": {},
+      "settings": {
+        "background": "#F5F0E8"
+      },
       "blocks": {
         "pt_0": {
           "type": "point",
@@ -432,7 +434,8 @@
         "button_label": "Shop now",
         "button_link": "shopify://collections/all",
         "button2_label": "Custom orders",
-        "button2_link": "shopify://pages/custom-orders"
+        "button2_link": "shopify://pages/custom-orders",
+        "background": "#FFFFFF"
       }
     }
   },
