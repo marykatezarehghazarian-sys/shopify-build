@@ -444,7 +444,16 @@
         "primary_link": "shopify://collections/all",
         "secondary_link": "shopify://pages/custom-orders",
         "mobile_layout": "scroll",
-        "animation": "subtle"
+        "animation": "subtle",
+        "image_1": "shopify://shop_images/mallo-hero-left.jpg",
+        "alt_1": "Quilted low platform bed with light pendants",
+        "link_1": "shopify://collections/bedroom",
+        "image_2": "shopify://shop_images/mallo-hero-centre.jpg",
+        "alt_2": "Luxury living room with curved sofa",
+        "link_2": "shopify://collections/living-room-sofas",
+        "image_3": "shopify://shop_images/mallo-hero-right.jpg",
+        "alt_3": "Nightstand and octagon upholstered headboard",
+        "link_3": "shopify://products/monarch-velvet-bed"
       }
     }
   },
