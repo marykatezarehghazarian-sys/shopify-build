@@ -40,6 +40,10 @@ const commands = {
       price: flags.price, sku: flags.sku,
     }),
   },
+  'products:images': {
+    help: '<productId> <image paths...> [--alt "text"]  (adds photos to a product)',
+    run: ({ pos, flags }) => products.addImages(pos[0], pos.slice(1), flags.alt),
+  },
   'products:update': { help: '<id> --json {...ProductUpdateInput}', run: ({ pos, flags }) => products.updateProduct(pos[0], readJson(flags.json)) },
   'products:delete': { help: '<id>', run: ({ pos }) => products.deleteProduct(pos[0]) },
   'variants:update': { help: '<productId> --json [{id, price, ...}]', run: ({ pos, flags }) => products.updateVariants(pos[0], readJson(flags.json)) },
