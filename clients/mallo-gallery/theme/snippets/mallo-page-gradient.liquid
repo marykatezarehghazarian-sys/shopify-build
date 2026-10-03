@@ -1,8 +1,8 @@
 {%- comment -%}
   Mallo Gallery: site-wide animated wave background (Theme settings > Wave background).
-  A fixed, full-screen layer blended with "multiply": on white areas it shows the beige waves,
-  on dark text it has no visible effect, so the whole page reads as sitting on soft silk
-  from top to bottom. Never blocks clicks.
+  A fixed, full-screen layer at the very back (z-index -1). Page and section backgrounds are made
+  transparent so the waves show through, while all content (text, images, buttons) sits on top
+  untouched. Never blocks clicks.
 {%- endcomment -%}
 {%- if settings.page_gradient_enabled -%}
   <div
@@ -25,13 +25,25 @@
     data-offset="-235"
   ></div>
   <style>
+    /* Waves live on the very back layer: behind every section, never over content. */
+    html { background: {{ settings.page_gradient_color1 }}; }
     .mallo-page-gradient {
       position: fixed;
       inset: 0;
-      z-index: 35;
+      z-index: -1;
       pointer-events: none;
-      mix-blend-mode: multiply;
       opacity: {{ settings.page_gradient_strength | divided_by: 100.0 }};
+    }
+    /* Let the page-level backgrounds show the waves through; cards, drawers and pop-ups keep theirs. */
+    body,
+    #MainContent,
+    main,
+    .shopify-section,
+    .shopify-section > .section,
+    .section-background,
+    .custom-section-background,
+    .section-mallo-hero-fan .mhf {
+      background: transparent !important;
     }
   </style>
   <script src="{{ 'mallo-animated-gradient.js' | asset_url }}" defer></script>
