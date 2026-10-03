@@ -463,16 +463,17 @@
       "type": "mallo-video",
       "settings": {
         "video": "shopify://files/videos/mallo-lifestyle-film.mp4",
-        "button_link": "shopify://collections/all"
+        "button_link": "shopify://collections/all",
+        "padding": 24
       }
     }
   },
   "order": [
-    "mallo_hero_fan",
+    "mallo_video",
     "mallo_logo_hero",
     "mallo_rooms",
     "mallo_trust",
-    "mallo_video",
+    "mallo_hero_fan",
     "product_list_fa6P9H",
     "mallo_custom",
     "mallo_showroom",

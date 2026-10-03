@@ -136,10 +136,18 @@
         "padding-block-start": 32,
         "padding-block-end": 84
       }
+    },
+    "mallo_contact_buttons": {
+      "type": "mallo-contact-buttons",
+      "settings": {
+        "maps_url": "https://maps.app.goo.gl/2vvXi4t4AXVPGq2E9",
+        "whatsapp_number": "+9613195171"
+      }
     }
   },
   "order": [
     "main",
+    "mallo_contact_buttons",
     "form"
   ]
 }
