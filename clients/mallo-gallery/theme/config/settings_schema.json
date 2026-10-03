@@ -2167,5 +2167,54 @@
         "default": true
       }
     ]
+  },
+  {
+    "name": "Wave background",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "page_gradient_enabled",
+        "label": "Show animated wave background on every page",
+        "default": true
+      },
+      {
+        "type": "color",
+        "id": "page_gradient_color1",
+        "label": "Wave colour 1 (base)",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "page_gradient_color2",
+        "label": "Wave colour 2",
+        "default": "#ECE0CC"
+      },
+      {
+        "type": "color",
+        "id": "page_gradient_color3",
+        "label": "Wave colour 3 (deepest)",
+        "default": "#DAC6A6"
+      },
+      {
+        "type": "range",
+        "id": "page_gradient_speed",
+        "label": "Wave speed",
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "default": 10
+      },
+      {
+        "type": "range",
+        "id": "page_gradient_strength",
+        "label": "Strength",
+        "min": 10,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "default": 100,
+        "info": "Lower this if photos look too warm."
+      }
+    ]
   }
 ]

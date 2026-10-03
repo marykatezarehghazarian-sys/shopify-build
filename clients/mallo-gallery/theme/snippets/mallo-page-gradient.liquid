@@ -1,0 +1,38 @@
+{%- comment -%}
+  Mallo Gallery: site-wide animated wave background (Theme settings > Wave background).
+  A fixed, full-screen layer blended with "multiply": on white areas it shows the beige waves,
+  on dark text it has no visible effect, so the whole page reads as sitting on soft silk
+  from top to bottom. Never blocks clicks.
+{%- endcomment -%}
+{%- if settings.page_gradient_enabled -%}
+  <div
+    class="mallo-page-gradient"
+    aria-hidden="true"
+    data-mallo-gradient
+    data-color1="{{ settings.page_gradient_color1 }}"
+    data-color2="{{ settings.page_gradient_color2 }}"
+    data-color3="{{ settings.page_gradient_color3 }}"
+    data-speed="{{ settings.page_gradient_speed }}"
+    data-scale="0.45"
+    data-rotation="-20"
+    data-proportion="45"
+    data-softness="100"
+    data-distortion="4"
+    data-swirl="55"
+    data-swirl-iterations="6"
+    data-shape="0"
+    data-shape-size="30"
+    data-offset="-235"
+  ></div>
+  <style>
+    .mallo-page-gradient {
+      position: fixed;
+      inset: 0;
+      z-index: 35;
+      pointer-events: none;
+      mix-blend-mode: multiply;
+      opacity: {{ settings.page_gradient_strength | divided_by: 100.0 }};
+    }
+  </style>
+  <script src="{{ 'mallo-animated-gradient.js' | asset_url }}" defer></script>
+{%- endif -%}

@@ -110,6 +110,12 @@
       "color2": "#E6DFD3"
     },
     "stars_enabled": false,
+    "page_gradient_enabled": true,
+    "page_gradient_color1": "#FFFFFF",
+    "page_gradient_color2": "#ECE0CC",
+    "page_gradient_color3": "#DAC6A6",
+    "page_gradient_speed": 10,
+    "page_gradient_strength": 100,
     "stars_density": 160,
     "stars_shooting": true,
     "whatsapp_enabled": true,
