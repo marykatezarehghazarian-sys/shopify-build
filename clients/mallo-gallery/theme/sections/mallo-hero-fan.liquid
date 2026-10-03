@@ -21,6 +21,23 @@
   class="mhf {{ pad }} mhf--mobile-{{ s.mobile_layout }}{% if s.animation == 'subtle' %} mhf--animate{% endif %}"
   style="--mhf-bg: {{ s.background }}; --mhf-text: {{ s.text_color }}; --mhf-muted: {{ s.muted_color }}; --mhf-accent: {{ s.highlight_color }}; --mhf-heading-font: {{ s.heading_font.family }}, {{ s.heading_font.fallback_families }};"
 >
+  {%- if s.stars_enabled -%}
+    <canvas
+      class="mhf__stars"
+      aria-hidden="true"
+      data-mallo-stars
+      data-color="{{ s.stars_color }}"
+      data-count="{{ s.stars_count }}"
+      data-connect="{{ s.stars_connect }}"
+      data-connect-distance="{{ s.stars_connect_distance }}"
+      data-speed="{{ s.stars_speed | divided_by: 10.0 }}"
+      data-twinkle="0.55"
+      data-glow="4"
+      data-star-size="1.5"
+      data-tint="0.45"
+    ></canvas>
+    <script src="{{ 'mallo-gravity-stars.js' | asset_url }}" defer></script>
+  {%- endif -%}
   <div class="mhf__inner">
     <div class="mhf__header mhf__reveal">
       {%- if s.title != blank -%}
@@ -85,6 +102,7 @@
 
 <style>
   #{{ sid }} { background: var(--mhf-bg); color: var(--mhf-text); position: relative; isolation: isolate; overflow: hidden; }
+  #{{ sid }} .mhf__stars { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
   #{{ sid }} .mhf__inner { position: relative; z-index: 1; max-width: 1152px; margin: 0 auto; padding-inline: 24px; display: flex; flex-direction: column; align-items: center; text-align: center; }
   #{{ sid }}.mhf--standard .mhf__inner { padding-block: 80px; gap: 40px; }
   #{{ sid }}.mhf--compact .mhf__inner { padding-block: 56px; gap: 28px; }
@@ -185,42 +203,263 @@
   "name": "Mallo: hero image fan",
   "class": "section-mallo-hero-fan",
   "settings": [
-    { "type": "header", "content": "Text" },
-    { "type": "text", "id": "title", "label": "Title", "default": "Furniture made" },
-    { "type": "text", "id": "title_line2_prefix", "label": "Second line, start", "default": "for the way" },
-    { "type": "text", "id": "title_highlight", "label": "Second line, highlighted words", "default": "you live" },
-    { "type": "textarea", "id": "description", "label": "Description", "default": "Designed and built in our own factory in Lebanon. Showroom pieces and made-to-order furniture, delivered all over Lebanon." },
-    { "type": "text", "id": "social_proof", "label": "Small line under the buttons", "default": "Showroom in Zahle · Delivery all over Lebanon" },
-    { "type": "header", "content": "Buttons" },
-    { "type": "text", "id": "primary_label", "label": "Main button label", "default": "Shop now" },
-    { "type": "url", "id": "primary_link", "label": "Main button link" },
-    { "type": "text", "id": "secondary_label", "label": "Second button label", "default": "Custom orders" },
-    { "type": "url", "id": "secondary_link", "label": "Second button link" },
-    { "type": "header", "content": "Images (left, centre, right)" },
-    { "type": "image_picker", "id": "image_1", "label": "Left image" },
-    { "type": "text", "id": "alt_1", "label": "Left image description (for accessibility)" },
-    { "type": "url", "id": "link_1", "label": "Left image link" },
-    { "type": "image_picker", "id": "image_2", "label": "Centre image (largest)" },
-    { "type": "text", "id": "alt_2", "label": "Centre image description" },
-    { "type": "url", "id": "link_2", "label": "Centre image link" },
-    { "type": "image_picker", "id": "image_3", "label": "Right image" },
-    { "type": "text", "id": "alt_3", "label": "Right image description" },
-    { "type": "url", "id": "link_3", "label": "Right image link" },
-    { "type": "header", "content": "Layout" },
-    { "type": "select", "id": "variant", "label": "Size", "default": "standard", "options": [
-      { "value": "standard", "label": "Standard" }, { "value": "compact", "label": "Compact" } ] },
-    { "type": "select", "id": "mobile_layout", "label": "Mobile layout", "default": "scroll",
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Furniture made"
+    },
+    {
+      "type": "text",
+      "id": "title_line2_prefix",
+      "label": "Second line, start",
+      "default": "for the way"
+    },
+    {
+      "type": "text",
+      "id": "title_highlight",
+      "label": "Second line, highlighted words",
+      "default": "you live"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Designed and built in our own factory in Lebanon. Showroom pieces and made-to-order furniture, delivered all over Lebanon."
+    },
+    {
+      "type": "text",
+      "id": "social_proof",
+      "label": "Small line under the buttons",
+      "default": "Showroom in Zahle · Delivery all over Lebanon"
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "text",
+      "id": "primary_label",
+      "label": "Main button label",
+      "default": "Shop now"
+    },
+    {
+      "type": "url",
+      "id": "primary_link",
+      "label": "Main button link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Second button label",
+      "default": "Custom orders"
+    },
+    {
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Second button link"
+    },
+    {
+      "type": "header",
+      "content": "Images (left, centre, right)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Left image"
+    },
+    {
+      "type": "text",
+      "id": "alt_1",
+      "label": "Left image description (for accessibility)"
+    },
+    {
+      "type": "url",
+      "id": "link_1",
+      "label": "Left image link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Centre image (largest)"
+    },
+    {
+      "type": "text",
+      "id": "alt_2",
+      "label": "Centre image description"
+    },
+    {
+      "type": "url",
+      "id": "link_2",
+      "label": "Centre image link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Right image"
+    },
+    {
+      "type": "text",
+      "id": "alt_3",
+      "label": "Right image description"
+    },
+    {
+      "type": "url",
+      "id": "link_3",
+      "label": "Right image link"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "variant",
+      "label": "Size",
+      "default": "standard",
+      "options": [
+        {
+          "value": "standard",
+          "label": "Standard"
+        },
+        {
+          "value": "compact",
+          "label": "Compact"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "mobile_layout",
+      "label": "Mobile layout",
+      "default": "scroll",
       "info": "Fan keeps the overlapping look; Swipe shows large images you can slide through; Stacked shows one large image with two below.",
-      "options": [ { "value": "fan", "label": "Fan (same as desktop)" }, { "value": "scroll", "label": "Swipe carousel" }, { "value": "stack", "label": "Stacked" } ] },
-    { "type": "select", "id": "animation", "label": "Animation", "default": "subtle", "options": [
-      { "value": "none", "label": "None" }, { "value": "subtle", "label": "Subtle fade and fan-out" } ] },
-    { "type": "header", "content": "Style" },
-    { "type": "font_picker", "id": "heading_font", "label": "Title font (serif recommended)", "default": "playfair_display_n4" },
-    { "type": "color", "id": "background", "label": "Background", "default": "#FFFFFF" },
-    { "type": "color", "id": "text_color", "label": "Text", "default": "#1A1714" },
-    { "type": "color", "id": "muted_color", "label": "Description text", "default": "#6B6156" },
-    { "type": "color", "id": "highlight_color", "label": "Highlighted words", "default": "#B8965A" }
+      "options": [
+        {
+          "value": "fan",
+          "label": "Fan (same as desktop)"
+        },
+        {
+          "value": "scroll",
+          "label": "Swipe carousel"
+        },
+        {
+          "value": "stack",
+          "label": "Stacked"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "animation",
+      "label": "Animation",
+      "default": "subtle",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "subtle",
+          "label": "Subtle fade and fan-out"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font",
+      "label": "Title font (serif recommended)",
+      "default": "playfair_display_n4"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#1A1714"
+    },
+    {
+      "type": "color",
+      "id": "muted_color",
+      "label": "Description text",
+      "default": "#6B6156"
+    },
+    {
+      "type": "color",
+      "id": "highlight_color",
+      "label": "Highlighted words",
+      "default": "#B8965A"
+    },
+    {
+      "type": "header",
+      "content": "Star background"
+    },
+    {
+      "type": "checkbox",
+      "id": "stars_enabled",
+      "label": "Show moving star background",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "stars_color",
+      "label": "Star colour",
+      "default": "#1A1714"
+    },
+    {
+      "type": "range",
+      "id": "stars_count",
+      "label": "Number of stars",
+      "min": 40,
+      "max": 400,
+      "step": 20,
+      "default": 180,
+      "info": "Automatically reduced on phones."
+    },
+    {
+      "type": "checkbox",
+      "id": "stars_connect",
+      "label": "Connect nearby stars with fine lines",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "stars_connect_distance",
+      "label": "Line distance",
+      "min": 60,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "stars_speed",
+      "label": "Drift speed",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "default": 10,
+      "info": "10 is normal, 0 is still."
+    }
   ],
-  "presets": [{ "name": "Mallo: hero image fan" }]
+  "presets": [
+    {
+      "name": "Mallo: hero image fan"
+    }
+  ]
 }
 {% endschema %}
