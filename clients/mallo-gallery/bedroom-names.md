@@ -18,4 +18,10 @@ Metropolis Iron Bed · Rustica Steel Frame · Cobalt Grid Bed · Foundry Industr
 Monarch Velvet Bed · Eclipse Grand Bed · Sovereign Tufted Bed · Opulent Crown Bed · Stellar High-Back Bed · Regal Arch Bed · Prelude Design Bed · Mirage Panel Bed · Elysian Luxe Bed · Vesper Contour Bed
 
 ## Used
-(none yet)
+| Name | Product ID | Photos |
+|---|---|---|
+| Cushion Edge Bed | 8495436398677 | cushion-edge-1 (channel headboard + padded base, light grey) |
+| Serene Bouclé Bed | 8495436464213 | serene-boucle-1 (bubble bouclé channels) |
+| Orion Floating Bed | 8495436496981 | orion-floating-1 (white gloss floating platform) |
+| Crestwood Modern Bed | 8495436529749 | crestwood-modern-1 (two-tone wood panels, LED) |
+| Hush Cloud Bed | 8495436562517 | hush-cloud-1 (charcoal padded) |
