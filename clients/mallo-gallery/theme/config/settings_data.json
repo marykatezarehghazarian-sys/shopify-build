@@ -109,7 +109,7 @@
       "color1": "#5E5449",
       "color2": "#E6DFD3"
     },
-    "stars_enabled": true,
+    "stars_enabled": false,
     "stars_density": 160,
     "stars_shooting": true,
     "whatsapp_enabled": true,

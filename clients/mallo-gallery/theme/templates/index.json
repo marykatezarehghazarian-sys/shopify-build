@@ -454,7 +454,8 @@
         "link_2": "shopify://collections/living-room-sofas",
         "image_3": "shopify://shop_images/mallo-hero-right.jpg",
         "alt_3": "Nightstand and octagon upholstered headboard",
-        "link_3": "shopify://products/monarch-velvet-bed"
+        "link_3": "shopify://products/monarch-velvet-bed",
+        "stars_enabled": false
       }
     }
   },
