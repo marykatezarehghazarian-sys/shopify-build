@@ -1,0 +1,132 @@
+{%- comment -%}
+  Mallo Gallery: cinematic lifestyle video band.
+  Autoplays muted, loops, plays inline on phones; pauses off-screen; sound toggle; text overlay.
+  Respects reduced motion (shows the first frame with a play button instead of autoplaying).
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign sid = section.id | prepend: 'mv-'
+-%}
+<section id="{{ sid }}" class="mv" style="padding-block: {{ s.padding }}px;">
+  <div class="mv__wrap">
+    <div class="mv__frame mv__frame--{{ s.ratio }}">
+      {%- if s.video != blank -%}
+        {{ s.video | video_tag:
+          autoplay: false,
+          loop: true,
+          muted: true,
+          controls: false,
+          playsinline: true,
+          preload: 'metadata',
+          image_size: '1600x',
+          class: 'mv__video',
+          aria-label: s.video.alt
+        }}
+      {%- else -%}
+        <div class="mv__placeholder">{{ 'lifestyle-2' | placeholder_svg_tag: 'mv__placeholder-svg' }}</div>
+      {%- endif -%}
+      <div class="mv__shade" aria-hidden="true"></div>
+      <div class="mv__content">
+        {%- if s.eyebrow != blank %}<p class="mv__eyebrow">{{ s.eyebrow | escape }}</p>{% endif -%}
+        {%- if s.heading != blank %}<h2 class="mv__heading">{{ s.heading | escape }}</h2>{% endif -%}
+        {%- if s.text != blank %}<p class="mv__text">{{ s.text | escape }}</p>{% endif -%}
+        {%- if s.button_label != blank -%}
+          <a class="mv__btn" href="{{ s.button_link | default: routes.all_products_collection_url }}">{{ s.button_label | escape }}</a>
+        {%- endif -%}
+      </div>
+      {%- if s.video != blank -%}
+        <button type="button" class="mv__sound" aria-pressed="false" aria-label="Turn sound on">
+          <svg class="mv__icon-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5zM16 9l5 6M21 9l-5 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg class="mv__icon-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5zM15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button type="button" class="mv__play" aria-label="Play video" hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+        </button>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+<style>
+  #{{ sid }} .mv__wrap { max-width: 1400px; margin-inline: auto; padding-inline: max(20px, 4vw); box-sizing: border-box; }
+  #{{ sid }} .mv__frame { position: relative; overflow: hidden; border-radius: {{ s.radius }}px; background: #1A1714; box-shadow: 0 24px 60px rgb(26 23 20 / .18); }
+  #{{ sid }} .mv__frame--wide { aspect-ratio: 16 / 9; }
+  #{{ sid }} .mv__frame--cinema { aspect-ratio: 21 / 9; }
+  #{{ sid }} .mv__frame--tall { aspect-ratio: 4 / 3; }
+  @media (max-width: 749px) {
+    #{{ sid }} .mv__wrap { padding-inline: 16px; }
+    #{{ sid }} .mv__frame { aspect-ratio: 4 / 5; border-radius: {{ s.radius | at_most: 14 }}px; }
+  }
+  #{{ sid }} .mv__video, #{{ sid }} .mv__frame img, #{{ sid }} .mv__placeholder { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  #{{ sid }} .mv__placeholder-svg { width: 100%; height: 100%; fill: rgb(255 255 255 / .2); }
+  #{{ sid }} .mv__shade { position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(to top, rgb(26 23 20 / {{ s.overlay | divided_by: 100.0 }}) 0%, rgb(26 23 20 / {{ s.overlay | divided_by: 250.0 }}) 40%, transparent 70%); }
+  #{{ sid }} .mv__content { position: absolute; left: 0; right: 0; bottom: 0; padding: clamp(24px, 5vw, 64px); color: #FFF; max-width: 620px; }
+  #{{ sid }} .mv__eyebrow { margin: 0 0 10px; font-size: .75rem; letter-spacing: .16em; text-transform: uppercase; opacity: .85; }
+  #{{ sid }} .mv__heading { margin: 0 0 12px; color: #FFF; font-size: clamp(1.6rem, 3.6vw, 2.8rem); line-height: 1.1; font-weight: 400; letter-spacing: -0.01em; text-wrap: balance; }
+  #{{ sid }} .mv__text { margin: 0 0 22px; opacity: .88; line-height: 1.6; max-width: 34rem; text-wrap: pretty; }
+  #{{ sid }} .mv__btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 24px; border-radius: 6px; background: #FFF; color: #1A1714; font-weight: 500; font-size: .9rem; text-decoration: none; transition: opacity .2s; }
+  #{{ sid }} .mv__btn:hover { opacity: .9; }
+  #{{ sid }} .mv__sound, #{{ sid }} .mv__play { position: absolute; display: grid; place-items: center; border: 1px solid rgb(255 255 255 / .35); background: rgb(26 23 20 / .35); color: #FFF; border-radius: 50%; cursor: pointer; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); transition: background .2s; }
+  #{{ sid }} .mv__sound { right: 18px; top: 18px; width: 42px; height: 42px; }
+  #{{ sid }} .mv__sound:hover, #{{ sid }} .mv__play:hover { background: rgb(26 23 20 / .55); }
+  #{{ sid }} .mv__sound svg { width: 20px; height: 20px; }
+  #{{ sid }} .mv__sound .mv__icon-on { display: none; }
+  #{{ sid }} .mv__sound[aria-pressed="true"] .mv__icon-on { display: block; }
+  #{{ sid }} .mv__sound[aria-pressed="true"] .mv__icon-off { display: none; }
+  #{{ sid }} .mv__play { left: 50%; top: 50%; transform: translate(-50%, -50%); width: 72px; height: 72px; }
+  #{{ sid }} .mv__play[hidden] { display: none; }
+  #{{ sid }} .mv__play svg { width: 28px; height: 28px; margin-left: 4px; }
+</style>
+
+<script>
+  (() => {
+    const root = document.getElementById('{{ sid }}');
+    const video = root && root.querySelector('video');
+    if (!video) return;
+    video.muted = true;
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+    const sound = root.querySelector('.mv__sound');
+    const play = root.querySelector('.mv__play');
+    const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let userPaused = false;
+
+    const tryPlay = () => video.play().catch(() => { play.hidden = false; });
+    play.addEventListener('click', () => { userPaused = false; play.hidden = true; tryPlay(); });
+    sound.addEventListener('click', () => {
+      video.muted = !video.muted;
+      sound.setAttribute('aria-pressed', String(!video.muted));
+      sound.setAttribute('aria-label', video.muted ? 'Turn sound on' : 'Turn sound off');
+      if (video.paused) { play.hidden = true; tryPlay(); }
+    });
+
+    if (still) { play.hidden = false; return; }
+    // Only play while on screen (saves data and battery on phones).
+    new IntersectionObserver((entries) => {
+      const visible = entries.some((e) => e.isIntersecting);
+      if (visible && !userPaused) tryPlay(); else if (!visible) video.pause();
+    }, { threshold: 0.25 }).observe(video);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Mallo: video",
+  "class": "section-mallo-video",
+  "settings": [
+    { "type": "video", "id": "video", "label": "Video", "info": "Plays muted on loop. Visitors can turn the sound on." },
+    { "type": "text", "id": "eyebrow", "label": "Small label", "default": "Made to be lived in" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Comfort you can see, craft you can feel" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Soft bouclé, solid wood and warm textures, designed and made in our own factory in Lebanon." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Explore the collection" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "select", "id": "ratio", "label": "Shape on desktop", "default": "wide", "info": "Phones always use a taller 4:5 crop.", "options": [
+      { "value": "wide", "label": "Wide (16:9)" }, { "value": "cinema", "label": "Cinematic (21:9)" }, { "value": "tall", "label": "Classic (4:3)" } ] },
+    { "type": "range", "id": "overlay", "label": "Text shading", "min": 0, "max": 80, "step": 5, "unit": "%", "default": 55 },
+    { "type": "range", "id": "radius", "label": "Corner rounding", "min": 0, "max": 32, "step": 2, "unit": "px", "default": 18 },
+    { "type": "range", "id": "padding", "label": "Vertical spacing", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 48 }
+  ],
+  "presets": [{ "name": "Mallo: video" }]
+}
+{% endschema %}

@@ -458,6 +458,13 @@
         "stars_enabled": false,
         "gradient_enabled": false
       }
+    },
+    "mallo_video": {
+      "type": "mallo-video",
+      "settings": {
+        "video": "shopify://files/videos/mallo-lifestyle-film.mp4",
+        "button_link": "shopify://collections/all"
+      }
     }
   },
   "order": [
@@ -465,6 +472,7 @@
     "mallo_logo_hero",
     "mallo_rooms",
     "mallo_trust",
+    "mallo_video",
     "product_list_fa6P9H",
     "mallo_custom",
     "mallo_showroom",
