@@ -1,0 +1,9 @@
+{%- comment -%} Mallo Gallery: hide quick-add / cart buttons and style the "Upon Request" price when prices are on request. {%- endcomment -%}
+{%- if settings.price_on_request -%}
+  <style>
+    .price--on-request { font-style: italic; letter-spacing: .02em; opacity: .85; }
+    quick-add-component, .quick-add, .quick-add__button, [data-quick-add], .product-card .add-to-cart-button,
+    .shopify-payment-button, .accelerated-checkout-block,
+    sticky-add-to-cart, .sticky-add-to-cart, .sticky-add-to-cart__bar { display: none !important; }
+  </style>
+{%- endif -%}

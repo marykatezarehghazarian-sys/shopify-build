@@ -2216,5 +2216,41 @@
         "info": "Lower this if photos look too warm."
       }
     ]
+  },
+  {
+    "name": "Price on request",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "price_on_request",
+        "label": "Hide prices and show \"Upon Request\"",
+        "default": true,
+        "info": "Replaces every price with the label below and swaps Add to cart / Buy now for a WhatsApp button."
+      },
+      {
+        "type": "text",
+        "id": "price_on_request_label",
+        "label": "Price label",
+        "default": "Upon Request"
+      },
+      {
+        "type": "text",
+        "id": "price_on_request_button",
+        "label": "Product page button",
+        "default": "Ask for price on WhatsApp"
+      },
+      {
+        "type": "text",
+        "id": "price_on_request_message",
+        "label": "WhatsApp message (product name and link are added)",
+        "default": "Hello Mallo Gallery, I would like the price of"
+      },
+      {
+        "type": "text",
+        "id": "price_on_request_note",
+        "label": "Small note under the button",
+        "default": "Made to order in our factory · Delivery all over Lebanon"
+      }
+    ]
   }
 ]

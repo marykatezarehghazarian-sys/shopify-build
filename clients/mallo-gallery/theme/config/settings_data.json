@@ -118,6 +118,11 @@
     "page_gradient_strength": 100,
     "stars_density": 160,
     "stars_shooting": true,
+    "price_on_request": true,
+    "price_on_request_label": "Upon Request",
+    "price_on_request_button": "Ask for price on WhatsApp",
+    "price_on_request_message": "Hello Mallo Gallery, I would like the price of",
+    "price_on_request_note": "Made to order in our factory · Delivery all over Lebanon",
     "whatsapp_enabled": true,
     "whatsapp_number": "9613195171",
     "whatsapp_message": "Hello Mallo Gallery, I'm interested in"

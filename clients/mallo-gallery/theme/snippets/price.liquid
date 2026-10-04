@@ -9,6 +9,12 @@
 
 {% render 'price-styles' %}
 
+{%- if settings.price_on_request -%}
+  <div ref="priceContainer">
+    <span class="price price--on-request">{{ settings.price_on_request_label | default: 'Upon Request' | escape }}</span>
+  </div>
+{%- else -%}
+
 {%- liquid
   assign show_unit_price = show_unit_price | default: false
   assign show_sale_price_first = show_sale_price_first | default: false
@@ -133,4 +139,5 @@
   >
     {{- 'content.volume_pricing_available' | t -}}
   </small>
+{%- endif -%}
 {%- endif -%}

@@ -1,3 +1,29 @@
+{%- if settings.price_on_request -%}
+  {%- liquid
+    assign por_product = closest.product
+    if request.visual_preview_mode and por_product == blank
+      assign por_product = collections.all.products.first
+    endif
+    assign por_wa = settings.whatsapp_number | default: '9613195171' | remove: '+' | remove: ' ' | remove: '-'
+    assign por_msg = settings.price_on_request_message | default: 'Hello Mallo Gallery, I would like the price of'
+    assign por_msg = por_msg | append: ': ' | append: por_product.title | append: ' - ' | append: shop.url | append: por_product.url
+  -%}
+  <div class="por-buy {{ block.id }}" {{ block.shopify_attributes }}>
+    <a class="por-buy__btn" href="https://wa.me/{{ por_wa }}?text={{ por_msg | url_encode }}" target="_blank" rel="noopener">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16.04 3C9.4 3 4 8.36 4 14.97c0 2.11.56 4.17 1.62 5.99L4 29l8.24-1.6a12.1 12.1 0 0 0 3.8.61C22.68 28.01 28 22.65 28 16.04 28 9.43 22.68 3 16.04 3Zm0 22.8c-1.2 0-2.38-.2-3.5-.6l-.25-.09-4.9.95.98-4.77-.16-.26a9.73 9.73 0 0 1-1.5-5.07c0-5.4 4.4-9.78 9.83-9.78 5.42 0 9.6 4.38 9.6 9.86 0 5.47-4.44 9.76-10.1 9.76Zm5.4-7.3c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.14.3-.35.44-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.6-.92-2.2-.24-.57-.48-.5-.67-.5h-.57c-.2 0-.52.08-.79.37-.27.3-1.03 1-1.03 2.45s1.06 2.84 1.2 3.04c.15.2 2.08 3.17 5.04 4.45.7.3 1.25.48 1.68.62.7.22 1.35.19 1.85.12.57-.09 1.75-.72 2-1.4.24-.7.24-1.28.17-1.4-.07-.13-.27-.2-.57-.35Z"/></svg>
+      <span>{{ settings.price_on_request_button | default: 'Ask for price on WhatsApp' | escape }}</span>
+    </a>
+    <p class="por-buy__note">{{ settings.price_on_request_note | escape }}</p>
+  </div>
+  <style>
+    .por-buy { display: flex; flex-direction: column; gap: 10px; width: 100%; }
+    .por-buy__btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%; min-height: 52px; padding: 0 24px; border-radius: 8px; background: #25D366; color: #FFF; font-weight: 600; text-decoration: none; transition: opacity .2s, transform .15s; }
+    .por-buy__btn:hover { opacity: .92; transform: translateY(-1px); }
+    .por-buy__btn svg { width: 22px; height: 22px; flex: none; }
+    .por-buy__note { margin: 0; font-size: .85rem; opacity: .7; text-align: center; }
+    .por-buy__note:empty { display: none; }
+  </style>
+{%- else -%}
 
 {% render 'theme-drawer-styles' %}
 {% liquid
@@ -385,6 +411,7 @@
 {% endif %}
 
 {% render 'buy-buttons-styles' %}
+{%- endif -%}
 
 {% schema %}
 {
