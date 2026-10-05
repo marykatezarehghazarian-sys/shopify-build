@@ -37,3 +37,4 @@ Monarch Velvet Bed · Eclipse Grand Bed · Sovereign Tufted Bed · Opulent Crown
 
 PDF (Bedroom_Design_References.pdf, photos in photos/bedroom/pdf, #n = img-(n+1)-(n-1)):
 added #1,#3 to Cushion Edge; #7,#8,#10 to Serene Bouclé. Skipped duplicates: #2(=#1), #9(=#7), #15/#21 (=Hush Cloud photo), #17 (=Orion), #18 (=Crestwood), #24 (=Cushion Edge photo).
+| Velour Haven Bed | 8500129464405 | velour-haven-15/16/17/18 (bubble base + quilted headboard; cream, grey, brown) · master-bedroom · DRAFT |
