@@ -1,0 +1,70 @@
+{%- comment -%} Mallo Gallery: split hero. Tall image on one side, headline + buttons on the other. Image first on phones. {%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign sid = section.id | prepend: 'mih-'
+-%}
+<section id="{{ sid }}" class="mih{% if s.image_left %} mih--image-left{% endif %}">
+  <div class="mih__inner">
+    <div class="mih__media">
+      {%- if s.image != blank -%}
+        {{ s.image | image_url: width: 1400 | image_tag: widths: '500,750,1000,1400', sizes: '(min-width: 990px) 45vw, 100vw', loading: 'eager', fetchpriority: 'high', class: 'mih__img', alt: s.image.alt }}
+      {%- else -%}
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'mih__img mih__placeholder' }}
+      {%- endif -%}
+    </div>
+    <div class="mih__content">
+      {%- if s.eyebrow != blank %}<p class="mih__eyebrow">{{ s.eyebrow | escape }}</p>{% endif -%}
+      <h1 class="mih__heading">
+        {{- s.heading | escape -}}
+        {%- if s.heading_highlight != blank %} <span class="mih__highlight">{{ s.heading_highlight | escape }}</span>{% endif -%}
+      </h1>
+      {%- if s.text != blank %}<p class="mih__text">{{ s.text | escape }}</p>{% endif -%}
+      <div class="mih__buttons">
+        {%- if s.button_label != blank %}<a class="mih__btn mih__btn--primary" href="{{ s.button_link | default: routes.all_products_collection_url }}">{{ s.button_label | escape }}</a>{% endif -%}
+        {%- if s.button2_label != blank %}<a class="mih__btn mih__btn--outline" href="{{ s.button2_link | default: '#' }}">{{ s.button2_label | escape }}</a>{% endif -%}
+      </div>
+      {%- if s.note != blank %}<p class="mih__note">{{ s.note | escape }}</p>{% endif -%}
+    </div>
+  </div>
+</section>
+<style>
+  #{{ sid }} .mih__inner { max-width: 1400px; margin: 0 auto; padding: 32px max(20px, 4vw) 48px; display: grid; gap: 28px; align-items: center; }
+  @media (min-width: 990px) {
+    #{{ sid }} .mih__inner { grid-template-columns: 1.05fr 0.95fr; gap: 72px; padding-block: 48px 64px; }
+    #{{ sid }}:not(.mih--image-left) .mih__media { order: 2; }
+  }
+  #{{ sid }} .mih__media { border-radius: 18px; overflow: hidden; box-shadow: 0 24px 60px rgb(26 23 20 / .16); aspect-ratio: 2 / 3; max-height: 82vh; justify-self: center; width: 100%; }
+  @media (max-width: 989px) { #{{ sid }} .mih__media { aspect-ratio: 4 / 5; max-height: none; } }
+  #{{ sid }} .mih__img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block; }
+  #{{ sid }} .mih__placeholder { fill: rgb(0 0 0 / .15); background: #EFE9DF; }
+  #{{ sid }} .mih__eyebrow { margin: 0 0 14px; font-size: .78rem; letter-spacing: .18em; text-transform: uppercase; color: #8A7456; }
+  #{{ sid }} .mih__heading { margin: 0 0 18px; font-size: clamp(2rem, 4.6vw, 3.6rem); line-height: 1.06; font-weight: 400; letter-spacing: -0.02em; text-wrap: balance; }
+  #{{ sid }} .mih__highlight { color: #B8965A; }
+  #{{ sid }} .mih__text { margin: 0 0 28px; max-width: 34rem; font-size: 1.05rem; line-height: 1.65; opacity: .78; text-wrap: pretty; }
+  #{{ sid }} .mih__buttons { display: flex; flex-wrap: wrap; gap: 12px; }
+  #{{ sid }} .mih__btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 26px; border-radius: 6px; font-weight: 500; text-decoration: none; transition: opacity .2s; }
+  #{{ sid }} .mih__btn--primary { background: #1A1714; color: #FFF; }
+  #{{ sid }} .mih__btn--outline { border: 1px solid rgb(26 23 20 / .3); color: #1A1714; }
+  #{{ sid }} .mih__btn:hover { opacity: .88; }
+  #{{ sid }} .mih__note { margin: 18px 0 0; font-size: .82rem; opacity: .6; }
+  @media (max-width: 749px) { #{{ sid }} .mih__btn { flex: 1 1 auto; } }
+</style>
+{% schema %}
+{
+  "name": "Mallo: image hero",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image (tall images work best)" },
+    { "type": "checkbox", "id": "image_left", "label": "Image on the left (desktop)", "default": false },
+    { "type": "text", "id": "eyebrow", "label": "Small label", "default": "From sketch to reality" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "We design it." },
+    { "type": "text", "id": "heading_highlight", "label": "Heading, highlighted words", "default": "We build it." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "From the first sketch to the final cushion, our designers plan your space and our own factory in Lebanon makes every piece. Furniture, wall panels and complete interiors, delivered all over Lebanon." },
+    { "type": "text", "id": "button_label", "label": "Main button", "default": "Shop the collection" },
+    { "type": "url", "id": "button_link", "label": "Main button link" },
+    { "type": "text", "id": "button2_label", "label": "Second button", "default": "Start your project" },
+    { "type": "url", "id": "button2_link", "label": "Second button link" },
+    { "type": "text", "id": "note", "label": "Small note", "default": "Showroom in Zahle · Delivery all over Lebanon" }
+  ],
+  "presets": [{ "name": "Mallo: image hero" }]
+}
+{% endschema %}

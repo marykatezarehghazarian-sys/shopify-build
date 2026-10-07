@@ -466,15 +466,24 @@
         "button_link": "shopify://collections/all",
         "padding": 24
       }
+    },
+    "mallo_image_hero": {
+      "type": "mallo-image-hero",
+      "settings": {
+        "image": "shopify://shop_images/mallo-hero-sketch.jpg",
+        "button_link": "shopify://collections/all",
+        "button2_link": "shopify://pages/custom-orders"
+      }
     }
   },
   "order": [
-    "mallo_video",
+    "mallo_image_hero",
     "mallo_logo_hero",
     "mallo_rooms",
     "mallo_trust",
     "mallo_hero_fan",
     "product_list_fa6P9H",
+    "mallo_video",
     "mallo_custom",
     "mallo_showroom",
     "mallo_story",
