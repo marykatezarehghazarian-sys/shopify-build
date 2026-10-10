@@ -1,6 +1,8 @@
 {%- comment -%}
   Mallo Gallery: cinematic lifestyle video band.
-  Autoplays muted, loops, plays inline on phones; pauses off-screen; sound toggle; text overlay.
+  Plays when scrolled into view, loops, plays inline on phones; pauses off-screen; sound toggle; text overlay.
+  With "sound_on_view", it tries to start with sound. Browsers only allow that after the visitor has tapped,
+  clicked or typed on the page, so otherwise it plays muted with a "Tap for sound" pill.
   Respects reduced motion (shows the first frame with a play button instead of autoplaying).
 {%- endcomment -%}
 {%- liquid
@@ -36,6 +38,7 @@
       </div>
       {%- if s.video != blank -%}
         <button type="button" class="mv__sound" aria-pressed="false" aria-label="Turn sound on">
+          <span class="mv__hint" hidden>Tap for sound</span>
           <svg class="mv__icon-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5zM16 9l5 6M21 9l-5 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <svg class="mv__icon-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5zM15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
@@ -71,6 +74,9 @@
   #{{ sid }} .mv__sound { right: 18px; top: 18px; width: 42px; height: 42px; }
   #{{ sid }} .mv__sound:hover, #{{ sid }} .mv__play:hover { background: rgb(26 23 20 / .55); }
   #{{ sid }} .mv__sound svg { width: 20px; height: 20px; }
+  #{{ sid }} .mv__sound:has(.mv__hint:not([hidden])) { width: auto; border-radius: 999px; padding: 0 16px 0 12px; grid-auto-flow: column; gap: 8px; }
+  #{{ sid }} .mv__hint { order: 2; font-size: .8rem; letter-spacing: .04em; white-space: nowrap; }
+  #{{ sid }} .mv__hint[hidden] { display: none; }
   #{{ sid }} .mv__sound .mv__icon-on { display: none; }
   #{{ sid }} .mv__sound[aria-pressed="true"] .mv__icon-on { display: block; }
   #{{ sid }} .mv__sound[aria-pressed="true"] .mv__icon-off { display: none; }
@@ -88,25 +94,70 @@
     video.setAttribute('muted', '');
     video.setAttribute('playsinline', '');
     const sound = root.querySelector('.mv__sound');
+    const hint = root.querySelector('.mv__hint');
     const play = root.querySelector('.mv__play');
     const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const wantSound = {{ section.settings.sound_on_view | json }};
     let userPaused = false;
+    let userMuted = false; // the visitor switched the sound off themselves
+    let visible = false;
+    let fade = 0;
 
-    const tryPlay = () => video.play().catch(() => { play.hidden = false; });
-    play.addEventListener('click', () => { userPaused = false; play.hidden = true; tryPlay(); });
+    const setMuted = (m) => {
+      video.muted = m;
+      sound.setAttribute('aria-pressed', String(!m));
+      sound.setAttribute('aria-label', m ? 'Turn sound on' : 'Turn sound off');
+      hint.hidden = !m || !wantSound || userMuted;
+    };
+    // Gentle volume fade-in (ignored on iPhone, where volume is fixed).
+    const fadeIn = () => {
+      cancelAnimationFrame(fade);
+      const t0 = performance.now();
+      video.volume = 0;
+      const step = (now) => { const k = Math.min(1, (now - t0) / 1200); video.volume = k; if (k < 1) fade = requestAnimationFrame(step); };
+      fade = requestAnimationFrame(step);
+    };
+    // AbortError just means we paused (scrolled away) before playback began; not a failure.
+    const failed = (e) => { if (e && e.name !== 'AbortError' && visible) play.hidden = false; };
+    const playMuted = () => { setMuted(true); return video.play().catch(failed); };
+    // Try with sound first; if the browser blocks it, fall back to muted playback.
+    const start = () => {
+      if (!wantSound || userMuted) return playMuted();
+      setMuted(false);
+      fadeIn();
+      return video.play().catch((e) => { if (e && e.name === 'AbortError') return; if (visible) playMuted(); else setMuted(true); });
+    };
+
+    play.addEventListener('click', () => { userPaused = false; play.hidden = true; start(); });
     sound.addEventListener('click', () => {
-      video.muted = !video.muted;
-      sound.setAttribute('aria-pressed', String(!video.muted));
-      sound.setAttribute('aria-label', video.muted ? 'Turn sound on' : 'Turn sound off');
-      if (video.paused) { play.hidden = true; tryPlay(); }
+      const turnOn = video.muted;
+      userMuted = !turnOn;
+      setMuted(!turnOn);
+      if (turnOn) fadeIn();
+      if (video.paused) { play.hidden = true; video.play().catch(failed); }
     });
 
+    // The first tap/click/key anywhere on the page unlocks sound, so the video can start with sound
+    // when it scrolls into view. If it is already on screen, turn the sound on straight away.
+    if (wantSound) {
+      const unlock = (e) => {
+        ['pointerdown', 'touchend', 'keydown'].forEach((t) => document.removeEventListener(t, unlock, true));
+        if (userMuted || (e && sound.contains(e.target))) return;
+        if (visible && !userPaused) { start(); return; }
+        // iPhone: prime this video with sound inside the gesture, then pause until it is on screen.
+        const wasPaused = video.paused;
+        video.muted = false;
+        video.play().then(() => { if (wasPaused && !visible) video.pause(); video.muted = true; }).catch(() => { video.muted = true; });
+      };
+      ['pointerdown', 'touchend', 'keydown'].forEach((t) => document.addEventListener(t, unlock, { capture: true, passive: true }));
+    }
+
     if (still) { play.hidden = false; return; }
-    // Only play while on screen (saves data and battery on phones).
+    // Only play while on screen (saves data and battery on phones, and stops the music when scrolled away).
     new IntersectionObserver((entries) => {
-      const visible = entries.some((e) => e.isIntersecting);
-      if (visible && !userPaused) tryPlay(); else if (!visible) video.pause();
-    }, { threshold: 0.25 }).observe(video);
+      visible = entries.some((e) => e.isIntersecting);
+      if (visible && !userPaused) start(); else if (!visible) video.pause();
+    }, { threshold: 0.4 }).observe(video);
   })();
 </script>
 
@@ -115,7 +166,8 @@
   "name": "Mallo: video",
   "class": "section-mallo-video",
   "settings": [
-    { "type": "video", "id": "video", "label": "Video", "info": "Plays muted on loop. Visitors can turn the sound on." },
+    { "type": "video", "id": "video", "label": "Video", "info": "Plays on loop when scrolled into view." },
+    { "type": "checkbox", "id": "sound_on_view", "label": "Play sound when visible", "default": true, "info": "Browsers only allow sound after the visitor has tapped or clicked the page. Until then the video plays muted with a \"Tap for sound\" button." },
     { "type": "text", "id": "eyebrow", "label": "Small label", "default": "Made to be lived in" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Comfort you can see, craft you can feel" },
     { "type": "textarea", "id": "text", "label": "Text", "default": "Soft bouclé, solid wood and warm textures, designed and made in our own factory in Lebanon." },
