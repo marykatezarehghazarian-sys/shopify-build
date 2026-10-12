@@ -19,3 +19,18 @@ From Interior_Inspiration.pdf (photos/pdf3, #n = order.txt line n). No duplicate
 | Sannine Channel Sofa | 24,23,22 | set |
 | Olive Grove Lounge Set | 26,25,27 | set |
 | Horizon Modular Sofa | 28,29 | modular |
+
+From Living_Room_Sofa_Inspiration.pdf (photos/living-sofa, #n = order.txt line n). Checked against all existing photos (perceptual hash + visual): no duplicates with the 15 existing sofas. Within the PDF, #1/#2, #4/#5 and #7/#10 are the same sofa, so grouped. All created DRAFT 2026-10-12.
+
+| Product | Photos | Style tag | ID |
+|---|---|---|---|
+| Jounieh Lounge Sectional | 1,2 | sectional | 8522953687125 |
+| Bekaa Corner Sectional | 3 | sectional | 8522953719893 |
+| Zahle Modular Sofa | 4,5 | modular | 8522953752661 |
+| Laklouk Low Sectional | 6 | sectional | 8522953785429 |
+| Qadisha Velvet Sectional | 7,10 | sectional | 8522953818197 |
+| Anfeh Channel Sectional | 8 | sectional | 8522953850965 |
+| Tyre Block Sectional | 9 | modular | 8522953883733 |
+| Baalbek Tufted Sofa | 11 | modular | 8522953916501 |
+| Dune Pouf Modular | 12 | modular | 8522953949269 |
+| Chouf Corner Sectional | 13 | sectional | 8522953982037 |
