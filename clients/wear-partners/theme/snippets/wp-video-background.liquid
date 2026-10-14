@@ -38,14 +38,23 @@
     .shopify-section-group-footer-group :is(.section-background, .section, footer) {
       background-color: transparent !important;
     }
-    /* Header: frosted glass so the menu stays readable over the video. */
+    /* Header: fully see-through so the video runs behind the menu too. */
     #header-group .header__row,
-    #header-group .announcement-bar {
-      --header-bg-color: rgb(from var(--color-background) r g b / 0.72);
-      background-color: rgb(from var(--color-background) r g b / 0.72);
-      -webkit-backdrop-filter: blur(14px) saturate(1.1);
-      backdrop-filter: blur(14px) saturate(1.1);
+    #header-group .announcement-bar,
+    #header-group header-component,
+    #header-group .header {
+      --header-bg-color: transparent;
+      background-color: transparent !important;
+      box-shadow: none;
     }
+
+    /* Homepage banner: its image (WPPPPP.png) has the beige baked in, so swap it for a
+       transparent copy of just the "WEAR PARTNERS" lettering (assets/wp-hero-wordmark.png). */
+    .hero__media-wrapper:has(img[src*="WPPPPP"]) {
+      background: url({{ 'wp-hero-wordmark.png' | asset_url }}) center / cover no-repeat;
+    }
+    .hero__media-wrapper img[src*="WPPPPP"] { opacity: 0; }
+    .hero__media-wrapper:has(img[src*="WPPPPP"]) .overlay { display: none; }
   </style>
   <script>
     (() => {
