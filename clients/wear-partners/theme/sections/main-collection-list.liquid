@@ -3,6 +3,8 @@
 {% liquid
   assign section_collections = collections
   assign max_items = 20
+  # WearPartners: skip empty and hidden collections on the "all collections" page.
+  assign wp_hidden = section.settings.wp_hidden_handles | remove: ' ' | split: ','
 
   case section.settings.layout_type
     when 'grid'
@@ -63,13 +65,20 @@
   {% endif %}
 
   {% capture list_items %}
-    {% for collection in section_collections limit: max_items %}
+    {% assign wp_shown = 0 %}
+    {% for collection in section_collections limit: 250 %}
+      {% if collection.handle != blank %}
+        {% if section.settings.wp_hide_empty and collection.products_count == 0 %}{% continue %}{% endif %}
+        {% if wp_hidden contains collection.handle %}{% continue %}{% endif %}
+      {% endif %}
+      {% if wp_shown >= max_items %}{% break %}{% endif %}
+      {% assign wp_shown = wp_shown | plus: 1 %}
+      {% unless wp_shown == 1 %}
+        <!--@list/split-->
+      {% endunless %}
       <div class="resource-list__item">
         {% content_for 'block', type: '_collection-card', id: 'static-collection-card', closest.collection: collection %}
       </div>
-      {% unless forloop.last %}
-        <!--@list/split-->
-      {% endunless %}
     {% endfor %}
   {% endcapture %}
 
@@ -183,6 +192,19 @@
     "groups": ["header", "footer"]
   },
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "wp_hide_empty",
+      "label": "Hide collections with no products",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "wp_hidden_handles",
+      "label": "Hide these collections",
+      "info": "Collection handles, separated by commas.",
+      "default": "frontpage, all, women-1, all-women, dresses"
+    },
     {
       "type": "header",
       "content": "t:content.cards_layout"

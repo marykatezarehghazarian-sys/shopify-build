@@ -252,3 +252,42 @@ product-card product-swatches :is(ul, fieldset, .overflow-list) {
   font-weight: 400;
   color: #444;
 }
+
+/* ---------- "All collections" page: same quiet labels as the category tiles ---------- */
+main[data-template="list-collections"] h1,
+main[data-template="list-collections"] .shopify-section:first-child :is(h1, h2, .text-block p) {
+  font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+main[data-template="list-collections"] .resource-list__item {
+  background: #fff;
+}
+main[data-template="list-collections"] .resource-list__item :is(img, .collection-card__image) {
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center top;
+}
+main[data-template="list-collections"] .resource-list__item :is(h3, h4, p, .collection-card__title) {
+  text-align: center;
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 12px 8px 14px;
+  margin: 0;
+}
+main[data-template="list-collections"] .collection-card__content,
+main[data-template="list-collections"] .collection-card__content .text-block {
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  width: 100%;
+}
+main[data-template="list-collections"] .collection-card__content p { width: 100%; }
+/* Page heading ("Collections") */
+main[data-template="list-collections"] .shopify-section:first-child .text-block p,
+main[data-template="list-collections"] > .shopify-section:first-child [class*="text-block--"] > :first-child {
+  text-align: center;
+}
