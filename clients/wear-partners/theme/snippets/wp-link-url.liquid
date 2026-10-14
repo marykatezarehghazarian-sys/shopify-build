@@ -1,0 +1,20 @@
+{%- comment -%}
+  WearPartners: corrects menu links that point to the wrong place in the admin menu.
+  - "Hats" -> /collections (the all-collections page) is sent to the hats (tag "hat" on all products).
+  - "Home" -> /collections is sent to the homepage.
+  Every other link is output unchanged. Remove an entry once the menu is fixed in
+  Online Store -> Navigation.
+  Usage: href="{% render 'wp-link-url', link: link %}"
+{%- endcomment -%}
+{%- liquid
+  assign wp_t = link.title | downcase | strip
+  assign wp_u = link.url
+  if wp_u == '/collections'
+    if wp_t == 'hats' or wp_t == 'hat'
+      assign wp_u = routes.all_products_collection_url | append: '/hat'
+    elsif wp_t == 'home'
+      assign wp_u = routes.root_url
+    endif
+  endif
+  echo wp_u
+-%}

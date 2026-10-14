@@ -399,11 +399,24 @@
       "type": "wp-brand-story",
       "settings": {
         "eyebrow": "Our story",
-        "heading": "At Wear Partners, we don’t just choose clothes… we choose what’s next 🤍",
+        "heading": "At Wear Partners",
         "text": "<p>We carefully select every piece to match the latest drops, the hottest trends, and the true spirit of la mode ✨ So you can always wear what’s current, stylish, and ahead of the game.</p><p>Quality is never a compromise — every item is picked to look good, feel good, and last.</p><p>And beyond the style? Your satisfaction is everything to us. From selection to delivery, we make sure your experience is smooth, fast, and reliable.</p>",
         "signoff": "Stay trendy. Stay confident. Stay with Wear Partners 🤍",
         "cta_label": "DM us to shop ✨",
         "cta_link": "",
+        "panel_opacity": 80,
+        "padding": 24,
+        "lead": "We don’t just choose clothes… we choose what’s next 🤍"
+      }
+    },
+    "wp_policy_band": {
+      "type": "wp-policy-band",
+      "settings": {
+        "heading": "Shipping & exchanges",
+        "shipping_title": "Shipping",
+        "shipping_text": "<p><strong>Beirut:</strong> daily delivery.</p><p><strong>Outside Beirut:</strong> 2–3 working days with Aramex.</p>",
+        "exchange_title": "Exchanges",
+        "exchange_text": "<p>Items cannot be tried on before purchase.</p><p>Exchanges within <strong>2 days</strong> of delivery, for the same item in a different size.</p><p>No returns or refunds.</p>",
         "panel_opacity": 80,
         "padding": 56
       }
@@ -413,6 +426,7 @@
     "hero_jVaWmY",
     "wp_tiles",
     "product_list_qU3bEB",
+    "wp_policy_band",
     "wp_brand_story",
     "wp_editorial"
   ]

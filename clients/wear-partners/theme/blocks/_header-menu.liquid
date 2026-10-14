@@ -47,7 +47,7 @@
             {% for link in block.settings.menu.links %}
               <li>
                 <a
-                  href="{{ link.url }}"
+                  href="{% render 'wp-link-url', link: link %}"
                   id="MenuItem-{{ link.handle }}"
                   class="menu-list__item"
                   {% if link.current %}
