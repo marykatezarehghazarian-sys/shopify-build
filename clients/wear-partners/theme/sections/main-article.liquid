@@ -1,0 +1,2 @@
+<article class="section page-width"><h1>{{ article.title | escape }}</h1><p><small>{{ article.published_at | time_tag: format: 'date' }}</small></p>{{ article.content }}</article>
+{% schema %}{ "name": "Article" }{% endschema %}
