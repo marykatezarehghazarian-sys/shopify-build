@@ -394,12 +394,26 @@
         "padding": 24,
         "focus": "top"
       }
+    },
+    "wp_brand_story": {
+      "type": "wp-brand-story",
+      "settings": {
+        "eyebrow": "Our story",
+        "heading": "At Wear Partners, we don’t just choose clothes… we choose what’s next 🤍",
+        "text": "<p>We carefully select every piece to match the latest drops, the hottest trends, and the true spirit of la mode ✨ So you can always wear what’s current, stylish, and ahead of the game.</p><p>Quality is never a compromise — every item is picked to look good, feel good, and last.</p><p>And beyond the style? Your satisfaction is everything to us. From selection to delivery, we make sure your experience is smooth, fast, and reliable.</p>",
+        "signoff": "Stay trendy. Stay confident. Stay with Wear Partners 🤍",
+        "cta_label": "DM us to shop ✨",
+        "cta_link": "",
+        "panel_opacity": 80,
+        "padding": 56
+      }
     }
   },
   "order": [
     "hero_jVaWmY",
     "wp_tiles",
     "product_list_qU3bEB",
+    "wp_brand_story",
     "wp_editorial"
   ]
 }
