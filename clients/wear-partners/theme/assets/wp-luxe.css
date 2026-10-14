@@ -291,3 +291,6 @@ main[data-template="list-collections"] .shopify-section:first-child .text-block 
 main[data-template="list-collections"] > .shopify-section:first-child [class*="text-block--"] > :first-child {
   text-align: center;
 }
+
+/* wp: no menu photos. The client wants only text links in the phone menu (main page and sub-pages). */
+.menu-drawer__featured-content { display: none !important; }

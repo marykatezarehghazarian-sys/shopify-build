@@ -10,10 +10,10 @@
     {%- for block in section.blocks -%}
       {%- liquid
         assign c = block.settings.collection
-        assign img = block.settings.image | default: c.products.first.featured_image | default: c.featured_image
+        assign img = block.settings.image | default: block.settings.product.featured_image | default: c.products.first.featured_image | default: c.featured_image
         assign label = block.settings.label | default: c.title
       -%}
-      <a class="wpct__tile" href="{{ c.url | default: '#' }}" {{ block.shopify_attributes }}>
+      <a class="wpct__tile" href="{{ block.settings.link | default: c.url | default: '#' }}" {{ block.shopify_attributes }}>
         <span class="wpct__media">
           {%- if img != blank -%}
             {{ img | image_url: width: 900 | image_tag: loading: 'lazy', widths: '360, 540, 720, 900', sizes: '(min-width: 990px) 25vw, 50vw', alt: label, class: 'wpct__img' }}
@@ -76,7 +76,9 @@
     { "type": "tile", "name": "Category", "settings": [
       { "type": "collection", "id": "collection", "label": "Collection" },
       { "type": "text", "id": "label", "label": "Label", "info": "Defaults to the collection name." },
-      { "type": "image_picker", "id": "image", "label": "Image", "info": "Defaults to the first product photo in the collection." }
+      { "type": "url", "id": "link", "label": "Link", "info": "Optional. Defaults to the collection." },
+      { "type": "product", "id": "product", "label": "Show this product's photo", "info": "Optional. Otherwise the first product photo in the collection is used." },
+      { "type": "image_picker", "id": "image", "label": "Image", "info": "Optional custom image; overrides the product photo." }
     ] }
   ],
   "max_blocks": 8,

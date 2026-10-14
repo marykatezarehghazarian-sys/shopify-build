@@ -5,7 +5,7 @@
 {%- liquid
   assign s = section.settings
   assign c = s.collection
-  assign img = s.image | default: c.featured_image
+  assign img = s.image | default: s.product.featured_image | default: c.featured_image
   assign link = s.link | default: c.url
   assign title = s.title | default: c.title
 -%}
@@ -46,6 +46,7 @@
   "class": "section-wp-editorial",
   "settings": [
     { "type": "collection", "id": "collection", "label": "Collection", "info": "Used for the link, title and (if no image is chosen) the image." },
+    { "type": "product", "id": "product", "label": "Show this product's photo", "info": "Optional. Used when no image is chosen below." },
     { "type": "image_picker", "id": "image", "label": "Image" },
     { "type": "select", "id": "focus", "label": "Image focus", "default": "center", "options": [
       { "value": "top", "label": "Top" }, { "value": "center", "label": "Centre" }, { "value": "bottom", "label": "Bottom" } ] },

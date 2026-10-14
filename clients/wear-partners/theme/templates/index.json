@@ -341,11 +341,6 @@
     },
     "wp_tiles": {
       "type": "wp-category-tiles",
-      "settings": {
-        "heading": "Shop by category",
-        "padding_top": 56,
-        "padding_bottom": 24
-      },
       "blocks": {
         "t1": {
           "type": "tile",
@@ -358,21 +353,26 @@
           "type": "tile",
           "settings": {
             "collection": "mens-t-shirts",
-            "label": "Tops"
+            "label": "Tops",
+            "product": "cd-beige-crop-polo",
+            "link": "/collections/all/tops"
           }
         },
         "t3": {
           "type": "tile",
           "settings": {
             "collection": "women-jeans",
-            "label": "Jeans"
+            "label": "Jeans",
+            "link": "/collections/all/jeans"
           }
         },
         "t4": {
           "type": "tile",
           "settings": {
             "collection": "women-jackets",
-            "label": "Jackets"
+            "label": "Jackets",
+            "product": "ysl-mastic-jacket",
+            "link": "/search?type=product&q=title%3Ajacket"
           }
         }
       },
@@ -381,18 +381,24 @@
         "t2",
         "t3",
         "t4"
-      ]
+      ],
+      "settings": {
+        "heading": "Shop by category",
+        "padding_top": 56,
+        "padding_bottom": 24
+      }
     },
     "wp_editorial": {
       "type": "wp-editorial",
       "settings": {
         "collection": "dress",
+        "focus": "top",
         "eyebrow": "The edit",
         "title": "Dresses",
         "link_label": "Discover",
         "height": 85,
         "padding": 24,
-        "focus": "top"
+        "product": "d-g-brown-dress"
       }
     },
     "wp_brand_story": {
@@ -400,13 +406,13 @@
       "settings": {
         "eyebrow": "Our story",
         "heading": "At Wear Partners",
+        "lead": "We don’t just choose clothes… we choose what’s next 🤍",
         "text": "<p>We carefully select every piece to match the latest drops, the hottest trends, and the true spirit of la mode ✨ So you can always wear what’s current, stylish, and ahead of the game.</p><p>Quality is never a compromise — every item is picked to look good, feel good, and last.</p><p>And beyond the style? Your satisfaction is everything to us. From selection to delivery, we make sure your experience is smooth, fast, and reliable.</p>",
         "signoff": "Stay trendy. Stay confident. Stay with Wear Partners 🤍",
         "cta_label": "",
         "cta_link": "",
         "panel_opacity": 80,
-        "padding": 24,
-        "lead": "We don’t just choose clothes… we choose what’s next 🤍"
+        "padding": 24
       }
     },
     "wp_policy_band": {
@@ -427,9 +433,7 @@
         "eyebrow": "Reviews",
         "heading": "What our customers say",
         "padding": 48
-      },
-      "blocks": {},
-      "block_order": []
+      }
     }
   },
   "order": [
