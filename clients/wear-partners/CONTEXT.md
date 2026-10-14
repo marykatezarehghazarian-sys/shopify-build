@@ -37,3 +37,4 @@ Store: wearpartners-1574.myshopify.com
   - Collection page: title was hard-coded "Women Jeans" on every collection; now {{ closest.collection.title }}, centred spaced capitals; description centred.
   - Product cards (collection, homepage, search): no gap between photo and white name plate, centred text and colour dots.
   - Store data: Belts and Hats (handle all-men) collections in the main menu have 0 products; several collections empty (Bags, Accessories, Men, Shoes…).
+- 2026-10-14: User published "WearPartners - Neat Categories" (167584137448), now live. Phone menu drawer tidied on new copy "WearPartners - Neat Menu" 167584497896 (wp-luxe.css only): main links 0.82rem spaced capitals with hairline dividers, sub-links 0.74rem grey and indented, featured products as an even 2-up grid (3:4, centred names and prices, max 2) instead of a row cut off at the edge.
