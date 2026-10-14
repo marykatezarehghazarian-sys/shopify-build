@@ -2261,5 +2261,39 @@
         "default": "equal-width-buttons"
       }
     ]
+  },
+  {
+    "name": "Video background",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "wp_vbg_enabled",
+        "label": "Show video behind the whole page",
+        "default": true
+      },
+      {
+        "type": "video",
+        "id": "wp_vbg_video",
+        "label": "Video",
+        "info": "Optional. Leave empty to use the built-in black and white background video. Any video chosen here is shown in black and white."
+      },
+      {
+        "type": "color",
+        "id": "wp_vbg_veil_color",
+        "label": "Veil colour",
+        "default": "#FFFFFF",
+        "info": "A soft layer over the video so text stays readable."
+      },
+      {
+        "type": "range",
+        "id": "wp_vbg_veil",
+        "label": "Veil strength",
+        "min": 0,
+        "max": 90,
+        "step": 5,
+        "unit": "%",
+        "default": 35
+      }
+    ]
   }
 ]
