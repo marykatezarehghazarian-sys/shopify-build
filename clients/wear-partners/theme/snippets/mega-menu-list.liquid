@@ -114,7 +114,7 @@
               {% endif %}
             >
               <a
-                href="{{ childLink.url }}"
+                href="{% render 'wp-link-url', link: childLink %}"
                 class="mega-menu__link"
               >
                 <span class="mega-menu__link-title">{{- childLink.title -}}</span>
@@ -124,6 +124,7 @@
         </ul>
       {% endif %}
     </div>
+    {% if forloop.last %}{% render 'wp-extra-links', parent: parent_link, style: 'mega' %}{% endif %}
 
     {% liquid
       # Check conditions for closing the span at the end of each iteration, then close the span if needed

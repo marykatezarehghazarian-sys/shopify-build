@@ -16,8 +16,15 @@
   <div
     class="collection-wrapper grid gap-style"
   >
+    {% # WearPartners: menu category pages use "title:<keyword>" searches; never fall back to all products for them. %}
+    {% assign wp_terms = search.terms | downcase | strip %}
+    {% assign wp_cat = false %}
+    {% if wp_terms contains 'title:' %}{% assign wp_cat = true %}{% endif %}
     {% paginate search.results by 24 %}
-      {% if search.results_count > 0 %}
+      {% if wp_cat and search.results_count == 0 %}
+        <p class="wp-coming-soon">New pieces coming soon.</p>
+        <style>.wp-coming-soon{grid-column:1/-1;margin:24px auto 72px;padding:28px 36px;background:#fff;text-align:center;font-size:.78rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#111}</style>
+      {% elsif search.results_count > 0 %}
         {% content_for 'block', type: 'filters', id: 'filters', results: search, results_size: search.results_count %}
         {% assign products = search.results | where: 'object_type', 'product' %}
       {% else %}
@@ -41,6 +48,7 @@
         {% endfor %}
       {% endcapture %}
 
+      {% unless wp_cat and search.results_count == 0 %}
       {% render 'product-grid',
         section: section,
         children: children,
@@ -48,6 +56,7 @@
         paginate: paginate,
         title: title
       %}
+      {% endunless %}
     {% endpaginate %}
   </div>
 </results-list>

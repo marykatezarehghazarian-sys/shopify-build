@@ -461,6 +461,7 @@
                               {%- endif -%}
                             </li>
                           {%- endfor -%}
+                          {% render 'wp-extra-links', parent: link, style: 'drawer' %}
                         </ul>
                         {% liquid
                           if block.settings.menu_style == 'featured_collections'

@@ -2295,5 +2295,34 @@
         "default": 35
       }
     ]
+  },
+  {
+    "name": "WearPartners menu",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Extra sub-links shown under one menu item. Each opens the products whose title contains the keyword."
+      },
+      {
+        "type": "text",
+        "id": "wp_extra_parent",
+        "label": "Show under menu item",
+        "default": "Women"
+      },
+      {
+        "type": "text",
+        "id": "wp_extra_links",
+        "label": "Links",
+        "info": "Label:keyword pairs separated by commas, e.g. Jackets:jacket, Skirts:skirt",
+        "default": "Jackets:jacket, Skirts:skirt, Leggings:legging, Scarves:scarf"
+      },
+      {
+        "type": "text",
+        "id": "wp_search_titles",
+        "label": "Category titles for these pages",
+        "info": "keyword:Title pairs",
+        "default": "jacket:Jackets, skirt:Skirts, legging:Leggings, scarf:Scarves, set:Sets"
+      }
+    ]
   }
 ]

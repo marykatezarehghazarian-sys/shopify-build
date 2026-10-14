@@ -17,9 +17,17 @@
 
     {% # WearPartners: the menu's "Sets" link uses a title search until sets have a collection or tag; show it as a category page. %}
     {% assign wp_category_search = false %}
-    {% if search.terms == 'title:set' %}
-      {% assign wp_category_search = true %}
-      {% assign heading_text = 'Sets' %}
+    {% assign wp_terms = search.terms | downcase | strip %}
+    {% if wp_terms contains 'title:' %}
+      {% assign wp_pairs = settings.wp_search_titles | default: 'set:Sets' | split: ',' %}
+      {% for pair in wp_pairs %}
+        {% assign kv = pair | split: ':' %}
+        {% assign wp_k = kv.first | strip | downcase | prepend: 'title:' %}
+        {% if wp_terms == wp_k and kv.size > 1 %}
+          {% assign wp_category_search = true %}
+          {% assign wp_category_title = kv.last | strip %}
+        {% endif %}
+      {% endfor %}
     {% endif %}
 
     {% capture heading_text %}
@@ -27,7 +35,7 @@
     {% endcapture %}
 
     {% if wp_category_search %}
-      <h1 class="wpct-title__h" style="text-align: center; width: 100%; margin: 0;">{{ 'Sets' }}</h1>
+      <h1 class="wpct-title__h" style="text-align: center; width: 100%; margin: 0;">{{ wp_category_title | escape }}</h1>
       <style>.wpct-title__h{font-family:var(--font-body--family);font-size:clamp(1.05rem,1.6vw,1.35rem);font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:#111}</style>
     {% else %}
       {% content_for 'block', id: 'heading', type: '_heading', text: heading_text %}

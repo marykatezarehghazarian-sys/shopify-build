@@ -1,0 +1,35 @@
+{%- comment -%}
+  WearPartners: extra sub-links under a top-level menu item (default "Women"), configured in
+  Theme settings -> WearPartners menu as "Label:keyword" pairs. Each opens the products whose
+  title contains the keyword (shown as a category page titled with the label).
+  Remove a pair once a real collection exists and is added to the menu in Online Store -> Navigation.
+  Params: parent (link), style ('drawer' | 'mega')
+{%- endcomment -%}
+{%- liquid
+  assign wp_parent = settings.wp_extra_parent | default: 'Women' | downcase | strip
+  assign wp_this = parent.title | downcase | strip
+  assign wp_pairs = settings.wp_extra_links | split: ','
+  if wp_this != wp_parent
+    assign wp_pairs = ''
+  endif
+-%}
+{%- for pair in wp_pairs -%}
+  {%- assign kv = pair | split: ':' -%}
+  {%- assign label = kv.first | strip -%}
+  {%- assign kw = kv.last | strip | downcase -%}
+  {%- if label == blank or kw == blank -%}{%- continue -%}{%- endif -%}
+  {%- assign url = routes.search_url | append: '?type=product&q=title%3A' | append: kw -%}
+  {%- if style == 'drawer' -%}
+    <li class="menu-drawer__list-item">
+      <a href="{{ url }}" class="menu-drawer__menu-item menu-drawer__menu-item--parent focus-inset">
+        <span class="menu-drawer__menu-item-text">{{ label | escape }}</span>
+      </a>
+    </li>
+  {%- else -%}
+    <div>
+      <a href="{{ url }}" class="mega-menu__link">
+        <span class="mega-menu__link-title">{{ label | escape }}</span>
+      </a>
+    </div>
+  {%- endif -%}
+{%- endfor -%}
