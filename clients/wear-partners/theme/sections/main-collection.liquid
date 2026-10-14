@@ -51,7 +51,19 @@
       results_size: collection.products_count
     %}
 
-    {% if request.design_mode and shop.products_count == 0 %}
+    {% # WearPartners: hide everything on the Sale page while no sale is running (Theme settings -> WearPartners menu). %}
+    {% if collection.handle == 'sale' and settings.wp_sale_empty %}
+      <div class="wp-no-sale">
+        <p class="wp-no-sale__title">{{ settings.wp_sale_message | default: 'No sale at the moment' | escape }}</p>
+        <a class="wp-no-sale__link" href="{{ routes.all_products_collection_url }}">Shop the collection</a>
+      </div>
+      <style>
+        .wp-no-sale{max-width:520px;margin:24px auto 80px;padding:40px 28px;background:#fff;text-align:center}
+        .wp-no-sale__title{margin:0 0 16px;font-size:.82rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:#111}
+        .wp-no-sale__link{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:#111;text-decoration:none;padding-bottom:3px;border-bottom:1px solid currentColor}
+        body:has(.wp-no-sale) main :is(.facets, .facets-controls-wrapper, .facets-block-wrapper, .facets-mobile-wrapper, .collection-wrapper > :not(.wp-no-sale):not(style)){display:none !important}
+      </style>
+    {% elsif request.design_mode and shop.products_count == 0 %}
       {% paginate products by 24 %}
         {% capture children %}
           {% for product in products %}

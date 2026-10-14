@@ -2322,6 +2322,22 @@
         "label": "Category titles for these pages",
         "info": "keyword:Title pairs",
         "default": "jacket:Jackets, skirt:Skirts, legging:Leggings, scarf:Scarves, set:Sets"
+      },
+      {
+        "type": "header",
+        "content": "Sale page"
+      },
+      {
+        "type": "checkbox",
+        "id": "wp_sale_empty",
+        "label": "Show the Sale page as empty (no sale running)",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "wp_sale_message",
+        "label": "Message on the Sale page",
+        "default": "No sale at the moment"
       }
     ]
   }
