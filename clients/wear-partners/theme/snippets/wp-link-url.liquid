@@ -2,6 +2,9 @@
   WearPartners: corrects menu links that point to the wrong place in the admin menu.
   - "Hats" -> /collections (the all-collections page) is sent to the hats (tag "hat" on all products).
   - "Home" -> /collections is sent to the homepage.
+  - Women sub-links that used multi-tag filters (which matched almost nothing) go to the
+    right products: Tops -> tag "Tops", Jeans -> tag "Jeans", Sets -> tag "Sets",
+    Dress -> the "dress" collection.
   Every other link is output unchanged. Remove an entry once the menu is fixed in
   Online Store -> Navigation.
   Usage: href="{% render 'wp-link-url', link: link %}"
@@ -16,5 +19,21 @@
       assign wp_u = routes.root_url
     endif
   endif
+  case wp_t
+    when 'tops', 'top'
+      assign wp_u = routes.all_products_collection_url | append: '/tops'
+    when 'jeans'
+      assign wp_u = routes.all_products_collection_url | append: '/jeans'
+    when 'sets', 'set'
+      if collections['women-set'].products_count > 0
+        assign wp_u = collections['women-set'].url
+      elsif collections.all.all_tags contains 'Sets' or collections.all.all_tags contains 'sets'
+        assign wp_u = routes.all_products_collection_url | append: '/sets'
+      else
+        assign wp_u = routes.search_url | append: '?type=product&q=title%3Aset'
+      endif
+    when 'dress', 'dresses'
+      assign wp_u = routes.collections_url | append: '/dress'
+  endcase
   echo wp_u
 -%}

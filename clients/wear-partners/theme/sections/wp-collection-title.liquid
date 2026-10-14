@@ -6,7 +6,7 @@
   assign wp_title = collection.title
   if current_tags.size > 0
     assign wp_tag = current_tags.first | downcase
-    assign wp_title = current_tags | join: ' & '
+    assign wp_title = current_tags.first | capitalize
     assign wp_pairs = section.settings.tag_titles | split: ','
     for pair in wp_pairs
       assign kv = pair | split: ':'
@@ -37,7 +37,7 @@
 {
   "name": "WP: collection title",
   "settings": [
-    { "type": "text", "id": "tag_titles", "label": "Titles for tag pages", "info": "tag:Title pairs, separated by commas.", "default": "hat:Hats" },
+    { "type": "text", "id": "tag_titles", "label": "Titles for tag pages", "info": "tag:Title pairs, separated by commas.", "default": "hat:Hats, tops:Tops, jeans:Jeans, sets:Sets" },
     { "type": "range", "id": "padding_top", "label": "Top spacing", "min": 0, "max": 96, "step": 4, "unit": "px", "default": 40 },
     { "type": "range", "id": "padding_bottom", "label": "Bottom spacing", "min": 0, "max": 96, "step": 4, "unit": "px", "default": 24 }
   ],

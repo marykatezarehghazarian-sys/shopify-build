@@ -55,3 +55,10 @@ Store: wearpartners-1574.myshopify.com
   - New sections/wp-policy-band.liquid ("Shipping & exchanges", two columns with icons) placed directly above the story on the homepage.
   - Hats fix (menu still points HATS and HOME to /collections; no navigation scope): snippets/wp-link-url.liquid rewrites those two links in the desktop menu, mega menu and phone drawer: Hats -> /collections/all/hat (tag HAT: GG HAT x3, MM HAT), Home -> /. Remove once the admin menu is fixed.
   - Collection page title is now sections/wp-collection-title.liquid (replaced the text-block 'section' in collection.json): shows the collection name, or a tag title on tag pages (setting tag_titles "hat:Hats"), plus description.
+- 2026-10-14: User published "Story Heading" (167586103528). Client (Julian Maryline) feedback list; theme fixes on new copy "WearPartners - Client Fixes" 167588135144:
+  - Policy wording: exchanges within 2 days for "a different size or another item" (homepage band + product accordion).
+  - "DM us to shop" removed from the story.
+  - Phone menu: always the sub-page drawer (header-drawer.liquid: `{% if linklist.levels < 3 %}` -> `{% if false %}`), so Women opens its own page ("‹ WOMEN", Tops/Jeans/Sets/Dress) like prada.com.
+  - wp-link-url now also fixes child links: Tops -> /collections/all/tops, Jeans -> /collections/all/jeans, Dress -> /collections/dress (9 dresses; old multi-tag link showed 2), Sets -> women-set collection if non-empty, else tag Sets if it exists, else /search?type=product&q=title:set (3 sets); search-header shows "SETS" for that search.
+  - sections/wp-reviews.liquid added after the story; hidden until real reviews are added as blocks.
+  - Store data still wrong (needs admin, no product/navigation scopes): one "P white tank top" is tagged Jeans; Sale collection has P white tank top, C dress, MM Dress with no sale price (P BLACK SET does have compare-at $150 -> $110); two products titled "Dress" tagged Tops; 3 sets have no tag/collection. Menu order wanted: New Arrivals, Women, Belts, Hats, Sale. Also wanted: remove "Sign in with Shop", add card payments.

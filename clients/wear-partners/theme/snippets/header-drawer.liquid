@@ -81,7 +81,7 @@
           {%- comment -%}
             Handle menus with fewer than 3 levels of links
           {%- endcomment -%}
-          {% if linklist.levels < 3 %}
+          {% if false %}{% # WearPartners: always use the sub-page drawer (was: linklist.levels < 3) %}
             {% assign first_accordion_open = false %}
             {% assign animation_index = 0 %}
             {%- for link in linklist.links -%}
@@ -136,7 +136,7 @@
                           >
                             <a
                               id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
-                              href="{{ childlink.url }}"
+                              href="{% render 'wp-link-url', link: childlink %}"
                               class="menu-drawer__menu-item menu-drawer__menu-item--child focus-inset{% if childlink.current %} menu-drawer__menu-item--active{% endif %}"
                               {% if childlink.current %}
                                 aria-current="page"
@@ -190,7 +190,7 @@
                         style="--menu-drawer-animation-index: {{ animation_index }};"
                       >
                         <a
-                          href="{{ childlink.url }}"
+                          href="{% render 'wp-link-url', link: childlink %}"
                           class="menu-drawer__menu-item menu-drawer__menu-item--child menu-drawer__animated-element focus-inset{% if childlink.current %} menu-drawer__menu-item--active{% endif %}"
                         >
                           {% if render_link_image %}
@@ -313,7 +313,7 @@
                                 {%- endcomment -%}
                                 <a
                                   id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
-                                  href="{{ childlink.url }}"
+                                  href="{% render 'wp-link-url', link: childlink %}"
                                   class="menu-drawer__menu-item menu-drawer__menu-item--parent focus-inset{% if childlink.current %} menu-drawer__menu-item--active{% endif %}"
                                   {% if childlink.current %}
                                     aria-current="page"
@@ -377,7 +377,7 @@
                                           >
                                             <a
                                               id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
-                                              href="{{ grandchildlink.url }}"
+                                              href="{% render 'wp-link-url', link: grandchildlink %}"
                                               class="menu-drawer__menu-item menu-drawer__menu-item--child focus-inset{% if grandchildlink.current %} menu-drawer__menu-item--active{% endif %}"
                                               {% if grandchildlink.current %}
                                                 aria-current="page"
@@ -408,7 +408,7 @@
                                   {%- endcomment -%}
                                   <a
                                     id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
-                                    href="{{ childlink.url }}"
+                                    href="{% render 'wp-link-url', link: childlink %}"
                                     class="menu-drawer__menu-item menu-drawer__menu-item--parent focus-inset{% if childlink.current %} menu-drawer__menu-item--active{% endif %}"
                                   >
                                     <span class="menu-drawer__menu-item-text">{{ childlink.title | escape }}</span>
@@ -434,7 +434,7 @@
                                       >
                                         <a
                                           id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
-                                          href="{{ grandchildlink.url }}"
+                                          href="{% render 'wp-link-url', link: grandchildlink %}"
                                           class="menu-drawer__menu-item menu-drawer__menu-item--child focus-inset{% if grandchildlink.current %} menu-drawer__menu-item--active{% endif %}"
                                           {% if grandchildlink.current %}
                                             aria-current="page"
