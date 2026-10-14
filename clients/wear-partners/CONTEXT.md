@@ -38,3 +38,9 @@ Store: wearpartners-1574.myshopify.com
   - Product cards (collection, homepage, search): no gap between photo and white name plate, centred text and colour dots.
   - Store data: Belts and Hats (handle all-men) collections in the main menu have 0 products; several collections empty (Bags, Accessories, Men, Shoes…).
 - 2026-10-14: User published "WearPartners - Neat Categories" (167584137448), now live. Phone menu drawer tidied on new copy "WearPartners - Neat Menu" 167584497896 (wp-luxe.css only): main links 0.82rem spaced capitals with hairline dividers, sub-links 0.74rem grey and indented, featured products as an even 2-up grid (3:4, centred names and prices, max 2) instead of a row cut off at the edge.
+- 2026-10-14: Category audit (storefront products.json; app still lacks read_products / navigation scopes so nothing changed):
+  - Main menu: HOME -> /collections (should be /); HATS -> /collections (the all-collections page, hence "a different picture"); the "Hats" collection (handle all-men) is empty; hat products in store: GG HAT x3, MM HAT (tag HAT).
+  - Women sub-links use tag-filter URLs that require ALL tags, so all four are EMPTY: women/Tops+shirt+tshirt+tank-top (0), women-jeans/jeans+denim+pants (0), women-set/sets (collection itself empty), all-women/dress+summer+women+beach (0).
+  - BELTS -> /collections/belts: 0 products.
+  - Wrong products: women-jeans has "P white tank top"; mens-t-shirts ("Tops") has Dress, Dress, Skirt; women-jackets has "D&G BABY BLUE SWEATER".
+  - Tags in use: women 87, Winter 27, Tops 26, Long sleeve 21, Tshirt 16, Jeans 11, Dress 8, Body 4, HAT 4, Sale 3, Skirt 1, Swimsuit 1.
