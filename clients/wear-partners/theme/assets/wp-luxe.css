@@ -80,39 +80,51 @@ product-list .section-resource-list__content h2 {
   text-transform: uppercase;
 }
 
-/* ---------- Product cards: white plate, centred small capitals ---------- */
-product-card .product-card__content {
-  background: rgb(255 255 255 / 0.9);
-  text-align: center;
-  padding-bottom: 18px;
+/* ---------- Product cards: photo on light grey, centred small capitals on a white plate ---------- */
+product-card .product-card__content { background: transparent; }
+product-card .card-gallery { background: #efefef; }
+product-card .group-block {
+  background: #fff;
+  padding: 14px 10px 16px;
 }
-product-card .product-card__content > :not(.card-gallery):not(:first-child),
-product-card .product-card__content .group-block {
+product-card .group-block-content {
+  align-items: center !important;
   justify-content: center;
-  align-items: center;
-  text-align: center;
+  gap: 6px;
 }
-product-card .product-card__content p,
-product-card .product-card__content .text-block {
+product-card .group-block .text-block,
+product-card .group-block product-price {
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  width: 100%;
+}
+product-card .group-block :is(p, div) { text-align: center !important; }
+product-card .group-block .text-block p {
   font-size: 0.72rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   font-weight: 500;
+  line-height: 1.35;
 }
-product-card .product-card__content .price {
+product-card .group-block .price {
   font-size: 0.75rem;
   letter-spacing: 0.04em;
   font-weight: 400;
+  color: #444;
 }
-product-card .card-gallery {
-  background: #efefef;
+@media (max-width: 749px) {
+  product-card .group-block { padding: 10px 6px 12px; }
+  product-card .group-block .text-block p { font-size: 0.66rem; letter-spacing: 0.08em; }
 }
 
 /* ---------- Collection page title and filters ---------- */
-.product-grid-container h1,
-.collection-hero h1,
-main h1.h1 {
-  letter-spacing: 0.04em;
+body:has(main[data-template^="collection"]) main .shopify-section:first-child :is(h1, .text-block--h4) {
+  font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-align: center;
 }
 .facets :is(summary, .facets__label, button) {
   text-transform: uppercase;
@@ -140,4 +152,12 @@ main h1.h1 {
   letter-spacing: var(--wp-luxe-caps);
   font-size: 0.75rem;
   font-weight: 500;
+}
+
+/* Colour dots on product cards: centred under the price. */
+product-card product-swatches,
+product-card product-swatches swatches-variant-picker-component,
+product-card product-swatches :is(ul, fieldset, .overflow-list) {
+  justify-content: center !important;
+  margin-inline: auto;
 }

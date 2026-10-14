@@ -32,3 +32,8 @@ Store: wearpartners-1574.myshopify.com
   - Homepage order: full-screen hero (wordmark over video, underlined "Discover the collection" link) → sections/wp-category-tiles (Women, Tops=mens-t-shirts, Jeans=women-jeans, Jackets=women-jackets) → New arrivals grid (edge-to-edge, 2px gaps) → sections/wp-editorial (Dresses, collection 'dress', "The edit / Discover").
   - assets/wp-luxe.css: spaced capitals for nav, buttons, labels, product titles; white plates under product cards; underlined text-link CTAs.
   - Note: the store's product photos show other brands' logos (Moncler, Miu Miu, Prada, Celine, D&G); flagged to the user.
+- 2026-10-14: User PUBLISHED "WearPartners - 3D Motion" (167581679848), now MAIN/live. New unpublished copy "WearPartners - Neat Categories" 167584137448 with tidy-ups:
+  - Category tiles rebuilt: photo = first product's image (collection images were 195px and had white bars), portrait 3:4, solid white label with name + "Shop now", 16px gaps, heading with hairlines.
+  - Collection page: title was hard-coded "Women Jeans" on every collection; now {{ closest.collection.title }}, centred spaced capitals; description centred.
+  - Product cards (collection, homepage, search): no gap between photo and white name plate, centred text and colour dots.
+  - Store data: Belts and Hats (handle all-men) collections in the main menu have 0 products; several collections empty (Bags, Accessories, Men, Shoes…).
