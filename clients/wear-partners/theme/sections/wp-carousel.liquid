@@ -1,0 +1,183 @@
+{%- comment -%}
+  WearPartners: auto-sliding, endlessly looping carousel, one featured item per category.
+  Each block = one slide (category label, product photo or custom image, link).
+  Phones show 1 slide, tablets 2, desktop 3. Moves one slide every few seconds, loops forever,
+  can be swiped / dragged, pauses while touched or hovered, and stays still for reduced motion.
+{%- endcomment -%}
+{%- assign s = section.settings -%}
+{%- if section.blocks.size > 0 -%}
+<section id="wpcr-{{ section.id }}" class="wpcr" style="padding: {{ s.padding }}px 0;" aria-roledescription="carousel" aria-label="{{ s.heading | default: 'Shop by category' | escape }}">
+  {%- if s.heading != blank %}<h2 class="wpcr__heading">{{ s.heading | escape }}</h2>{% endif -%}
+  <div class="wpcr__viewport">
+    <ul class="wpcr__track" role="list">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign p = block.settings.product
+          assign img = block.settings.image | default: p.featured_image
+          assign link = block.settings.link | default: p.url | default: '#'
+        -%}
+        <li class="wpcr__slide" {{ block.shopify_attributes }} aria-roledescription="slide" aria-label="{{ forloop.index }} / {{ forloop.length }}">
+          <a class="wpcr__card" href="{{ link }}">
+            <span class="wpcr__media">
+              {%- if img != blank -%}
+                {{ img | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '400, 600, 800, 1000, 1200', sizes: '(min-width: 990px) 34vw, (min-width: 750px) 50vw, 100vw', alt: block.settings.label, class: 'wpcr__img' }}
+              {%- else -%}
+                {{ 'product-apparel-1' | placeholder_svg_tag: 'wpcr__img wpcr__ph' }}
+              {%- endif -%}
+              <span class="wpcr__shade" aria-hidden="true"></span>
+              <span class="wpcr__caption">
+                <span class="wpcr__label">{{ block.settings.label | escape }}</span>
+                <span class="wpcr__cta">{{ s.cta_label | escape }}</span>
+              </span>
+            </span>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+  <div class="wpcr__dots" role="tablist">
+    {%- for block in section.blocks -%}
+      <button type="button" class="wpcr__dot" aria-label="Go to slide {{ forloop.index }}"></button>
+    {%- endfor -%}
+  </div>
+</section>
+
+<style>
+  #wpcr-{{ section.id }} { --per: 1; --gap: 10px; }
+  @media (min-width: 750px) { #wpcr-{{ section.id }} { --per: 2; --gap: 12px; } }
+  @media (min-width: 990px) { #wpcr-{{ section.id }} { --per: 3; --gap: 14px; } }
+  #wpcr-{{ section.id }} .wpcr__heading {
+    display: flex; align-items: center; gap: 18px; justify-content: center; max-width: 520px; margin: 0 auto 26px; padding: 0 16px;
+    font-family: var(--font-body--family); font-size: .75rem; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: #111;
+  }
+  #wpcr-{{ section.id }} .wpcr__heading::before, #wpcr-{{ section.id }} .wpcr__heading::after { content: ''; flex: 1; height: 1px; background: currentColor; opacity: .35; }
+  #wpcr-{{ section.id }} .wpcr__viewport { overflow: hidden; padding: 0 max(16px, 3vw); touch-action: pan-y; cursor: grab; }
+  #wpcr-{{ section.id }} .wpcr__viewport.is-dragging { cursor: grabbing; }
+  #wpcr-{{ section.id }} .wpcr__track {
+    display: flex; gap: var(--gap); margin: 0; padding: 0; list-style: none;
+    transform: translate3d(var(--x, 0px), 0, 0); will-change: transform;
+  }
+  #wpcr-{{ section.id }} .wpcr__track.is-animating { transition: transform .9s cubic-bezier(.22, 1, .36, 1); }
+  #wpcr-{{ section.id }} .wpcr__slide { flex: 0 0 calc((100% - (var(--per) - 1) * var(--gap)) / var(--per)); min-width: 0; }
+  #wpcr-{{ section.id }} .wpcr__card { display: block; color: #fff; text-decoration: none; -webkit-user-drag: none; }
+  #wpcr-{{ section.id }} .wpcr__media { position: relative; display: block; aspect-ratio: 3 / 4; overflow: hidden; background: #efefef; }
+  #wpcr-{{ section.id }} .wpcr__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; pointer-events: none; transition: transform 1.2s cubic-bezier(.22, 1, .36, 1); }
+  #wpcr-{{ section.id }} .wpcr__ph { fill: rgb(0 0 0 / .12); }
+  #wpcr-{{ section.id }} .wpcr__shade { position: absolute; inset: 0; background: linear-gradient(to top, rgb(0 0 0 / .42), transparent 42%); }
+  #wpcr-{{ section.id }} .wpcr__caption { position: absolute; left: 0; right: 0; bottom: 26px; display: grid; justify-items: center; gap: 8px; text-align: center; }
+  #wpcr-{{ section.id }} .wpcr__label { font-size: clamp(.95rem, 1.6vw, 1.15rem); font-weight: 500; letter-spacing: .2em; text-transform: uppercase; }
+  #wpcr-{{ section.id }} .wpcr__cta { font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; padding-bottom: 3px; border-bottom: 1px solid currentColor; }
+  @media (hover: hover) { #wpcr-{{ section.id }} .wpcr__card:hover .wpcr__img { transform: scale(1.035); } }
+  #wpcr-{{ section.id }} .wpcr__dots { display: flex; justify-content: center; gap: 8px; margin-top: 18px; }
+  #wpcr-{{ section.id }} .wpcr__dot { width: 7px; height: 7px; padding: 0; border: 1px solid #111; border-radius: 50%; background: transparent; cursor: pointer; }
+  #wpcr-{{ section.id }} .wpcr__dot[aria-current="true"] { background: #111; }
+</style>
+
+<script>
+  (() => {
+    const root = document.getElementById('wpcr-{{ section.id }}');
+    if (!root || root.dataset.ready) return;
+    root.dataset.ready = '1';
+    const viewport = root.querySelector('.wpcr__viewport');
+    const track = root.querySelector('.wpcr__track');
+    const dots = [...root.querySelectorAll('.wpcr__dot')];
+    const originals = [...track.children];
+    const count = originals.length;
+    if (count < 2) return;
+    const DELAY = {{ s.speed | times: 1000 }};
+    const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Endless loop: clones of every slide sit after the originals; when the track has moved
+    // a full set to the left it jumps back without animation, so it keeps sliding the same way.
+    originals.forEach((li) => {
+      const c = li.cloneNode(true);
+      c.setAttribute('aria-hidden', 'true');
+      c.querySelectorAll('a, button').forEach((el) => el.setAttribute('tabindex', '-1'));
+      track.appendChild(c);
+    });
+
+    let index = 0, timer = 0, paused = false, visible = true;
+    const step = () => {
+      const a = track.children[0].getBoundingClientRect();
+      const b = track.children[1].getBoundingClientRect();
+      return b.left - a.left;
+    };
+    const place = (animate) => {
+      track.classList.toggle('is-animating', animate);
+      track.style.setProperty('--x', `${-index * step()}px`);
+      const active = ((index % count) + count) % count;
+      dots.forEach((d, i) => d.setAttribute('aria-current', String(i === active)));
+    };
+    track.addEventListener('transitionend', () => {
+      if (index >= count) { index -= count; place(false); }
+      if (index < 0) { index += count; place(false); }
+    });
+    const go = (to) => {
+      if (to < 0 && index === 0) { index = count; place(false); track.getBoundingClientRect(); }
+      index = to < 0 && index === count ? count - 1 : to;
+      place(true);
+    };
+    const next = () => go(index + 1);
+    const schedule = () => {
+      clearTimeout(timer);
+      if (!still && !paused && visible && !document.hidden) timer = setTimeout(() => { next(); schedule(); }, DELAY);
+    };
+
+    dots.forEach((d, i) => d.addEventListener('click', () => { go(i); schedule(); }));
+    root.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') { paused = true; schedule(); } });
+    root.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') { paused = false; schedule(); } });
+    document.addEventListener('visibilitychange', schedule);
+    new IntersectionObserver((en) => { visible = en.some((x) => x.isIntersecting); schedule(); }).observe(root);
+    addEventListener('resize', () => place(false));
+
+    // Swipe / drag
+    let startX = 0, dx = 0, dragging = false, moved = false;
+    viewport.addEventListener('pointerdown', (e) => {
+      dragging = true; moved = false; startX = e.clientX; dx = 0; paused = true; clearTimeout(timer);
+      track.classList.remove('is-animating');
+    });
+    addEventListener('pointermove', (e) => {
+      if (!dragging) return;
+      dx = e.clientX - startX;
+      if (Math.abs(dx) > 6) { moved = true; viewport.classList.add('is-dragging'); }
+      track.style.setProperty('--x', `${-index * step() + dx}px`);
+    }, { passive: true });
+    addEventListener('pointerup', () => {
+      if (!dragging) return;
+      dragging = false; viewport.classList.remove('is-dragging'); paused = false;
+      const w = step();
+      if (dx < -w * 0.18) go(index + 1);
+      else if (dx > w * 0.18) go(index - 1);
+      else place(true);
+      schedule();
+    });
+    viewport.addEventListener('click', (e) => { if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
+
+    place(false);
+    schedule();
+  })();
+</script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "WP: category carousel",
+  "class": "section-wp-carousel",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The edit" },
+    { "type": "text", "id": "cta_label", "label": "Link text", "default": "Discover" },
+    { "type": "range", "id": "speed", "label": "Seconds per slide", "min": 2, "max": 10, "step": 1, "default": 4 },
+    { "type": "range", "id": "padding", "label": "Vertical spacing", "min": 0, "max": 96, "step": 4, "unit": "px", "default": 32 }
+  ],
+  "blocks": [
+    { "type": "slide", "name": "Slide", "settings": [
+      { "type": "text", "id": "label", "label": "Category name", "default": "Category" },
+      { "type": "product", "id": "product", "label": "Product to show" },
+      { "type": "image_picker", "id": "image", "label": "Custom image", "info": "Optional; overrides the product photo." },
+      { "type": "url", "id": "link", "label": "Link", "info": "Usually the category page." }
+    ] }
+  ],
+  "max_blocks": 12,
+  "presets": [{ "name": "WP: category carousel" }]
+}
+{% endschema %}

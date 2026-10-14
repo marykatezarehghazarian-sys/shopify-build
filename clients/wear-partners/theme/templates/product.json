@@ -310,7 +310,7 @@
                       "type": "text",
                       "name": "t:names.text",
                       "settings": {
-                        "text": "<p>Daily delivery in Beirut · 2–3 working days elsewhere</p>",
+                        "text": "<p>Beirut $5 · Outside Beirut $8 (Aramex)</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -482,7 +482,7 @@
                     "wp_ship_text": {
                       "type": "text",
                       "settings": {
-                        "text": "<p><strong>Beirut:</strong> daily delivery.</p><p><strong>Outside Beirut:</strong> 2–3 working days with Aramex.</p>",
+                        "text": "<p><strong>Beirut:</strong> daily delivery, $5.</p><p><strong>Outside Beirut:</strong> 2–3 working days with Aramex, $8.</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",

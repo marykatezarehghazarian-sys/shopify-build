@@ -352,10 +352,10 @@
         "t2": {
           "type": "tile",
           "settings": {
-            "collection": "mens-t-shirts",
-            "label": "Tops",
-            "product": "cd-beige-crop-polo",
-            "link": "/collections/all/tops"
+            "collection": "all",
+            "label": "Hats",
+            "product": "celine-hat",
+            "link": "/collections/all/hat"
           }
         },
         "t3": {
@@ -371,7 +371,7 @@
           "settings": {
             "collection": "women-jackets",
             "label": "Jackets",
-            "product": "ysl-mastic-jacket",
+            "product": "ysl-navy-jackey",
             "link": "/search?type=product&q=title%3Ajacket"
           }
         }
@@ -386,19 +386,6 @@
         "heading": "Shop by category",
         "padding_top": 56,
         "padding_bottom": 24
-      }
-    },
-    "wp_editorial": {
-      "type": "wp-editorial",
-      "settings": {
-        "collection": "dress",
-        "focus": "top",
-        "eyebrow": "The edit",
-        "title": "Dresses",
-        "link_label": "Discover",
-        "height": 85,
-        "padding": 24,
-        "product": "d-g-brown-dress"
       }
     },
     "wp_brand_story": {
@@ -420,7 +407,7 @@
       "settings": {
         "heading": "Shipping & exchanges",
         "shipping_title": "Shipping",
-        "shipping_text": "<p><strong>Beirut:</strong> daily delivery.</p><p><strong>Outside Beirut:</strong> 2–3 working days with Aramex.</p>",
+        "shipping_text": "<p><strong>Beirut:</strong> daily delivery, $5.</p><p><strong>Outside Beirut:</strong> 2–3 working days with Aramex, $8.</p>",
         "exchange_title": "Exchanges",
         "exchange_text": "<p>Items cannot be tried on before purchase.</p><p>Exchanges within <strong>2 days</strong> of delivery, for a different size or another item.</p><p>No returns or refunds.</p>",
         "panel_opacity": 80,
@@ -434,6 +421,91 @@
         "heading": "What our customers say",
         "padding": 48
       }
+    },
+    "wp_carousel": {
+      "type": "wp-carousel",
+      "settings": {
+        "heading": "The edit",
+        "cta_label": "Discover",
+        "speed": 4,
+        "padding": 32
+      },
+      "blocks": {
+        "slide_1": {
+          "type": "slide",
+          "settings": {
+            "label": "Dresses",
+            "product": "d-g-brown-dress",
+            "link": "/collections/dress"
+          }
+        },
+        "slide_2": {
+          "type": "slide",
+          "settings": {
+            "label": "Jackets",
+            "product": "ysl-navy-jackey",
+            "link": "/search?type=product&q=title%3Ajacket"
+          }
+        },
+        "slide_3": {
+          "type": "slide",
+          "settings": {
+            "label": "Hats",
+            "product": "gg-hat-1",
+            "link": "/collections/all/hat"
+          }
+        },
+        "slide_4": {
+          "type": "slide",
+          "settings": {
+            "label": "Sets",
+            "product": "d-g-classic-set",
+            "link": "/search?type=product&q=title%3Aset"
+          }
+        },
+        "slide_5": {
+          "type": "slide",
+          "settings": {
+            "label": "Tops",
+            "product": "cd-beige-crop-polo",
+            "link": "/collections/all/tops"
+          }
+        },
+        "slide_6": {
+          "type": "slide",
+          "settings": {
+            "label": "Jeans",
+            "product": "chanel-jeans",
+            "link": "/collections/all/jeans"
+          }
+        },
+        "slide_7": {
+          "type": "slide",
+          "settings": {
+            "label": "Skirts",
+            "product": "skirt",
+            "link": "/search?type=product&q=title%3Askirt"
+          }
+        },
+        "slide_8": {
+          "type": "slide",
+          "settings": {
+            "label": "Leggings",
+            "product": "d-g-black-legging",
+            "link": "/search?type=product&q=title%3Alegging"
+          }
+        }
+      },
+      "block_order": [
+        "slide_1",
+        "slide_2",
+        "slide_3",
+        "slide_4",
+        "slide_5",
+        "slide_6",
+        "slide_7",
+        "slide_8"
+      ]
     }
   },
   "order": [
@@ -443,6 +515,6 @@
     "wp_policy_band",
     "wp_brand_story",
     "wp_reviews",
-    "wp_editorial"
+    "wp_carousel"
   ]
 }
