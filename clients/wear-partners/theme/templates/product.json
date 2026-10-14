@@ -310,7 +310,7 @@
                       "type": "text",
                       "name": "t:names.text",
                       "settings": {
-                        "text": "<p>Reliable shipping</p>",
+                        "text": "<p>Daily delivery in Beirut · 2–3 working days elsewhere</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -392,7 +392,7 @@
                       "type": "text",
                       "name": "t:names.text",
                       "settings": {
-                        "text": "<p>Flexible returns</p>",
+                        "text": "<p>Exchange within 2 days · No returns</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -451,6 +451,106 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "wp_policy_accordion": {
+              "type": "accordion",
+              "settings": {
+                "icon": "caret",
+                "dividers": true,
+                "type_preset": "h6",
+                "inherit_color_scheme": true,
+                "color_scheme": "scheme-1",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 16,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "wp_row_shipping": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "Shipping",
+                    "open_by_default": false,
+                    "icon": "truck",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "wp_ship_text": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p><strong>Beirut:</strong> daily delivery.</p><p><strong>Outside Beirut:</strong> 2–3 working days with Aramex.</p>",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-primary--family)",
+                        "font_size": "",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "color": "",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "wp_ship_text"
+                  ]
+                },
+                "wp_row_exchange": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "Exchanges",
+                    "open_by_default": false,
+                    "icon": "return",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "wp_exch_text": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Items cannot be tried on before purchase.</p><p>Exchanges are accepted within <strong>2 days</strong> of delivery, for the same item in a different size only.</p><p>We do not accept returns or offer refunds.</p>",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-primary--family)",
+                        "font_size": "",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "color": "",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "wp_exch_text"
+                  ]
+                }
+              },
+              "block_order": [
+                "wp_row_shipping",
+                "wp_row_exchange"
+              ]
             }
           },
           "block_order": [
@@ -459,7 +559,8 @@
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
             "group_JbmQwr",
-            "text_aEtTtq"
+            "text_aEtTtq",
+            "wp_policy_accordion"
           ]
         }
       },
