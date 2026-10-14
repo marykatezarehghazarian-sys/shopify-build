@@ -1,0 +1,101 @@
+/*
+ * WearPartners: 3D motion layer for Horizon.
+ * Everything here is opt-in: wp-motion.js adds html.wp-motion only when the visitor
+ * has not asked for reduced motion, so with JS off or reduced motion the theme is untouched.
+ * Only transform and opacity are animated (GPU-composited, no layout work).
+ */
+
+/* ---------- Product cards: 3D tilt + lift (desktop, mouse only) ---------- */
+html.wp-motion.wp-can-tilt product-card {
+  perspective: 900px;
+}
+html.wp-motion.wp-can-tilt product-card .product-card__content {
+  --wp-rx: 0deg;
+  --wp-ry: 0deg;
+  --wp-lift: 0px;
+  transform: translate3d(0, var(--wp-lift), 0) rotateX(var(--wp-rx)) rotateY(var(--wp-ry));
+  transform-style: preserve-3d;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease;
+  will-change: transform;
+  border-radius: var(--product-card-border-radius, 0);
+}
+html.wp-motion.wp-can-tilt product-card.wp-tilting .product-card__content {
+  /* Follow the pointer quickly while hovering; ease back slowly on leave (rule above). */
+  transition: transform 0.12s linear, box-shadow 0.45s ease;
+}
+html.wp-motion.wp-can-tilt product-card:hover .product-card__content {
+  --wp-lift: -6px;
+  box-shadow: 0 18px 40px -18px rgb(0 0 0 / 0.28), 0 6px 14px -8px rgb(0 0 0 / 0.12);
+}
+
+/* ---------- Product images: gentle zoom / depth on hover ---------- */
+@media (hover: hover) and (pointer: fine) {
+  html.wp-motion product-card .card-gallery img {
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  html.wp-motion product-card:hover .card-gallery img {
+    transform: scale(1.06);
+  }
+}
+
+/* ---------- Scroll reveal: fade and rise, staggered ---------- */
+html.wp-motion .wp-reveal {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--wp-delay, 0ms),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--wp-delay, 0ms);
+}
+html.wp-motion .wp-reveal.wp-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Hero: parallax layers ---------- */
+html.wp-motion .hero.wp-parallax .hero__media-wrapper :is(img, video) {
+  transform: translate3d(0, var(--wp-par-media, 0px), 0) scale(1.12);
+  will-change: transform;
+}
+html.wp-motion .hero.wp-parallax .hero__content-wrapper {
+  transform: translate3d(0, var(--wp-par-content, 0px), 0);
+  opacity: var(--wp-par-fade, 1);
+  will-change: transform, opacity;
+}
+
+/* ---------- Buttons: soft depth on hover, press on click ---------- */
+html.wp-motion :is(.button, .button-secondary, .shopify-payment-button__button):not(.button-unstyled) {
+  transition:
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s ease,
+    background-color var(--hover-transition-duration, 0.2s) ease,
+    color var(--hover-transition-duration, 0.2s) ease,
+    border-color var(--hover-transition-duration, 0.2s) ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  html.wp-motion :is(.button, .button-secondary, .shopify-payment-button__button):not(.button-unstyled):hover {
+    transform: translate3d(0, -2px, 0);
+    box-shadow: 0 10px 22px -12px rgb(0 0 0 / 0.35);
+  }
+}
+html.wp-motion :is(.button, .button-secondary, .shopify-payment-button__button):not(.button-unstyled):active {
+  transform: translate3d(0, 1px, 0) scale(0.98);
+  box-shadow: 0 3px 8px -6px rgb(0 0 0 / 0.35);
+  transition-duration: 0.08s;
+}
+
+/* ---------- Product page gallery: 3D swipe on the phone carousel ---------- */
+/* Each slide turns slightly and recedes as it leaves the centre of the carousel.
+   Scroll-driven, so it runs off the main thread; browsers without support just slide normally. */
+@supports (animation-timeline: view()) {
+  @keyframes wp-gallery-depth {
+    0% { transform: perspective(1200px) rotateY(28deg) scale(0.88); opacity: 0.55; }
+    50% { transform: none; opacity: 1; }
+    100% { transform: perspective(1200px) rotateY(-28deg) scale(0.88); opacity: 0.55; }
+  }
+  @media (max-width: 749px) {
+    html.wp-motion media-gallery slideshow-slide > * {
+      animation: wp-gallery-depth linear both;
+      animation-timeline: view(inline);
+    }
+  }
+}
