@@ -18,3 +18,4 @@ Store: wearpartners-1574.myshopify.com
 
 ## Setup log
 - 2026-10-14: Client created. Store wearpartners-1574.myshopify.com (live: wearpartners.com, shop name "WearPartners", Horizon theme). Dev Dashboard client ID/secret saved in clients/wear-partners/.env (gitignored). First token exchange: 400 "The application is not installed on this shop", so the user needs to install the app on the store. Owner name and brand brief still to collect.
+- 2026-10-14: App installed; token exchange works (shop 'WearPartners', USD, primary domain wearpartners.com) but the installation has NO access scopes (accessScopes = []), so all data reads are denied. User needs to add scopes to an app version, release it, and accept the update on the store.
