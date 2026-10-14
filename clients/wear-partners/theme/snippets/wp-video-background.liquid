@@ -51,7 +51,10 @@
     /* Homepage banner: its image (WPPPPP.png) has the beige baked in, so swap it for a
        transparent copy of just the "WEAR PARTNERS" lettering (assets/wp-hero-wordmark.png). */
     .hero__media-wrapper:has(img[src*="WPPPPP"]) {
-      background: url({{ 'wp-hero-wordmark.png' | asset_url }}) center / cover no-repeat;
+      background: url({{ 'wp-wordmark.png' | asset_url }}) center / min(58vw, 1000px) auto no-repeat;
+    }
+    @media (max-width: 749px) {
+      .hero__media-wrapper:has(img[src*="WPPPPP"]) { background-size: 84vw auto; }
     }
     .hero__media-wrapper img[src*="WPPPPP"] { opacity: 0; }
     .hero__media-wrapper:has(img[src*="WPPPPP"]) .overlay { display: none; }

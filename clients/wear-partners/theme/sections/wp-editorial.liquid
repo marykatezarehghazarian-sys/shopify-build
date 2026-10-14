@@ -1,0 +1,62 @@
+{%- comment -%}
+  WearPartners: full-bleed editorial banner (Miu Miu / Prada campaign style):
+  large image with a small centred caption and an underlined text link at the bottom.
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign c = s.collection
+  assign img = s.image | default: c.featured_image
+  assign link = s.link | default: c.url
+  assign title = s.title | default: c.title
+-%}
+<section id="wped-{{ section.id }}" class="wped">
+  <a class="wped__frame" href="{{ link | default: '#' }}">
+    {%- if img != blank -%}
+      {{ img | image_url: width: 2400 | image_tag: loading: 'lazy', widths: '750, 1100, 1500, 2000, 2400', sizes: '100vw', alt: title, class: 'wped__img' }}
+    {%- else -%}
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'wped__img wped__ph' }}
+    {%- endif -%}
+    <span class="wped__shade" aria-hidden="true"></span>
+    <span class="wped__caption">
+      {%- if s.eyebrow != blank %}<span class="wped__eyebrow">{{ s.eyebrow | escape }}</span>{% endif -%}
+      {%- if title != blank %}<span class="wped__title">{{ title | escape }}</span>{% endif -%}
+      {%- if s.text != blank %}<span class="wped__text">{{ s.text | escape }}</span>{% endif -%}
+      {%- if s.link_label != blank %}<span class="wped__link">{{ s.link_label | escape }}</span>{% endif -%}
+    </span>
+  </a>
+</section>
+
+<style>
+  #wped-{{ section.id }} { padding: {{ s.padding }}px 0; }
+  #wped-{{ section.id }} .wped__frame { position: relative; display: block; height: {{ s.height }}vh; min-height: 420px; overflow: hidden; background: #E9E9E9; color: #FFF; text-decoration: none; }
+  #wped-{{ section.id }} .wped__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center {{ s.focus }}; transition: transform 1.2s cubic-bezier(.22,1,.36,1); }
+  #wped-{{ section.id }} .wped__ph { fill: rgb(0 0 0 / .12); }
+  #wped-{{ section.id }} .wped__shade { position: absolute; inset: 0; background: linear-gradient(to top, rgb(0 0 0 / .38), transparent 45%); }
+  #wped-{{ section.id }} .wped__caption { position: absolute; left: 0; right: 0; bottom: clamp(32px, 7vh, 72px); display: grid; justify-items: center; gap: 8px; padding: 0 20px; text-align: center; }
+  #wped-{{ section.id }} .wped__eyebrow { font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; }
+  #wped-{{ section.id }} .wped__title { font-size: clamp(1.25rem, 2.2vw, 1.75rem); font-weight: 500; letter-spacing: .02em; }
+  #wped-{{ section.id }} .wped__text { font-size: .85rem; opacity: .9; }
+  #wped-{{ section.id }} .wped__link { margin-top: 6px; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; padding-bottom: 3px; border-bottom: 1px solid currentColor; }
+  @media (hover: hover) { #wped-{{ section.id }} .wped__frame:hover .wped__img { transform: scale(1.03); } }
+</style>
+
+{% schema %}
+{
+  "name": "WP: editorial banner",
+  "class": "section-wp-editorial",
+  "settings": [
+    { "type": "collection", "id": "collection", "label": "Collection", "info": "Used for the link, title and (if no image is chosen) the image." },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "select", "id": "focus", "label": "Image focus", "default": "center", "options": [
+      { "value": "top", "label": "Top" }, { "value": "center", "label": "Centre" }, { "value": "bottom", "label": "Bottom" } ] },
+    { "type": "text", "id": "eyebrow", "label": "Small label", "default": "The edit" },
+    { "type": "text", "id": "title", "label": "Title", "info": "Defaults to the collection name." },
+    { "type": "text", "id": "text", "label": "Text" },
+    { "type": "text", "id": "link_label", "label": "Link label", "default": "Discover" },
+    { "type": "url", "id": "link", "label": "Link", "info": "Defaults to the collection." },
+    { "type": "range", "id": "height", "label": "Height", "min": 50, "max": 100, "step": 5, "unit": "vh", "default": 85 },
+    { "type": "range", "id": "padding", "label": "Vertical spacing", "min": 0, "max": 96, "step": 4, "unit": "px", "default": 24 }
+  ],
+  "presets": [{ "name": "WP: editorial banner" }]
+}
+{% endschema %}

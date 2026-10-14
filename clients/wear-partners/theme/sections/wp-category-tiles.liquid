@@ -1,0 +1,62 @@
+{%- comment -%}
+  WearPartners: category tiles in the style of luxury houses (Prada / Gucci):
+  4 square tiles on light grey, product photo, small centred label underneath.
+  Each block picks a collection; the image is the collection image, or its first product's image.
+{%- endcomment -%}
+{%- assign s = section.settings -%}
+<section id="wpct-{{ section.id }}" class="wpct" style="--wpct-cols: {{ section.blocks.size | at_most: 4 | at_least: 1 }};">
+  {%- if s.heading != blank -%}<h2 class="wpct__heading">{{ s.heading | escape }}</h2>{%- endif -%}
+  <div class="wpct__grid">
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign c = block.settings.collection
+        assign img = block.settings.image | default: c.featured_image
+        assign label = block.settings.label | default: c.title
+      -%}
+      <a class="wpct__tile" href="{{ c.url | default: '#' }}" {{ block.shopify_attributes }}>
+        <span class="wpct__media">
+          {%- if img != blank -%}
+            {{ img | image_url: width: 900 | image_tag: loading: 'lazy', widths: '360, 540, 720, 900', sizes: '(min-width: 990px) 25vw, 50vw', alt: label, class: 'wpct__img' }}
+          {%- else -%}
+            {{ 'product-apparel-1' | placeholder_svg_tag: 'wpct__img wpct__ph' }}
+          {%- endif -%}
+        </span>
+        <span class="wpct__label">{{ label | escape }}</span>
+      </a>
+    {%- endfor -%}
+  </div>
+</section>
+
+<style>
+  #wpct-{{ section.id }} { padding: {{ s.padding_top }}px 0 {{ s.padding_bottom }}px; }
+  #wpct-{{ section.id }} .wpct__heading { text-align: center; margin: 0 0 28px; font-size: .78rem; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; }
+  #wpct-{{ section.id }} .wpct__grid { display: grid; grid-template-columns: repeat(var(--wpct-cols), 1fr); gap: 2px; }
+  @media (max-width: 749px) { #wpct-{{ section.id }} .wpct__grid { grid-template-columns: repeat(2, 1fr); } }
+  #wpct-{{ section.id }} .wpct__tile { display: block; text-decoration: none; color: inherit; background: rgb(255 255 255 / .88); }
+  #wpct-{{ section.id }} .wpct__media { display: block; aspect-ratio: 1; background: #EFEFEF; overflow: hidden; }
+  #wpct-{{ section.id }} .wpct__img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .9s cubic-bezier(.22,1,.36,1); }
+  #wpct-{{ section.id }} .wpct__ph { fill: rgb(0 0 0 / .15); }
+  #wpct-{{ section.id }} .wpct__label { display: block; padding: 16px 8px 22px; text-align: center; font-size: .72rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; }
+  @media (hover: hover) { #wpct-{{ section.id }} .wpct__tile:hover .wpct__img { transform: scale(1.04); } }
+</style>
+
+{% schema %}
+{
+  "name": "WP: category tiles",
+  "class": "section-wp-category-tiles",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Shop by category" },
+    { "type": "range", "id": "padding_top", "label": "Top spacing", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom spacing", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 48 }
+  ],
+  "blocks": [
+    { "type": "tile", "name": "Category", "settings": [
+      { "type": "collection", "id": "collection", "label": "Collection" },
+      { "type": "text", "id": "label", "label": "Label", "info": "Defaults to the collection name." },
+      { "type": "image_picker", "id": "image", "label": "Image", "info": "Defaults to the collection image." }
+    ] }
+  ],
+  "max_blocks": 8,
+  "presets": [{ "name": "WP: category tiles" }]
+}
+{% endschema %}

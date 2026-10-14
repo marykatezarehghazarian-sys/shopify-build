@@ -1,0 +1,143 @@
+/*
+ * WearPartners: luxury house styling (inspired by Prada, Miu Miu, Gucci, Hermès).
+ * Quiet type, a centred serif wordmark, small spaced capitals for navigation and labels,
+ * square corners, underlined text links, and white "plates" under products so they read over the video.
+ * No brand assets from those sites are used; this is layout and typography only.
+ */
+
+:root {
+  --wp-luxe-ink: #111;
+  --wp-luxe-caps: 0.14em;
+}
+
+/* ---------- Header: centred serif wordmark, small capitals menu ---------- */
+/* The shop name is "WearPartners" (no space), so the header shows the brand's own
+   "WEAR PARTNERS" lettering (assets/wp-wordmark.png, cut from the homepage banner) instead of text. */
+#header-group .header-logo {
+  font-size: 0 !important;
+  color: transparent !important;
+  line-height: 0;
+}
+#header-group .header-logo > * { display: none !important; }
+#header-group .header-logo::after {
+  content: '';
+  display: block;
+  width: clamp(150px, 15vw, 230px);
+  aspect-ratio: 1178 / 123;
+  background: url('wp-wordmark.png') center / contain no-repeat;
+}
+@media (max-width: 749px) {
+  #header-group .header-logo::after { width: 128px; }
+}
+#header-group .menu-list__link,
+#header-group .header-actions__action,
+#header-group .header__icon {
+  font-size: 0.72rem;
+  letter-spacing: var(--wp-luxe-caps);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* ---------- Buttons: square, spaced capitals ---------- */
+.button,
+.button-secondary,
+.shopify-payment-button__button {
+  border-radius: 0 !important;
+  text-transform: uppercase;
+  letter-spacing: var(--wp-luxe-caps);
+  font-size: 0.72rem;
+  font-weight: 500;
+}
+
+/* Text links used as calls to action ("Discover", "Shop now"): underline style, like the luxury houses. */
+.link,
+.button.link,
+a.link {
+  text-transform: uppercase;
+  letter-spacing: var(--wp-luxe-caps);
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding-bottom: 3px;
+  border-bottom: 1px solid currentColor;
+}
+
+/* ---------- Homepage hero: caption centred at the bottom ---------- */
+.hero .hero__content-wrapper {
+  text-align: center;
+}
+
+/* ---------- Section headings: small, centred, spaced capitals ---------- */
+product-list .section-resource-list__content :is(h2, h3, p),
+.product-grid-container :is(.main-collection-title, h1) {
+  letter-spacing: 0.02em;
+}
+product-list .section-resource-list__content h3,
+product-list .section-resource-list__content h2 {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: var(--wp-luxe-caps);
+  text-transform: uppercase;
+}
+
+/* ---------- Product cards: white plate, centred small capitals ---------- */
+product-card .product-card__content {
+  background: rgb(255 255 255 / 0.9);
+  text-align: center;
+  padding-bottom: 18px;
+}
+product-card .product-card__content > :not(.card-gallery):not(:first-child),
+product-card .product-card__content .group-block {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+product-card .product-card__content p,
+product-card .product-card__content .text-block {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+product-card .product-card__content .price {
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  font-weight: 400;
+}
+product-card .card-gallery {
+  background: #efefef;
+}
+
+/* ---------- Collection page title and filters ---------- */
+.product-grid-container h1,
+.collection-hero h1,
+main h1.h1 {
+  letter-spacing: 0.04em;
+}
+.facets :is(summary, .facets__label, button) {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+}
+
+/* ---------- Product page: quiet title, spaced labels ---------- */
+.product-information .product-details h1,
+.product-information .text-block--h1 {
+  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.product-information :is(legend, .variant-option__label, .variant-picker__label) {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+}
+
+/* ---------- Footer ---------- */
+.shopify-section-group-footer-group :is(h2, h3, .h4, .h5) {
+  text-transform: uppercase;
+  letter-spacing: var(--wp-luxe-caps);
+  font-size: 0.75rem;
+  font-weight: 500;
+}

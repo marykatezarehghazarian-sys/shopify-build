@@ -42,10 +42,10 @@
           "type": "button",
           "name": "t:names.button",
           "settings": {
-            "label": "Shop now",
+            "label": "Discover the collection",
             "link": "shopify://collections/all",
             "open_in_new_tab": false,
-            "style_class": "button-secondary",
+            "style_class": "link",
             "width": "fit-content",
             "custom_width": 100,
             "width_mobile": "fit-content",
@@ -67,14 +67,14 @@
         "media_type_2": "image",
         "content_direction": "column",
         "vertical_on_mobile": true,
-        "horizontal_alignment": "space-between",
+        "horizontal_alignment": "center",
         "vertical_alignment": "flex-end",
         "align_baseline": true,
-        "horizontal_alignment_flex_direction_column": "flex-start",
+        "horizontal_alignment_flex_direction_column": "center",
         "vertical_alignment_flex_direction_column": "flex-end",
         "gap": 20,
-        "section_width": "page-width",
-        "section_height": "small",
+        "section_width": "full-width",
+        "section_height": "full-screen",
         "section_height_custom": 50,
         "color_scheme": "scheme-6",
         "toggle_overlay": true,
@@ -128,7 +128,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h3>{{ closest.collection.title }}</h3>",
+                "text": "<h3>New arrivals</h3>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -327,21 +327,79 @@
         "max_products": 8,
         "columns": 4,
         "mobile_columns": "2",
-        "columns_gap": 12,
-        "rows_gap": 24,
+        "columns_gap": 2,
+        "rows_gap": 2,
         "icons_style": "arrow",
         "icons_shape": "none",
-        "section_width": "page-width",
+        "section_width": "full-width",
         "horizontal_alignment": "center",
         "gap": 40,
         "color_scheme": "scheme-1",
-        "padding-block-start": 48,
+        "padding-block-start": 56,
         "padding-block-end": 96
+      }
+    },
+    "wp_tiles": {
+      "type": "wp-category-tiles",
+      "settings": {
+        "heading": "Shop by category",
+        "padding_top": 56,
+        "padding_bottom": 24
+      },
+      "blocks": {
+        "t1": {
+          "type": "tile",
+          "settings": {
+            "collection": "women",
+            "label": "Women"
+          }
+        },
+        "t2": {
+          "type": "tile",
+          "settings": {
+            "collection": "mens-t-shirts",
+            "label": "Tops"
+          }
+        },
+        "t3": {
+          "type": "tile",
+          "settings": {
+            "collection": "women-jeans",
+            "label": "Jeans"
+          }
+        },
+        "t4": {
+          "type": "tile",
+          "settings": {
+            "collection": "women-jackets",
+            "label": "Jackets"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4"
+      ]
+    },
+    "wp_editorial": {
+      "type": "wp-editorial",
+      "settings": {
+        "collection": "dress",
+        "eyebrow": "The edit",
+        "title": "Dresses",
+        "link_label": "Discover",
+        "height": 85,
+        "padding": 24,
+        "focus": "top"
       }
     }
   },
   "order": [
     "hero_jVaWmY",
-    "product_list_qU3bEB"
+    "wp_tiles",
+    "product_list_qU3bEB",
+    "wp_editorial"
   ]
 }
