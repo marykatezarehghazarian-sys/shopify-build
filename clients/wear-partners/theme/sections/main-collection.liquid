@@ -71,7 +71,15 @@
     {% else %}
       {% paginate collection.products by 24 %}
         {% capture children %}
+          {% # WearPartners: on Tops / Jeans tag pages, skip products whose name says another category (some are mis-tagged in the admin). %}
+          {% assign wp_tag = current_tags.first | downcase %}
           {% for product in collection.products %}
+          {% assign wp_name = product.title | downcase %}
+          {% if wp_tag == 'tops' %}
+            {% if wp_name contains 'dress' or wp_name contains 'skirt' or wp_name contains 'jean' or wp_name contains 'legging' or wp_name contains 'jacket' or wp_name contains ' set' or wp_name == 'set' %}{% continue %}{% endif %}
+          {% elsif wp_tag == 'jeans' %}
+            {% unless wp_name contains 'jean' %}{% continue %}{% endunless %}
+          {% endif %}
           <li
             id="{{ section.id }}-{{ product.id }}"
             class="product-grid__item product-grid__item--{{ forloop.index0 }}"
