@@ -407,7 +407,7 @@
       "settings": {
         "heading": "Shipping & exchanges",
         "shipping_title": "Shipping",
-        "shipping_text": "<p><strong>Beirut:</strong> daily delivery, $5.</p><p><strong>Outside Beirut:</strong> 2–3 working days with Aramex, $8.</p>",
+        "shipping_text": "<p>Delivery all over Lebanon: <strong>$6</strong>.</p>",
         "exchange_title": "Exchanges",
         "exchange_text": "<p>Items cannot be tried on before purchase.</p><p>Exchanges within <strong>2 days</strong> of delivery, for a different size or another item.</p><p>No returns or refunds.</p>",
         "panel_opacity": 80,
