@@ -34,3 +34,15 @@ From Living_Room_Sofa_Inspiration.pdf (photos/living-sofa, #n = order.txt line n
 | Baalbek Tufted Sofa | 11 | modular | 8522953916501 |
 | Dune Pouf Modular | 12 | modular | 8522953949269 |
 | Chouf Corner Sectional | 13 | sectional | 8522953982037 |
+
+From Accent_Chairs.pdf (photos/accent-chairs, #n = order.txt line n). No duplicates with existing photos. Within the PDF #1/#4, #3/#2, #6/#10 are the same chair. Created DRAFT 2026-10-18, tags living-room, accent-chair, chair; type Accent Chair.
+
+| Product | Photos | ID |
+|---|---|---|
+| Cedar Arc Lounge Chair | 1,4 | 8537833799765 |
+| Aley Tufted Armchair | 3,2 | 8537833832533 |
+| Broummana Lounge Chair | 5 | 8537833865301 |
+| Moon Swivel Chair | 6,10 | 8537833898069 |
+| Sidon Bolster Chair | 7 | 8537833930837 |
+| Jbeil Tufted Slipper Chair | 8 | 8537833963605 |
+| Marsa Velvet Swivel Chair | 9 | 8537833996373 |
