@@ -40,7 +40,8 @@
     text-transform: uppercase;
     color: var(--rr-ink);
   }
-  #header-component .menu-list__list-item + .menu-list__list-item { border-inline-start: 1px solid var(--rr-ink); }
+  #header-component .menu-list__list-item { position: relative; }
+  #header-component .menu-list__list-item + .menu-list__list-item::before { content: ''; position: absolute; inset-inline-start: 0; top: 50%; height: 16px; translate: 0 -50%; border-inline-start: 1px solid var(--rr-ink); pointer-events: none; }
   #header-component .menu-list__list-item { padding-inline: 0; }
   #header-component .menu-list__link { padding-inline: 12px; }
   #header-component .header-actions__action,
