@@ -12,9 +12,9 @@
         {%- if form.posted_successfully? -%}
           <p class="rr-footer__ok" role="status">{{ s.success | escape }}</p>
         {%- else -%}
-          <label class="rr-footer__label" for="rr-footer-email">Email<span aria-hidden="true">*</span></label>
+          <label class="rr-footer__label visually-hidden" for="rr-footer-email">Email</label>
           <div class="rr-footer__field">
-            <input id="rr-footer-email" type="email" name="contact[email]" required autocomplete="email" aria-required="true">
+            <input id="rr-footer-email" type="email" name="contact[email]" placeholder="Email" required autocomplete="email" aria-required="true">
             <button type="submit" class="rr-footer__submit" aria-label="Subscribe">&rarr;</button>
           </div>
           {%- if form.errors -%}<p class="rr-footer__err" role="alert">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>{%- endif -%}
@@ -44,22 +44,23 @@
 </footer>
 
 <style>
-  #rr-footer-{{ section.id }} { color: var(--rr-ink, #642226); background: #fff; padding: 72px max(16px, 5vw) 28px; }
+  #rr-footer-{{ section.id }} { color: var(--rr-ink, #642226); background: #fff; padding: 72px max(16px, 5vw) 28px; overflow: hidden; }
   #rr-footer-{{ section.id }} .rr-footer__top { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr) minmax(0, .9fr); gap: 32px; max-width: 1020px; margin: 0 auto; align-items: start; }
   #rr-footer-{{ section.id }} .rr-footer__heading { margin: 0 0 18px; font-family: var(--rr-aboreto); font-weight: 400; font-size: clamp(1.4rem, 2.1vw, 1.875rem); line-height: 1.1; color: inherit; text-transform: uppercase; }
   #rr-footer-{{ section.id }} .rr-footer__label { display: block; font-family: var(--rr-sans); font-size: 12px; font-weight: 400; }
   #rr-footer-{{ section.id }} .rr-footer__field { display: flex; border-bottom: 1px solid currentColor; max-width: 340px; }
-  #rr-footer-{{ section.id }} .rr-footer__field input { flex: 1; min-width: 0; border: 0; background: none; padding: 6px 0; font: 400 13px var(--rr-sans); color: inherit; outline-offset: 2px; }
+  #rr-footer-{{ section.id }} .rr-footer__field input { flex: 1; min-width: 0; border: 0; background: none; padding: 8px 12px; font: 400 15px var(--rr-sans); color: inherit; outline-offset: 2px; }
+  #rr-footer-{{ section.id }} .rr-footer__field input::placeholder { color: inherit; opacity: 1; }
   #rr-footer-{{ section.id }} .rr-footer__submit { border: 0; background: none; color: inherit; cursor: pointer; padding: 0 2px; font-size: 14px; }
   #rr-footer-{{ section.id }} .rr-footer__legal { max-width: 340px; margin: 10px 0 0; font: 400 8px/1.5 var(--rr-sans); }
   #rr-footer-{{ section.id }} .rr-footer__ok, #rr-footer-{{ section.id }} .rr-footer__err { font: 400 12px var(--rr-sans); margin: 6px 0 0; }
   #rr-footer-{{ section.id }} .rr-footer__links { list-style: none; margin: 0; padding: 0; display: grid; gap: 20px; }
   #rr-footer-{{ section.id }} .rr-footer__links a { font: 300 13px var(--rr-sans); letter-spacing: .01em; text-transform: uppercase; color: inherit; text-decoration: none; }
   #rr-footer-{{ section.id }} .rr-footer__links a:hover { text-decoration: underline; }
-  #rr-footer-{{ section.id }} .rr-footer__wordmark { display: flex; align-items: flex-end; justify-content: center; gap: 4.5%; margin: 64px auto 22px; max-width: 1240px; }
-  #rr-footer-{{ section.id }} .rr-footer__wm { display: block; height: auto; }
-  #rr-footer-{{ section.id }} .rr-footer__wm--1 { width: 34%; }
-  #rr-footer-{{ section.id }} .rr-footer__wm--2 { width: 61.5%; }
+  #rr-footer-{{ section.id }} .rr-footer__wordmark { display: flex; align-items: flex-end; justify-content: center; width: min(100%, 1306px); margin: 48px auto 14px; }
+  #rr-footer-{{ section.id }} .rr-footer__wm { display: block; height: auto; flex: none; max-width: none; }
+  #rr-footer-{{ section.id }} .rr-footer__wm--1 { width: 36.4%; }
+  #rr-footer-{{ section.id }} .rr-footer__wm--2 { width: 64.9%; margin-inline-start: -1.3%; }
   #rr-footer-{{ section.id }} .rr-footer__credit { margin: 0; text-align: center; font: 200 14px var(--rr-sans); }
   #rr-footer-{{ section.id }} .rr-footer__credit a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
   @media (max-width: 749px) {
