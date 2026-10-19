@@ -98,5 +98,12 @@
   /* ---------- On black: burgundy logo artwork shown in ivory ---------- */
   #header-group :is(.header-logo, .header__logo) img, .rr-footer__wm { filter: brightness(0) invert(94%) sepia(6%) saturate(250%) hue-rotate(330deg); }
   .rr-card__media, .card-gallery { background: #111 !important; }
+
+  /* ---------- Easy checkout on the product page: choose size → Buy it now. No quantity box. ---------- */
+  .product-information .quantity-selector-wrapper, .product-information quantity-selector-component { display: none !important; }
+  .product-information .add-to-cart-button, .product-information shopify-accelerated-checkout { width: 100%; }
+  .product-information .product-form-buttons > .accelerated-checkout-block { order: -1; }
+  .product-information .shopify-payment-button__button--unbranded { background: var(--rr-ink) !important; color: #000 !important; min-height: 48px; font-family: var(--rr-sans) !important; font-size: 12px !important; letter-spacing: .16em !important; text-transform: uppercase; }
+  .rr-pay-note { margin: 4px 0 0; font: 300 12px/1.6 var(--rr-sans); color: var(--rr-ink); opacity: .8; text-align: center; }
 </style>
 <script src="{{ 'rr-quick-bag.js' | asset_url }}" defer></script>
