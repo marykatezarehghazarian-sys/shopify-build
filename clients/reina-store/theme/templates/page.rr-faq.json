@@ -1,0 +1,98 @@
+{
+  "sections": {
+    "main": {
+      "type": "rr-faq",
+      "blocks": {
+        "q0": {
+          "type": "qa",
+          "settings": {
+            "question": "How can I pay?",
+            "answer": "<p>You can pay by card or cash on delivery.</p>"
+          }
+        },
+        "q1": {
+          "type": "qa",
+          "settings": {
+            "question": "How long does delivery take?",
+            "answer": "<p>Orders are processed within 1–2 business days after payment (Monday to Friday, excluding holidays). Once processed, estimated delivery is 4–7 business days depending on your destination and the shipping method chosen at checkout.</p>"
+          }
+        },
+        "q2": {
+          "type": "qa",
+          "settings": {
+            "question": "How much is shipping?",
+            "answer": "<p>Shipping charges are calculated at checkout based on your address and the delivery method you choose. You'll see the total before you place your order.</p>"
+          }
+        },
+        "q3": {
+          "type": "qa",
+          "settings": {
+            "question": "How do I track my order?",
+            "answer": "<p>Once your order ships, you'll receive a confirmation email with your tracking information. Please allow the carrier a little time to update it.</p>"
+          }
+        },
+        "q4": {
+          "type": "qa",
+          "settings": {
+            "question": "Can I return an item?",
+            "answer": "<p>Yes. Return requests must be submitted within 30 days of delivery. Items must be unworn, unused, unwashed, in their original condition and returned with all original tags attached. Eligible returns receive store credit.</p><p><a href=\"/policies/refund-policy\">Read the full returns &amp; store credit policy</a></p>"
+          }
+        },
+        "q5": {
+          "type": "qa",
+          "settings": {
+            "question": "Do you offer refunds?",
+            "answer": "<p>ReinaReichouni does not offer refunds to the original payment method. Once your return is received and inspected, eligible items are issued store credit.</p>"
+          }
+        },
+        "q6": {
+          "type": "qa",
+          "settings": {
+            "question": "Can I exchange for a different size?",
+            "answer": "<p>We do not offer direct exchanges. If you would like a different size, colour or style, return your eligible item for store credit and use that credit to place a new order.</p>"
+          }
+        },
+        "q7": {
+          "type": "qa",
+          "settings": {
+            "question": "Who pays for return shipping?",
+            "answer": "<p>Customers are responsible for return shipping costs unless the return is the result of an error made by ReinaReichouni, such as receiving the wrong item or a defective product. Original shipping charges are non-refundable.</p>"
+          }
+        },
+        "q8": {
+          "type": "qa",
+          "settings": {
+            "question": "My order arrived damaged or incorrect. What do I do?",
+            "answer": "<p>Please contact us as soon as possible after delivery with your order number, a description of the issue and clear photos of the item and packaging. Our team will review your request and work with you on a resolution.</p><p><a href=\"/pages/contactus\">Contact us</a></p>"
+          }
+        },
+        "q9": {
+          "type": "qa",
+          "settings": {
+            "question": "Which items can't be returned?",
+            "answer": "<p>Underwear or intimate apparel, final sale or clearance items, gift cards, items showing signs of wear, washing, alterations or damage, and items returned without original tags.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q0",
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5",
+        "q6",
+        "q7",
+        "q8",
+        "q9"
+      ],
+      "settings": {
+        "heading": "Frequently asked questions",
+        "intro": "<p>Orders, delivery, payment and returns.</p>"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

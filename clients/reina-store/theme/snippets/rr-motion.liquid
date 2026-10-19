@@ -1,0 +1,69 @@
+{%- comment -%}
+  Reina Reichouni motion layer: first-visit preloader, smooth scrolling (Lenis), scroll reveals,
+  parallax, magnetic buttons and a custom cursor on desktop. Logic in assets/rr-motion.js.
+  Everything is skipped for visitors who prefer reduced motion.
+{%- endcomment -%}
+<script>
+  (() => {
+    const d = document.documentElement;
+    const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let seen = true;
+    try { seen = !!localStorage.getItem('rr-seen'); localStorage.setItem('rr-seen', '1'); } catch (e) {}
+    if (still) d.classList.add('rr-still');
+    else d.classList.add('rr-motion');
+    if (!seen && !still && !{{ request.design_mode | json }}) d.classList.add('rr-preload');
+  })();
+</script>
+<div class="rr-preloader" aria-hidden="true">
+  {%- if settings.logo != blank -%}
+    {{ settings.logo | image_url: width: 240 | image_tag: class: 'rr-preloader__logo', alt: '', loading: 'eager' }}
+  {%- endif -%}
+  <span class="rr-preloader__line"></span>
+</div>
+<div class="rr-cursor" aria-hidden="true"><span class="rr-cursor__dot"></span><span class="rr-cursor__ring"></span></div>
+<style>
+  /* Preloader: first visit only, about 1.4 s, never on later pages. */
+  .rr-preloader { display: none; }
+  html.rr-preload .rr-preloader { position: fixed; inset: 0; z-index: 10000; display: grid; place-items: center; align-content: center; gap: 22px; background: #000; animation: rr-pre-out .6s var(--rr-ease-in-out) 1.15s forwards; }
+  .rr-preloader__logo { width: 84px; height: auto; filter: brightness(0) invert(94%) sepia(6%) saturate(250%) hue-rotate(330deg); opacity: 0; animation: rr-pre-logo 1s var(--rr-ease-out) .1s forwards; }
+  .rr-preloader__line { width: 120px; height: 1px; background: rgb(243 236 230 / .2); position: relative; overflow: hidden; }
+  .rr-preloader__line::after { content: ''; position: absolute; inset: 0; background: var(--rr-ink); transform: scaleX(0); transform-origin: left; animation: rr-pre-line 1s var(--rr-ease-in-out) .1s forwards; }
+  @keyframes rr-pre-logo { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  @keyframes rr-pre-line { to { transform: scaleX(1); } }
+  @keyframes rr-pre-out { to { opacity: 0; visibility: hidden; } }
+
+  /* Scroll reveals (only for things that start below the fold; added by rr-motion.js). */
+  html.rr-motion .rr-rv { opacity: 0; transform: translate3d(0, 34px, 0); transition: opacity var(--rr-dur-slow) var(--rr-ease-out) var(--rr-delay, 0ms), transform var(--rr-dur-slow) var(--rr-ease-out) var(--rr-delay, 0ms); }
+  html.rr-motion .rr-rv.is-in { opacity: 1; transform: none; }
+  html.rr-motion .rr-unmask { clip-path: inset(12% 0 12% 0); transition: clip-path 1.3s var(--rr-ease-out) var(--rr-delay, 0ms); }
+  html.rr-motion .rr-unmask.is-in { clip-path: inset(0 0 0 0); }
+  .rr-par { will-change: transform; }
+
+  /* Hero headline: line rises out of a mask on load. */
+  html.rr-motion .rr-hero__caption > * { animation: rr-rise 1.1s var(--rr-ease-out) both; }
+  html.rr-motion .rr-hero__caption > :nth-child(2) { animation-delay: .12s; }
+  html.rr-motion .rr-hero__caption > :nth-child(3) { animation-delay: .24s; }
+  html.rr-motion.rr-preload .rr-hero__caption > * { animation-delay: 1.4s; }
+  html.rr-motion.rr-preload .rr-hero__caption > :nth-child(2) { animation-delay: 1.52s; }
+  @keyframes rr-rise { from { opacity: 0; transform: translateY(110%); clip-path: inset(0 0 100% 0); } to { opacity: 1; transform: none; clip-path: inset(0 0 0 0); } }
+
+  /* Custom cursor: desktop with a mouse only. */
+  .rr-cursor { display: none; }
+  @media (hover: hover) and (pointer: fine) {
+    html.rr-motion.rr-has-cursor, html.rr-motion.rr-has-cursor :is(a, button, label, summary, [role="button"]) { cursor: none; }
+    html.rr-motion.rr-has-cursor :is(input, textarea, select, [contenteditable]) { cursor: text; }
+    html.rr-motion .rr-cursor { display: block; position: fixed; inset: 0 auto auto 0; z-index: 9999; pointer-events: none; mix-blend-mode: difference; }
+    .rr-cursor__dot, .rr-cursor__ring { position: fixed; left: 0; top: 0; border-radius: 50%; transform: translate3d(var(--x, -100px), var(--y, -100px), 0) translate(-50%, -50%); }
+    .rr-cursor__dot { width: 6px; height: 6px; background: #fff; }
+    .rr-cursor__ring { width: 34px; height: 34px; border: 1px solid #fff; transform: translate3d(var(--rx, -100px), var(--ry, -100px), 0) translate(-50%, -50%) scale(var(--s, 1)); transition: width .3s var(--rr-ease-out), height .3s var(--rr-ease-out), opacity .3s; }
+    .rr-cursor.is-hover .rr-cursor__ring { width: 64px; height: 64px; }
+    .rr-cursor.is-hidden { opacity: 0; }
+  }
+  /* Magnetic buttons ease back when released. */
+  .rr-magnetic { transition: transform .5s var(--rr-ease-out); }
+  .rr-magnetic.is-pulling { transition: transform .12s linear; }
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+</style>
+<script src="{{ 'rr-lenis.min.js' | asset_url }}" defer></script>
+<script src="{{ 'rr-motion.js' | asset_url }}" defer></script>

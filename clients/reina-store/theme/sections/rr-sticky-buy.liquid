@@ -1,0 +1,57 @@
+{%- comment -%}
+  Reina Reichouni sticky buy bar (phones): appears once the main Buy buttons scroll out of view.
+  Shows the piece, its price and the chosen size; "Buy now" uses the page's own Buy it now button
+  (straight to checkout), falling back to Add to bag.
+{%- endcomment -%}
+{%- if product -%}
+<div class="rr-sticky" id="rr-sticky-{{ section.id }}" hidden>
+  <div class="rr-sticky__info">
+    <span class="rr-sticky__title">{{ product.title | escape }}</span>
+    <span class="rr-sticky__meta"><span data-rr-sticky-price>{{ product.selected_or_first_available_variant.price | money }}</span><span data-rr-sticky-size></span></span>
+  </div>
+  <button type="button" class="rr-sticky__buy"{% unless product.available %} disabled{% endunless %}>{% if product.available %}Buy now{% else %}Sold out{% endif %}</button>
+</div>
+<style>
+  #rr-sticky-{{ section.id }} { display: none; }
+  @media (max-width: 749px) {
+    #rr-sticky-{{ section.id }} { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; display: flex; align-items: center; gap: 12px; padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); background: rgb(0 0 0 / .82); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-top: 1px solid rgb(243 236 230 / .12); color: var(--rr-ink); transform: translateY(110%); transition: transform .45s var(--rr-ease-out); }
+    #rr-sticky-{{ section.id }}.is-shown { transform: none; }
+    #rr-sticky-{{ section.id }}[hidden] { display: none; }
+    .rr-sticky__info { flex: 1; min-width: 0; display: grid; gap: 2px; }
+    .rr-sticky__title { font: 400 11px var(--rr-sans); letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .rr-sticky__meta { display: flex; gap: 8px; font: 300 12px var(--rr-sans); opacity: .85; }
+    .rr-sticky__buy { flex: none; height: 44px; padding: 0 22px; border: 0; background: var(--rr-ink); color: #000; font: 400 11px var(--rr-sans); letter-spacing: .16em; text-transform: uppercase; cursor: pointer; }
+    .rr-sticky__buy:active { transform: scale(.97); }
+    .rr-sticky__buy:disabled { opacity: .45; }
+  }
+</style>
+<script>
+  (() => {
+    const bar = document.getElementById('rr-sticky-{{ section.id }}');
+    if (!bar) return;
+    bar.hidden = false;
+    const buttons = () => document.querySelector('.product-information .product-form-buttons');
+    const sizeEl = bar.querySelector('[data-rr-sticky-size]'), priceEl = bar.querySelector('[data-rr-sticky-price]');
+    const sync = () => {
+      const checked = document.querySelector('.product-information variant-picker input[type="radio"]:checked, .product-information .variant-picker input:checked');
+      const opts = [...document.querySelectorAll('.product-information variant-picker fieldset, .product-information .variant-picker fieldset')];
+      const size = opts.length ? opts[opts.length - 1].querySelector('input:checked')?.value : checked?.value;
+      sizeEl.textContent = size ? `· ${size}` : '';
+      const p = document.querySelector('.product-information product-price .price, .product-information .price');
+      if (p) priceEl.textContent = p.textContent.trim().split(/\s+/)[0];
+    };
+    document.addEventListener('change', sync); sync();
+    const target = buttons();
+    if (target) new IntersectionObserver(([e]) => bar.classList.toggle('is-shown', !e.isIntersecting && e.boundingClientRect.top < 0)).observe(target);
+    bar.querySelector('.rr-sticky__buy').addEventListener('click', () => {
+      const now = document.querySelector('.product-information .shopify-payment-button__button:not([disabled])');
+      const add = document.querySelector('.product-information .add-to-cart-button:not([disabled])');
+      (now || add)?.click();
+      if (!now && !add) target?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  })();
+</script>
+{%- endif -%}
+{% schema %}
+{ "name": "RR: sticky buy bar", "settings": [], "enabled_on": { "templates": ["product"] }, "presets": [{ "name": "RR: sticky buy bar" }] }
+{% endschema %}

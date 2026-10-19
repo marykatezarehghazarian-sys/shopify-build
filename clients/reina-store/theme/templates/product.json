@@ -273,37 +273,146 @@
               },
               "block_order": []
             },
-            "text_aEtTtq": {
-              "type": "text",
-              "name": "t:names.product_description",
-              "settings": {
-                "text": "{{ closest.product.description }}",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
             "rr_paynote": {
               "type": "custom-liquid",
               "settings": {
                 "custom_liquid": "<p class=\"rr-pay-note\">Pay by card or cash on delivery</p>"
               }
+            },
+            "rr_info": {
+              "type": "accordion",
+              "settings": {
+                "icon": "plus",
+                "dividers": true,
+                "type_preset": "h6",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0
+              },
+              "blocks": {
+                "details": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "Details",
+                    "open_by_default": true,
+                    "icon": "none",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "d_text": {
+                      "type": "text",
+                      "settings": {
+                        "text": "{{ closest.product.description }}",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "0.875rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "text_color": "",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "d_text"
+                  ]
+                },
+                "shipping": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "Shipping",
+                    "open_by_default": false,
+                    "icon": "none",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "s_text": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Orders are processed within 1–2 business days after payment. Estimated delivery is 4–7 business days, depending on your destination and the shipping method chosen at checkout. Shipping charges are calculated at checkout.</p><p><a href=\"/policies/shipping-policy\">Shipping policy</a></p>",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "0.875rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "text_color": "",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "s_text"
+                  ]
+                },
+                "returns": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "Returns",
+                    "open_by_default": false,
+                    "icon": "none",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "r_text": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Return requests must be submitted within 30 days of delivery. Items must be unworn, unwashed, in their original condition and with all tags attached. Eligible returns receive store credit; original shipping charges are non-refundable.</p><p><a href=\"/policies/refund-policy\">Returns &amp; store credit policy</a></p>",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "0.875rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "text_color": "",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "r_text"
+                  ]
+                }
+              },
+              "block_order": [
+                "details",
+                "shipping",
+                "returns"
+              ]
             }
           },
           "block_order": [
@@ -312,7 +421,7 @@
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
             "rr_paynote",
-            "text_aEtTtq"
+            "rr_info"
           ]
         }
       },
@@ -472,10 +581,15 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "rr_sticky": {
+      "type": "rr-sticky-buy",
+      "settings": {}
     }
   },
   "order": [
     "main",
+    "rr_sticky",
     "product_recommendations_qggXJq"
   ]
 }

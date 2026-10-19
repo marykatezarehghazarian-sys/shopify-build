@@ -1,0 +1,47 @@
+{%- comment -%}
+  Reina Reichouni FAQ: questions as accessible <details> rows (keyboard friendly), answers from the store policies.
+{%- endcomment -%}
+{%- assign s = section.settings -%}
+<section class="rr-faq" id="rr-faq-{{ section.id }}">
+  <h1 class="rr-faq__title">{{ s.heading | default: page.title | escape }}</h1>
+  {%- if s.intro != blank %}<div class="rr-faq__intro">{{ s.intro }}</div>{% endif -%}
+  <div class="rr-faq__list">
+    {%- for block in section.blocks -%}
+      <details class="rr-faq__item" {{ block.shopify_attributes }}>
+        <summary class="rr-faq__q">{{ block.settings.question | escape }}<span class="rr-faq__icon" aria-hidden="true"></span></summary>
+        <div class="rr-faq__a">{{ block.settings.answer }}</div>
+      </details>
+    {%- endfor -%}
+  </div>
+</section>
+<script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{%- for block in section.blocks -%}{"@type":"Question","name":{{ block.settings.question | json }},"acceptedAnswer":{"@type":"Answer","text":{{ block.settings.answer | strip_html | json }}}}{% unless forloop.last %},{% endunless %}{%- endfor -%}]}
+</script>
+<style>
+  #rr-faq-{{ section.id }} { max-width: 820px; margin: 0 auto; padding: clamp(64px, 10vw, 140px) 20px; color: var(--rr-ink); }
+  #rr-faq-{{ section.id }} .rr-faq__title { margin: 0 0 var(--rr-space-5); text-align: center; font-family: var(--rr-serif); font-weight: 300; font-size: var(--rr-display-md); letter-spacing: .02em; text-transform: uppercase; color: inherit; }
+  #rr-faq-{{ section.id }} .rr-faq__intro { text-align: center; font: 300 var(--rr-text-md)/1.7 var(--rr-sans); opacity: .85; margin-bottom: var(--rr-space-7); }
+  #rr-faq-{{ section.id }} .rr-faq__item { border-top: 1px solid rgb(243 236 230 / .18); }
+  #rr-faq-{{ section.id }} .rr-faq__item:last-child { border-bottom: 1px solid rgb(243 236 230 / .18); }
+  #rr-faq-{{ section.id }} .rr-faq__q { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 22px 2px; cursor: pointer; list-style: none; font-family: var(--rr-serif); font-size: clamp(1.1rem, 1.6vw, 1.35rem); font-weight: 400; }
+  #rr-faq-{{ section.id }} .rr-faq__q::-webkit-details-marker { display: none; }
+  #rr-faq-{{ section.id }} .rr-faq__q:focus-visible { outline: 1px solid var(--rr-ink); outline-offset: 4px; }
+  #rr-faq-{{ section.id }} .rr-faq__icon { position: relative; flex: none; width: 14px; height: 14px; }
+  #rr-faq-{{ section.id }} .rr-faq__icon::before, #rr-faq-{{ section.id }} .rr-faq__icon::after { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: currentColor; transition: transform var(--rr-dur-base) var(--rr-ease-out); }
+  #rr-faq-{{ section.id }} .rr-faq__icon::after { transform: rotate(90deg); }
+  #rr-faq-{{ section.id }} details[open] .rr-faq__icon::after { transform: rotate(0); }
+  #rr-faq-{{ section.id }} .rr-faq__a { padding: 0 2px 24px; max-width: 64ch; font: 300 var(--rr-text-md)/1.8 var(--rr-sans); opacity: .9; }
+  #rr-faq-{{ section.id }} .rr-faq__a p { margin: 0 0 .8em; }
+  #rr-faq-{{ section.id }} .rr-faq__a a { color: inherit; }
+  #rr-faq-{{ section.id }} details[open] .rr-faq__a { animation: rr-faq-in var(--rr-dur-base) var(--rr-ease-out); }
+  @keyframes rr-faq-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: .9; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { #rr-faq-{{ section.id }} details[open] .rr-faq__a { animation: none; } }
+</style>
+{% schema %}
+{
+  "name": "RR: FAQ",
+  "settings": [ { "type": "text", "id": "heading", "label": "Heading" }, { "type": "richtext", "id": "intro", "label": "Intro" } ],
+  "blocks": [ { "type": "qa", "name": "Question", "settings": [ { "type": "text", "id": "question", "label": "Question" }, { "type": "richtext", "id": "answer", "label": "Answer" } ] } ],
+  "presets": [{ "name": "RR: FAQ" }]
+}
+{% endschema %}

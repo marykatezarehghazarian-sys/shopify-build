@@ -1,0 +1,22 @@
+{%- comment -%} Reina Reichouni 404: quiet serif number over the starfield, two ways back. {%- endcomment -%}
+<section class="rr-404" id="rr-404-{{ section.id }}">
+  <p class="rr-404__num" aria-hidden="true">404</p>
+  <h1 class="rr-404__title">{{ section.settings.heading | escape }}</h1>
+  <p class="rr-404__text">{{ section.settings.text | escape }}</p>
+  <div class="rr-404__links">
+    <a class="rr-404__btn" href="{{ routes.root_url }}collections/all-products">Shop the collection</a>
+    <a class="rr-404__link" href="{{ routes.root_url }}">Back to home</a>
+  </div>
+</section>
+<style>
+  #rr-404-{{ section.id }} { min-height: 72vh; display: grid; place-content: center; justify-items: center; gap: 18px; padding: 120px 20px; text-align: center; color: var(--rr-ink); }
+  #rr-404-{{ section.id }} .rr-404__num { margin: 0; font-family: var(--rr-serif); font-weight: 300; font-size: clamp(6rem, 22vw, 15rem); line-height: .85; letter-spacing: -.03em; opacity: .9; }
+  #rr-404-{{ section.id }} .rr-404__title { margin: 0; font-family: var(--rr-serif); font-style: italic; font-weight: 400; font-size: var(--rr-display-sm); color: inherit; }
+  #rr-404-{{ section.id }} .rr-404__text { margin: 0; max-width: 40ch; font: 300 var(--rr-text-md)/1.7 var(--rr-sans); opacity: .85; }
+  #rr-404-{{ section.id }} .rr-404__links { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 22px; margin-top: 12px; }
+  #rr-404-{{ section.id }} .rr-404__btn { display: inline-grid; place-items: center; height: 46px; padding: 0 28px; background: var(--rr-ink); color: #000; text-decoration: none; font: 400 var(--rr-text-sm) var(--rr-sans); letter-spacing: .16em; text-transform: uppercase; }
+  #rr-404-{{ section.id }} .rr-404__link { color: inherit; font: 400 var(--rr-text-sm) var(--rr-sans); letter-spacing: .16em; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; }
+</style>
+{% schema %}
+{ "name": "RR: 404", "settings": [ { "type": "text", "id": "heading", "label": "Heading", "default": "This page drifted away" }, { "type": "text", "id": "text", "label": "Text", "default": "The page you're looking for doesn't exist or has moved." } ] }
+{% endschema %}

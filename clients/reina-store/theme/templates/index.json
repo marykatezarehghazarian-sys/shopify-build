@@ -120,13 +120,35 @@
         "padding_bottom": 0,
         "caption_color": "#111111"
       }
+    },
+    "story": {
+      "type": "rr-story",
+      "settings": {
+        "image": "shopify://shop_images/rr-story.jpg",
+        "eyebrow": "The house",
+        "heading": "Confident, elevated, timeless.",
+        "text": "<p>Founded by Lebanese fashion designer Reina Reichouni, the brand was born from a love for timeless design and the belief that clothing should make a woman feel confident, elegant, and effortlessly herself.</p><p>Each piece is thoughtfully designed to balance femininity and strength through refined details, effortless silhouettes, and lasting quality. Produced in limited quantities, every collection is created with a sense of exclusivity and intention.</p>",
+        "link_label": "About us",
+        "link": "/pages/aboutus"
+      }
+    },
+    "look": {
+      "type": "rr-lookbook",
+      "settings": {
+        "heading": "Lookbook",
+        "collection": "formation-summer-26",
+        "limit": 14,
+        "link_label": "Shop the collection"
+      }
     }
   },
   "order": [
     "hero",
     "rail",
     "split",
+    "story",
     "front",
+    "look",
     "feature"
   ]
 }
