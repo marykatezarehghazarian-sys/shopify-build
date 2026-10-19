@@ -24,7 +24,7 @@
 </section>
 
 <style>
-  #rr-hero-{{ section.id }} { position: relative; height: var(--rr-hero-h); min-height: 460px; overflow: hidden; color: {{ s.text_color }}; background: #e9e6e2; }
+  #rr-hero-{{ section.id }} { position: relative; height: var(--rr-hero-h); min-height: 460px; overflow: hidden; color: {{ s.text_color }}; background: #000; }
   #rr-hero-{{ section.id }} .rr-hero__media, #rr-hero-{{ section.id }} .rr-hero__video, #rr-hero-{{ section.id }} .rr-hero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: {{ s.focal }}; }
   #rr-hero-{{ section.id }} .rr-hero__shade { position: absolute; inset: 0; background: linear-gradient(to top, rgb(0 0 0 / {{ s.shade | divided_by: 100.0 }}), transparent 45%); }
   #rr-hero-{{ section.id }} .rr-hero__caption { position: absolute; z-index: 1; bottom: clamp(28px, 6vh, 64px); display: grid; gap: 10px; justify-items: inherit; }

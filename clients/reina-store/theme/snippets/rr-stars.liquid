@@ -1,0 +1,67 @@
+{%- comment -%}
+  Reina Reichouni: black background with a slow 3D starfield behind every page.
+  Stars drift towards the viewer with perspective (closer = bigger, brighter, faster), twinkle softly
+  and follow the mouse a little. Pauses when the tab is hidden; still stars with reduced motion.
+{%- endcomment -%}
+<canvas class="rr-stars" aria-hidden="true"></canvas>
+<style>
+  html { background: #000 !important; }
+  body { background: transparent !important; }
+  .rr-stars { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; display: block; background: #000; }
+  /* Let the stars show through page and section backgrounds. */
+  main :is(.shopify-section, .section-background, .section, .hero, .rr-rail, .rr-text, .rr-contact),
+  .shopify-section-group-footer-group, .rr-footer,
+  #MainContent, .content-for-layout { background-color: transparent !important; }
+  /* Header: dark glass so the menu stays readable over photos while scrolling. */
+  #header-group .header__row, #header-group header-component, #header-group .header {
+    --header-bg-color: rgb(0 0 0 / .55);
+    background-color: rgb(0 0 0 / .55) !important;
+    -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  }
+</style>
+<script>
+  (() => {
+    const c = document.querySelector('canvas.rr-stars');
+    if (!c || c.dataset.ready) return;
+    c.dataset.ready = '1';
+    const ctx = c.getContext('2d');
+    const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let W = 0, H = 0, dpr = 1, stars = [], mx = 0, my = 0, tx = 0, ty = 0, raf = 0, last = 0;
+    const DEPTH = 1000, SPEED = 0.045; // depth units per ms (slow drift)
+    const count = () => Math.round(Math.min(420, Math.max(140, (innerWidth * innerHeight) / 4200)));
+    const spawn = (s, z) => {
+      s.x = (Math.random() - 0.5) * 2 * W; s.y = (Math.random() - 0.5) * 2 * H;
+      s.z = z ?? Math.random() * DEPTH; s.tw = Math.random() * Math.PI * 2;
+      s.warm = Math.random() < 0.18; return s;
+    };
+    const resize = () => {
+      dpr = Math.min(devicePixelRatio || 1, 2); W = innerWidth; H = innerHeight;
+      c.width = W * dpr; c.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const n = count(); while (stars.length < n) stars.push(spawn({})); stars.length = n;
+      if (still) draw(0, 0);
+    };
+    const draw = (t, dt) => {
+      ctx.clearRect(0, 0, W, H);
+      tx += (mx - tx) * 0.04; ty += (my - ty) * 0.04;
+      const cx = W / 2 + tx * 30, cy = H / 2 + ty * 30, f = W * 0.5;
+      for (const s of stars) {
+        if (dt) { s.z -= SPEED * dt; if (s.z < 1) spawn(s, DEPTH); }
+        const k = f / s.z, x = cx + s.x * k * 0.5, y = cy + s.y * k * 0.5;
+        if (x < -10 || x > W + 10 || y < -10 || y > H + 10) { if (dt) spawn(s, DEPTH); continue; }
+        const near = 1 - s.z / DEPTH;
+        const r = 0.45 + near * near * 1.9;
+        const a = Math.min(1, 0.3 + near * 0.9) * (0.75 + 0.25 * Math.sin(t / 600 + s.tw));
+        ctx.globalAlpha = a;
+        ctx.fillStyle = s.warm ? '#f3dccd' : '#ffffff';
+        ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+    };
+    const loop = (t) => { const dt = last ? Math.min(t - last, 50) : 16; last = t; draw(t, dt); raf = requestAnimationFrame(loop); };
+    addEventListener('resize', resize, { passive: true });
+    addEventListener('pointermove', (e) => { mx = e.clientX / innerWidth - 0.5; my = e.clientY / innerHeight - 0.5; }, { passive: true });
+    document.addEventListener('visibilitychange', () => { cancelAnimationFrame(raf); last = 0; if (!document.hidden && !still) raf = requestAnimationFrame(loop); });
+    resize();
+    if (!still) raf = requestAnimationFrame(loop);
+  })();
+</script>

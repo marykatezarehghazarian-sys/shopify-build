@@ -13,7 +13,8 @@
   @font-face { font-family: 'RR Playfair'; src: url('{{ 'rr-playfair-display.woff2' | asset_url }}') format('woff2'); font-weight: 400 900; font-display: swap; }
 
   :root {
-    --rr-ink: #642226;
+    --rr-ink: #F3ECE6;
+    --rr-burgundy: #642226;
     --rr-serif: 'RR Cormorant', 'Cormorant Garamond', Georgia, serif;
     --rr-sans: 'RR Inter', Inter, Helvetica, Arial, sans-serif;
     --rr-didot: 'RR Bodoni', 'Bodoni Moda', Didot, serif;
@@ -68,7 +69,7 @@
   .rr-card__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity .5s ease; }
   .rr-card__img--alt { opacity: 0; }
   @media (hover: hover) { .rr-card:hover .rr-card__img--alt { opacity: 1; } }
-  .rr-card__badge { position: absolute; left: 10px; top: 10px; font: 400 10px var(--rr-sans); letter-spacing: .1em; text-transform: uppercase; color: var(--rr-ink); background: rgb(255 255 255 / .85); padding: 4px 7px; }
+  .rr-card__badge { position: absolute; left: 10px; top: 10px; font: 400 10px var(--rr-sans); letter-spacing: .1em; text-transform: uppercase; color: var(--rr-ink); background: rgb(0 0 0 / .7); padding: 4px 7px; }
   .rr-card__info { display: flex; justify-content: space-between; gap: 12px; padding: 10px 2px 0; color: var(--rr-ink); text-decoration: none; font: 400 11px/1.4 var(--rr-sans); letter-spacing: .08em; text-transform: uppercase; }
   .rr-card__price { white-space: nowrap; }
   .rr-card__price s { opacity: .55; margin-inline-end: 4px; }
@@ -81,17 +82,21 @@
   .rr-card [data-rr-qb], .card-gallery [data-rr-qb] { position: absolute; right: 10px; bottom: 10px; z-index: 3; }
   .rr-card__frame { position: relative; }
   .card-gallery { position: relative; }
-  .rr-qb__toggle { display: grid; place-items: center; width: 36px; height: 36px; border: 0; border-radius: 50%; background: rgb(255 255 255 / .92); color: var(--rr-ink); cursor: pointer; box-shadow: 0 1px 6px rgb(0 0 0 / .08); transition: transform .2s ease; }
+  .rr-qb__toggle { display: grid; place-items: center; width: 36px; height: 36px; border: 0; border-radius: 50%; background: rgb(0 0 0 / .72); color: var(--rr-ink); cursor: pointer; box-shadow: 0 1px 6px rgb(0 0 0 / .08); transition: transform .2s ease; }
   .rr-qb__toggle:hover { transform: scale(1.06); }
   .rr-qb__toggle:disabled { display: none; }
-  .rr-qb__panel { position: absolute; right: 0; bottom: 44px; width: max-content; min-width: 168px; max-width: 240px; padding: 12px; background: #fff; color: var(--rr-ink); box-shadow: 0 8px 28px rgb(0 0 0 / .14); }
+  .rr-qb__panel { position: absolute; right: 0; bottom: 44px; width: max-content; min-width: 168px; max-width: 240px; padding: 12px; background: #0b0b0b; color: var(--rr-ink); border: 1px solid rgb(243 236 230 / .18); box-shadow: 0 8px 28px rgb(0 0 0 / .5); }
   .rr-qb__label { margin: 0 0 8px; font: 400 10px var(--rr-sans); letter-spacing: .14em; text-transform: uppercase; }
   .rr-qb__sizes { display: flex; flex-wrap: wrap; gap: 6px; }
-  .rr-qb__size { min-width: 40px; height: 34px; padding: 0 10px; border: 1px solid rgb(100 34 38 / .35); background: #fff; color: var(--rr-ink); font: 400 11px var(--rr-sans); letter-spacing: .06em; text-transform: uppercase; cursor: pointer; }
-  .rr-qb__size:hover:not(:disabled), .rr-qb__size:focus-visible { border-color: var(--rr-ink); background: var(--rr-ink); color: #fff; }
+  .rr-qb__size { min-width: 40px; height: 34px; padding: 0 10px; border: 1px solid rgb(243 236 230 / .35); background: transparent; color: var(--rr-ink); font: 400 11px var(--rr-sans); letter-spacing: .06em; text-transform: uppercase; cursor: pointer; }
+  .rr-qb__size:hover:not(:disabled), .rr-qb__size:focus-visible { border-color: var(--rr-ink); background: var(--rr-ink); color: #000; }
   .rr-qb__size:disabled { opacity: .4; text-decoration: line-through; cursor: not-allowed; }
-  .rr-qb__size[aria-busy="true"] { background: var(--rr-ink); color: #fff; }
+  .rr-qb__size[aria-busy="true"] { background: var(--rr-ink); color: #000; }
   .rr-qb__status { margin: 8px 0 0; font: 400 10.5px var(--rr-sans); }
   .rr-qb__status:empty { display: none; }
+
+  /* ---------- On black: burgundy logo artwork shown in ivory ---------- */
+  #header-group :is(.header-logo, .header__logo) img, .rr-footer__wm { filter: brightness(0) invert(94%) sepia(6%) saturate(250%) hue-rotate(330deg); }
+  .rr-card__media, .card-gallery { background: #111 !important; }
 </style>
 <script src="{{ 'rr-quick-bag.js' | asset_url }}" defer></script>

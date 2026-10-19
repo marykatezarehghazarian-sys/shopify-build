@@ -50,7 +50,7 @@
     "badge_corner_radius": 0,
     "badge_sale_background_color": "{{ settings.color_palette.background }}",
     "badge_sale_text_color": "{{ settings.color_palette.foreground }}",
-    "badge_sold_out_background_color": "#eef1ea",
+    "badge_sold_out_background_color": "#000000",
     "badge_sold_out_text_color": "{{ settings.color_palette.foreground }}",
     "badge_text_transform": "uppercase",
     "palette_primary_button_background": "{{ settings.color_palette.foreground }}",
@@ -102,10 +102,10 @@
     "variant_button_radius": 0,
     "variant_button_width": "equal-width-buttons",
     "color_palette": {
-      "background": "#ffffff",
-      "foreground": "#642226",
-      "color1": "#642226",
-      "color2": "#E8DCDC"
+      "background": "#000000",
+      "foreground": "#F3ECE6",
+      "color1": "#F3ECE6",
+      "color2": "#3A3533"
     },
     "logo": "shopify://shop_images/rr-monogram.png"
   },

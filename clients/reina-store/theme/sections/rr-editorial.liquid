@@ -29,7 +29,7 @@
 <style>
   #rr-ed-{{ section.id }} { display: grid; grid-template-columns: repeat(var(--rr-ed-cols), minmax(0, 1fr)); gap: {{ s.gap }}px; padding: {{ s.padding_top }}px {% if s.full_width %}0{% else %}max(16px, 2.2vw){% endif %} {{ s.padding_bottom }}px; }
   #rr-ed-{{ section.id }} .rr-ed__item { position: relative; display: block; color: var(--rr-ink); text-decoration: none; }
-  #rr-ed-{{ section.id }} .rr-ed__media { position: relative; display: block; aspect-ratio: {{ s.ratio }}; overflow: hidden; background: #efeeec; }
+  #rr-ed-{{ section.id }} .rr-ed__media { position: relative; display: block; aspect-ratio: {{ s.ratio }}; overflow: hidden; background: #111; }
   #rr-ed-{{ section.id }} .rr-ed__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s cubic-bezier(.2, .7, .2, 1); }
   @media (hover: hover) { #rr-ed-{{ section.id }} .rr-ed__item:hover .rr-ed__img { transform: scale(1.03); } }
   #rr-ed-{{ section.id }} .rr-ed__caption { display: grid; justify-items: center; gap: 6px; text-align: center; }
