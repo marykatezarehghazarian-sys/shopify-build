@@ -47,5 +47,8 @@ What that means for the brief:
   quantity can still be changed in the bag.
 - **Size/colour filters**: need Shopify's Search & Discovery app filter setup in Admin (one click per filter).
 
+## Status (2026-10-19)
+All items in "Missing" are built, tested on desktop / tablet / phone and live on theme "Reina Reichouni - v2" (189306732848). Lighthouse could not run behind the store password (see HANDOVER.md).
+
 ## Build order
 tokens → motion layer → home sections → product page → FAQ / Shipping & Returns / 404 → SEO → QA → commit

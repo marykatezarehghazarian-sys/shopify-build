@@ -21,21 +21,26 @@
     const raf = (t) => { lenis.raf(t); requestAnimationFrame(raf); };
     requestAnimationFrame(raf);
     // Pause while a modal or drawer is open so the page behind stays put.
-    new MutationObserver(() => {
-      const open = document.querySelector('dialog[open], body.overflow-hidden, html.scroll-lock') || getComputedStyle(document.body).overflow === 'hidden';
-      open ? lenis.stop() : lenis.start();
-    }).observe(document.body, { attributes: true, subtree: true, attributeFilter: ['open', 'class', 'style'] });
+    // Horizon marks a locked page with <html scroll-lock> (drawers, menus, modals).
+    const sync = () => (root.hasAttribute('scroll-lock') || document.querySelector('dialog[open][aria-modal="true"], dialog[open]:modal') ? lenis.stop() : lenis.start());
+    new MutationObserver(sync).observe(root, { attributes: true, attributeFilter: ['scroll-lock'] });
+    new MutationObserver(sync).observe(document.body, { attributes: true, subtree: true, attributeFilter: ['open'] });
     window.rrLenis = lenis;
   }
 
   /* ---------- Scroll reveals ---------- */
+  const show = (el) => { el.classList.add('is-in'); io.unobserve(el); pending.delete(el); };
+  const pending = new Set();
   const io = new IntersectionObserver((entries) => {
-    for (const e of entries) {
-      if (!e.isIntersecting) continue;
-      e.target.classList.add('is-in');
-      io.unobserve(e.target);
-    }
+    for (const e of entries) if (e.isIntersecting || e.boundingClientRect.top < 0) show(e.target);
   }, { rootMargin: '0px 0px -10% 0px', threshold: 0.12 });
+  // Safety net for fast flings: anything that has reached the viewport (or passed it) is shown.
+  let sweepQueued = false;
+  const sweep = () => {
+    sweepQueued = false;
+    for (const el of pending) if (el.getBoundingClientRect().top < innerHeight * 0.95) show(el);
+  };
+  addEventListener('scroll', () => { if (!sweepQueued && pending.size) { sweepQueued = true; requestAnimationFrame(sweep); } }, { passive: true });
   const below = (el) => el.getBoundingClientRect().top > innerHeight * 0.92;
   const TEXT = 'main :is(h1, h2, .rr-rail__heading, .rr-ed__caption, .rr-story__text > *, .rr-faq__item, .rr-text__body > *, .rr-contact__form > *)';
   const CARDS = 'main :is(.rr-rail__item, .product-grid__item, .rr-look__item)';
@@ -51,6 +56,7 @@
       groups.set(parent, i + 1);
       el.style.setProperty('--rr-delay', `${(i % 6) * 80}ms`);
       el.classList.add('rr-rv');
+      pending.add(el);
       io.observe(el);
     });
     document.querySelectorAll(MASKS).forEach((el) => {
@@ -58,6 +64,7 @@
       el.dataset.rr = '1';
       if (!below(el)) return;
       el.classList.add('rr-unmask');
+      pending.add(el);
       io.observe(el);
     });
   };
@@ -124,7 +131,7 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
   addEventListener('load', init);
   // Content added later (filters, pagination, theme editor).
-  let pending = false;
-  new MutationObserver(() => { if (pending) return; pending = true; requestAnimationFrame(() => { pending = false; init(); }); })
+  let initQueued = false;
+  new MutationObserver(() => { if (initQueued) return; initQueued = true; requestAnimationFrame(() => { initQueued = false; init(); }); })
     .observe(document.querySelector('main') || document.body, { childList: true, subtree: true });
 })();
