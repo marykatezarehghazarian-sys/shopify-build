@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "main": {
+      "type": "rr-contact",
+      "settings": {
+        "heading": "Contact us",
+        "text": "",
+        "success": "Thank you. We'll get back to you soon."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

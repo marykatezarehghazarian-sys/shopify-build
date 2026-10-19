@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "rr-page-text",
+      "settings": {
+        "show_title": true
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,0 +1,51 @@
+{%- comment -%}
+  Reina Reichouni contact page: the original's form (First name*, Last name, Email*, Write a message).
+  Submissions go to the store's contact email via Shopify's contact form.
+{%- endcomment -%}
+{%- assign s = section.settings -%}
+<section class="rr-contact" id="rr-contact-{{ section.id }}">
+  {%- if s.heading != blank %}<h1 class="rr-contact__heading">{{ s.heading | escape }}</h1>{% endif -%}
+  {%- if s.text != blank %}<div class="rr-contact__text">{{ s.text }}</div>{% endif -%}
+  {%- form 'contact', id: 'rr-contact-form', class: 'rr-contact__form' -%}
+    {%- if form.posted_successfully? -%}
+      <p class="rr-contact__ok" role="status">{{ s.success | escape }}</p>
+    {%- else -%}
+      {%- if form.errors -%}<p class="rr-contact__err" role="alert">{{ form.errors | default_errors }}</p>{%- endif -%}
+      <div class="rr-contact__row">
+        <label class="rr-contact__field"><span>First name*</span><input type="text" name="contact[first_name]" required autocomplete="given-name" value="{{ form.first_name }}"></label>
+        <label class="rr-contact__field"><span>Last name</span><input type="text" name="contact[last_name]" autocomplete="family-name" value="{{ form.last_name }}"></label>
+      </div>
+      <label class="rr-contact__field"><span>Email*</span><input type="email" name="contact[email]" required autocomplete="email" value="{{ form.email }}"></label>
+      <label class="rr-contact__field"><span>Write a message</span><textarea name="contact[body]" rows="5">{{ form.body }}</textarea></label>
+      <button type="submit" class="rr-contact__submit">Submit</button>
+    {%- endif -%}
+  {%- endform -%}
+</section>
+
+<style>
+  #rr-contact-{{ section.id }} { max-width: 640px; margin: 0 auto; padding: clamp(56px, 9vw, 120px) 20px clamp(56px, 8vw, 100px); color: var(--rr-ink); }
+  #rr-contact-{{ section.id }} .rr-contact__heading { margin: 0 0 14px; text-align: center; font-family: var(--rr-serif); font-weight: 400; font-size: clamp(1.8rem, 3vw, 2.4rem); letter-spacing: .04em; text-transform: uppercase; color: inherit; }
+  #rr-contact-{{ section.id }} .rr-contact__text { text-align: center; font: 300 14px/1.7 var(--rr-sans); margin-bottom: 30px; }
+  #rr-contact-{{ section.id }} .rr-contact__form { display: grid; gap: 22px; }
+  #rr-contact-{{ section.id }} .rr-contact__row { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  #rr-contact-{{ section.id }} .rr-contact__field { display: grid; gap: 6px; }
+  #rr-contact-{{ section.id }} .rr-contact__field span { font: 400 11px var(--rr-sans); letter-spacing: .12em; text-transform: uppercase; }
+  #rr-contact-{{ section.id }} :is(input, textarea) { width: 100%; border: 0; border-bottom: 1px solid currentColor; border-radius: 0; background: none; padding: 8px 0; font: 300 15px var(--rr-sans); color: inherit; resize: vertical; }
+  #rr-contact-{{ section.id }} :is(input, textarea):focus-visible { outline: 1px solid var(--rr-ink); outline-offset: 4px; }
+  #rr-contact-{{ section.id }} .rr-contact__submit { justify-self: center; min-width: 220px; height: 46px; margin-top: 8px; border: 1px solid var(--rr-ink); background: var(--rr-ink); color: #fff; font: 400 12px var(--rr-sans); letter-spacing: .16em; text-transform: uppercase; cursor: pointer; }
+  #rr-contact-{{ section.id }} .rr-contact__submit:hover { background: #fff; color: var(--rr-ink); }
+  #rr-contact-{{ section.id }} :is(.rr-contact__ok, .rr-contact__err) { text-align: center; font: 300 14px var(--rr-sans); }
+  @media (max-width: 749px) { #rr-contact-{{ section.id }} .rr-contact__row { grid-template-columns: 1fr; } }
+</style>
+
+{% schema %}
+{
+  "name": "RR: contact form",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Contact us" },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "text", "id": "success", "label": "Thank-you message", "default": "Thank you. We'll get back to you soon." }
+  ],
+  "presets": [{ "name": "RR: contact form" }]
+}
+{% endschema %}
