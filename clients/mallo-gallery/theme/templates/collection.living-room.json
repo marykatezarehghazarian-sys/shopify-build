@@ -126,7 +126,7 @@
             "card-gallery": {
               "type": "_product-card-gallery",
               "settings": {
-                "image_ratio": "portrait",
+                "image_ratio": "square",
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
@@ -210,8 +210,9 @@
       "type": "mallo-rooms",
       "settings": {
         "heading": "Shop the living room",
-        "subheading": "Sofas and accent chairs, made in our own factory",
-        "padding": 40
+        "subheading": "Sofas, sectionals, modular sofas, sets and accent chairs, made in our own factory",
+        "padding": 40,
+        "max_columns": 3
       },
       "blocks": {
         "r1": {
@@ -224,6 +225,34 @@
         "r2": {
           "type": "room",
           "settings": {
+            "collection": "sectional-sofas",
+            "title": "Sectionals & Corner Sofas"
+          }
+        },
+        "r3": {
+          "type": "room",
+          "settings": {
+            "collection": "modular-sofas",
+            "title": "Modular Sofas"
+          }
+        },
+        "r4": {
+          "type": "room",
+          "settings": {
+            "collection": "living-room-sets",
+            "title": "Living Room Sets"
+          }
+        },
+        "r5": {
+          "type": "room",
+          "settings": {
+            "collection": "loveseats-chaises",
+            "title": "Loveseats & Chaises"
+          }
+        },
+        "r6": {
+          "type": "room",
+          "settings": {
             "collection": "accent-chairs",
             "title": "Accent Chairs"
           }
@@ -231,7 +260,11 @@
       },
       "block_order": [
         "r1",
-        "r2"
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6"
       ]
     },
     "living_quote": {

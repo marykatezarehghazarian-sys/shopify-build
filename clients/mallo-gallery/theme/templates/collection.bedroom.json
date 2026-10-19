@@ -126,7 +126,7 @@
             "card-gallery": {
               "type": "_product-card-gallery",
               "settings": {
-                "image_ratio": "portrait",
+                "image_ratio": "square",
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
@@ -232,7 +232,8 @@
           "type": "room",
           "settings": {
             "collection": "kids-bedroom",
-            "title": "Kids Bedroom"
+            "title": "Kids Bedroom",
+            "product": "stellar-high-back-bed"
           }
         }
       },
@@ -253,11 +254,57 @@
         "whatsapp_message": "Hello Mallo Gallery, I would like a quotation for a full bedroom.",
         "padding": 24
       }
+    },
+    "bedroom_styles": {
+      "type": "mallo-rooms",
+      "settings": {
+        "heading": "Shop by style",
+        "subheading": "Upholstered, statement, modern platform and wooden beds",
+        "padding": 40,
+        "max_columns": 4
+      },
+      "blocks": {
+        "s1": {
+          "type": "room",
+          "settings": {
+            "collection": "upholstered-beds",
+            "title": "Upholstered Beds"
+          }
+        },
+        "s2": {
+          "type": "room",
+          "settings": {
+            "collection": "statement-beds",
+            "title": "Statement Beds"
+          }
+        },
+        "s3": {
+          "type": "room",
+          "settings": {
+            "collection": "platform-beds",
+            "title": "Modern Platform Beds"
+          }
+        },
+        "s4": {
+          "type": "room",
+          "settings": {
+            "collection": "wooden-beds",
+            "title": "Wooden Beds"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ]
     }
   },
   "order": [
     "section",
     "bedroom_rooms",
+    "bedroom_styles",
     "bedroom_quote",
     "main"
   ]

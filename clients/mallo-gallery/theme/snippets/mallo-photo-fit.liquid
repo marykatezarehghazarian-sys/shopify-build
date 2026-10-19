@@ -1,0 +1,18 @@
+{%- comment -%}
+  Mallo Gallery: show the WHOLE product photo everywhere (no cropping).
+  Product cards keep one square frame so the grid stays even, and the photo is fitted inside it
+  on a soft sand background. Furniture photos are mostly wide room shots, so cropping cut the pieces off.
+{%- endcomment -%}
+<style>
+  product-card .card-gallery,
+  product-card .card-gallery .product-media-container,
+  product-card .card-gallery slideshow-slide {
+    background: #F4EFE7;
+  }
+  product-card .card-gallery :is(img, .product-media__image) {
+    object-fit: contain !important;
+    object-position: center !important;
+  }
+  /* Room tiles (Shop the bedroom / living room): whole photo too */
+  .mallo-rooms__media img { object-fit: contain !important; background: #F4EFE7; }
+</style>
