@@ -20,3 +20,5 @@ Access: Dev Dashboard app (client ID + secret in .env), broad scopes incl. produ
 
 ## Decisions & notes
 - Slug `reina-store` is provisional until the brand name is known; rename the folder and client.json name then.
+- 2026-10-19: Brand is **Reina Reichouni** (womenswear, Lebanese designer). Job: 1:1 migration of reinareichouni.com (Wix Stores) to Shopify. Audit in `migration/AUDIT.md`, scraped product data in `migration/source-products.json`, original-site screenshots in `migration/reference/`. Stage 1 (audit) awaiting approval; nothing built yet. Rule from the brief: no content changes; flag anything that can't map 1:1.
+- Brand colour #642226 on white; fonts Kepler/Inter/Didot italic/Playfair Display/Avenir/Aboreto (see audit §4).
