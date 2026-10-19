@@ -1,0 +1,63 @@
+{%- comment -%}
+  Reina Reichouni: brand fonts and site-wide styling to match the original reinareichouni.com.
+  The original's licensed Wix fonts are replaced with free look-alikes (approved):
+  Kepler → Cormorant Garamond, Didot Italic → Bodoni Moda Italic, Avenir Light → Nunito Sans.
+  Inter, Playfair Display and Aboreto are the same fonts the original uses.
+{%- endcomment -%}
+<style>
+  @font-face { font-family: 'RR Cormorant'; src: url('{{ 'rr-cormorant-garamond.woff2' | asset_url }}') format('woff2'); font-weight: 300 700; font-display: swap; }
+  @font-face { font-family: 'RR Inter'; src: url('{{ 'rr-inter.woff2' | asset_url }}') format('woff2'); font-weight: 100 900; font-display: swap; }
+  @font-face { font-family: 'RR Bodoni'; src: url('{{ 'rr-bodoni-moda-italic.woff2' | asset_url }}') format('woff2'); font-style: italic; font-weight: 400 900; font-display: swap; }
+  @font-face { font-family: 'RR Nunito'; src: url('{{ 'rr-nunito-sans.woff2' | asset_url }}') format('woff2'); font-weight: 200 1000; font-display: swap; }
+  @font-face { font-family: 'RR Aboreto'; src: url('{{ 'rr-aboreto.woff2' | asset_url }}') format('woff2'); font-weight: 400; font-display: swap; }
+  @font-face { font-family: 'RR Playfair'; src: url('{{ 'rr-playfair-display.woff2' | asset_url }}') format('woff2'); font-weight: 400 900; font-display: swap; }
+
+  :root {
+    --rr-ink: #642226;
+    --rr-serif: 'RR Cormorant', 'Cormorant Garamond', Georgia, serif;
+    --rr-sans: 'RR Inter', Inter, Helvetica, Arial, sans-serif;
+    --rr-didot: 'RR Bodoni', 'Bodoni Moda', Didot, serif;
+    --rr-avenir: 'RR Nunito', 'Nunito Sans', Avenir, sans-serif;
+    --rr-aboreto: 'RR Aboreto', Aboreto, serif;
+    --rr-playfair: 'RR Playfair', 'Playfair Display', serif;
+    --font-body--family: var(--rr-sans);
+    --font-body--weight: 300;
+    --font-subheading--family: var(--rr-sans);
+    --font-subheading--weight: 300;
+    --font-heading--family: var(--rr-serif);
+    --font-heading--weight: 400;
+    --font-accent--family: var(--rr-serif);
+    --font-accent--weight: 400;
+  }
+
+  /* ---------- Header: links left with thin dividers, monogram centred, Search / Cart / Log In right ---------- */
+  #header-component .menu-list__link,
+  #header-component .menu-list__list-item > a {
+    font-family: var(--rr-sans);
+    font-weight: 300;
+    font-size: 10px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: var(--rr-ink);
+  }
+  #header-component .menu-list__list-item + .menu-list__list-item { border-inline-start: 1px solid var(--rr-ink); }
+  #header-component .menu-list__list-item { padding-inline: 0; }
+  #header-component .menu-list__link { padding-inline: 12px; }
+  #header-component .header-actions__action,
+  #header-component .header-actions__text-style {
+    font-family: var(--rr-sans);
+    font-weight: 300;
+    font-size: 12px;
+    text-transform: none;
+    color: var(--rr-ink);
+  }
+
+  /* ---------- Buttons: square, serif labels in capitals ---------- */
+  .button, .button-secondary, .shopify-payment-button__button {
+    border-radius: 0 !important;
+    font-family: var(--rr-serif);
+    font-size: 14px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+</style>
