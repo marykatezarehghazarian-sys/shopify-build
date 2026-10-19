@@ -18,7 +18,7 @@
 3. Settings → Payments: **Cash on Delivery** (Manual payment methods → Cash on Delivery) and a **card provider** (areeba / NetCommerce app; Shopify Payments isn't available in Lebanon)
 4. Settings → Shipping and delivery: add your rates (Lebanon, and any countries you ship to)
 5. Settings → Notifications / Store details: set the sender email and the contact email (contact form messages go there)
-6. Online Store → Themes: **Publish "Reina Reichouni - Build"** (or tell Claude to do it)
+6. [x] Theme "Reina Reichouni - Build" published (2026-10-19, still behind the password)
 7. Settings → Domains: connect **reinareichouni.com** (point DNS from Wix to Shopify; Wix shows the DNS settings under Domains)
 8. Online Store → Preferences: **remove the password** when you're ready to open
 9. Optional: Settings → Policies → turn off automatic management of the Privacy policy if you want the Wix privacy text at /policies/privacy-policy too (it's already on /pages/privacy-policy, linked from the footer)
