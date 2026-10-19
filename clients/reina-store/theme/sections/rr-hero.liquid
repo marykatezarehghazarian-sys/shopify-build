@@ -35,8 +35,22 @@
   #rr-hero-{{ section.id }} .rr-hero__title { margin: 0; font-family: var(--rr-serif); font-style: italic; font-weight: 400; font-size: clamp(1.9rem, 3.4vw, 3rem); line-height: 1.05; color: inherit; letter-spacing: .01em; }
   #rr-hero-{{ section.id }} .rr-hero__link { font: 400 11px var(--rr-sans); letter-spacing: .14em; text-transform: uppercase; color: inherit; text-decoration: none; padding-bottom: 3px; border-bottom: 1px solid currentColor; }
   @media (max-width: 749px) { #rr-hero-{{ section.id }} { height: var(--rr-hero-h-m); } }
-  @media (prefers-reduced-motion: reduce) { #rr-hero-{{ section.id }} .rr-hero__video { display: none; } }
 </style>
+<script>
+  // Start the hero video as soon as possible. Some phones (iPhone Low Power Mode, data saver) block
+  // autoplay; then it starts on the visitor's first tap or scroll instead of staying on the still image.
+  (() => {
+    const v = document.querySelector('#rr-hero-{{ section.id }} .rr-hero__video');
+    if (!v) return;
+    v.muted = true;
+    const go = () => { if (v.paused) v.play().catch(() => {}); };
+    go();
+    v.addEventListener('loadeddata', go, { once: true });
+    const kick = () => { go(); if (!v.paused) ['touchstart', 'pointerdown', 'scroll', 'keydown'].forEach((e) => removeEventListener(e, kick)); };
+    ['touchstart', 'pointerdown', 'scroll', 'keydown'].forEach((e) => addEventListener(e, kick, { passive: true }));
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) go(); });
+  })();
+</script>
 
 {% schema %}
 {
