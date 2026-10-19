@@ -61,4 +61,37 @@
     letter-spacing: 0;
     text-transform: uppercase;
   }
+
+  /* ---------- Product cards (homepage rails and Horizon grids): photo, then name and price in small capitals ---------- */
+  .rr-card { position: relative; }
+  .rr-card__media { position: relative; display: block; aspect-ratio: 2 / 3; overflow: hidden; background: #f1efed; }
+  .rr-card__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity .5s ease; }
+  .rr-card__img--alt { opacity: 0; }
+  @media (hover: hover) { .rr-card:hover .rr-card__img--alt { opacity: 1; } }
+  .rr-card__badge { position: absolute; left: 10px; top: 10px; font: 400 10px var(--rr-sans); letter-spacing: .1em; text-transform: uppercase; color: var(--rr-ink); background: rgb(255 255 255 / .85); padding: 4px 7px; }
+  .rr-card__info { display: flex; justify-content: space-between; gap: 12px; padding: 10px 2px 0; color: var(--rr-ink); text-decoration: none; font: 400 11px/1.4 var(--rr-sans); letter-spacing: .08em; text-transform: uppercase; }
+  .rr-card__price { white-space: nowrap; }
+  .rr-card__price s { opacity: .55; margin-inline-end: 4px; }
+  product-card .group-block-content, product-card .product-card__content { gap: 6px; }
+  product-card :is(.product-title, .product-card__title, [class*="title"]) :is(a, p, span) { font-family: var(--rr-sans); }
+  product-card .text-block p, product-card .product-title { font: 400 11px/1.4 var(--rr-sans) !important; letter-spacing: .08em !important; text-transform: uppercase; color: var(--rr-ink); }
+  product-card .price, product-card product-price { font: 400 11px var(--rr-sans) !important; letter-spacing: .08em; color: var(--rr-ink); }
+
+  /* ---------- Quick buy: bag icon on the photo → sizes → checkout ---------- */
+  .rr-card [data-rr-qb], .card-gallery [data-rr-qb] { position: absolute; right: 10px; bottom: 10px; z-index: 3; }
+  .rr-card__frame { position: relative; }
+  .card-gallery { position: relative; }
+  .rr-qb__toggle { display: grid; place-items: center; width: 36px; height: 36px; border: 0; border-radius: 50%; background: rgb(255 255 255 / .92); color: var(--rr-ink); cursor: pointer; box-shadow: 0 1px 6px rgb(0 0 0 / .08); transition: transform .2s ease; }
+  .rr-qb__toggle:hover { transform: scale(1.06); }
+  .rr-qb__toggle:disabled { display: none; }
+  .rr-qb__panel { position: absolute; right: 0; bottom: 44px; width: max-content; min-width: 168px; max-width: 240px; padding: 12px; background: #fff; color: var(--rr-ink); box-shadow: 0 8px 28px rgb(0 0 0 / .14); }
+  .rr-qb__label { margin: 0 0 8px; font: 400 10px var(--rr-sans); letter-spacing: .14em; text-transform: uppercase; }
+  .rr-qb__sizes { display: flex; flex-wrap: wrap; gap: 6px; }
+  .rr-qb__size { min-width: 40px; height: 34px; padding: 0 10px; border: 1px solid rgb(100 34 38 / .35); background: #fff; color: var(--rr-ink); font: 400 11px var(--rr-sans); letter-spacing: .06em; text-transform: uppercase; cursor: pointer; }
+  .rr-qb__size:hover:not(:disabled), .rr-qb__size:focus-visible { border-color: var(--rr-ink); background: var(--rr-ink); color: #fff; }
+  .rr-qb__size:disabled { opacity: .4; text-decoration: line-through; cursor: not-allowed; }
+  .rr-qb__size[aria-busy="true"] { background: var(--rr-ink); color: #fff; }
+  .rr-qb__status { margin: 8px 0 0; font: 400 10.5px var(--rr-sans); }
+  .rr-qb__status:empty { display: none; }
 </style>
+<script src="{{ 'rr-quick-bag.js' | asset_url }}" defer></script>

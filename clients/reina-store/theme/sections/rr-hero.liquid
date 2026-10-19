@@ -1,0 +1,63 @@
+{%- comment -%}
+  Reina Reichouni: full-screen hero (video or image) with a small caption, in the style of
+  Toteme / Khaite: serif italic title and an underlined "Shop now" link, header sits on top.
+{%- endcomment -%}
+{%- assign s = section.settings -%}
+<section class="rr-hero rr-hero--{{ s.caption_position }}" id="rr-hero-{{ section.id }}" style="--rr-hero-h: {{ s.height }}svh; --rr-hero-h-m: {{ s.height_mobile }}svh;">
+  <div class="rr-hero__media">
+    {%- if s.video_asset != blank -%}
+      <video class="rr-hero__video" autoplay muted loop playsinline preload="metadata"
+        {% if s.image != blank %}poster="{{ s.image | image_url: width: 1920 }}"{% elsif s.poster_asset != blank %}poster="{{ s.poster_asset | asset_url }}"{% endif %}>
+        <source src="{{ s.video_asset | asset_url }}" type="video/mp4">
+        {%- if s.video_asset_webm != blank %}<source src="{{ s.video_asset_webm | asset_url }}" type="video/webm">{% endif -%}
+      </video>
+    {%- elsif s.image != blank -%}
+      {{ s.image | image_url: width: 2400 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '750, 1100, 1500, 1920, 2400', sizes: '100vw', class: 'rr-hero__img', alt: s.image.alt }}
+    {%- endif -%}
+    <span class="rr-hero__shade" aria-hidden="true"></span>
+  </div>
+  <div class="rr-hero__caption">
+    {%- if s.eyebrow != blank %}<p class="rr-hero__eyebrow">{{ s.eyebrow | escape }}</p>{% endif -%}
+    {%- if s.title != blank %}<h1 class="rr-hero__title">{{ s.title | escape }}</h1>{% endif -%}
+    {%- if s.link_label != blank %}<a class="rr-hero__link" href="{{ s.link | default: routes.all_products_collection_url }}">{{ s.link_label | escape }}</a>{% endif -%}
+  </div>
+</section>
+
+<style>
+  #rr-hero-{{ section.id }} { position: relative; height: var(--rr-hero-h); min-height: 460px; overflow: hidden; color: {{ s.text_color }}; background: #e9e6e2; }
+  #rr-hero-{{ section.id }} .rr-hero__media, #rr-hero-{{ section.id }} .rr-hero__video, #rr-hero-{{ section.id }} .rr-hero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: {{ s.focal }}; }
+  #rr-hero-{{ section.id }} .rr-hero__shade { position: absolute; inset: 0; background: linear-gradient(to top, rgb(0 0 0 / {{ s.shade | divided_by: 100.0 }}), transparent 45%); }
+  #rr-hero-{{ section.id }} .rr-hero__caption { position: absolute; z-index: 1; bottom: clamp(28px, 6vh, 64px); display: grid; gap: 10px; justify-items: inherit; }
+  #rr-hero-{{ section.id }}.rr-hero--center .rr-hero__caption { left: 50%; translate: -50% 0; justify-items: center; text-align: center; }
+  #rr-hero-{{ section.id }}.rr-hero--left .rr-hero__caption { left: max(20px, 4vw); justify-items: start; }
+  #rr-hero-{{ section.id }}.rr-hero--right .rr-hero__caption { right: max(20px, 6vw); justify-items: end; text-align: right; }
+  #rr-hero-{{ section.id }} .rr-hero__eyebrow { margin: 0; font: 400 11px var(--rr-sans); letter-spacing: .14em; text-transform: uppercase; }
+  #rr-hero-{{ section.id }} .rr-hero__title { margin: 0; font-family: var(--rr-serif); font-style: italic; font-weight: 400; font-size: clamp(1.9rem, 3.4vw, 3rem); line-height: 1.05; color: inherit; letter-spacing: .01em; }
+  #rr-hero-{{ section.id }} .rr-hero__link { font: 400 11px var(--rr-sans); letter-spacing: .14em; text-transform: uppercase; color: inherit; text-decoration: none; padding-bottom: 3px; border-bottom: 1px solid currentColor; }
+  @media (max-width: 749px) { #rr-hero-{{ section.id }} { height: var(--rr-hero-h-m); } }
+  @media (prefers-reduced-motion: reduce) { #rr-hero-{{ section.id }} .rr-hero__video { display: none; } }
+</style>
+
+{% schema %}
+{
+  "name": "RR: hero",
+  "class": "section-rr-hero",
+  "settings": [
+    { "type": "text", "id": "video_asset", "label": "Video file in theme assets (mp4)", "default": "rr-hero.mp4" },
+    { "type": "text", "id": "video_asset_webm", "label": "Video file in theme assets (webm, optional)" },
+    { "type": "text", "id": "poster_asset", "label": "Poster image in theme assets" },
+    { "type": "image_picker", "id": "image", "label": "Image (used when there is no video, and as the video poster)" },
+    { "type": "text", "id": "eyebrow", "label": "Small label" },
+    { "type": "text", "id": "title", "label": "Title", "default": "New Arrivals" },
+    { "type": "text", "id": "link_label", "label": "Link label", "default": "Shop now" },
+    { "type": "url", "id": "link", "label": "Link" },
+    { "type": "select", "id": "caption_position", "label": "Caption position", "default": "left", "options": [ { "value": "left", "label": "Left" }, { "value": "center", "label": "Centre" }, { "value": "right", "label": "Right" } ] },
+    { "type": "color", "id": "text_color", "label": "Caption colour", "default": "#ffffff" },
+    { "type": "range", "id": "shade", "label": "Shade behind caption", "min": 0, "max": 60, "step": 5, "unit": "%", "default": 25 },
+    { "type": "text", "id": "focal", "label": "Focal point (CSS object-position)", "default": "center" },
+    { "type": "range", "id": "height", "label": "Height on desktop", "min": 50, "max": 100, "step": 5, "unit": "%", "default": 100 },
+    { "type": "range", "id": "height_mobile", "label": "Height on phones", "min": 50, "max": 100, "step": 5, "unit": "%", "default": 85 }
+  ],
+  "presets": [{ "name": "RR: hero" }]
+}
+{% endschema %}

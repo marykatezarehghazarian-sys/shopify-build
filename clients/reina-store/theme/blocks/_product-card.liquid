@@ -10,6 +10,7 @@
 
 {% capture children %}
   {% content_for 'blocks', closest.product: product %}
+  {% render 'rr-quick-bag', product: product %}
 {% endcapture %}
 
 {% render 'product-card', children: children, product: product, product_view_context: product_view_context %}

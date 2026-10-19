@@ -1,0 +1,29 @@
+{%- comment -%}
+  Reina Reichouni product card for the custom homepage sections: tall photo (second photo on hover),
+  name and price in small capitals underneath, quick-buy bag on the photo.
+  @param {product} product
+  @param {string} [sizes] - image sizes attribute
+{%- endcomment -%}
+{%- assign img1 = product.media[0] -%}
+{%- assign img2 = product.media[1] -%}
+<article class="rr-card">
+  <div class="rr-card__frame">
+  <a class="rr-card__media" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
+    {%- if img1 -%}
+      {{ img1 | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '360, 540, 720, 960, 1200', sizes: sizes, class: 'rr-card__img', alt: product.title }}
+      {%- if img2 -%}{{ img2 | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '360, 540, 720, 960, 1200', sizes: sizes, class: 'rr-card__img rr-card__img--alt', alt: '' }}{%- endif -%}
+    {%- else -%}
+      {{ 'product-apparel-1' | placeholder_svg_tag: 'rr-card__img' }}
+    {%- endif -%}
+    {%- unless product.available %}<span class="rr-card__badge">Sold out</span>{% endunless -%}
+  </a>
+  {% render 'rr-quick-bag', product: product %}
+  </div>
+  <a class="rr-card__info" href="{{ product.url }}">
+    <span class="rr-card__title">{{ product.title | escape }}</span>
+    <span class="rr-card__price">
+      {%- if product.compare_at_price > product.price %}<s>{{ product.compare_at_price | money }}</s> {% endif -%}
+      {{ product.price | money }}
+    </span>
+  </a>
+</article>

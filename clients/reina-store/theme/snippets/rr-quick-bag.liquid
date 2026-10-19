@@ -1,0 +1,42 @@
+{%- comment -%}
+  Quick buy on product cards (like theconceptofficial.com): a bag icon on the photo opens the sizes;
+  choosing a size adds it to the bag and goes straight to checkout. Sold-out sizes are crossed out.
+  Behaviour lives in assets/rr-quick-bag.js; styles in snippets/rr-brand.liquid.
+  @param {product} product
+{%- endcomment -%}
+{%- if product != blank -%}
+  {%- liquid
+    assign size_index = 0
+    for option in product.options_with_values
+      assign opt = option.name | downcase
+      if opt == 'size' or opt == 'taille' or opt == 'المقاس'
+        assign size_index = forloop.index
+      endif
+    endfor
+  -%}
+  <div class="rr-qb" data-rr-qb>
+    <button type="button" class="rr-qb__toggle" aria-expanded="false" aria-label="Quick buy: {{ product.title | escape }}"{% unless product.available %} disabled{% endunless %}>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M5 8h14l-1 13H6L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+    </button>
+    <div class="rr-qb__panel" hidden>
+      <p class="rr-qb__label">{% if size_index > 0 %}Select size{% else %}Buy now{% endif %}</p>
+      <div class="rr-qb__sizes">
+        {%- for variant in product.variants -%}
+          {%- liquid
+            if size_index > 0
+              assign idx = size_index | minus: 1
+              assign label = variant.options[idx]
+            else
+              assign label = variant.title
+            endif
+            if label == 'Default Title'
+              assign label = 'Add to bag'
+            endif
+          -%}
+          <button type="button" class="rr-qb__size" data-variant-id="{{ variant.id }}"{% unless variant.available %} disabled aria-label="{{ label | escape }}, sold out"{% endunless %}>{{ label | escape }}</button>
+        {%- endfor -%}
+      </div>
+      <p class="rr-qb__status" role="status" aria-live="polite"></p>
+    </div>
+  </div>
+{%- endif -%}
