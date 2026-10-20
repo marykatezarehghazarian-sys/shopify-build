@@ -36,6 +36,46 @@
   @media (hover: hover) { #rr-look-{{ section.id }} .rr-look__link:hover .rr-look__img { transform: scale(1.05); } #rr-look-{{ section.id }} .rr-look__link:hover .rr-look__cap { opacity: 1; transform: none; } }
   @media (hover: none) { #rr-look-{{ section.id }} .rr-look__cap { opacity: 1; transform: none; } #rr-look-{{ section.id }} .rr-look__item { flex-basis: 62vw; } }
 </style>
+
+{%- if s.autoplay %}
+<script>
+  // Lookbook autoplay: glides continuously from page load and loops seamlessly (photos repeated once
+  // behind the scenes). Pauses on hover, touch, keyboard focus and off screen; off for reduced motion.
+  (() => {
+    const root = document.getElementById('rr-look-{{ section.id }}');
+    const track = root?.querySelector('.rr-look__track');
+    if (!track || track.children.length < 2 || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    [...track.children].forEach((li) => {
+      const c = li.cloneNode(true);
+      c.setAttribute('aria-hidden', 'true');
+      c.querySelectorAll('a').forEach((a) => a.setAttribute('tabindex', '-1'));
+      track.appendChild(c);
+    });
+    track.style.scrollSnapType = 'none';
+    const SPEED = {{ s.speed }};
+    let paused = false, visible = true, last = 0, pos = track.scrollLeft;
+    const half = () => track.scrollWidth / 2;
+    const frame = (t) => {
+      const dt = last ? Math.min(t - last, 50) : 16; last = t;
+      if (!paused && visible && !document.hidden) {
+        if (Math.abs(track.scrollLeft - pos) > 2) pos = track.scrollLeft;
+        pos += SPEED * dt / 1000;
+        if (pos >= half()) pos -= half();
+        track.scrollLeft = pos;
+      } else pos = track.scrollLeft;
+      requestAnimationFrame(frame);
+    };
+    requestAnimationFrame(frame);
+    root.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') paused = true; });
+    root.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') { paused = false; pos = track.scrollLeft; } });
+    track.addEventListener('touchstart', () => { paused = true; }, { passive: true });
+    track.addEventListener('touchend', () => setTimeout(() => { paused = false; pos = track.scrollLeft; }, 2500), { passive: true });
+    root.addEventListener('focusin', () => { paused = true; });
+    root.addEventListener('focusout', () => { paused = false; });
+    new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(root);
+  })();
+</script>
+{%- endif %}
 {% schema %}
 {
   "name": "RR: lookbook strip",
@@ -43,7 +83,9 @@
     { "type": "text", "id": "heading", "label": "Heading", "default": "Lookbook" },
     { "type": "collection", "id": "collection", "label": "Collection" },
     { "type": "range", "id": "limit", "label": "Photos", "min": 4, "max": 24, "step": 1, "default": 12 },
-    { "type": "text", "id": "link_label", "label": "Link label", "default": "Shop the collection" }
+    { "type": "text", "id": "link_label", "label": "Link label", "default": "Shop the collection" },
+    { "type": "checkbox", "id": "autoplay", "label": "Move on its own", "default": false },
+    { "type": "range", "id": "speed", "label": "Speed (pixels per second)", "min": 20, "max": 200, "step": 10, "default": 90 }
   ],
   "presets": [{ "name": "RR: lookbook strip" }]
 }

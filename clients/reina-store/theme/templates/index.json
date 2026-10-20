@@ -140,7 +140,9 @@
         "heading": "Lookbook",
         "collection": "formation-summer-26",
         "limit": 14,
-        "link_label": "Shop the collection"
+        "link_label": "Shop the collection",
+        "autoplay": true,
+        "speed": 90
       }
     }
   },
