@@ -62,31 +62,44 @@
     addEventListener('resize', update);
     update();
 
-    // Autoplay: moves one piece every few seconds and loops back to the start. Pauses while the visitor
-    // hovers, touches or tabs into the row, while it's off screen, and never runs for reduced motion.
+    // Autoplay: the row glides continuously from the moment the page opens and loops seamlessly
+    // (the pieces are repeated once behind the scenes). Pauses while the visitor hovers, touches or
+    // tabs into the row and while it's off screen; never runs for reduced motion.
     {%- if s.autoplay and s.layout == 'rail' %}
-    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      let paused = false, visible = false, timer = 0;
-      const step = () => {
-        const item = track.querySelector('.rr-rail__item');
-        const w = item ? item.getBoundingClientRect().width + 6 : track.clientWidth;
-        const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
-        track.scrollTo({ left: atEnd ? 0 : track.scrollLeft + w, behavior: 'smooth' });
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches && track.children.length > 1) {
+      [...track.children].forEach((li) => {
+        const c = li.cloneNode(true);
+        c.setAttribute('aria-hidden', 'true');
+        c.querySelectorAll('a, button').forEach((el) => el.setAttribute('tabindex', '-1'));
+        track.appendChild(c);
+      });
+      track.style.scrollSnapType = 'none';
+      const SPEED = {{ s.speed }}; // pixels per second
+      let paused = false, visible = true, last = 0, pos = track.scrollLeft;
+      const half = () => track.scrollWidth / 2;
+      const frame = (t) => {
+        const dt = last ? Math.min(t - last, 50) : 16; last = t;
+        if (!paused && visible && !document.hidden) {
+          if (Math.abs(track.scrollLeft - pos) > 2) pos = track.scrollLeft; // visitor swiped or used arrows
+          pos += SPEED * dt / 1000;
+          if (pos >= half()) pos -= half();
+          track.scrollLeft = pos;
+        } else pos = track.scrollLeft;
+        requestAnimationFrame(frame);
       };
-      const schedule = () => {
-        clearInterval(timer);
-        if (!paused && visible && !document.hidden) timer = setInterval(step, {{ s.speed | times: 1000 }});
-      };
-      const pause = () => { paused = true; schedule(); };
-      const resume = () => { paused = false; schedule(); };
+      requestAnimationFrame(frame);
+      const pause = () => { paused = true; };
+      const resume = () => { paused = false; pos = track.scrollLeft; };
       root.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') pause(); });
       root.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') resume(); });
       track.addEventListener('touchstart', pause, { passive: true });
-      track.addEventListener('touchend', () => setTimeout(resume, 4000), { passive: true });
+      track.addEventListener('touchend', () => setTimeout(resume, 2500), { passive: true });
       root.addEventListener('focusin', pause);
       root.addEventListener('focusout', resume);
-      document.addEventListener('visibilitychange', schedule);
-      new IntersectionObserver(([e]) => { visible = e.isIntersecting; schedule(); }, { threshold: 0.3 }).observe(root);
+      new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(root);
+      // Arrows keep working: wrap round instead of stopping at the ends.
+      next.disabled = prev.disabled = false;
+      track.removeEventListener('scroll', update);
     }
     {%- endif %}
   })();
@@ -104,7 +117,7 @@
     { "type": "range", "id": "limit", "label": "Products to show", "min": 4, "max": 30, "step": 1, "default": 12 },
     { "type": "text", "id": "link_label", "label": "Link label", "default": "View all" },
     { "type": "checkbox", "id": "autoplay", "label": "Move on its own (sliding row)", "default": false },
-    { "type": "range", "id": "speed", "label": "Seconds per move", "min": 2, "max": 8, "step": 1, "default": 3 },
+    { "type": "range", "id": "speed", "label": "Speed (pixels per second)", "min": 20, "max": 200, "step": 10, "default": 90 },
     { "type": "range", "id": "padding_top", "label": "Top spacing", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 56 },
     { "type": "range", "id": "padding_bottom", "label": "Bottom spacing", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 56 }
   ],
