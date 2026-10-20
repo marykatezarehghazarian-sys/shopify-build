@@ -24,9 +24,9 @@
 <style>
   /* Preloader: first visit only, about 1.4 s, never on later pages. */
   .rr-preloader { display: none; }
-  html.rr-preload .rr-preloader { position: fixed; inset: 0; z-index: 10000; display: grid; place-items: center; align-content: center; gap: 22px; background: #000; animation: rr-pre-out .6s var(--rr-ease-in-out) 1.15s forwards; }
-  .rr-preloader__logo { width: 84px; height: auto; filter: brightness(0) invert(94%) sepia(6%) saturate(250%) hue-rotate(330deg); opacity: 0; animation: rr-pre-logo 1s var(--rr-ease-out) .1s forwards; }
-  .rr-preloader__line { width: 120px; height: 1px; background: rgb(243 236 230 / .2); position: relative; overflow: hidden; }
+  html.rr-preload .rr-preloader { position: fixed; inset: 0; z-index: 10000; display: grid; place-items: center; align-content: center; gap: 22px; background: var(--rr-bg, #fff); animation: rr-pre-out .6s var(--rr-ease-in-out) 1.15s forwards; }
+  .rr-preloader__logo { width: 84px; height: auto; opacity: 0; animation: rr-pre-logo 1s var(--rr-ease-out) .1s forwards; }
+  .rr-preloader__line { width: 120px; height: 1px; background: rgb(100 34 38 / .15); position: relative; overflow: hidden; }
   .rr-preloader__line::after { content: ''; position: absolute; inset: 0; background: var(--rr-ink); transform: scaleX(0); transform-origin: left; animation: rr-pre-line 1s var(--rr-ease-in-out) .1s forwards; }
   @keyframes rr-pre-logo { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
   @keyframes rr-pre-line { to { transform: scaleX(1); } }

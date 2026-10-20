@@ -3,7 +3,7 @@
 Store: https://zi50i6-b0.myshopify.com (password: see `.env` / owner) · Live theme: **Reina Reichouni - v2** (189306732848)
 
 ## 1. What was built
-**Look and feel:** black site with a slow 3D starfield, ivory type (Cormorant Garamond + Inter), RR monogram and
+**Look and feel:** white site with burgundy type (the 3D starfield on black is kept in `rr-stars.liquid`, switched off) (Cormorant Garamond + Inter), RR monogram and
 REINA REICHOUNI wordmark, editorial layout after Tove / Khaite / Toteme / The Concept.
 
 **Motion:** first-visit preloader (≈1.4 s, never again on that device), Lenis smooth scroll (desktop), page
