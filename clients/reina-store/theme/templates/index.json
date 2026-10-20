@@ -36,7 +36,9 @@
         "limit": 22,
         "link_label": "View all",
         "padding_top": 56,
-        "padding_bottom": 56
+        "padding_bottom": 56,
+        "autoplay": true,
+        "speed": 3
       }
     },
     "split": {

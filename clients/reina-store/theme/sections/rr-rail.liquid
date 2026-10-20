@@ -61,6 +61,34 @@
     track.addEventListener('scroll', update, { passive: true });
     addEventListener('resize', update);
     update();
+
+    // Autoplay: moves one piece every few seconds and loops back to the start. Pauses while the visitor
+    // hovers, touches or tabs into the row, while it's off screen, and never runs for reduced motion.
+    {%- if s.autoplay and s.layout == 'rail' %}
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      let paused = false, visible = false, timer = 0;
+      const step = () => {
+        const item = track.querySelector('.rr-rail__item');
+        const w = item ? item.getBoundingClientRect().width + 6 : track.clientWidth;
+        const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+        track.scrollTo({ left: atEnd ? 0 : track.scrollLeft + w, behavior: 'smooth' });
+      };
+      const schedule = () => {
+        clearInterval(timer);
+        if (!paused && visible && !document.hidden) timer = setInterval(step, {{ s.speed | times: 1000 }});
+      };
+      const pause = () => { paused = true; schedule(); };
+      const resume = () => { paused = false; schedule(); };
+      root.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') pause(); });
+      root.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') resume(); });
+      track.addEventListener('touchstart', pause, { passive: true });
+      track.addEventListener('touchend', () => setTimeout(resume, 4000), { passive: true });
+      root.addEventListener('focusin', pause);
+      root.addEventListener('focusout', resume);
+      document.addEventListener('visibilitychange', schedule);
+      new IntersectionObserver(([e]) => { visible = e.isIntersecting; schedule(); }, { threshold: 0.3 }).observe(root);
+    }
+    {%- endif %}
   })();
 </script>
 
@@ -75,6 +103,8 @@
     { "type": "range", "id": "columns", "label": "Grid columns on desktop", "min": 2, "max": 4, "step": 1, "default": 4 },
     { "type": "range", "id": "limit", "label": "Products to show", "min": 4, "max": 30, "step": 1, "default": 12 },
     { "type": "text", "id": "link_label", "label": "Link label", "default": "View all" },
+    { "type": "checkbox", "id": "autoplay", "label": "Move on its own (sliding row)", "default": false },
+    { "type": "range", "id": "speed", "label": "Seconds per move", "min": 2, "max": 8, "step": 1, "default": 3 },
     { "type": "range", "id": "padding_top", "label": "Top spacing", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 56 },
     { "type": "range", "id": "padding_bottom", "label": "Bottom spacing", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 56 }
   ],
