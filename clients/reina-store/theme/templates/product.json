@@ -276,7 +276,7 @@
             "rr_paynote": {
               "type": "custom-liquid",
               "settings": {
-                "custom_liquid": "<p class=\"rr-pay-note\">Pay by card or cash on delivery</p>"
+                "custom_liquid": "<p class=\"rr-pay-note\">Pay cash on delivery or by Whish Money transfer</p>"
               }
             },
             "rr_info": {
@@ -343,7 +343,7 @@
                     "s_text": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Orders are processed within 1–2 business days after payment. Estimated delivery is 4–7 business days, depending on your destination and the shipping method chosen at checkout. Shipping charges are calculated at checkout.</p><p><a href=\"/policies/shipping-policy\">Shipping policy</a></p>",
+                        "text": "<p>Inside Beirut: 2–5 business days, $5. Outside Beirut: 3–6 business days, $8. International orders: contact us on <a href=\"https://wa.me/96171444242\">WhatsApp</a> or by <a href=\"mailto:reinareichounirtw@gmail.com\">email</a>.</p><p><a href=\"/policies/shipping-policy\">Shipping policy</a></p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
@@ -381,7 +381,7 @@
                     "r_text": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Return requests must be submitted within 30 days of delivery. Items must be unworn, unwashed, in their original condition and with all tags attached. Eligible returns receive store credit; original shipping charges are non-refundable.</p><p><a href=\"/policies/refund-policy\">Returns &amp; store credit policy</a></p>",
+                        "text": "<p>Returns for store credit only, within 7 days of delivery. Items must be unworn, unwashed, in their original condition and with all tags attached. Original shipping charges are non-refundable.</p><p><a href=\"/policies/refund-policy\">Returns &amp; store credit policy</a></p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",

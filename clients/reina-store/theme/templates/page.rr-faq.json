@@ -7,21 +7,21 @@
           "type": "qa",
           "settings": {
             "question": "How can I pay?",
-            "answer": "<p>You can pay by card or cash on delivery.</p>"
+            "answer": "<p>You can pay cash on delivery, or by Whish Money transfer to +961 71 444 242.</p><p>For international orders and payments, please contact us on <a href=\"https://wa.me/96171444242\">WhatsApp</a> or at <a href=\"mailto:reinareichounirtw@gmail.com\">reinareichounirtw@gmail.com</a>.</p>"
           }
         },
         "q1": {
           "type": "qa",
           "settings": {
             "question": "How long does delivery take?",
-            "answer": "<p>Orders are processed within 1–2 business days after payment (Monday to Friday, excluding holidays). Once processed, estimated delivery is 4–7 business days depending on your destination and the shipping method chosen at checkout.</p>"
+            "answer": "<p>Inside Beirut: 2–5 business days. Outside Beirut: 3–6 business days. Orders are processed Monday to Friday, excluding holidays.</p>"
           }
         },
         "q2": {
           "type": "qa",
           "settings": {
             "question": "How much is shipping?",
-            "answer": "<p>Shipping charges are calculated at checkout based on your address and the delivery method you choose. You'll see the total before you place your order.</p>"
+            "answer": "<p>Inside Beirut: $5. Outside Beirut: $8. Choose your area at checkout; you'll see the total before you place your order.</p>"
           }
         },
         "q3": {
@@ -35,7 +35,7 @@
           "type": "qa",
           "settings": {
             "question": "Can I return an item?",
-            "answer": "<p>Yes. Return requests must be submitted within 30 days of delivery. Items must be unworn, unused, unwashed, in their original condition and returned with all original tags attached. Eligible returns receive store credit.</p><p><a href=\"/policies/refund-policy\">Read the full returns &amp; store credit policy</a></p>"
+            "answer": "<p>Yes, for store credit only. Return requests must be submitted within 7 days of delivery. Items must be unworn, unused, unwashed, in their original condition and returned with all original tags attached.</p><p><a href=\"/policies/refund-policy\">Read the full returns &amp; store credit policy</a></p>"
           }
         },
         "q5": {
@@ -72,19 +72,35 @@
             "question": "Which items can't be returned?",
             "answer": "<p>Underwear or intimate apparel, final sale or clearance items, gift cards, items showing signs of wear, washing, alterations or damage, and items returned without original tags.</p>"
           }
+        },
+        "q10": {
+          "type": "qa",
+          "settings": {
+            "question": "Do you ship internationally?",
+            "answer": "<p>For international orders and payments, please reach out on <a href=\"https://wa.me/96171444242\">WhatsApp (+961 71 444 242)</a> or by email at <a href=\"mailto:reinareichounirtw@gmail.com\">reinareichounirtw@gmail.com</a> and we'll arrange it with you.</p>"
+          }
+        },
+        "q11": {
+          "type": "qa",
+          "settings": {
+            "question": "Is there a welcome offer?",
+            "answer": "<p>Yes. Sign up for updates at the bottom of any page and get 10% off your first order with the code WELCOME10. One use per customer; not valid on sale items.</p>"
+          }
         }
       },
       "block_order": [
         "q0",
         "q1",
         "q2",
+        "q10",
         "q3",
         "q4",
         "q5",
         "q6",
         "q7",
         "q8",
-        "q9"
+        "q9",
+        "q11"
       ],
       "settings": {
         "heading": "Frequently asked questions",

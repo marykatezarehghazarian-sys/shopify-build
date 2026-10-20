@@ -15,13 +15,15 @@
       "settings": {
         "heading": "Sign up for updates",
         "disclaimer": "By entering the email address above you agree to receive marketing messages from ReinaReichouni and agree to our terms and services and privacy policy.",
-        "success": "Thanks for subscribing!",
+        "success": "Welcome! Use code WELCOME10 for 10% off your first order (one use, excludes sale items).",
         "menu_1": "footer",
         "menu_2": "footer-legal",
         "wordmark_1": "shopify://shop_images/rr-wordmark-reina.png",
         "wordmark_2": "shopify://shop_images/rr-wordmark-reichouni.png",
         "credit": "© 2026 REINAREICHOUNI | All Rights Reserved | Designed by The Virtual Stylist",
-        "credit_link": "https://www.instagram.com/thevirtualstylistt/"
+        "credit_link": "https://www.instagram.com/thevirtualstylistt/",
+        "offer": "Sign up and get 10% off your first order.",
+        "contact": "<p><a href=\"https://wa.me/96171444242\">+961 71 444 242</a> · <a href=\"mailto:reinareichounirtw@gmail.com\">reinareichounirtw@gmail.com</a></p>"
       }
     }
   },

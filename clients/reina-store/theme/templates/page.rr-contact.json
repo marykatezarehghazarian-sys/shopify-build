@@ -4,7 +4,7 @@
       "type": "rr-contact",
       "settings": {
         "heading": "Contact us",
-        "text": "",
+        "text": "<p>Phone / WhatsApp: <a href=\"https://wa.me/96171444242\">+961 71 444 242</a><br>Email: <a href=\"mailto:reinareichounirtw@gmail.com\">reinareichounirtw@gmail.com</a></p><p>For international orders and payments, reach out on WhatsApp or by email.</p>",
         "success": "Thank you. We'll get back to you soon."
       }
     }
