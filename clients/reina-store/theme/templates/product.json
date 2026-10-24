@@ -276,7 +276,7 @@
             "rr_paynote": {
               "type": "custom-liquid",
               "settings": {
-                "custom_liquid": "<p class=\"rr-pay-note\">Pay cash on delivery or by Whish Money transfer</p>"
+                "custom_liquid": "<p class=\"rr-pay-note\">Pay cash on delivery or by Whish Money transfer to <a href=\"https://wa.me/96171444242\">+961 71 444 242</a></p>"
               }
             },
             "rr_info": {
