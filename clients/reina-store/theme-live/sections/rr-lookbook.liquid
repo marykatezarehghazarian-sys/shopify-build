@@ -6,7 +6,8 @@
 <section class="rr-look" id="rr-look-{{ section.id }}">
   <div class="rr-look__head">
     {%- if s.heading != blank %}<h2 class="rr-look__heading">{{ s.heading | escape }}</h2>{% endif -%}
-    {%- if s.link_label != blank and s.link != blank %}<a class="rr-look__all" href="{{ s.link }}">{{ s.link_label | escape }}</a>{%- elsif s.collection != blank and s.link_label != blank %}<a class="rr-look__all" href="{{ s.collection.url }}">{{ s.link_label | escape }}</a>{% endif -%}
+    {%- assign look_link = s.link | default: s.collection.url -%}
+    {%- if look_link != blank and s.link_label != blank %}<a class="rr-look__all" href="{{ look_link }}">{{ s.link_label | escape }}</a>{% endif -%}
   </div>
   <ul class="rr-look__track" role="list">
     {%- for block in section.blocks -%}
@@ -95,7 +96,7 @@
     { "type": "collection", "id": "collection", "label": "Collection" },
     { "type": "range", "id": "limit", "label": "Photos", "min": 4, "max": 24, "step": 1, "default": 12 },
     { "type": "text", "id": "link_label", "label": "Link label", "default": "Shop the collection" },
-    { "type": "url", "id": "link", "label": "Link (leave empty for the collection)" },
+    { "type": "url", "id": "link", "label": "Link (empty = the collection above)" },
     { "type": "checkbox", "id": "autoplay", "label": "Move on its own", "default": false },
     { "type": "range", "id": "speed", "label": "Speed (pixels per second)", "min": 20, "max": 200, "step": 10, "default": 90 }
   ],
