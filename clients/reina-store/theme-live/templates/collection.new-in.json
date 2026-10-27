@@ -262,10 +262,10 @@
             "link": ""
           }
         },
-        "p6": {
+        "p7": {
           "type": "piece",
           "settings": {
-            "image": "shopify://shop_images/rr-noctra-black-gown_f5a08be2-9c6d-42ba-9d6b-cfad212a4fc8.jpg",
+            "image": "shopify://shop_images/brown-suede-dress-front.jpg",
             "title": "",
             "badge": "",
             "link": ""
@@ -278,7 +278,7 @@
         "p3",
         "p4",
         "p5",
-        "p6"
+        "p7"
       ],
       "settings": {
         "eyebrow": "The next drop",
