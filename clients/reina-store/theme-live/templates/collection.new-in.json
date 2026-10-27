@@ -261,6 +261,15 @@
             "badge": "",
             "link": ""
           }
+        },
+        "p6": {
+          "type": "piece",
+          "settings": {
+            "image": "shopify://shop_images/rr-noctra-black-gown_f5a08be2-9c6d-42ba-9d6b-cfad212a4fc8.jpg",
+            "title": "",
+            "badge": "",
+            "link": ""
+          }
         }
       },
       "block_order": [
@@ -268,7 +277,8 @@
         "p2",
         "p3",
         "p4",
-        "p5"
+        "p5",
+        "p6"
       ],
       "settings": {
         "eyebrow": "The next drop",
