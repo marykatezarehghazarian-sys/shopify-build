@@ -53,4 +53,5 @@ Access: Dev Dashboard app (client ID + secret in .env), broad scopes incl. produ
 
 ## 2026-10-27: Noctra FW 26/27 launch
 - Homepage "Coming Soon" section (`coming`, rr-coming-soon) turned into "Noctra FW 26/27 / Now Available": "Coming soon" labels removed, each photo links to its live product (burgundy croc blazer → noctra-blazer, brown set → brezza-set, navy belted blouse → rose-top, black suit → prima-set, navy fringe skirt → danza-skirt), "Shop the collection" → /collections/noctra-fw-26-27. The section now only shows a label when one is set and has an optional link under the grid. Backup: `backup-live-index.before-launch.json`.
+- Moved "Now Available" (Noctra) to the top of the homepage, right under the video hero, above New Arrivals (owner request).
 - Still hidden (DRAFT): Cacao Maxi Skirt, Orbita Trousers, Rosa Trousers, Rosa Choker. They have price $0, no sizes and 0 stock (Wix import leftovers; Cacao uses the Brezza photo). Need real prices, sizes and stock from the owner before going live.
