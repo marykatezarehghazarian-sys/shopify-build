@@ -4,6 +4,7 @@
 {%- endcomment -%}
 {%- assign s = section.settings -%}
 <section class="rr-cs" id="rr-cs-{{ section.id }}">
+  <span id="new-arrivals" class="rr-cs__anchor" aria-hidden="true"></span>
   <div class="rr-cs__head">
     {%- if s.eyebrow != blank %}<p class="rr-cs__eyebrow">{{ s.eyebrow | escape }}</p>{% endif -%}
     {%- if s.heading != blank %}<h2 class="rr-cs__heading">{{ s.heading | escape }}</h2>{% endif -%}
@@ -27,6 +28,8 @@
 </section>
 <style>
   #rr-cs-{{ section.id }} { padding: {{ s.padding_top }}px max(16px, 2.2vw) {{ s.padding_bottom }}px; color: var(--rr-ink, currentColor); }
+  #rr-cs-{{ section.id }} { position: relative; }
+  #rr-cs-{{ section.id }} .rr-cs__anchor { position: absolute; top: -80px; }
   #rr-cs-{{ section.id }} .rr-cs__head { text-align: center; margin-bottom: 28px; }
   #rr-cs-{{ section.id }} .rr-cs__eyebrow { margin: 0 0 8px; font: 400 11px var(--rr-sans, inherit); letter-spacing: .18em; text-transform: uppercase; opacity: .75; }
   #rr-cs-{{ section.id }} .rr-cs__heading { margin: 0; font-family: var(--rr-serif, inherit); font-style: italic; font-weight: 400; font-size: clamp(1.7rem, 3vw, 2.5rem); color: inherit; }
