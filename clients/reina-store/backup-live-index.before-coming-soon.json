@@ -1,0 +1,234 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */{
+  "sections": {
+    "hero": {
+      "type": "rr-hero",
+      "settings": {
+        "video_asset": "rr-noctra.mp4",
+        "video_asset_webm": "rr-noctra.webm",
+        "poster_asset": "rr-noctra-poster.jpg",
+        "eyebrow": "",
+        "title": "Reina Reichouni",
+        "link_label": "Shop the collection",
+        "caption_position": "center",
+        "text_color": "#f3ede6",
+        "shade": 20,
+        "focal": "center",
+        "height": 100,
+        "height_mobile": 85,
+        "fit_desktop": "triptych",
+        "backdrop_color": "#000000",
+        "side_image_left": "shopify://shop_images/rr-noctra-black-gown.jpg",
+        "side_image_right": "shopify://shop_images/rr-noctra-black-suit.jpg",
+        "link": "shopify://collections/all-products"
+      }
+    },
+    "rail": {
+      "type": "rr-rail",
+      "settings": {
+        "heading": "Collections",
+        "collection": "all-products",
+        "layout": "rail",
+        "columns": 4,
+        "limit": 22,
+        "link_label": "View all",
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "autoplay": true,
+        "speed": 90
+      }
+    },
+    "split": {
+      "type": "rr-editorial",
+      "blocks": {
+        "a": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/rr-summer-drop.jpg",
+            "focal": "",
+            "title": "Summer Drop",
+            "link_label": "See more",
+            "link": "shopify://collections/formation-summer-26"
+          }
+        },
+        "b": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/rr-editorial-1.jpg",
+            "focal": "",
+            "title": "Formation Summer '26",
+            "link_label": "Discover",
+            "link": "shopify://collections/formation-summer-26"
+          }
+        }
+      },
+      "block_order": [
+        "a",
+        "b"
+      ],
+      "settings": {
+        "caption_style": "overlay",
+        "ratio": "3 / 4",
+        "ratio_mobile": "4 / 5",
+        "mobile_columns": "1",
+        "full_width": true,
+        "gap": 6,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "caption_color": "#ffffff",
+        "scroll_effect": "zoom"
+      }
+    },
+    "front": {
+      "type": "rr-rail",
+      "settings": {
+        "heading": "Summer Drop",
+        "collection": "front-page",
+        "layout": "grid",
+        "columns": 4,
+        "limit": 4,
+        "link_label": "See more",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "feature": {
+      "type": "rr-editorial",
+      "blocks": {
+        "c": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/rr-editorial-2.jpg",
+            "focal": "object-position: center 70%",
+            "title": "Reina Reichouni",
+            "link_label": "About us",
+            "link": "/pages/aboutus"
+          }
+        }
+      },
+      "block_order": [
+        "c"
+      ],
+      "settings": {
+        "caption_style": "overlay",
+        "ratio": "16 / 7",
+        "ratio_mobile": "4 / 5",
+        "mobile_columns": "1",
+        "full_width": true,
+        "gap": 0,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "caption_color": "#111111"
+      }
+    },
+    "story": {
+      "type": "rr-story",
+      "settings": {
+        "image": "shopify://shop_images/rr-story.jpg",
+        "eyebrow": "The house",
+        "heading": "Confident, elevated, timeless.",
+        "text": "<p>Founded by Lebanese fashion designer Reina Reichouni, the brand was born from a love for timeless design and the belief that clothing should make a woman feel confident, elegant, and effortlessly herself.</p><p>Each piece is thoughtfully designed to balance femininity and strength through refined details, effortless silhouettes, and lasting quality. Produced in limited quantities, every collection is created with a sense of exclusivity and intention.</p>",
+        "link_label": "About us",
+        "link": "/pages/aboutus"
+      }
+    },
+    "look": {
+      "type": "rr-lookbook",
+      "settings": {
+        "heading": "Lookbook",
+        "collection": "formation-summer-26",
+        "limit": 14,
+        "link_label": "Shop the collection",
+        "autoplay": true,
+        "speed": 90
+      }
+    },
+    "noctra_editorial": {
+      "type": "rr-editorial",
+      "blocks": {
+        "cape": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/rr-noctra-oxblood-cape.jpg",
+            "focal": "",
+            "title": "Noctra",
+            "link_label": "Discover",
+            "link": "shopify://collections/noctra-fw-26-27"
+          }
+        },
+        "veil": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/rr-noctra-veil.jpg",
+            "focal": "",
+            "title": "Fall / Winter 26–27",
+            "link_label": "The collection",
+            "link": "shopify://collections/noctra-fw-26-27"
+          }
+        },
+        "fringe": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/rr-noctra-oxblood-fringe.jpg",
+            "focal": "",
+            "title": "After dark",
+            "link_label": "Shop Noctra",
+            "link": "shopify://collections/noctra-fw-26-27"
+          }
+        }
+      },
+      "block_order": [
+        "cape",
+        "veil",
+        "fringe"
+      ],
+      "settings": {
+        "caption_style": "overlay",
+        "caption_color": "#f3ede6",
+        "scroll_effect": "zoom",
+        "ratio": "3 / 4",
+        "ratio_mobile": "4 / 5",
+        "mobile_columns": "1",
+        "full_width": true,
+        "gap": 6,
+        "padding_top": 0,
+        "padding_bottom": 0
+      },
+      "disabled": true
+    },
+    "new_in": {
+      "type": "rr-rail",
+      "settings": {
+        "heading": "",
+        "collection": "new-in",
+        "layout": "grid",
+        "columns": 3,
+        "limit": 3,
+        "link_label": "",
+        "autoplay": false,
+        "speed": 90,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "full_bleed": true
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "new_in",
+    "rail",
+    "split",
+    "story",
+    "front",
+    "look",
+    "feature",
+    "noctra_editorial"
+  ]
+}
