@@ -1,0 +1,124 @@
+{%- comment -%}
+  Reina Reichouni: brand fonts and site-wide styling to match the original reinareichouni.com.
+  The original's licensed Wix fonts are replaced with free look-alikes (approved):
+  Kepler → Cormorant Garamond, Didot Italic → Bodoni Moda Italic, Avenir Light → Nunito Sans.
+  Inter, Playfair Display and Aboreto are the same fonts the original uses.
+{%- endcomment -%}
+<style>
+  @font-face { font-family: 'RR Cormorant'; src: url('{{ 'rr-cormorant-garamond.woff2' | asset_url }}') format('woff2'); font-weight: 300 700; font-display: swap; }
+  @font-face { font-family: 'RR Inter'; src: url('{{ 'rr-inter.woff2' | asset_url }}') format('woff2'); font-weight: 100 900; font-display: swap; }
+  @font-face { font-family: 'RR Bodoni'; src: url('{{ 'rr-bodoni-moda-italic.woff2' | asset_url }}') format('woff2'); font-style: italic; font-weight: 400 900; font-display: swap; }
+  @font-face { font-family: 'RR Nunito'; src: url('{{ 'rr-nunito-sans.woff2' | asset_url }}') format('woff2'); font-weight: 200 1000; font-display: swap; }
+  @font-face { font-family: 'RR Aboreto'; src: url('{{ 'rr-aboreto.woff2' | asset_url }}') format('woff2'); font-weight: 400; font-display: swap; }
+  @font-face { font-family: 'RR Playfair'; src: url('{{ 'rr-playfair-display.woff2' | asset_url }}') format('woff2'); font-weight: 400 900; font-display: swap; }
+
+  :root {
+    /* Design tokens: spacing, type scale, motion */
+    --rr-space-1: 4px; --rr-space-2: 8px; --rr-space-3: 12px; --rr-space-4: 16px; --rr-space-5: 24px; --rr-space-6: 32px; --rr-space-7: 48px; --rr-space-8: 64px; --rr-space-9: 96px; --rr-space-10: 128px;
+    --rr-text-xs: 10.5px; --rr-text-sm: 12px; --rr-text-md: 14px; --rr-text-lg: 18px;
+    --rr-display-sm: clamp(1.4rem, 2vw, 1.75rem); --rr-display-md: clamp(1.9rem, 3.4vw, 3rem); --rr-display-lg: clamp(2.6rem, 6vw, 5.5rem);
+    --rr-ease-out: cubic-bezier(.22, 1, .36, 1); --rr-ease-in-out: cubic-bezier(.65, 0, .35, 1);
+    --rr-dur-fast: .2s; --rr-dur-base: .45s; --rr-dur-slow: .9s;
+    --rr-ink: #642226;
+    --rr-bg: #ffffff;
+    --rr-on-ink: #ffffff;
+    --rr-surface: #f1efed;
+    --rr-burgundy: #642226;
+    --rr-serif: 'RR Cormorant', 'Cormorant Garamond', Georgia, serif;
+    --rr-sans: 'RR Inter', Inter, Helvetica, Arial, sans-serif;
+    --rr-didot: 'RR Bodoni', 'Bodoni Moda', Didot, serif;
+    --rr-avenir: 'RR Nunito', 'Nunito Sans', Avenir, sans-serif;
+    --rr-aboreto: 'RR Aboreto', Aboreto, serif;
+    --rr-playfair: 'RR Playfair', 'Playfair Display', serif;
+    --font-body--family: var(--rr-sans);
+    --font-body--weight: 300;
+    --font-subheading--family: var(--rr-sans);
+    --font-subheading--weight: 300;
+    --font-heading--family: var(--rr-serif);
+    --font-heading--weight: 400;
+    --font-accent--family: var(--rr-serif);
+    --font-accent--weight: 400;
+  }
+
+  /* ---------- Header: links left with thin dividers, monogram centred, Search / Cart / Log In right ---------- */
+  #header-component .menu-list__link,
+  #header-component .menu-list__list-item > a {
+    font-family: var(--rr-sans);
+    font-weight: 300;
+    font-size: 10px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: var(--rr-ink);
+  }
+  /* Thin dividers between top-level items, drawn as a background so the item stays position: static
+     (the mega menu positions itself against the header; a positioned item squeezes it to one column). */
+  #header-component .menu-list__list-item + .menu-list__list-item { background: linear-gradient(var(--rr-ink), var(--rr-ink)) left center / 1px 16px no-repeat; }
+  [dir='rtl'] #header-component .menu-list__list-item + .menu-list__list-item { background-position: right center; }
+  #header-component .menu-list__list-item { padding-inline: 0; }
+  #header-component .menu-list__link { padding-inline: 12px; }
+  #header-component .header-actions__action,
+  #header-component .header-actions__text-style {
+    font-family: var(--rr-sans);
+    font-weight: 300;
+    font-size: 12px;
+    text-transform: none;
+    color: var(--rr-ink);
+  }
+
+  /* ---------- Buttons: square, serif labels in capitals ---------- */
+  .button, .button-secondary, .shopify-payment-button__button {
+    border-radius: 0 !important;
+    font-family: var(--rr-serif);
+    font-size: 14px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  /* ---------- Product cards (homepage rails and Horizon grids): photo, then name and price in small capitals ---------- */
+  .rr-card { position: relative; }
+  .rr-card__media { position: relative; display: block; aspect-ratio: 2 / 3; overflow: hidden; background: #f1efed; }
+  .rr-card__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity .5s ease; }
+  .rr-card__img--alt { opacity: 0; }
+  @media (hover: hover) { .rr-card:hover .rr-card__img--alt { opacity: 1; } }
+  .rr-card__badge { position: absolute; left: 10px; top: 10px; font: 400 10px var(--rr-sans); letter-spacing: .1em; text-transform: uppercase; color: var(--rr-ink); background: rgb(255 255 255 / .88); padding: 4px 7px; }
+  .rr-card__info { display: flex; justify-content: space-between; gap: 12px; padding: 10px 2px 0; color: var(--rr-ink); text-decoration: none; font: 400 11px/1.4 var(--rr-sans); letter-spacing: .08em; text-transform: uppercase; }
+  .rr-card__price { white-space: nowrap; }
+  .rr-card__price s { opacity: .55; margin-inline-end: 4px; }
+  product-card .group-block-content, product-card .product-card__content { gap: 6px; }
+  product-card :is(.product-title, .product-card__title, [class*="title"]) :is(a, p, span) { font-family: var(--rr-sans); }
+  product-card .text-block p, product-card .product-title { font: 400 11px/1.4 var(--rr-sans) !important; letter-spacing: .08em !important; text-transform: uppercase; color: var(--rr-ink); }
+  product-card .price, product-card product-price { font: 400 11px var(--rr-sans) !important; letter-spacing: .08em; color: var(--rr-ink); }
+
+  /* ---------- Quick buy: bag icon on the photo → sizes → checkout ---------- */
+  .rr-card [data-rr-qb], .card-gallery [data-rr-qb] { position: absolute; right: 10px; bottom: 10px; z-index: 3; }
+  .rr-card__frame { position: relative; }
+  .card-gallery { position: relative; }
+  .rr-qb__toggle { display: grid; place-items: center; width: 36px; height: 36px; border: 0; border-radius: 50%; background: rgb(255 255 255 / .92); color: var(--rr-ink); cursor: pointer; box-shadow: 0 1px 6px rgb(0 0 0 / .08); transition: transform .2s ease; }
+  .rr-qb__toggle:hover { transform: scale(1.06); }
+  .rr-qb__toggle:disabled { display: none; }
+  .rr-qb__panel { position: absolute; right: 0; bottom: 44px; width: max-content; min-width: 168px; max-width: 240px; padding: 12px; background: var(--rr-bg); color: var(--rr-ink); border: 1px solid rgb(100 34 38 / .14); box-shadow: 0 8px 28px rgb(0 0 0 / .12); }
+  .rr-qb__label { margin: 0 0 8px; font: 400 10px var(--rr-sans); letter-spacing: .14em; text-transform: uppercase; }
+  .rr-qb__sizes { display: flex; flex-wrap: wrap; gap: 6px; }
+  .rr-qb__size { min-width: 40px; height: 34px; padding: 0 10px; border: 1px solid rgb(100 34 38 / .35); background: transparent; color: var(--rr-ink); font: 400 11px var(--rr-sans); letter-spacing: .06em; text-transform: uppercase; cursor: pointer; }
+  .rr-qb__size:hover:not(:disabled), .rr-qb__size:focus-visible { border-color: var(--rr-ink); background: var(--rr-ink); color: var(--rr-on-ink); }
+  .rr-qb__size:disabled { opacity: .4; text-decoration: line-through; cursor: not-allowed; }
+  .rr-qb__size[aria-busy="true"] { background: var(--rr-ink); color: var(--rr-on-ink); }
+  .rr-qb__status { margin: 8px 0 0; font: 400 10.5px var(--rr-sans); }
+  .rr-qb__status:empty { display: none; }
+
+  /* Logo artwork is burgundy already; no recolouring needed on white. */
+  .rr-card__media, .card-gallery { background: var(--rr-surface) !important; }
+
+  /* ---------- Easy checkout on the product page: choose size → Buy it now. No quantity box. ---------- */
+  .product-information .quantity-selector-wrapper, .product-information quantity-selector-component { display: none !important; }
+  .product-information .add-to-cart-button, .product-information shopify-accelerated-checkout { width: 100%; }
+  .product-information .product-form-buttons > .accelerated-checkout-block { order: -1; }
+  .product-information .shopify-payment-button__button--unbranded { background: var(--rr-ink) !important; color: var(--rr-on-ink) !important; min-height: 48px; font-family: var(--rr-sans) !important; font-size: 12px !important; letter-spacing: .16em !important; text-transform: uppercase; }
+  .rr-pay-note { margin: 4px 0 0; font: 300 12px/1.6 var(--rr-sans); color: var(--rr-ink); opacity: .8; text-align: center; }
+
+  /* Product cards: show the whole photo (mixed 2:3 / 3:4 shots), no cropping */
+  product-card .product-media-container, .product-card .product-media-container { aspect-ratio: 3 / 4 !important; background: #fff; }
+  product-card .product-media-container .product-media, .product-card .product-media-container .product-media { aspect-ratio: 3 / 4 !important; }
+  product-card .product-media__image, .product-card .product-media__image { object-fit: contain !important; }
+</style>
+<script src="{{ 'rr-quick-bag.js' | asset_url }}" defer></script>

@@ -56,3 +56,11 @@ Access: Dev Dashboard app (client ID + secret in .env), broad scopes incl. produ
 - Moved "Now Available" (Noctra) to the top of the homepage, right under the video hero, above New Arrivals (owner request).
 - Homepage order (owner: "2 aesthetic pictures and lookbook before New Arrivals"): hero → Now Available (Noctra) → 2 Noctra campaign photos → Lookbook → New Arrivals → Collections → editorial pair → The House → Summer Drop → feature photo.
 - Still hidden (DRAFT): Cacao Maxi Skirt, Orbita Trousers, Rosa Trousers, Rosa Choker. They have price $0, no sizes and 0 stock (Wix import leftovers; Cacao uses the Brezza photo). Need real prices, sizes and stock from the owner before going live.
+
+## 2026-10-27 (later): coming soon moved, New Arrivals = Noctra only
+- Owner: the 5 product shots are "Coming soon", shown at the bottom of the New Arrivals page, not on the homepage. Homepage `coming` section removed. New template `templates/collection.new-in.json` (main grid + `coming` rr-coming-soon: "The next drop / Coming Soon", 4 columns, grey #f3f1ee, script "Coming soon" label top right, white photo backgrounds blended in, Joelle Zgheib style). Collection `new-in` templateSuffix = `new-in`.
+- The same 5 products (noctra-blazer, brezza-set, rose-top, prima-set, danza-skirt) are still ACTIVE and buyable in the grid; owner to say if they should be hidden.
+- `new-in` was a smart collection "price > 0" (pulled in all 22 old Formation Summer '26 pieces). Rule changed to TAG = fw26, now Noctra only (17 live + 4 drafts).
+- Homepage now: hero → 2 Noctra campaign photos (rr-editorial: side by side on phones too, max width 900px, no scroll zoom, so no cropping) → Lookbook → Collections → The House → Summer Drop → feature. New Arrivals product grid (`new_in`) disabled; Summer Drop / Formation editorial pair (`split`) deleted (backup `backup-live-index.before-remove-split.json`). rr-editorial got a `max_width` setting.
+- Product cards everywhere: 3:4 frame, whole photo shown (object-fit contain, white behind), CSS in live `snippets/rr-brand.liquid`. Photos are mixed 2:3 and 3:4, and Horizon's 4:5 crop cut heads and hems.
+- Alba Skirt is offered in Black but has no black photo (only the beige skirt with the satin bomber). Waiting for the photo.

@@ -3,7 +3,7 @@
   teasers; with the label emptied and a link per piece they point to the live products.
 {%- endcomment -%}
 {%- assign s = section.settings -%}
-<section class="rr-cs" id="rr-cs-{{ section.id }}">
+<section class="rr-cs rr-cs--{{ s.badge_style | default: 'box' }}" id="rr-cs-{{ section.id }}">
   <span id="new-arrivals" class="rr-cs__anchor" aria-hidden="true"></span>
   <div class="rr-cs__head">
     {%- if s.eyebrow != blank %}<p class="rr-cs__eyebrow">{{ s.eyebrow | escape }}</p>{% endif -%}
@@ -46,6 +46,8 @@
   #rr-cs-{{ section.id }} .rr-cs__title { font: 400 11px/1.4 var(--rr-sans, inherit); letter-spacing: .08em; text-transform: uppercase; }
   #rr-cs-{{ section.id }} .rr-cs__more { margin: 32px 0 0; text-align: center; }
   #rr-cs-{{ section.id }} .rr-cs__more a { color: inherit; font: 400 11px var(--rr-sans, inherit); letter-spacing: .18em; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 4px; }
+  #rr-cs-{{ section.id }}.rr-cs--script .rr-cs__badge { left: auto; right: 12px; top: 10px; padding: 0; background: none; color: var(--rr-ink, #642226); font: italic 400 15px/1 var(--rr-serif, Georgia, serif); letter-spacing: .01em; text-transform: none; }
+  #rr-cs-{{ section.id }}.rr-cs--script .rr-cs__img { padding: 4%; mix-blend-mode: multiply; }
   @media (max-width: 989px) { #rr-cs-{{ section.id }} .rr-cs__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
   @media (max-width: 749px) { #rr-cs-{{ section.id }} .rr-cs__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 6px; } }
 </style>
@@ -59,6 +61,7 @@
     { "type": "text", "id": "link_label", "label": "Link under the grid" },
     { "type": "url", "id": "link", "label": "Link URL" },
     { "type": "range", "id": "columns", "label": "Columns on desktop", "min": 2, "max": 6, "step": 1, "default": 3 },
+    { "type": "select", "id": "badge_style", "label": "Label style", "options": [{ "value": "box", "label": "Box, top left" }, { "value": "script", "label": "Script, top right" }], "default": "box" },
     { "type": "color", "id": "photo_bg", "label": "Photo background", "default": "#f6f4f1" },
     { "type": "range", "id": "padding_top", "label": "Top spacing", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 56 },
     { "type": "range", "id": "padding_bottom", "label": "Bottom spacing", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 40 }
