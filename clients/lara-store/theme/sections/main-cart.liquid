@@ -1,0 +1,23 @@
+<div class="section page-width">
+  <h1>{{ 'general.cart' | t }}</h1>
+  {%- if cart.item_count > 0 -%}
+    <form action="{{ routes.cart_url }}" method="post">
+      <table class="cart-table">
+        {%- for item in cart.items -%}
+          <tr>
+            <td><a href="{{ item.url }}">{{ item.product.title | escape }}</a>{% unless item.product.has_only_default_variant %}<br><small>{{ item.variant.title }}</small>{% endunless %}</td>
+            <td><input type="number" name="updates[]" value="{{ item.quantity }}" min="0" aria-label="{{ 'products.quantity' | t }}"></td>
+            <td>{{ item.final_line_price | money }}</td>
+          </tr>
+        {%- endfor -%}
+      </table>
+      {%- for discount in cart.cart_level_discount_applications -%}<p>{{ discount.title }}: -{{ discount.total_allocated_amount | money }}</p>{%- endfor -%}
+      <p><strong>{{ 'cart.subtotal' | t }}: {{ cart.total_price | money_with_currency }}</strong></p>
+      <button class="button" type="submit" name="update">{{ 'cart.update' | t }}</button>
+      <button class="button" type="submit" name="checkout">{{ 'cart.checkout' | t }}</button>
+    </form>
+  {%- else -%}
+    <p>{{ 'cart.empty' | t }}</p><a class="button" href="{{ routes.all_products_collection_url }}">{{ 'cart.continue' | t }}</a>
+  {%- endif -%}
+</div>
+{% schema %}{ "name": "Cart" }{% endschema %}

@@ -1,0 +1,23 @@
+<header class="page-width header">
+  <a href="{{ routes.root_url }}" class="header__logo">
+    {%- if section.settings.logo -%}
+      {{ section.settings.logo | image_url: width: 300 | image_tag: width: section.settings.logo_width, alt: shop.name }}
+    {%- else -%}<strong>{{ shop.name }}</strong>{%- endif -%}
+  </a>
+  <nav><ul class="header__menu">
+    {%- for link in section.settings.menu.links -%}<li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>{%- endfor -%}
+  </ul></nav>
+  <a href="{{ routes.cart_url }}">{{ 'general.cart' | t }} ({{ cart.item_count }})</a>
+</header>
+{% schema %}
+{
+  "name": "Header",
+  "class": "section-header",
+  "enabled_on": { "groups": ["header"] },
+  "settings": [
+    { "type": "image_picker", "id": "logo", "label": "Logo" },
+    { "type": "range", "id": "logo_width", "label": "Logo width", "min": 50, "max": 300, "step": 10, "unit": "px", "default": 120 },
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" }
+  ]
+}
+{% endschema %}
