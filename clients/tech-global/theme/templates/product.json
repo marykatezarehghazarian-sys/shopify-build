@@ -1,0 +1,3 @@
+{ "sections": { "main": { "type": "main-product",
+  "blocks": { "title": { "type": "title" }, "price": { "type": "price" }, "buy": { "type": "buy_buttons" }, "desc": { "type": "description" } },
+  "block_order": ["title", "price", "buy", "desc"] } }, "order": ["main"] }
