@@ -1,0 +1,494 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "tg_hero": {
+      "type": "tg-hero",
+      "settings": {
+        "eyebrow": "Portable monitors · Free worldwide delivery",
+        "heading": "Turn your laptop into a full workstation.",
+        "text": "Single, dual and triple screens that unfold from your laptop in seconds and fold flat to go wherever you work.",
+        "button_label": "Shop monitors",
+        "button_link": "shopify://collections/all",
+        "button_label_2": "Which one is right for me?",
+        "button_link_2": "shopify://pages/which-monitor",
+        "height": 80,
+        "bg_video": "shopify://files/videos/tg-hero-desk.mp4",
+        "overlay": 70,
+        "bg_focal": "center 45%"
+      }
+    },
+    "tg_ticker": {
+      "type": "tg-marquee",
+      "blocks": {
+        "i0": {
+          "type": "item",
+          "settings": {
+            "text": "Free worldwide delivery"
+          }
+        },
+        "i1": {
+          "type": "item",
+          "settings": {
+            "text": "Single · Dual · Triple screens"
+          }
+        },
+        "i2": {
+          "type": "item",
+          "settings": {
+            "text": "Fold flat, take it anywhere"
+          }
+        },
+        "i3": {
+          "type": "item",
+          "settings": {
+            "text": "Works with Windows and Mac"
+          }
+        },
+        "i4": {
+          "type": "item",
+          "settings": {
+            "text": "More screen, less desk"
+          }
+        }
+      },
+      "block_order": [
+        "i0",
+        "i1",
+        "i2",
+        "i3",
+        "i4"
+      ],
+      "settings": {
+        "label": "Highlights",
+        "background": "#1f5bff",
+        "text_color": "#ffffff",
+        "speed": 30
+      }
+    },
+    "tg_tiles": {
+      "type": "tg-tiles",
+      "blocks": {
+        "t0": {
+          "type": "tile",
+          "settings": {
+            "collection": "triple-monitors",
+            "title": "Triple Monitors",
+            "text": "The full workstation, around your laptop.",
+            "button_label": "Shop now",
+            "button_label_2": "Compare",
+            "link_2": "shopify://pages/which-monitor",
+            "art": "triple",
+            "wide": true
+          }
+        },
+        "t1": {
+          "type": "tile",
+          "settings": {
+            "collection": "dual-monitors",
+            "title": "Dual Monitors",
+            "text": "A screen on each side for twice the view.",
+            "button_label": "Shop now",
+            "button_label_2": "Compare",
+            "link_2": "shopify://pages/which-monitor",
+            "art": "dual",
+            "wide": true
+          }
+        }
+      },
+      "block_order": [
+        "t0",
+        "t1"
+      ],
+      "settings": {
+        "eyebrow": "Shop by setup",
+        "heading": "Find your setup"
+      }
+    },
+    "tg_trust": {
+      "type": "tg-trust",
+      "blocks": {
+        "p0": {
+          "type": "point",
+          "settings": {
+            "icon": "globe",
+            "title": "Free worldwide delivery",
+            "text": "On every order, to your door"
+          }
+        },
+        "p1": {
+          "type": "point",
+          "settings": {
+            "icon": "plug",
+            "title": "Plug and play",
+            "text": "One cable, works with Windows and Mac"
+          }
+        },
+        "p2": {
+          "type": "point",
+          "settings": {
+            "icon": "chat",
+            "title": "Help choosing",
+            "text": "Send us your laptop model, we’ll match it"
+          }
+        },
+        "p3": {
+          "type": "point",
+          "settings": {
+            "icon": "card",
+            "title": "Secure checkout",
+            "text": "Your payment details stay protected"
+          }
+        }
+      },
+      "block_order": [
+        "p0",
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "settings": {}
+    },
+    "tg_compare": {
+      "type": "tg-cta",
+      "settings": {
+        "eyebrow": "Compare",
+        "heading": "Which portable monitor is right for you?",
+        "text": "Single, dual or triple: see which setup fits your laptop and the way you work.",
+        "button_label": "Compare monitors",
+        "button_link": "shopify://pages/which-monitor",
+        "art": "dual"
+      }
+    },
+    "tg_faq": {
+      "type": "tg-faq",
+      "blocks": {
+        "q0": {
+          "type": "question",
+          "settings": {
+            "question": "Will it work with my laptop?",
+            "answer": "<p>Most laptops with a USB-C port that supports video (DisplayPort Alt Mode / Thunderbolt) or an HDMI port work right away. Each product page lists exactly what you need.</p>"
+          }
+        },
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Do I need to install a driver?",
+            "answer": "<p>With a video-capable USB-C or HDMI port, no: plug it in and it works. Some laptops and Macs need a small free app to run more than one extra screen; the product page says when.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Does it fit my laptop size?",
+            "answer": "<p>Each model lists the laptop screen sizes it fits, for example 14″ to 16″. Check the product page before ordering.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "Which one should I choose?",
+            "answer": "<p>Single is the lightest to carry, dual gives a screen on each side, triple is the full workstation. See <a href=\"/pages/which-monitor\">Which monitor is right for you?</a></p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "How does delivery work?",
+            "answer": "<p>Delivery is free on every order, in Lebanon and worldwide. See <a href=\"/pages/shipping-returns\">Shipping &amp; Returns</a> for details.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q0",
+        "q1",
+        "q2",
+        "q3",
+        "q4"
+      ],
+      "settings": {
+        "eyebrow": "Help center",
+        "heading": "Questions before you buy?",
+        "text": "Send us your laptop model and we’ll tell you which monitor fits.",
+        "button_label": "Contact us",
+        "button_link": "shopify://pages/contact"
+      }
+    },
+    "product_list_fa6P9H": {
+      "type": "product-list",
+      "blocks": {
+        "static-header": {
+          "type": "_product-list-content",
+          "name": "t:names.header",
+          "static": true,
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": false,
+            "horizontal_alignment": "space-between",
+            "vertical_alignment": "flex-end",
+            "align_baseline": true,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_list_text_YFtzcL": {
+              "type": "_product-list-text",
+              "name": "t:names.collection_title",
+              "settings": {
+                "text": "<h2>Best sellers</h2>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h2",
+                "font": "var(--font-body--family)",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_list_button_MWeP9V": {
+              "type": "_product-list-button",
+              "name": "t:names.product_list_button",
+              "settings": {
+                "label": "View all",
+                "open_in_new_tab": false,
+                "style_class": "link",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_list_text_YFtzcL",
+            "product_list_button_MWeP9V"
+          ]
+        },
+        "static-product-card": {
+          "type": "_product-card",
+          "name": "t:names.product_card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 4,
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_card_gallery_677WP3": {
+              "type": "_product-card-gallery",
+              "name": "t:names.product_card_media",
+              "settings": {
+                "image_ratio": "adapt",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title_YXxMTj": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 4,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price_JQzVV4": {
+              "type": "price",
+              "name": "t:names.product_price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h6",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_card_gallery_677WP3",
+            "product_title_YXxMTj",
+            "price_JQzVV4"
+          ]
+        }
+      },
+      "name": "t:names.product_list",
+      "settings": {
+        "collection": "all",
+        "layout_type": "grid",
+        "carousel_on_mobile": false,
+        "max_products": 8,
+        "columns": 4,
+        "mobile_columns": "2",
+        "mobile_card_size": "60cqw",
+        "columns_gap": 8,
+        "rows_gap": 24,
+        "icons_style": "arrow",
+        "icons_shape": "none",
+        "section_width": "page-width",
+        "horizontal_alignment": "flex-start",
+        "gap": 28,
+        "background_color": "{{ settings.color_palette.background }}",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      },
+      "disabled": true
+    },
+    "tg_models": {
+      "type": "tg-models",
+      "settings": {
+        "eyebrow": "Find your setup",
+        "heading": "Choose your workspace",
+        "text": "More room to focus, create and get things done, wherever you work.",
+        "note_title": "Compatibility comes first.",
+        "note": "Check your laptop size and that it has a video-capable USB-C or HDMI port before ordering.",
+        "note_link_label": "Compatibility guide",
+        "note_link": "shopify://pages/compatibility"
+      },
+      "blocks": {
+        "m0": {
+          "type": "model",
+          "settings": {
+            "product": "triview-pro-max",
+            "badge": "Best seller",
+            "kicker": "Flagship workspace",
+            "line": "Three extra screens: left, right and top.",
+            "screens": "4 screens",
+            "best_for": "Full desk setup anywhere",
+            "sizes": "14″ · 15.6″ · 18.5″",
+            "connection": "USB-C + power adapter"
+          }
+        },
+        "m1": {
+          "type": "model",
+          "settings": {
+            "product": "triview-go",
+            "badge": "",
+            "kicker": "Lightweight triple",
+            "line": "The lighter way to three extra screens.",
+            "screens": "4 screens",
+            "best_for": "Work on the move",
+            "sizes": "14″ · 16″ · 18.5″",
+            "connection": "USB-C + power adapter"
+          }
+        },
+        "m2": {
+          "type": "model",
+          "settings": {
+            "product": "duoview-pro",
+            "badge": "",
+            "kicker": "Everyday mobility",
+            "line": "A screen on each side of your laptop.",
+            "screens": "3 screens",
+            "best_for": "Daily work and calls",
+            "sizes": "14″ · 15.6″",
+            "connection": "One USB-C cable"
+          }
+        },
+        "m3": {
+          "type": "model",
+          "settings": {
+            "product": "duoview-play",
+            "badge": "",
+            "kicker": "Most versatile",
+            "line": "HDMI and a screen that turns to share.",
+            "screens": "3 screens",
+            "best_for": "Laptops, consoles, sharing",
+            "sizes": "14″ · 15.6″",
+            "connection": "USB-C or HDMI"
+          }
+        }
+      },
+      "block_order": [
+        "m0",
+        "m1",
+        "m2",
+        "m3"
+      ]
+    }
+  },
+  "order": [
+    "tg_hero",
+    "tg_ticker",
+    "tg_models",
+    "tg_tiles",
+    "product_list_fa6P9H",
+    "tg_trust",
+    "tg_compare",
+    "tg_faq"
+  ]
+}
