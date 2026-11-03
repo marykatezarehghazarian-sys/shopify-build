@@ -21,3 +21,6 @@ Store: svc4nx-e5.myshopify.com
 - Catalog: portable monitors. Active: TriView Pro Max, TriView Pro, TriView Go, DuoView Pro Max 15.6″, DuoView Pro, DuoView Play, DuoView Lite 14″ ($289–$799). Draft: SoloView 15.6″. All stock 0 at setup.
 - Collections: Triple / Dual / Single Monitors, Accessories (empty).
 - Live theme: "[Draft] Tech Global – no empty products" (189502586973), Horizon-based; other drafts exist (build, workspace & compare, hero video). No orders yet.
+- Owner confirmed this is the "new site" (2026-11-03). Homepage sections: tg_hero, tg_ticker, tg_models ("Choose your workspace" cards), tg_tiles ("Find your setup"), tg_trust, tg_compare, tg_faq. No JS errors.
+- Inventory is not tracked on any product (so "stock 0" is fine; everything can be ordered).
+- DuoView Pro shows "From $399" because the 15.6″ Amber option is $399 while the other 15.6″ Full HD colours are $449. To confirm with owner.
