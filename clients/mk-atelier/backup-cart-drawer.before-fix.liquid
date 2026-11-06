@@ -1,0 +1,44 @@
+<div class="cart-drawer" id="CartDrawer">
+  <div class="cart-drawer__overlay" onclick="document.getElementById('CartDrawer').classList.remove('is-open')"></div>
+  <div class="cart-drawer__panel">
+    <div class="cart-drawer__header">
+      <h2 style="font-size:16px;">Your cart</h2>
+      <button aria-label="Close cart" onclick="document.getElementById('CartDrawer').classList.remove('is-open')">{% render 'icon-close' %}</button>
+    </div>
+    <div class="cart-drawer__body" id="CartDrawerBody">
+      {%- if cart.item_count == 0 -%}
+        <div class="cart-drawer__empty">
+          <p style="margin-bottom:20px;">Your cart is empty</p>
+          <a href="{{ routes.all_products_collection_url }}" class="btn btn--pill" onclick="document.getElementById('CartDrawer').classList.remove('is-open')">Start shopping</a>
+        </div>
+      {%- else -%}
+        {%- for item in cart.items -%}
+          <div class="cart-line">
+            <img src="{{ item.image | image_url: width: 160 }}" alt="{{ item.title | escape }}" width="{{ item.image.width }}" height="{{ item.image.height }}">
+            <div>
+              <p class="cart-line__title">{{ item.product.title }}</p>
+              {%- unless item.variant.title contains 'Default' -%}
+                <p class="cart-line__variant">{{ item.variant.title }}</p>
+              {%- endunless -%}
+              <p style="font-size:12px; opacity:0.6;">Qty {{ item.quantity }}</p>
+            </div>
+            <span>{{ item.final_line_price | money }}</span>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+    {%- if cart.item_count > 0 -%}
+      <div class="cart-drawer__footer">
+        <div class="cart-subtotal-row"><span>Subtotal</span><span>{{ cart.total_price | money }}</span></div>
+        {%- if settings.cart_free_shipping -%}
+          <p class="cart-free-ship-note">Free worldwide shipping on all orders</p>
+        {%- endif -%}
+        <a href="{{ routes.cart_url }}" class="btn btn--full">Checkout</a>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{ "name": "Cart drawer" }
+{% endschema %}
