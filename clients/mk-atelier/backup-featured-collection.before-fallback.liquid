@@ -1,0 +1,57 @@
+<div class="section container">
+  <div class="section-heading">
+    <h2>{{ section.settings.heading | default: section.settings.collection.title }}</h2>
+    {%- if section.settings.layout == 'carousel' -%}
+      <div class="carousel-nav" data-carousel-nav="{{ section.id }}">
+        <button type="button" data-carousel-prev aria-label="Previous">{% render 'icon-close' %}</button>
+        <button type="button" data-carousel-next aria-label="Next">&rarr;</button>
+      </div>
+    {%- else -%}
+      <a href="{{ section.settings.collection.url }}" class="section-heading__link">Explore all</a>
+    {%- endif -%}
+  </div>
+
+  <div class="{% if section.settings.layout == 'carousel' %}product-carousel{% else %}product-grid{% endif %}" {% if section.settings.layout == 'carousel' %}data-carousel="{{ section.id }}"{% endif %}>
+    {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
+      {% render 'product-card', product: product %}
+    {%- else -%}
+      {%- for i in (1..section.settings.products_to_show) -%}
+        <div class="product-card">
+          <div class="product-card__media">{{ 'product-1' | placeholder_svg_tag }}</div>
+          <p class="product-card__title">Sample product title</p>
+          <span class="product-card__price">{{ 1999 | money }}</span>
+        </div>
+      {%- endfor -%}
+    {%- endfor -%}
+  </div>
+
+  {%- if section.settings.layout == 'carousel' -%}
+    <div class="text-center" style="margin-top: 24px;">
+      <a href="{{ section.settings.collection.url }}" class="btn btn--outline btn--sm">View all</a>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Featured collection",
+  "settings": [
+    { "type": "collection", "id": "collection", "label": "Collection" },
+    { "type": "text", "id": "heading", "label": "Heading override" },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        { "value": "grid", "label": "Grid" },
+        { "value": "carousel", "label": "Carousel" }
+      ],
+      "default": "grid"
+    },
+    { "type": "range", "id": "products_to_show", "label": "Products to show", "min": 4, "max": 12, "step": 1, "default": 8 }
+  ],
+  "presets": [
+    { "name": "Featured collection" }
+  ]
+}
+{% endschema %}

@@ -29,3 +29,8 @@ Store: cawmd9-ya.myshopify.com
   - FIXED: drawer "Checkout" was a link to /cart (two taps to pay); now a form button with name="checkout", straight to Shopify checkout (sections/cart-drawer.liquid; backup-cart-drawer.before-fix.liquid).
   - Missing pages (404): /pages/reviews (homepage reviews section link "MK Atelier reviews 4.8 out of 5…") and /pages/authenticate-your-piece (product page "Learn more"). Ask owner: create pages or remove links.
   - No "Buy it now" button on product pages; the drawer has no quantity change or remove. "Free worldwide shipping" text vs ships to LB only.
+- 2026-11-06 (owner: "remove the links and add buy it now"), live theme:
+  - Reviews strip (homepage) no longer links anywhere: section renders a <div> when its link is blank; index.json reviews.link emptied. Product "Learn more" link to /pages/authenticate-your-piece removed (sentence kept).
+  - "Buy it now" ({{ form | payment_button }}) under Add to cart in main-product, white outline style (.mk-buy-now). Tested phone + desktop: goes to Shopify checkout; Add to cart still works.
+  - Also fixed: product option box "Title / Default Title" hidden for single-variant products; quantity number was white on white (now black on white); "You May Also Like" (featured-collection, no collection set) showed placeholder pictures; now falls back to all products and skips the current one (placeholders only in the theme editor); carousel "previous" button showed an X icon, now ←. Homepage New Drops / Best Sellers unchanged (6 cards each).
+  - Note: reviews strip says "4.8 out of 5, based on 300 reviews" and product pages show 4.8 stars by default (product.metafields.reviews.rating default '4.8'); there is no reviews app or page. Raised with owner.

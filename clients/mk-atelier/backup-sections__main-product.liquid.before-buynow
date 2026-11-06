@@ -1,0 +1,88 @@
+<div class="section container">
+  {%- assign showcase_video_url = product.metafields.custom.showcase_video_url.value -%}
+  <div class="product-layout" style="display:grid; grid-template-columns:1fr; gap:32px;">
+    <div class="product-gallery">
+      <div class="product-gallery__main" style="margin-bottom:10px; position:relative;">
+        {%- if product.featured_image -%}
+          <img id="ProductMainImage" src="{{ product.featured_image | image_url: width: 1000 }}" alt="{{ product.featured_image.alt | escape }}" width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}">
+        {%- else -%}
+          {{ 'product-1' | placeholder_svg_tag }}
+        {%- endif -%}
+        {%- if showcase_video_url != blank -%}
+          <video id="ProductVideoInline" class="product-gallery__video" src="{{ showcase_video_url }}" autoplay muted loop playsinline preload="auto"></video>
+        {%- endif -%}
+      </div>
+      {%- if product.images.size > 1 -%}
+        <div class="product-gallery__thumbs" style="display:flex; gap:8px; overflow-x:auto;">
+          {%- for image in product.images -%}
+            <button type="button" class="product-gallery__thumb" style="width:72px; height:72px; flex:0 0 auto; border:1px solid var(--color-border); padding:0;" onclick="document.getElementById('ProductMainImage').src='{{ image | image_url: width: 1000 }}'; var v=document.getElementById('ProductVideoInline'); if(v){v.pause(); v.style.display='none';}">
+              <img src="{{ image | image_url: width: 150 }}" alt="{{ image.alt | escape }}" style="width:100%; height:100%; object-fit:cover;" width="{{ image.width }}" height="{{ image.height }}">
+            </button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="product-info">
+      {%- if product.vendor != blank and settings.show_vendor -%}
+        <p class="product-card__vendor">{{ product.vendor }}</p>
+      {%- endif -%}
+      <h1 style="font-size:clamp(22px,3vw,32px); text-transform:none; margin-bottom:12px;">{{ product.title }}</h1>
+      {% render 'price', product: product %}
+
+      {%- if section.settings.show_reviews -%}
+        <p style="font-size:13px; margin-top:8px;"><span class="reviews-strip__stars">{% render 'icon-star' %}{% render 'icon-star' %}{% render 'icon-star' %}{% render 'icon-star' %}{% render 'icon-star' %}</span> {{ product.metafields.reviews.rating.value | default: '4.8' }}</p>
+      {%- endif -%}
+
+      <div style="margin:24px 0; font-size:14px; line-height:1.7;">{{ product.description }}</div>
+
+      {%- form 'product', product -%}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" id="ProductVariantId">
+
+        {%- for option in product.options_with_values -%}
+          <div style="margin-bottom:16px;">
+            <label style="font-size:12px; text-transform:uppercase; letter-spacing:0.06em; display:block; margin-bottom:8px;">{{ option.name }}</label>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              {%- for value in option.values -%}
+                <span class="btn btn--outline btn--sm" style="cursor:default;">{{ value }}</span>
+              {%- endfor -%}
+            </div>
+          </div>
+        {%- endfor -%}
+
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+          <label class="visually-hidden" for="Quantity">Quantity</label>
+          <div class="cart-line__qty">
+            <button type="button" onclick="document.getElementById('Quantity').stepDown()">-</button>
+            <input type="number" id="Quantity" name="quantity" value="1" min="1" style="width:40px; text-align:center; border:1px solid var(--color-border);">
+            <button type="button" onclick="document.getElementById('Quantity').stepUp()">+</button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn--full" {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %}>
+          {%- if product.selected_or_first_available_variant.available -%}Add to cart{%- else -%}Sold out{%- endif -%}
+        </button>
+      {%- endform -%}
+
+      {%- if section.settings.show_authenticate_note -%}
+        <p style="font-size:12px; opacity:0.6; margin-top:20px;">Every piece ships with a certificate of authenticity. <a href="/pages/authenticate-your-piece" style="text-decoration:underline;">Learn more</a>.</p>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+<style>
+  @media (min-width: 850px) {
+    .product-layout { grid-template-columns: 1.1fr 1fr; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Product information",
+  "settings": [
+    { "type": "checkbox", "id": "show_reviews", "label": "Show review stars", "default": true },
+    { "type": "checkbox", "id": "show_authenticate_note", "label": "Show authenticity note", "default": true }
+  ]
+}
+{% endschema %}
