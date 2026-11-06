@@ -80,3 +80,9 @@ Store: wearpartners-1574.myshopify.com
   2. "Buy it now" sits under "Add to cart". To do: make it the main button (first, solid).
   3. Product page still says "Beirut $5 · Outside Beirut $8 (Aramex)" while checkout charges a flat $6. Already fixed on the unpublished draft "WearPartners - Delivery 6" 167688503528 ("Delivery all over Lebanon: $6"); do 1 and 2 on that draft and publish it together.
   4. Checkout form (Settings → Checkout): phone only, hide company, apartment optional or hidden, postal code optional, no second phone. Admin-only, owner does it.
+- 2026-11-06: New credentials from owner (Dev Dashboard app; themes yes, products/orders/shipping still no) saved to .env. "Delivery 6" draft is outdated: live got newer edits on 2026-10-20 (story text, sign-off, category tiles), so don't publish it.
+- 2026-11-06: New copy of live "WearPartners - Easy Checkout" 168392032488:
+  1. Cart type was already Drawer; the drawer just didn't open. Turned on `auto_open_cart_drawer`, so "Add to cart" now opens the bag with Check out.
+  2. "Buy it now" first (solid black, full width); "Add to cart" outline (`button-secondary`) beside the quantity. CSS at the end of assets/wp-luxe.css (order: -1 on .accelerated-checkout-block).
+  3. Delivery text = "$6 all over Lebanon" in the product info line, product Shipping accordion, homepage policy band (setting + section default).
+  Tested on phone and desktop: drawer opens with Check out, Buy it now goes to checkout, no JS errors. Waiting for owner to publish. Preview: https://wearpartners-1574.myshopify.com/products/g-jeans?preview_theme_id=168392032488
