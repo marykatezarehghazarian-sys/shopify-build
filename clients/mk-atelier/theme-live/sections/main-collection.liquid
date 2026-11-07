@@ -1,0 +1,129 @@
+{%- comment -%}
+  Mk Atelier collection page: category buttons (from the "Collections" item of the main menu), filters,
+  sort and up to 48 pieces per page, so shoppers can browse everything without searching.
+{%- endcomment -%}
+{%- liquid
+  assign menu = linklists[section.settings.category_menu]
+  assign cat_links = nil
+  for link in menu.links
+    if link.links.size > 0 and link.title == 'Collections'
+      assign cat_links = link.links
+    endif
+  endfor
+  assign has_filters = false
+  for filter in collection.filters
+    if filter.type == 'price_range' or filter.values.size > 0
+      assign has_filters = true
+    endif
+  endfor
+-%}
+<div class="section container mk-coll">
+  <div class="section-heading" style="flex-direction:column; align-items:flex-start;">
+    <h1 style="font-size:clamp(24px,3.4vw,40px);">{% if collection.handle == 'all' %}All pieces{% else %}{{ collection.title }}{% endif %}</h1>
+    {%- if collection.description != blank -%}
+      <div style="font-size:14px; opacity:0.7; margin-top:8px; max-width:60ch;">{{ collection.description }}</div>
+    {%- endif -%}
+  </div>
+
+  {%- if cat_links -%}
+    <nav class="mk-chips" aria-label="Categories">
+      <a href="{{ routes.all_products_collection_url }}" class="mk-chip{% if collection.handle == 'all' %} is-active{% endif %}"{% if collection.handle == 'all' %} aria-current="page"{% endif %}>All</a>
+      {%- for link in cat_links -%}
+        {%- assign is_active = false -%}
+        {%- if link.object.handle == collection.handle -%}{%- assign is_active = true -%}{%- endif -%}
+        <a href="{{ link.url }}" class="mk-chip{% if is_active %} is-active{% endif %}"{% if is_active %} aria-current="page"{% endif %}>{{ link.title }}{% if link.object.products_count %} <span>{{ link.object.products_count }}</span>{% endif %}</a>
+      {%- endfor -%}
+    </nav>
+  {%- endif -%}
+
+  <form method="get" action="{{ collection.url }}" class="mk-toolbar">
+    <span class="mk-count">{{ collection.products_count }} {% if collection.products_count == 1 %}piece{% else %}pieces{% endif %}</span>
+    <div class="mk-toolbar__right">
+      {%- if has_filters -%}
+        <details class="mk-filter">
+          <summary>Filter</summary>
+          <div class="mk-filter__panel">
+            {%- for filter in collection.filters -%}
+              {%- if filter.type == 'price_range' -%}
+                <fieldset>
+                  <legend>{{ filter.label }}</legend>
+                  <div class="mk-price">
+                    <input type="number" name="{{ filter.min_value.param_name }}" value="{{ filter.min_value.value | money_without_currency | remove: ',' }}" placeholder="Min $" min="0" inputmode="numeric">
+                    <span>–</span>
+                    <input type="number" name="{{ filter.max_value.param_name }}" value="{{ filter.max_value.value | money_without_currency | remove: ',' }}" placeholder="Max {{ filter.range_max | money_without_currency | remove: ',' }}" min="0" inputmode="numeric">
+                  </div>
+                </fieldset>
+              {%- elsif filter.values.size > 0 -%}
+                <fieldset>
+                  <legend>{{ filter.label }}</legend>
+                  {%- for value in filter.values -%}
+                    <label><input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}"{% if value.active %} checked{% endif %}{% if value.count == 0 and value.active == false %} disabled{% endif %}> {{ value.label }} <small>({{ value.count }})</small></label>
+                  {%- endfor -%}
+                </fieldset>
+              {%- endif -%}
+            {%- endfor -%}
+            <div class="mk-filter__actions">
+              <button type="submit" class="btn btn--sm">Show results</button>
+              <a href="{{ collection.url }}{% if collection.sort_by != blank %}?sort_by={{ collection.sort_by }}{% endif %}" class="btn btn--outline btn--sm">Clear</a>
+            </div>
+          </div>
+        </details>
+      {%- endif -%}
+      {%- if section.settings.show_sort -%}
+        <select name="sort_by" onchange="this.form.submit()" aria-label="Sort" class="mk-sort">
+          {%- for option in collection.sort_options -%}
+            <option value="{{ option.value }}" {% if option.value == collection.sort_by %}selected{% endif %}>{{ option.name }}</option>
+          {%- endfor -%}
+        </select>
+      {%- endif -%}
+    </div>
+  </form>
+
+  <div class="product-grid">
+    {%- paginate collection.products by 48 -%}
+      {%- for product in collection.products -%}
+        {% render 'product-card', product: product %}
+      {%- else -%}
+        <p style="grid-column:1/-1; opacity:.7;">No pieces match these filters. <a href="{{ collection.url }}" style="text-decoration:underline;">Clear filters</a></p>
+      {%- endfor -%}
+    {%- if paginate.pages > 1 -%}
+      <div style="grid-column:1/-1; display:flex; justify-content:center; align-items:center; gap:10px; margin-top:32px; font-size:13px;">
+        {%- if paginate.previous -%}<a href="{{ paginate.previous.url }}" class="btn btn--outline btn--sm">Previous</a>{%- endif -%}
+        <span>Page {{ paginate.current_page }} of {{ paginate.pages }}</span>
+        {%- if paginate.next -%}<a href="{{ paginate.next.url }}" class="btn btn--outline btn--sm">Next</a>{%- endif -%}
+      </div>
+    {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</div>
+
+<style>
+  .mk-chips { display:flex; gap:8px; overflow-x:auto; padding:2px 0 14px; margin-bottom:8px; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+  .mk-chips::-webkit-scrollbar { display:none; }
+  .mk-chip { flex:0 0 auto; padding:9px 14px; border:1px solid currentColor; font-size:12px; letter-spacing:.06em; text-transform:uppercase; white-space:nowrap; opacity:.75; text-decoration:none; color:inherit; }
+  .mk-chip span { opacity:.6; margin-left:2px; }
+  .mk-chip:hover { opacity:1; }
+  .mk-chip.is-active { background:#fff; color:#000; opacity:1; border-color:#fff; }
+  .mk-toolbar { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:20px; font-size:13px; position:relative; }
+  .mk-toolbar__right { display:flex; gap:10px; align-items:center; }
+  .mk-sort, .mk-filter summary { border:1px solid var(--color-border); padding:8px 12px; background:var(--color-bg); color:var(--color-text); font:inherit; font-size:13px; cursor:pointer; }
+  .mk-filter summary { list-style:none; }
+  .mk-filter summary::-webkit-details-marker { display:none; }
+  .mk-filter__panel { position:absolute; right:0; top:calc(100% + 6px); z-index:20; width:min(320px, calc(100vw - 32px)); background:var(--color-bg); border:1px solid var(--color-border); padding:16px; display:grid; gap:14px; }
+  .mk-filter fieldset { border:0; padding:0; margin:0; display:grid; gap:8px; }
+  .mk-filter legend { font-size:11px; text-transform:uppercase; letter-spacing:.08em; opacity:.7; margin-bottom:6px; }
+  .mk-filter label { display:flex; gap:8px; align-items:center; }
+  .mk-price { display:flex; gap:8px; align-items:center; }
+  .mk-price input { width:100%; padding:8px; background:#fff; color:#000; border:1px solid var(--color-border); font:inherit; }
+  .mk-filter__actions { display:flex; gap:8px; }
+</style>
+
+{% schema %}
+{
+  "name": "Collection",
+  "settings": [
+    { "type": "checkbox", "id": "show_sort", "label": "Show sort dropdown", "default": true },
+    { "type": "link_list", "id": "category_menu", "label": "Menu with the category buttons (uses its \"Collections\" item)", "default": "main-menu" }
+  ]
+}
+{% endschema %}

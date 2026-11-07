@@ -1,0 +1,44 @@
+<div class="section container">
+  <div class="section-heading" style="flex-direction:column; align-items:flex-start;">
+    <h1 style="font-size:clamp(24px,3.4vw,40px);">{{ collection.title }}</h1>
+    {%- if collection.description != blank -%}
+      <div style="font-size:14px; opacity:0.7; margin-top:8px; max-width:60ch;">{{ collection.description }}</div>
+    {%- endif -%}
+  </div>
+
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; font-size:13px;">
+    <span>{{ collection.products_count }} pieces</span>
+    {%- if section.settings.show_sort -%}
+      <form method="get" action="{{ collection.url }}">
+        <select name="sort_by" onchange="this.form.submit()" style="border:1px solid var(--color-border); padding:6px 10px; background:var(--color-bg); color:var(--color-text);">
+          {%- for option in collection.sort_options -%}
+            <option value="{{ option.value }}" {% if option.value == collection.sort_by %}selected{% endif %}>{{ option.name }}</option>
+          {%- endfor -%}
+        </select>
+      </form>
+    {%- endif -%}
+  </div>
+
+  <div class="product-grid">
+    {%- paginate collection.products by 24 -%}
+      {%- for product in collection.products -%}
+        {% render 'product-card', product: product %}
+      {%- endfor -%}
+    {%- if paginate.pages > 1 -%}
+      <div style="grid-column:1/-1; display:flex; justify-content:center; gap:10px; margin-top:32px;">
+        {%- if paginate.previous -%}<a href="{{ paginate.previous.url }}" class="btn btn--outline btn--sm">Previous</a>{%- endif -%}
+        {%- if paginate.next -%}<a href="{{ paginate.next.url }}" class="btn btn--outline btn--sm">Next</a>{%- endif -%}
+      </div>
+    {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection",
+  "settings": [
+    { "type": "checkbox", "id": "show_sort", "label": "Show sort dropdown", "default": true }
+  ]
+}
+{% endschema %}
