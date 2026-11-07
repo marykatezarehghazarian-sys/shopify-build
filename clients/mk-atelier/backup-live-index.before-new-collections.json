@@ -1,0 +1,174 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "blocks": {
+        "b1": {
+          "type": "button",
+          "settings": {
+            "label": "New Drops",
+            "url": "/collections/new-drops",
+            "style": "solid"
+          }
+        },
+        "b2": {
+          "type": "button",
+          "settings": {
+            "label": "Shop All",
+            "url": "/collections/all",
+            "style": "outline"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2"
+      ],
+      "settings": {
+        "video_url": "https://cdn.shopify.com/videos/c/vp/4a8a243e212c4b43875e40494315625b/4a8a243e212c4b43875e40494315625b.HD-1080p-2.5Mbps-95646081.mp4",
+        "heading": "Own What Others Admire",
+        "subheading": "Limited edition, handcrafted sculptures. Only a select few will own one."
+      }
+    },
+    "reviews": {
+      "type": "reviews-strip",
+      "settings": {
+        "title": "Mk Atelier",
+        "rating": 4.8,
+        "review_count": 300,
+        "link": ""
+      }
+    },
+    "collections": {
+      "type": "collection-list",
+      "blocks": {
+        "c1": {
+          "type": "collection",
+          "settings": {
+            "collection": "new-drops",
+            "label": "Pop Art"
+          }
+        },
+        "c2": {
+          "type": "collection",
+          "settings": {
+            "collection": "resin-sculpture",
+            "label": "Resin Sculpture"
+          }
+        },
+        "c3": {
+          "type": "collection",
+          "settings": {
+            "collection": "fiber-glass",
+            "label": "Fiber Glass"
+          }
+        },
+        "c4": {
+          "type": "collection",
+          "settings": {
+            "collection": "ceramic-art",
+            "label": "Ceramic Art"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "settings": {
+        "heading": "Explore Our Artworks"
+      }
+    },
+    "featured-1": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "new-drops",
+        "heading": "New Drops",
+        "layout": "grid",
+        "products_to_show": 8
+      }
+    },
+    "promo": {
+      "type": "promo-banner",
+      "settings": {
+        "heading": "The Gift Guide",
+        "text": "Curated statement pieces for every personality and occasion.",
+        "link_text": "Find the perfect gift",
+        "link": "/collections/all"
+      }
+    },
+    "featured-2": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "new-drops",
+        "heading": "Best Sellers",
+        "layout": "carousel",
+        "products_to_show": 8
+      }
+    },
+    "story": {
+      "type": "brand-story",
+      "settings": {
+        "image_position": "left",
+        "eyebrow": "BEIRUT, LEBANON",
+        "heading": "Born To Inspire",
+        "body": "<p>We believe true luxury lies in rarity. Every Mk Atelier sculpture is crafted as a limited edition, ensuring only a select few can own a piece of our art.</p>"
+      }
+    },
+    "trust": {
+      "type": "trust-badges",
+      "blocks": {
+        "t1": {
+          "type": "badge",
+          "settings": {
+            "icon": "icon-shipping",
+            "title": "Free Worldwide Shipping",
+            "text": "Free worldwide shipping and returns, customs and duties included."
+          }
+        },
+        "t2": {
+          "type": "badge",
+          "settings": {
+            "icon": "icon-warranty",
+            "title": "Lifetime Warranty",
+            "text": "Every sculpture is backed by a lifetime warranty."
+          }
+        },
+        "t3": {
+          "type": "badge",
+          "settings": {
+            "icon": "icon-support",
+            "title": "Dedicated Support",
+            "text": "We're available to answer your questions."
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "collections",
+    "trust",
+    "featured-1",
+    "promo",
+    "featured-2",
+    "story",
+    "reviews"
+  ]
+}
