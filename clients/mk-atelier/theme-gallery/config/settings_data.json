@@ -1,0 +1,89 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */{
+  "current": {
+    "color_background": "#FFFFFF",
+    "color_text": "#000000",
+    "color_invert_background": "#000000",
+    "color_invert_text": "#FFFFFF",
+    "color_accent": "#C8102E",
+    "color_border": "#E6E6E6",
+    "font_heading": "archivo_n7",
+    "font_body": "inter_n4",
+    "heading_letter_spacing": -0.5,
+    "logo_width": 160,
+    "page_width": 1440,
+    "grid_gap": 16,
+    "show_vendor": false,
+    "show_color_count": true,
+    "show_sale_badge": true,
+    "image_ratio": "square",
+    "cart_type": "drawer",
+    "cart_free_shipping": true,
+    "social_instagram": "https://instagram.com/mkatelier.club",
+    "social_tiktok": "",
+    "social_facebook": "",
+    "social_whatsapp": "",
+    "sections": {
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "tagline": "Limited edition, handcrafted sculptures.",
+          "newsletter_heading": "A closer look at Mk Atelier"
+        },
+        "blocks": {
+          "explore": {
+            "type": "link_column",
+            "settings": {
+              "title": "Explore",
+              "menu": "footer-explore"
+            }
+          },
+          "client": {
+            "type": "link_column",
+            "settings": {
+              "title": "Client services",
+              "menu": "footer-client-services"
+            }
+          }
+        },
+        "block_order": [
+          "explore",
+          "client"
+        ]
+      }
+    }
+  },
+  "presets": {
+    "Default": {
+      "color_background": "#000000",
+      "color_text": "#FFFFFF",
+      "color_invert_background": "#000000",
+      "color_invert_text": "#FFFFFF",
+      "color_accent": "#E4261B",
+      "color_border": "#333333",
+      "font_heading": "archivo_n7",
+      "font_body": "inter_n4",
+      "heading_letter_spacing": -0.5,
+      "logo_width": 160,
+      "page_width": 1440,
+      "grid_gap": 16,
+      "show_vendor": false,
+      "show_color_count": true,
+      "show_sale_badge": true,
+      "image_ratio": "square",
+      "cart_type": "drawer",
+      "cart_free_shipping": true,
+      "social_instagram": "https://instagram.com/mkatelier.club",
+      "social_tiktok": "",
+      "social_facebook": "",
+      "social_whatsapp": ""
+    }
+  }
+}

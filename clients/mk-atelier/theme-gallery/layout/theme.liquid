@@ -1,0 +1,82 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="{{ settings.color_invert_background }}">
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    {%- if settings.favicon -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+
+    <title>
+      {{ page_title }}
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+
+    {%- if page_description -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
+
+    {{ content_for_header }}
+
+    <style>
+      {{ settings.font_heading | font_face }}
+      {{ settings.font_body | font_face }}
+    </style>
+
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+
+    <style>
+      :root {
+        --color-bg: {{ settings.color_background }};
+        --color-text: {{ settings.color_text }};
+        --color-invert-bg: {{ settings.color_invert_background }};
+        --color-invert-text: {{ settings.color_invert_text }};
+        --color-accent: {{ settings.color_accent }};
+        --color-border: {{ settings.color_border }};
+        --font-heading: {{ settings.font_heading.family }}, {{ settings.font_heading.fallback_families }};
+        --font-heading-weight: {{ settings.font_heading.weight }};
+        --font-body: {{ settings.font_body.family }}, {{ settings.font_body.fallback_families }};
+        --font-body-weight: {{ settings.font_body.weight }};
+        --heading-letter-spacing: {{ settings.heading_letter_spacing }}px;
+        --page-width: {{ settings.page_width }}px;
+        --grid-gap: {{ settings.grid_gap }}px;
+        --logo-width: {{ settings.logo_width }}px;
+      }
+    </style>
+    {{ 'mk-style.css' | asset_url | stylesheet_tag }}
+  </head>
+  <body class="template-{{ template.name }}">
+    <canvas id="StarfallCanvas" class="starfall-canvas" aria-hidden="true"></canvas>
+    <a class="skip-to-content visually-hidden" href="#MainContent">Skip to content</a>
+
+    {% section 'announcement-bar' %}
+    {% section 'header' %}
+
+    <main id="MainContent" class="main-content">
+      {{ content_for_layout }}
+    </main>
+
+    {% section 'footer' %}
+
+    {% section 'cart-drawer' %}
+    <script>
+      // Header: white once the page scrolls (homepage starts transparent over the hero); keeps the hero tucked under it.
+      (function () {
+        var h = document.querySelector('.site-header'); if (!h) return;
+        var set = function () { document.documentElement.style.setProperty('--mk-header-h', h.offsetHeight + 'px'); };
+        var onScroll = function () { h.classList.toggle('is-scrolled', window.scrollY > 10); };
+        set(); onScroll(); window.addEventListener('resize', set); window.addEventListener('scroll', onScroll, { passive: true });
+      })();
+    </script>
+  </body>
+</html>

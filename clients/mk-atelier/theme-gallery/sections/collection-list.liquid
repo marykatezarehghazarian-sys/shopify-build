@@ -1,0 +1,61 @@
+{%- comment -%} Collection tiles as a sideways carousel: photo, name on the photo, arrows on desktop. {%- endcomment -%}
+<div class="section mk-collections">
+  {%- if section.settings.heading != blank or section.settings.eyebrow != blank -%}
+    <div class="mk-head container">
+      {%- if section.settings.eyebrow != blank -%}<p class="mk-eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2 class="mk-title">{{ section.settings.heading }}</h2>{%- endif -%}
+    </div>
+  {%- endif -%}
+  <div class="mk-carousel" data-mk-carousel>
+    <div class="mk-carousel__track collection-grid" data-track>
+      {%- for block in section.blocks -%}
+        {%- assign coll = block.settings.collection -%}
+        <a href="{{ coll.url | default: '#' }}" class="collection-tile" {{ block.shopify_attributes }}>
+          {%- if block.settings.image -%}
+            <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.label | default: coll.title | escape }}" loading="lazy" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}">
+          {%- elsif coll.featured_image -%}
+            <img src="{{ coll.featured_image | image_url: width: 800 }}" alt="{{ block.settings.label | default: coll.title | escape }}" loading="lazy" width="{{ coll.featured_image.width }}" height="{{ coll.featured_image.height }}">
+          {%- else -%}
+            {{ 'collection-1' | placeholder_svg_tag }}
+          {%- endif -%}
+          <span class="collection-tile__label">{{ block.settings.label | default: coll.title }}</span>
+        </a>
+      {%- endfor -%}
+    </div>
+    <div class="mk-carousel__nav">
+      <button type="button" aria-label="Previous" data-prev>&larr;</button>
+      <button type="button" aria-label="Next" data-next>&rarr;</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    var root = document.currentScript.previousElementSibling.querySelector('[data-mk-carousel]'); if (!root) return;
+    var track = root.querySelector('[data-track]');
+    var step = function () { var t = track.querySelector('.collection-tile'); return t ? t.getBoundingClientRect().width + 20 : 300; };
+    root.querySelector('[data-prev]').addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: 'smooth' }); });
+    root.querySelector('[data-next]').addEventListener('click', function () { track.scrollBy({ left: step(), behavior: 'smooth' }); });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Collection list",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Small label", "default": "The collections" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Explore our artworks" }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection tile",
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "text", "id": "label", "label": "Label override" },
+        { "type": "image_picker", "id": "image", "label": "Image override" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Collection list", "blocks": [{ "type": "collection" }, { "type": "collection" }, { "type": "collection" }, { "type": "collection" }] }]
+}
+{% endschema %}

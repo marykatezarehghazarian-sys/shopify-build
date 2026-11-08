@@ -1,0 +1,52 @@
+<div class="mk-trust-wrap"><div class="section section--tight container">
+  <div class="trust-badges">
+    {%- for block in section.blocks -%}
+      <div class="trust-badge" {{ block.shopify_attributes }}>
+        {%- case block.settings.icon -%}
+          {%- when 'icon-shipping' -%}{% render 'icon-shipping' %}
+          {%- when 'icon-warranty' -%}{% render 'icon-warranty' %}
+          {%- when 'icon-support' -%}{% render 'icon-support' %}
+        {%- endcase -%}
+        <p class="trust-badge__title">{{ block.settings.title }}</p>
+        <p class="trust-badge__text">{{ block.settings.text }}</p>
+      </div>
+    {%- endfor -%}
+  </div>
+</div></div>
+
+{% schema %}
+{
+  "name": "Trust badges",
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Badge",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "icon-shipping", "label": "Shipping" },
+            { "value": "icon-warranty", "label": "Warranty" },
+            { "value": "icon-support", "label": "Support" }
+          ],
+          "default": "icon-shipping"
+        },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "textarea", "id": "text", "label": "Text" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust badges",
+      "blocks": [
+        { "type": "badge", "settings": { "icon": "icon-shipping", "title": "Free Worldwide Shipping", "text": "Free worldwide shipping and returns — customs and duties included." } },
+        { "type": "badge", "settings": { "icon": "icon-warranty", "title": "Lifetime Warranty", "text": "Every piece is backed by a lifetime warranty for lasting quality." } },
+        { "type": "badge", "settings": { "icon": "icon-support", "title": "Dedicated Support", "text": "Real humans, available to answer your questions." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
