@@ -49,3 +49,10 @@ Store: kc30cj-dq.myshopify.com
   - snippets/product-media-gallery-content.liquid: on tagged products, other variants' photos are always hidden (same as the theme's hide_variants setting, but per product). When a design + material combination doesn't exist (e.g. Santa & snowman + Silver mirror), the chosen design's photo is shown instead of every photo.
   - Checked on mobile: each ornament design shows one photo, so there's no swiping and no slideshow controls. Lun'elle is unchanged (Fruit Faces 3, others 1). smART and Plaque aren't tagged, so they're unchanged.
   - Backup: backup-product-media-gallery-content.before-hide-variants.liquid.
+- 2026-11-08: Owner OK'd auto-switching the material. blocks/variant-picker.liquid (live theme) now includes, for products with 2+ options (only the ornament today), a variant list as JSON plus a capture-phase change listener. When the clicked value makes a combination that doesn't exist, it checks the best existing variant's other options (available first, then most current choices kept) before Horizon fetches. Tested on mobile:
+  - Santa & snowman → White
+  - Your photo → Transparent
+  - Classic → Silver mirror
+  - Gold mirror stays on Baby's first Christmas
+  - The cart variant and the photo are right each time, with no JS errors.
+  - Backup: backup-blocks-variant-picker.before-auto-material.liquid.
