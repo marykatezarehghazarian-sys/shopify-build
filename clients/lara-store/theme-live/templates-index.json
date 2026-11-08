@@ -73,7 +73,7 @@
           "type": "tile",
           "settings": {
             "image": "shopify://shop_images/smart-quartet-black-grey-green-etoupe.jpg",
-            "kicker": "Fingerprint pouch",
+            "kicker": "Unisex fingerprint pouch",
             "title": "smART",
             "caption": "$190 · 7 colors",
             "link": "/products/smart"
@@ -233,7 +233,7 @@
             "image": "shopify://shop_images/smart-blush-pink-in-hand.jpg",
             "kicker": "smART",
             "title": "Fits in your hand",
-            "caption": "Fingerprint-lock pouch, $190",
+            "caption": "Unisex fingerprint-lock pouch, $190",
             "link": "/products/smart"
           }
         }

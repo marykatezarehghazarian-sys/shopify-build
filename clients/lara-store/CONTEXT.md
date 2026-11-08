@@ -83,3 +83,9 @@ Store: kc30cj-dq.myshopify.com
   - SEO "…in a range of printed designs."
   - "18-carat gold-plated" kept.
   - Backups: backup-live-index.before-no-18.json, backup-lunelle-description.before-no-18.json.
+- 2026-11-08: smART is UNISEX (owner).
+  - Description: first bullet "Unisex: made for him and for her".
+  - SEO: "The smART unisex leather pouch…"
+  - Tags: unisex and for-him added; for-her kept.
+  - Homepage: tile kicker "Unisex fingerprint pouch"; real-life tile caption "Unisex fingerprint-lock pouch, $190".
+  - Backups: backup-smart-description.before-unisex.json, backup-live-index.before-unisex.json.
