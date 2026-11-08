@@ -85,7 +85,7 @@
             "image": "shopify://shop_images/lunelle-lifestyle-fruit-faces-on-bag.jpg",
             "kicker": "Sunglasses holder",
             "title": "Lun’elle",
-            "caption": "$110 · 18 designs",
+            "caption": "$110 · Choose your design",
             "link": "/products/lunelle"
           }
         },
@@ -199,7 +199,7 @@
         "eyebrow": "Lun’elle",
         "heading": "Luxury you can hang",
         "text": "<p>Made from premium scotch-embossed cow leather, printed in unique designs that turn each piece into a statement. The textured leather is scratch-resistant and made to last.</p><p>Paired with 18-carat gold-plated hardware, Lun’elle makes holding your sunnies a little extra chic.</p>",
-        "button_label": "Discover the 18 designs",
+        "button_label": "Discover the designs",
         "button_link": "/products/lunelle"
       },
       "disabled": true

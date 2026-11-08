@@ -76,3 +76,10 @@ Store: kc30cj-dq.myshopify.com
   - The plaque on the stroller tile is unchanged.
   - The ornament tile was removed.
   - Owner photos saved in photos/. Backup: backup-live-index.before-real-life-tiles.json. Checked on mobile and desktop.
+- 2026-11-08: Removed "18 designs" everywhere; Lun'elle has 12 now, and fewer as designs sell out, so the wording has no number:
+  - Homepage caption "$110 · Choose your design"
+  - Button "Discover the designs"
+  - Product description "Choose your favourite design."
+  - SEO "…in a range of printed designs."
+  - "18-carat gold-plated" kept.
+  - Backups: backup-live-index.before-no-18.json, backup-lunelle-description.before-no-18.json.
