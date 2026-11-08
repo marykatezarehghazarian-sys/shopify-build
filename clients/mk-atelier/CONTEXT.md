@@ -55,3 +55,9 @@ Store: cawmd9-ya.myshopify.com
   - Checked as US, FR and LB visitors: add to cart and checkout work. The "Free worldwide delivery" banner is now true.
   - Note: the delivery profile's old International zone ($1,700,000 rate) is left as is; the market's option is what checkout uses.
   - PAYMENT STILL OPEN: checkout offers only Bank Deposit and Money Order. A card provider must be added in admin (Settings → Payments); it can't be done with the API. Tech Global gets cards and PayPal through Shopify Payments because its billing address is in the US; Mk Atelier's billing country is LB. Once cards work, the owner should turn off Bank Deposit and Money Order.
+- 2026-11-08: Owner: "in the checkout there should be a way to remove items". Shopify checkout itself can't get a remove button (not on this plan); customers go back to the cart through the bag icon in the checkout header. The cart drawer had no remove control, and the cart page only had a bare number box.
+  - I uploaded −/+ and Remove (mk-qty / mk-remove plus initCartChange in assets/theme.js and CSS in mk-style.css) at 17:57.
+  - At 17:58 something outside this session overwrote sections/cart-drawer.liquid and sections/main-cart.liquid with its own version: a "Remove" link (data-cart-remove, with an inline script that re-renders the drawer through /cart/change.js with sections). It isn't another Claude session of this account; most likely the theme editor or Shopify's assistant.
+  - I kept that version and didn't overwrite it. Tested on mobile: drawer remove goes 3 → 2 lines, the badge updates and the drawer stays open; cart page remove works; no JS errors.
+  - My initCartChange and the .mk-qty CSS are still live but unused (nothing has data-cart-line). theme-gallery/sections now mirror the live versions.
+  - Backups of the earlier files: backup-gallery-*.before-cart-remove.

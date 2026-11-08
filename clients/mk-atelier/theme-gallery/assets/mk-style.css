@@ -162,3 +162,11 @@ body .mk-filter__panel { background: var(--mk-paper); border-color: var(--mk-lin
 .product-card__media img { object-fit: cover; }
 .site-footer__newsletter input { color: #fff; }
 @media (max-width: 749px) { .mk-tabbed .mk-tabs { margin-left: -24px; margin-right: -24px; padding: 0 24px; } }
+
+/* Cart: quantity − / + and Remove */
+body .mk-line-actions { display: flex; align-items: center; gap: 14px; margin-top: 8px; }
+body .mk-qty { display: inline-flex; align-items: center; border: 1px solid #d9d9d9; border-radius: 999px; height: 32px; }
+body .mk-qty a { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; font-size: 16px; color: #111; text-decoration: none; }
+body .mk-qty span { min-width: 20px; text-align: center; font-size: 13px; color: #111; }
+body .mk-remove { font-size: 12px; color: #666; text-decoration: underline; text-underline-offset: 3px; }
+body .mk-remove:hover, body .mk-qty a:hover { color: #000; }

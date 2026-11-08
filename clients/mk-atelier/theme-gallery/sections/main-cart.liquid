@@ -1,0 +1,46 @@
+<div class="section container">
+  <div class="section-heading"><h1>Your cart</h1></div>
+  {%- if cart.item_count == 0 -%}
+    <div class="cart-drawer__empty">
+      <p style="margin-bottom:20px;">Your cart is empty</p>
+      <a href="{{ routes.all_products_collection_url }}" class="btn btn--pill">Start shopping</a>
+    </div>
+  {%- else -%}
+    {%- form 'cart', cart -%}
+      {%- for item in cart.items -%}
+        <div class="cart-line">
+          <img src="{{ item.image | image_url: width: 160 }}" alt="{{ item.title | escape }}" width="{{ item.image.width }}" height="{{ item.image.height }}">
+          <div>
+            <p class="cart-line__title">{{ item.product.title }}</p>
+            {%- unless item.variant.title contains 'Default' -%}
+              <p class="cart-line__variant">{{ item.variant.title }}</p>
+            {%- endunless -%}
+            <div class="cart-line__qty">
+              <input type="number" name="updates[{{ forloop.index0 }}]" value="{{ item.quantity }}" min="0" style="width:50px; border:1px solid var(--color-border);">
+              <a href="{{ item.url_to_remove }}" class="cart-line__remove" aria-label="Remove {{ item.product.title | escape }} from cart">Remove</a>
+            </div>
+          </div>
+          <span>{{ item.final_line_price | money }}</span>
+        </div>
+      {%- endfor -%}
+      <div style="margin-top:24px;">
+        <div class="cart-subtotal-row"><span>Subtotal</span><span>{{ cart.total_price | money }}</span></div>
+        {%- if settings.cart_free_shipping -%}
+          <p class="cart-free-ship-note">Free worldwide shipping on all orders</p>
+        {%- endif -%}
+        <button type="submit" name="checkout" class="btn btn--full">Checkout</button>
+      </div>
+    {%- endform -%}
+  {%- endif -%}
+</div>
+
+<style>
+  .cart-line__remove{display:inline-block;margin-top:8px;font-size:12px;letter-spacing:.04em;text-decoration:underline;text-underline-offset:3px;opacity:.7;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+  .cart-line__remove:hover{opacity:1}
+  .cart-line__qty{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .cart-line__qty .cart-line__remove{margin-top:0}
+</style>
+
+{% schema %}
+{ "name": "Cart" }
+{% endschema %}

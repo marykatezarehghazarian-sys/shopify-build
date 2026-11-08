@@ -1,0 +1,229 @@
+document.addEventListener('DOMContentLoaded', function () {
+  initAnnouncementCountdown();
+  initCarousels();
+  initAddToCart();
+  initCartChange();
+  initStarfall();
+});
+
+function initStarfall() {
+  var canvas = document.getElementById('StarfallCanvas');
+  if (!canvas || !canvas.getContext) return;
+  var ctx = canvas.getContext('2d');
+  var stars = [];
+  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var width, height, time = 0;
+
+  function makeStar(randomY) {
+    // Most stars are tiny, crisp dust; only a few are bigger glinting sparkles.
+    var isSparkle = Math.random() < 0.12;
+    return {
+      x: Math.random() * width,
+      y: randomY ? Math.random() * height : -10,
+      r: isSparkle ? Math.random() * 0.9 + 1.1 : Math.random() * 0.5 + 0.3,
+      sparkle: isSparkle,
+      driftAmp: Math.random() * 10 + 2,
+      driftSpeed: Math.random() * 0.6 + 0.2,
+      driftPhase: Math.random() * Math.PI * 2,
+      speed: Math.random() * 0.35 + 0.08,
+      baseAlpha: isSparkle ? Math.random() * 0.3 + 0.5 : Math.random() * 0.35 + 0.2,
+      twinkleSpeed: Math.random() * 1.4 + 0.4,
+      twinklePhase: Math.random() * Math.PI * 2,
+    };
+  }
+
+  function resize() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    var density = Math.max(50, Math.round((width * height) / 13000));
+    stars = [];
+    for (var i = 0; i < density; i++) stars.push(makeStar(true));
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, width, height);
+    for (var i = 0; i < stars.length; i++) {
+      var s = stars[i];
+      var twinkle = 0.65 + 0.35 * Math.sin(time * s.twinkleSpeed + s.twinklePhase);
+      var alpha = s.baseAlpha * twinkle;
+      var x = s.x + Math.sin(time * s.driftSpeed + s.driftPhase) * s.driftAmp;
+
+      if (s.sparkle) {
+        var glowR = s.r * 5;
+        var gradient = ctx.createRadialGradient(x, s.y, 0, x, s.y, glowR);
+        gradient.addColorStop(0, 'rgba(255,255,255,' + alpha + ')');
+        gradient.addColorStop(0.35, 'rgba(255,255,255,' + alpha * 0.35 + ')');
+        gradient.addColorStop(1, 'rgba(255,255,255,0)');
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(x, s.y, glowR, 0, Math.PI * 2);
+        ctx.fill();
+      } else {
+        ctx.fillStyle = 'rgba(255,255,255,' + alpha + ')';
+        ctx.beginPath();
+        ctx.arc(x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+  }
+
+  function tick() {
+    time += 0.016;
+    for (var i = 0; i < stars.length; i++) {
+      var s = stars[i];
+      s.y += s.speed;
+      if (s.y > height + 10) {
+        stars[i] = makeStar(false);
+      }
+    }
+    draw();
+    requestAnimationFrame(tick);
+  }
+
+  resize();
+  draw();
+
+  if (!reduceMotion) {
+    requestAnimationFrame(tick);
+  }
+
+  var resizeTimer;
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(resize, 150);
+  });
+}
+
+function initAnnouncementCountdown() {
+  var bar = document.getElementById('AnnouncementBar');
+  if (!bar) return;
+  var endAttr = bar.getAttribute('data-end');
+  if (!endAttr) return;
+  var end = new Date(endAttr.replace(' ', 'T')).getTime();
+  var timer = document.getElementById('AnnouncementTimer');
+  if (!timer || isNaN(end)) return;
+
+  function tick() {
+    var now = Date.now();
+    var diff = end - now;
+    if (diff <= 0) {
+      bar.classList.add('is-closed');
+      return;
+    }
+    var days = Math.floor(diff / 86400000);
+    var hours = Math.floor((diff % 86400000) / 3600000);
+    var minutes = Math.floor((diff % 3600000) / 60000);
+    var seconds = Math.floor((diff % 60000) / 1000);
+    setUnit('days', days);
+    setUnit('hours', hours);
+    setUnit('minutes', minutes);
+    setUnit('seconds', seconds);
+  }
+
+  function setUnit(unit, value) {
+    var el = timer.querySelector('[data-unit="' + unit + '"]');
+    if (el) el.textContent = String(value).padStart(2, '0');
+  }
+
+  tick();
+  setInterval(tick, 1000);
+}
+
+function initCarousels() {
+  document.querySelectorAll('[data-carousel-nav]').forEach(function (nav) {
+    var id = nav.getAttribute('data-carousel-nav');
+    var track = document.querySelector('[data-carousel="' + id + '"]');
+    if (!track) return;
+    var prev = nav.querySelector('[data-carousel-prev]');
+    var next = nav.querySelector('[data-carousel-next]');
+    var scrollAmount = function () {
+      var card = track.querySelector('.product-card');
+      return card ? card.getBoundingClientRect().width + 16 : 300;
+    };
+    if (prev) prev.addEventListener('click', function () { track.scrollBy({ left: -scrollAmount(), behavior: 'smooth' }); });
+    if (next) next.addEventListener('click', function () { track.scrollBy({ left: scrollAmount(), behavior: 'smooth' }); });
+  });
+}
+
+function initAddToCart() {
+  document.body.addEventListener('submit', function (e) {
+    var form = e.target;
+    if (!(form.tagName === 'FORM' && form.action && form.action.indexOf('/cart/add') !== -1)) return;
+    e.preventDefault();
+
+    var submitBtn = form.querySelector('[type="submit"]');
+    if (submitBtn) submitBtn.setAttribute('disabled', 'disabled');
+
+    var formData = new FormData(form);
+    fetch('/cart/add.js', { method: 'POST', body: formData, headers: { Accept: 'application/json' } })
+      .then(function (res) { return res.json(); })
+      .then(function () { return refreshCartDrawer(); })
+      .then(function () {
+        var drawer = document.getElementById('CartDrawer');
+        if (drawer) drawer.classList.add('is-open');
+      })
+      .catch(function (err) { console.error('Add to cart failed', err); })
+      .finally(function () {
+        if (submitBtn) submitBtn.removeAttribute('disabled');
+      });
+  });
+}
+
+function refreshCartDrawer() {
+  return fetch('/?section_id=cart-drawer')
+    .then(function (res) { return res.text(); })
+    .then(function (html) {
+      var doc = new DOMParser().parseFromString(html, 'text/html');
+      var newDrawer = doc.getElementById('CartDrawer');
+      var oldDrawer = document.getElementById('CartDrawer');
+      if (newDrawer && oldDrawer) {
+        newDrawer.classList.toggle('is-open', oldDrawer.classList.contains('is-open'));
+        oldDrawer.replaceWith(newDrawer);
+      }
+      return fetch('/cart.js').then(function (r) { return r.json(); });
+    })
+    .then(function (cart) {
+      var countEls = document.querySelectorAll('.cart-count');
+      var cartButton = document.querySelector('.site-header__cart');
+      if (cart.item_count > 0) {
+        if (countEls.length === 0 && cartButton) {
+          var span = document.createElement('span');
+          span.className = 'cart-count';
+          cartButton.appendChild(span);
+          countEls = document.querySelectorAll('.cart-count');
+        }
+        countEls.forEach(function (el) { el.textContent = cart.item_count; });
+      } else {
+        countEls.forEach(function (el) { el.remove(); });
+      }
+    });
+}
+
+// Mk: − / + / Remove in the cart drawer and cart page
+function initCartChange() {
+  document.body.addEventListener('click', function (e) {
+    var link = e.target.closest('[data-cart-line]');
+    if (!link) return;
+    e.preventDefault();
+    var line = link.closest('.cart-line');
+    if (line) line.style.opacity = '0.4';
+    fetch('/cart/change.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ line: Number(link.dataset.cartLine), quantity: Number(link.dataset.qty) })
+    })
+      .then(function (res) { if (!res.ok) throw new Error('cart change ' + res.status); })
+      .then(function () {
+        if (!link.closest('#CartDrawer')) { window.location.reload(); return; }
+        return refreshCartDrawer();
+      })
+      .catch(function () { window.location.href = link.href; });
+  });
+}

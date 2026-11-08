@@ -1,0 +1,78 @@
+<div class="cart-drawer" id="CartDrawer">
+  <div class="cart-drawer__overlay" onclick="document.getElementById('CartDrawer').classList.remove('is-open')"></div>
+  <div class="cart-drawer__panel">
+    <div class="cart-drawer__header">
+      <h2 style="font-size:16px;">Your cart</h2>
+      <button aria-label="Close cart" onclick="document.getElementById('CartDrawer').classList.remove('is-open')">{% render 'icon-close' %}</button>
+    </div>
+    <div class="cart-drawer__body" id="CartDrawerBody">
+      {%- if cart.item_count == 0 -%}
+        <div class="cart-drawer__empty">
+          <p style="margin-bottom:20px;">Your cart is empty</p>
+          <a href="{{ routes.all_products_collection_url }}" class="btn btn--pill" onclick="document.getElementById('CartDrawer').classList.remove('is-open')">Start shopping</a>
+        </div>
+      {%- else -%}
+        {%- for item in cart.items -%}
+          <div class="cart-line">
+            <img src="{{ item.image | image_url: width: 160 }}" alt="{{ item.title | escape }}" width="{{ item.image.width }}" height="{{ item.image.height }}">
+            <div>
+              <p class="cart-line__title">{{ item.product.title }}</p>
+              {%- unless item.variant.title contains 'Default' -%}
+                <p class="cart-line__variant">{{ item.variant.title }}</p>
+              {%- endunless -%}
+              <p style="font-size:12px; opacity:0.6;">Qty {{ item.quantity }}</p>
+              <a href="{{ item.url_to_remove }}" class="cart-line__remove" data-cart-remove="{{ item.key }}" aria-label="Remove {{ item.product.title | escape }} from cart">Remove</a>
+            </div>
+            <span>{{ item.final_line_price | money }}</span>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+    {%- if cart.item_count > 0 -%}
+      <div class="cart-drawer__footer">
+        <div class="cart-subtotal-row"><span>Subtotal</span><span>{{ cart.total_price | money }}</span></div>
+        {%- if settings.cart_free_shipping -%}
+          <p class="cart-free-ship-note">Free worldwide shipping on all orders</p>
+        {%- endif -%}
+        <form action="{{ routes.cart_url }}" method="post"><button type="submit" name="checkout" class="btn btn--full" style="width:100%;">Checkout</button></form>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<style>
+  .cart-line__remove{display:inline-block;margin-top:8px;font-size:12px;letter-spacing:.04em;text-decoration:underline;text-underline-offset:3px;opacity:.7;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+  .cart-line__remove:hover{opacity:1}
+  .cart-line.is-removing{opacity:.4;pointer-events:none;transition:opacity .2s}
+</style>
+<script>
+  (function(){
+    if (window.__mkCartRemove) return; window.__mkCartRemove = true;
+    document.addEventListener('click', function(e){
+      var btn = e.target.closest('#CartDrawer [data-cart-remove]');
+      if (!btn) return;
+      e.preventDefault();
+      var line = btn.closest('.cart-line'); if (line) line.classList.add('is-removing');
+      fetch('{{ routes.cart_change_url }}.js', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json','Accept':'application/json'},
+        body: JSON.stringify({id: btn.getAttribute('data-cart-remove'), quantity: 0, sections: 'cart-drawer'})
+      }).then(function(r){ if(!r.ok) throw r; return r.json(); }).then(function(cart){
+        var html = cart.sections && cart.sections['cart-drawer'];
+        var drawer = document.getElementById('CartDrawer');
+        if (html && drawer) {
+          var fresh = new DOMParser().parseFromString(html,'text/html').getElementById('CartDrawer');
+          if (fresh) drawer.innerHTML = fresh.innerHTML;
+        }
+        document.querySelectorAll('.site-header__cart .cart-count').forEach(function(el){
+          if (cart.item_count > 0) { el.textContent = cart.item_count; } else { el.remove(); }
+        });
+        document.dispatchEvent(new CustomEvent('cart:updated',{detail:cart}));
+      }).catch(function(){ window.location.href = btn.getAttribute('href'); });
+    });
+  })();
+</script>
+
+{% schema %}
+{ "name": "Cart drawer" }
+{% endschema %}
