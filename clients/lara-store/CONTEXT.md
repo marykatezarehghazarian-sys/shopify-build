@@ -64,3 +64,7 @@ Store: kc30cj-dq.myshopify.com
   - Owner OK'd it, and it's LIVE (blocks/ea-personalise.liquid on theme 190234099956). The design map is emitted as Object.fromEntries([[name,url],…]), because Liquid rejects `{{ '}' }}`.
   - Checked on the live site (mobile): hidden until you type; 'Reema' shows on the plaque; switching to Safari redraws it and keeps the name. Wallet and ornament are unchanged (no canvas, text preview as before). No JS errors.
   - Backup of the live block: backup-blocks-ea-personalise.before-live-preview.liquid.
+- 2026-11-08: The owner sent REAL photos of the black and dark-green smART bags. The originals are saved as photos/smart/owner-smart-black-on-black.jpg and owner-smart-dark-green-checker.jpg; the green one has the transparency checkerboard baked in.
+  - Each bag was cut out of its background with a flood fill from the edges: green over light neutral pixels; black over pure-black pixels at threshold ≤1. The black outline was then smoothed by opening, blurring and re-thresholding.
+  - Placed on the same soft white (≈254→248) as the other smART photos: 1500×2000 portrait, bag 1020 px wide, base at y=1620, soft contact shadow. Files: photos/smart/smart-black.jpg and smart-dark-green-new.jpg.
+  - Live: smart-black.jpg is at position 2 after the 4-colour photo and linked to Black. smart-dark-green-new.jpg replaced the old dark-green photo in the same position and is linked to Dark green; the old media was deleted. No recolouring: these are the owner's real photos.
