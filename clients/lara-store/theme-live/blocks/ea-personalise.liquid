@@ -32,7 +32,7 @@
           Elle.ay live preview: for designs whose photo is a known "plaque-design-…" picture with NAME at the top,
           draw that photo with the typed name in place of NAME. Boxes are fractions of the photo (left, top, right, bottom).
         {%- endcomment -%}
-        {%- capture ea_designs -%}{%- for v in product.variants -%}{%- if v.featured_image -%}{{ v.option1 | json }}:{{ v.featured_image | image_url: width: 1200 | json }},{%- endif -%}{%- endfor -%}{%- endcapture -%}
+        {%- capture ea_designs -%}{%- for v in product.variants -%}{%- if v.featured_image -%}[{{ v.option1 | json }},{{ v.featured_image | image_url: width: 1200 | json }}],{%- endif -%}{%- endfor -%}{%- endcapture -%}
         <div class="ea-p__live" data-ea-live hidden>
           <canvas data-ea-canvas width="1200" height="900" role="img" aria-label="Preview of your plaque"></canvas>
           <p class="ea-p__help">Live preview. We send you the final virtual design on WhatsApp to approve before we make it.</p>
@@ -85,7 +85,7 @@
     if (e.target && e.target.matches && e.target.matches('[data-option-name="Design"]')) setTimeout(draw, 50);
   });
   draw();
-})(document.getElementById('{{ uid }}'), {{ '{' }}{{ ea_designs | remove_last: ',' }}{{ '}' }}, {"be-brave-little-one": [0.2437, 0.2508, 0.7394, 0.4558], "choose-your-adventure": [0.2556, 0.2625, 0.7281, 0.4583], "cool-girl": [0.2556, 0.2567, 0.74, 0.4575], "dream-big": [0.2437, 0.2525, 0.7319, 0.455], "lebanon": [0.275, 0.264, 0.745, 0.456], "racing": [0.2469, 0.2492, 0.7388, 0.4533], "safari": [0.2525, 0.27, 0.7375, 0.4708], "seek-adventure": [0.2412, 0.2717, 0.7281, 0.4733], "shoot-for-your-goals": [0.27, 0.2725, 0.7344, 0.465], "stay-magical": [0.2537, 0.2617, 0.735, 0.46]});
+})(document.getElementById('{{ uid }}'), Object.fromEntries([{{ ea_designs | remove_last: ',' }}]), {"be-brave-little-one": [0.2437, 0.2508, 0.7394, 0.4558], "choose-your-adventure": [0.2556, 0.2625, 0.7281, 0.4583], "cool-girl": [0.2556, 0.2567, 0.74, 0.4575], "dream-big": [0.2437, 0.2525, 0.7319, 0.455], "lebanon": [0.275, 0.264, 0.745, 0.456], "racing": [0.2469, 0.2492, 0.7388, 0.4533], "safari": [0.2525, 0.27, 0.7375, 0.4708], "seek-adventure": [0.2412, 0.2717, 0.7281, 0.4733], "shoot-for-your-goals": [0.27, 0.2725, 0.7344, 0.465], "stay-magical": [0.2537, 0.2617, 0.735, 0.46]});
         </script>
       {%- endif -%}
       {%- if fields contains 'photo' -%}

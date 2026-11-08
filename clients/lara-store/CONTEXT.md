@@ -61,5 +61,6 @@ Store: kc30cj-dq.myshopify.com
   - Boxes were measured per design (fractions of the photo; Lebanon and Stay magical set by hand). It only shows for photos named plaque-design-<handle>, so other products keep the text preview.
   - Caption: "Live preview. We send you the final virtual design on WhatsApp to approve before we make it."
   - Simulated on the real page in a test browser (mobile): 4 designs OK, no JS errors. Screenshots in review/plaque-live-preview.jpg.
-  - NOT uploaded yet: the live-theme upload was blocked pending the owner's OK.
+  - Owner OK'd it, and it's LIVE (blocks/ea-personalise.liquid on theme 190234099956). The design map is emitted as Object.fromEntries([[name,url],…]), because Liquid rejects `{{ '}' }}`.
+  - Checked on the live site (mobile): hidden until you type; 'Reema' shows on the plaque; switching to Safari redraws it and keeps the name. Wallet and ornament are unchanged (no canvas, text preview as before). No JS errors.
   - Backup of the live block: backup-blocks-ea-personalise.before-live-preview.liquid.
