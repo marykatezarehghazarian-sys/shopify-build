@@ -27,9 +27,26 @@
 {%- liquid
   assign selected_product = closest.product
   assign selected_variant_media = selected_product.selected_or_first_available_variant.featured_media
+  # Elle.ay: on gallery-per-variant products, a design + material combination that doesn't exist
+  # (e.g. Santa & snowman + Silver mirror) has no variant; show the chosen design's photo instead of every photo.
+  if selected_product.tags contains 'gallery-per-variant' and selected_product.selected_variant == blank
+    assign chosen_design = selected_product.options_with_values.first.selected_value
+    for v in selected_product.variants
+      if v.option1 == chosen_design and v.featured_media
+        assign selected_variant_media = v.featured_media
+        break
+      endif
+    endfor
+  endif
   assign first_3d_model = selected_product.media | where: 'media_type', 'model' | first
 
-  if block_settings.hide_variants
+  # Elle.ay: products tagged gallery-per-variant always hide other variants' photos
+  assign hide_variant_media = block_settings.hide_variants
+  if selected_product.tags contains 'gallery-per-variant'
+    assign hide_variant_media = true
+  endif
+
+  if hide_variant_media
     assign variant_images = selected_product.images | where: 'attached_to_variant?', true | map: 'src'
   endif
 
@@ -112,7 +129,7 @@
     assign sorted_media = sorted_media | concat: selected_product.media | where: 'id', selected_variant_media.id
 
     for media in selected_product.media
-      if block_settings.hide_variants and variant_images contains media.src and sorted_media.size > 0
+      if hide_variant_media and variant_images contains media.src and sorted_media.size > 0
         continue
       endif
 
