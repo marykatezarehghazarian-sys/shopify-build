@@ -56,3 +56,10 @@ Store: kc30cj-dq.myshopify.com
   - Gold mirror stays on Baby's first Christmas
   - The cart variant and the photo are right each time, with no JS errors.
   - Backup: backup-blocks-variant-picker.before-auto-material.liquid.
+- 2026-11-08: Plaque "Preview:" confusion. The owner typed a name and the design didn't change: the old "Preview:" only echoed the text under the box.
+  - Built a live preview in blocks/ea-personalise.liquid (local: theme-live/blocks/ea-personalise.liquid). A canvas draws the chosen design's photo with the typed name (uppercase, Arial) over a white box covering "NAME".
+  - Boxes were measured per design (fractions of the photo; Lebanon and Stay magical set by hand). It only shows for photos named plaque-design-<handle>, so other products keep the text preview.
+  - Caption: "Live preview. We send you the final virtual design on WhatsApp to approve before we make it."
+  - Simulated on the real page in a test browser (mobile): 4 designs OK, no JS errors. Screenshots in review/plaque-live-preview.jpg.
+  - NOT uploaded yet: the live-theme upload was blocked pending the owner's OK.
+  - Backup of the live block: backup-blocks-ea-personalise.before-live-preview.liquid.
