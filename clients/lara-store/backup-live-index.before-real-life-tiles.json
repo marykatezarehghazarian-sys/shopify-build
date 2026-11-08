@@ -1,0 +1,281 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */{
+  "sections": {
+    "hero": {
+      "type": "ea-hero",
+      "settings": {
+        "image": "shopify://shop_images/smart-trio-camel-blush-beige.jpg",
+        "focal": "center 55%",
+        "height": 90,
+        "shade": 45,
+        "align": "left",
+        "eyebrow": "",
+        "heading": "Made to be yours",
+        "heading_tag": "h1",
+        "text": "Unique pieces and keepsakes, personalized for you and the people you love.",
+        "button_label": "Shop the pieces",
+        "button_link": "shopify://collections/all",
+        "button_label_2": "How it works",
+        "button_link_2": "#how-it-works"
+      }
+    },
+    "trust": {
+      "type": "ea-trust",
+      "blocks": {
+        "t1": {
+          "type": "point",
+          "settings": {
+            "title": "Finished by hand",
+            "text": "Every piece made to order"
+          }
+        },
+        "t2": {
+          "type": "point",
+          "settings": {
+            "title": "Personalized",
+            "text": "Names, photos or your own idea"
+          }
+        },
+        "t3": {
+          "type": "point",
+          "settings": {
+            "title": "Delivery across Lebanon & worldwide",
+            "text": "Right to your door"
+          }
+        },
+        "t4": {
+          "type": "point",
+          "settings": {
+            "title": "Pay your way",
+            "text": "Cash on delivery, Whish or card"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4"
+      ],
+      "settings": {}
+    },
+    "pieces": {
+      "type": "ea-tiles",
+      "blocks": {
+        "p1": {
+          "type": "tile",
+          "settings": {
+            "image": "shopify://shop_images/smart-quartet-black-grey-green-etoupe.jpg",
+            "kicker": "Fingerprint pouch",
+            "title": "smART",
+            "caption": "$190 · 7 colors",
+            "link": "/products/smart"
+          }
+        },
+        "p2": {
+          "type": "tile",
+          "settings": {
+            "image": "shopify://shop_images/lunelle-lifestyle-fruit-faces-on-bag.jpg",
+            "kicker": "Sunglasses holder",
+            "title": "Lun’elle",
+            "caption": "$110 · 18 designs",
+            "link": "/products/lunelle"
+          }
+        },
+        "p3": {
+          "type": "tile",
+          "settings": {
+            "image": "shopify://shop_images/wallet-designs-from-whatsapp.jpg",
+            "kicker": "Dollar wallet",
+            "title": "$ Wallet",
+            "caption": "From $55",
+            "link": "/products/dollar-wallet"
+          }
+        },
+        "p4": {
+          "type": "tile",
+          "settings": {
+            "image": "shopify://shop_images/plaque-on-stroller-reema.jpg",
+            "kicker": "Kids’ name plaque",
+            "title": "Plaque",
+            "caption": "$40",
+            "link": "/products/name-plaque"
+          }
+        },
+        "p5": {
+          "type": "tile",
+          "settings": {
+            "image": "shopify://shop_images/ornament-melina-from-whatsapp.jpg",
+            "kicker": "Christmas ornament · Seasonal",
+            "title": "Plexi ornament",
+            "caption": "$23 each",
+            "link": "/products/christmas-ornament"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "settings": {
+        "eyebrow": "The collection",
+        "heading": "The pieces",
+        "text": "Five pieces, each one made to carry a name, a memory or a little bit of you.",
+        "columns": 5,
+        "ratio": "3 / 4",
+        "text_align": "start",
+        "mobile_scroll": true,
+        "button_label": "Shop all",
+        "button_link": "shopify://collections/all",
+        "padding_top": 96,
+        "padding_bottom": 72
+      }
+    },
+    "how": {
+      "type": "ea-steps",
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "title": "Choose your piece",
+            "text": "Pick the piece, then the color, leather, design or finish you love."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "title": "Make it yours",
+            "text": "Add a name, upload a photo or describe your idea right on the product page."
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "title": "We design it with you",
+            "text": "For custom designs we send you a virtual preview on WhatsApp to approve before we make it."
+          }
+        },
+        "s4": {
+          "type": "step",
+          "settings": {
+            "title": "Delivered to you",
+            "text": "Beautifully wrapped and delivered to your door, across Lebanon and worldwide."
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "settings": {
+        "eyebrow": "Made for you",
+        "heading": "How personalization works",
+        "background": "#efe7dd",
+        "anchor": "how-it-works",
+        "note": "Every personalized piece is made to order, just for you.",
+        "button_label": "Start personalizing",
+        "button_link": "shopify://collections/all"
+      }
+    },
+    "lunelle": {
+      "type": "ea-split",
+      "settings": {
+        "image": "shopify://shop_images/lunelle-lifestyle-fruit-faces-on-bag.jpg",
+        "focal": "center",
+        "image_side": "left",
+        "background": "#faf7f3",
+        "eyebrow": "Lun’elle",
+        "heading": "Luxury you can hang",
+        "text": "<p>Made from premium scotch-embossed cow leather, printed in unique designs that turn each piece into a statement. The textured leather is scratch-resistant and made to last.</p><p>Paired with 18-carat gold-plated hardware, Lun’elle makes holding your sunnies a little extra chic.</p>",
+        "button_label": "Discover the 18 designs",
+        "button_link": "/products/lunelle"
+      },
+      "disabled": true
+    },
+    "occasions": {
+      "type": "ea-tiles",
+      "blocks": {
+        "o1": {
+          "type": "tile",
+          "settings": {
+            "image": "shopify://shop_images/ornament-melina-from-whatsapp.jpg",
+            "kicker": "Christmas",
+            "title": "Their name on the tree",
+            "caption": "Plexi ornaments, $23 each · Seasonal",
+            "link": "/products/christmas-ornament"
+          }
+        },
+        "o2": {
+          "type": "tile",
+          "settings": {
+            "image": "shopify://shop_images/plaque-on-stroller-reema.jpg",
+            "kicker": "Little ones",
+            "title": "For strollers and scooters",
+            "caption": "Name plaques, $40",
+            "link": "/products/name-plaque"
+          }
+        },
+        "o3": {
+          "type": "tile",
+          "settings": {
+            "image": "shopify://shop_images/smart-blush-pink-1.jpg",
+            "kicker": "For her",
+            "title": "Keep it safe, in style",
+            "caption": "smART pouch, $190",
+            "link": "/products/smart"
+          }
+        }
+      },
+      "block_order": [
+        "o1",
+        "o2",
+        "o3"
+      ],
+      "settings": {
+        "eyebrow": "Gift ideas",
+        "heading": "Shop by occasion",
+        "columns": 3,
+        "ratio": "4 / 5",
+        "text_align": "center",
+        "mobile_scroll": true,
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "story": {
+      "type": "ea-split",
+      "settings": {
+        "image": "shopify://shop_images/smart-etoupe.jpg",
+        "focal": "center 60%",
+        "image_side": "right",
+        "background": "#efe7dd",
+        "eyebrow": "",
+        "heading": "Wrapped and ready to gift",
+        "text": "<p>A small studio making personalized pieces you keep for years: leather you carry every day, keepsakes for the little ones, ornaments that come out every Christmas.</p><p>Every order is finished by hand and beautifully wrapped, ready to give.</p>",
+        "button_label": "Our story",
+        "button_link": "/pages/about"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "trust",
+    "pieces",
+    "how",
+    "lunelle",
+    "occasions",
+    "story"
+  ]
+}

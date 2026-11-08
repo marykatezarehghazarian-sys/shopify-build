@@ -70,3 +70,9 @@ Store: kc30cj-dq.myshopify.com
   - Live: smart-black.jpg is at position 2 after the 4-colour photo and linked to Black. smart-dark-green-new.jpg replaced the old dark-green photo in the same position and is linked to Dark green; the old media was deleted. No recolouring: these are the owner's real photos.
 - 2026-11-08: The owner sent a sharper dark-green photo with a transparent background (photos/smart/owner-smart-dark-green-v2.webp). It was placed on the same white canvas as the others (photos/smart/smart-dark-green-v2.jpg) and replaced the dark-green media in the same position, linked to Dark green. The owner also has a better portrait black photo on a checkerboard; asked for it to be resent as a file. The current black photo (from the black-background source) is still live.
 - 2026-11-08: The black smART photo was replaced with the owner's better portrait photo (photos/smart/owner-smart-black-v2.webp, checkerboard baked in). It was cut out with a light-neutral flood fill and placed on the same white canvas (height 1180, base y=1620): photos/smart/smart-black-v2.jpg. It's in the same position (2) and linked to Black. The older black-on-black version was removed.
+- 2026-11-08: Homepage "Shop by occasion" (section `occasions`, ea-tiles): the owner found it unnecessary and wants real-use photos instead. It's now eyebrow "In real life", heading "See them in use". Tiles, in this order:
+  - Lun'elle hooked on a black handbag (new file lunelle-on-black-bag.jpg): "Hooks onto your bag", Sunglasses holder, $110, → /products/lunelle
+  - smART blush pink held in hands to show its size (smart-blush-pink-in-hand.jpg): "Fits in your hand", Fingerprint-lock pouch, $190, → /products/smart
+  - The plaque on the stroller tile is unchanged.
+  - The ornament tile was removed.
+  - Owner photos saved in photos/. Backup: backup-live-index.before-real-life-tiles.json. Checked on mobile and desktop.
