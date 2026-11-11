@@ -1,0 +1,74 @@
+{
+  "gemma-dress": {
+    "id": "gid://shopify/Product/15371346510128",
+    "title": "GEMMA DRESS",
+    "tags": [
+      "cognac",
+      "coming-soon",
+      "dresses",
+      "fw26",
+      "noctra"
+    ],
+    "descriptionHtml": "<p>A suede-touch mini with a mandarin collar and braided frog closures over a keyhole, falling into a pleated drop-waist skirt.</p><p>Part of <strong>Noctra</strong>, the Fall/Winter 26/27 collection by Reina Reichouni.</p>"
+  },
+  "danza-skirt": {
+    "id": "gid://shopify/Product/15371345101104",
+    "title": "DANZA SKIRT",
+    "tags": [
+      "coming-soon",
+      "fw26",
+      "navy",
+      "noctra",
+      "skirts"
+    ],
+    "descriptionHtml": "<p>A sleek croc-embossed skirt that falls into long braided fringe, so every step leaves a trace of movement.</p><p>Part of <strong>Noctra</strong>, the Fall/Winter 26/27 collection by Reina Reichouni.</p>"
+  },
+  "new-in": {
+    "id": "gid://shopify/Collection/514240446768",
+    "ruleSet": {
+      "appliedDisjunctively": false,
+      "rules": [
+        {
+          "column": "TAG",
+          "relation": "EQUALS",
+          "condition": "fw26"
+        },
+        {
+          "column": "TITLE",
+          "relation": "NOT_CONTAINS",
+          "condition": "NOCTRA BLAZER"
+        },
+        {
+          "column": "TITLE",
+          "relation": "NOT_CONTAINS",
+          "condition": "BREZZA SET"
+        },
+        {
+          "column": "TITLE",
+          "relation": "NOT_CONTAINS",
+          "condition": "ROSE TOP"
+        },
+        {
+          "column": "TITLE",
+          "relation": "NOT_CONTAINS",
+          "condition": "PRIMA SET"
+        },
+        {
+          "column": "TITLE",
+          "relation": "NOT_CONTAINS",
+          "condition": "DANZA SKIRT"
+        },
+        {
+          "column": "TITLE",
+          "relation": "NOT_CONTAINS",
+          "condition": "NOTTE DRESS"
+        },
+        {
+          "column": "TITLE",
+          "relation": "NOT_CONTAINS",
+          "condition": "GEMMA DRESS"
+        }
+      ]
+    }
+  }
+}

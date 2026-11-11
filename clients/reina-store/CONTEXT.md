@@ -84,3 +84,10 @@ Access: Dev Dashboard app (client ID + secret in .env), broad scopes incl. produ
   - 9 pieces now 30% off: Aurea, Axis, Veil, Forma Denim Set, Ombra, Elan, Form Set, Frame, Vela.
   - The 4 pieces already at 15% off were left alone: Cielo Dress, Cielo Trousers, Selene Jumpsuit, Petal Skirt.
 - Done with clients/reina-store/scripts/formation-sale.mjs (52 variants). Backup of the old prices: backup-formation-prices.2026-11-11-12-46.json. Checked live via products.json: 22 products, all as expected.
+- 2026-11-11: Owner (WhatsApp): Gemma Dress (fabric suede, model wears S) and Danza Skirt (croc leather with handmade braided fringes, model wears S). Stock 3 S / 2 M / 2 L, already set. Her photos are the same studio shots already on the store, at lower resolution, so the store's photos were kept.
+  - Both LAUNCHED: the coming-soon tag was removed, and a line "Fabric: … / Fit: the model is wearing size S" was added to each description before the Noctra line.
+  - Their title rules were removed from the `new-in` collection, so they now show in New Arrivals (15 pieces).
+  - Their Coming Soon tiles (p5 navy fringe skirt, p7 brown dress) were removed from templates/collection.new-in.json on the live theme 189399957808.
+  - Checked live: Add to bag shows, no "Coming soon".
+  - Backups: backup-launch-gemma-danza.json, backup-collection-new-in.before-launch-gemma-danza.json.
+  - Rose Top (the navy belted top in the same photos) is still coming soon; asked the owner.
