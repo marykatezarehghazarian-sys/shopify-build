@@ -76,3 +76,11 @@ Access: Dev Dashboard app (client ID + secret in .env), broad scopes incl. produ
 - Owner pre-launch list (WhatsApp, 7:20–7:35 pm): Notte Dress back in Coming Soon (block p6, campaign photo, before Gemma). Lookbook is Noctra only now (collection setting emptied); summer stays reachable from the side menu (Collections → Formation Summer '26).
 - Waiting for photos: Mila Shorts ghost-mannequin packshot (to be its first photo; only 4 on-model shots exist) and a Notte Dress studio photo (to be its cover instead of the editorial; only 2 campaign shots exist).
 - Owner sent packshots (`photos/packshots/`): Notte Dress and Mila Shorts (ghost mannequin), each added as its product's first photo. Notte's editorial shots stay as photos 2 and 3 (one is used in the Lookbook). Coming Soon p6 now uses `packshot-notte-dress.jpg`. Gemma Dress still has no packshot (its Coming Soon tile is a studio shot).
+
+## 2026-11-11: Formation Summer '26 sale
+- Access restored: the earlier .env was lost on a container restart. The first keys the owner sent (16d39f…) belong to an app that isn't installed on this store (app_not_installed); the second pair (f67438…) works. Both arrived by chat, so a secret rotation is recommended. The shop name is now "Reina Reichouni", domain reinareichouni.com.
+- Owner: in Formation, everything at 30% off goes to 50% off, and everything with no sale goes to 30% off. Prices are exact to the cent; compare-at is the original price.
+  - 9 pieces now 50% off: Muse, Apex, Vento, Fiore, Poise, Whisper, Paradox, Cove, Sway.
+  - 9 pieces now 30% off: Aurea, Axis, Veil, Forma Denim Set, Ombra, Elan, Form Set, Frame, Vela.
+  - The 4 pieces already at 15% off were left alone: Cielo Dress, Cielo Trousers, Selene Jumpsuit, Petal Skirt.
+- Done with clients/reina-store/scripts/formation-sale.mjs (52 variants). Backup of the old prices: backup-formation-prices.2026-11-11-12-46.json. Checked live via products.json: 22 products, all as expected.

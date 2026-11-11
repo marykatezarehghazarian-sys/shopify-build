@@ -1,6 +1,6 @@
 // Formation Summer '26 sale change (owner, 2026-11-10):
-//   pieces at 30% off -> 50% off; pieces with no sale -> 20% off; any other discount left alone and listed.
-// Sale = compareAtPrice (original) + price (sale price). New prices rounded to whole dollars.
+//   pieces at 30% off -> 50% off; pieces with no sale -> 30% off; any other discount left alone and listed.
+// Sale = compareAtPrice (original) + price (sale price). New prices exact to the cent.
 // Usage: node clients/reina-store/scripts/formation-sale.mjs            (dry run: prints the plan)
 //        node clients/reina-store/scripts/formation-sale.mjs --apply    (writes prices, saves a backup first)
 process.env.SHOPIFY_CLIENT = 'reina-store';
@@ -8,7 +8,7 @@ import fs from 'fs';
 const { gql, mutate } = await import('../../../lib/index.js');
 const APPLY = process.argv.includes('--apply');
 const HANDLE = 'formation-summer-26';
-const r2 = (n) => Math.round(n);
+const r2 = (n) => Math.round(n * 100) / 100;
 const money = (n) => n.toFixed(2);
 
 const col = (await gql(`{c:collectionByIdentifier(identifier:{handle:"${HANDLE}"}){title products(first:100){nodes{id title handle status variants(first:100){nodes{id title price compareAtPrice}}}}}}`)).c;
@@ -25,7 +25,7 @@ for (const p of col.products.nodes) {
       if (off >= 29 && off <= 31) updates.push({ v, from: [price, cap], to: [r2(cap * 0.5), cap], rule: '30%→50%' });
       else skipped.push(`${p.title} / ${v.title}: ${off}% off ($${price} from $${cap})`);
     } else {
-      updates.push({ v, from: [price, cap || null], to: [r2(price * 0.8), price], rule: 'none→20%' });
+      updates.push({ v, from: [price, cap || null], to: [r2(price * 0.7), price], rule: 'none→30%' });
     }
   }
   if (updates.length) plan.push({ p, updates });

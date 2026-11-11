@@ -1,0 +1,494 @@
+[
+  {
+    "id": "gid://shopify/Product/15367751336240",
+    "title": "AUREA PANCHO",
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/68129541751088",
+        "title": "Gold / ONE SIZE",
+        "price": "120.00",
+        "compareAtPrice": null
+      }
+    ]
+  },
+  {
+    "id": "gid://shopify/Product/15367750746416",
+    "title": "CIELO DRESS",
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/68129539227952",
+        "title": "Blue / ONE SIZE",
+        "price": "76.50",
+        "compareAtPrice": "90.00"
+      }
+    ]
+  },
+  {
+    "id": "gid://shopify/Product/15367752515888",
+    "title": "SELENE JUMPSUIT",
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/68129547714864",
+        "title": "Beige / S",
+        "price": "102.00",
+        "compareAtPrice": "120.00"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129547747632",
+        "title": "Beige / M",
+        "price": "102.00",
+        "compareAtPrice": "120.00"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129547780400",
+        "title": "Beige / L",
+        "price": "102.00",
+        "compareAtPrice": "120.00"
+      }
+    ]
+  },
+  {
+    "id": "gid://shopify/Product/15367751532848",
+    "title": "CIELO TROUSERS",
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/68129542340912",
+        "title": "Blue / ONE SIZE",
+        "price": "76.50",
+        "compareAtPrice": "90.00"
+      }
+    ]
+  },
+  {
+    "id": "gid://shopify/Product/15367752122672",
+    "title": "MUSE TOP",
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/68129545945392",
+        "title": "Blue / S",
+        "price": "56.00",
+        "compareAtPrice": "80.00"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129545978160",
+        "title": "Blue / M",
+        "price": "56.00",
+        "compareAtPrice": "80.00"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129546010928",
+        "title": "Blue / L",
+        "price": "56.00",
+        "compareAtPrice": "80.00"
+      }
+    ]
+  },
+  {
+    "id": "gid://shopify/Product/15367751270704",
+    "title": "APEX TOP",
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/68129541587248",
+        "title": "Black / S",
+        "price": "49.00",
+        "compareAtPrice": "70.00"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129541620016",
+        "title": "Black / M",
+        "price": "49.00",
+        "compareAtPrice": "70.00"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129541652784",
+        "title": "Black / L",
+        "price": "49.00",
+        "compareAtPrice": "70.00"
+      }
+    ]
+  },
+  {
+    "id": "gid://shopify/Product/15367751434544",
+    "title": "AXIS BLAZER",
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/68129541849392",
+        "title": "Black / S",
+        "price": "90.00",
+        "compareAtPrice": null
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129541882160",
+        "title": "Black / M",
+        "price": "90.00",
+        "compareAtPrice": null
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129541914928",
+        "title": "Black / L",
+        "price": "90.00",
+        "compareAtPrice": null
+      }
+    ]
+  },
+  {
+    "id": "gid://shopify/Product/15367752614192",
+    "title": "VEIL JEANS",
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/68129547977008",
+        "title": "Blue / S",
+        "price": "100.00",
+        "compareAtPrice": null
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129548009776",
+        "title": "Blue / M",
+        "price": "100.00",
+        "compareAtPrice": null
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129548042544",
+        "title": "Blue / L",
+        "price": "100.00",
+        "compareAtPrice": null
+      }
+    ]
+  },
+  {
+    "id": "gid://shopify/Product/15367751958832",
+    "title": "FORMA DENIM SET",
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/68129543618864",
+        "title": "Blue / S",
+        "price": "100.00",
+        "compareAtPrice": null
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129543651632",
+        "title": "Blue / M",
+        "price": "100.00",
+        "compareAtPrice": null
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129543684400",
+        "title": "Blue / L",
+        "price": "100.00",
+        "compareAtPrice": null
+      }
+    ]
+  },
+  {
+    "id": "gid://shopify/Product/15367752188208",
+    "title": "OMBRA TROUSERS",
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/68129546109232",
+        "title": "Black / S",
+        "price": "85.00",
+        "compareAtPrice": null
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129546142000",
+        "title": "Black / M",
+        "price": "85.00",
+        "compareAtPrice": null
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129546174768",
+        "title": "Black / L",
+        "price": "85.00",
+        "compareAtPrice": null
+      }
+    ]
+  },
+  {
+    "id": "gid://shopify/Product/15367752843568",
+    "title": "VENTO TOP",
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/68129548501296",
+        "title": "Blue / S",
+        "price": "49.00",
+        "compareAtPrice": "70.00"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129548534064",
+        "title": "Blue / M",
+        "price": "49.00",
+        "compareAtPrice": "70.00"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129548566832",
+        "title": "Blue / L",
+        "price": "49.00",
+        "compareAtPrice": "70.00"
+      }
+    ]
+  },
+  {
+    "id": "gid://shopify/Product/15367751762224",
+    "title": "FIORE DRESS",
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/68129543291184",
+        "title": "Beige / S",
+        "price": "80.50",
+        "compareAtPrice": "115.00"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129543323952",
+        "title": "Beige / M",
+        "price": "80.50",
+        "compareAtPrice": "115.00"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129543356720",
+        "title": "Beige / L",
+        "price": "80.50",
+        "compareAtPrice": "115.00"
+      }
+    ]
+  },
+  {
+    "id": "gid://shopify/Product/15367752450352",
+    "title": "POISE TOP",
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/68129547256112",
+        "title": "Beige / S",
+        "price": "52.50",
+        "compareAtPrice": "75.00"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129547288880",
+        "title": "Beige / M",
+        "price": "52.50",
+        "compareAtPrice": "75.00"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129547321648",
+        "title": "Beige / L",
+        "price": "52.50",
+        "compareAtPrice": "75.00"
+      }
+    ]
+  },
+  {
+    "id": "gid://shopify/Product/15367752352048",
+    "title": "PETAL SKIRT",
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/68129546928432",
+        "title": "Beige / S",
+        "price": "68.00",
+        "compareAtPrice": "80.00"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129546961200",
+        "title": "Beige / M",
+        "price": "68.00",
+        "compareAtPrice": "80.00"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129546993968",
+        "title": "Beige / L",
+        "price": "68.00",
+        "compareAtPrice": "80.00"
+      }
+    ]
+  },
+  {
+    "id": "gid://shopify/Product/15367752909104",
+    "title": "WHISPER TOP",
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/68129548927280",
+        "title": "White / S",
+        "price": "45.50",
+        "compareAtPrice": "65.00"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129548960048",
+        "title": "White / M",
+        "price": "45.50",
+        "compareAtPrice": "65.00"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129548992816",
+        "title": "White / L",
+        "price": "45.50",
+        "compareAtPrice": "65.00"
+      }
+    ]
+  },
+  {
+    "id": "gid://shopify/Product/15367751729456",
+    "title": "ELAN BLAZER",
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/68129543192880",
+        "title": "Black / S",
+        "price": "140.00",
+        "compareAtPrice": null
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129543225648",
+        "title": "Black / M",
+        "price": "140.00",
+        "compareAtPrice": null
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129543258416",
+        "title": "Black / L",
+        "price": "140.00",
+        "compareAtPrice": null
+      }
+    ]
+  },
+  {
+    "id": "gid://shopify/Product/15367752253744",
+    "title": "PARADOX SKIRT",
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/68129546240304",
+        "title": "Black / S",
+        "price": "45.50",
+        "compareAtPrice": "65.00"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129546273072",
+        "title": "Black / M",
+        "price": "45.50",
+        "compareAtPrice": "65.00"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129546305840",
+        "title": "Black / L",
+        "price": "45.50",
+        "compareAtPrice": "65.00"
+      }
+    ]
+  },
+  {
+    "id": "gid://shopify/Product/15367751827760",
+    "title": "FORM SET",
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/68129543422256",
+        "title": "Black / S",
+        "price": "135.00",
+        "compareAtPrice": null
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129543455024",
+        "title": "Black / M",
+        "price": "135.00",
+        "compareAtPrice": null
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129543487792",
+        "title": "Black / L",
+        "price": "135.00",
+        "compareAtPrice": null
+      }
+    ]
+  },
+  {
+    "id": "gid://shopify/Product/15367751631152",
+    "title": "COVE TOP",
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/68129542799664",
+        "title": "Black / S",
+        "price": "49.00",
+        "compareAtPrice": "70.00"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129542832432",
+        "title": "Black / M",
+        "price": "49.00",
+        "compareAtPrice": "70.00"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129542865200",
+        "title": "Black / L",
+        "price": "49.00",
+        "compareAtPrice": "70.00"
+      }
+    ]
+  },
+  {
+    "id": "gid://shopify/Product/15367752057136",
+    "title": "FRAME TROUSERS",
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/68129544077616",
+        "title": "Black / S",
+        "price": "90.00",
+        "compareAtPrice": null
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129544110384",
+        "title": "Black / M",
+        "price": "90.00",
+        "compareAtPrice": null
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129544143152",
+        "title": "Black / L",
+        "price": "90.00",
+        "compareAtPrice": null
+      }
+    ]
+  },
+  {
+    "id": "gid://shopify/Product/15367752548656",
+    "title": "SWAY TOP",
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/68129547813168",
+        "title": "Blue / S",
+        "price": "49.00",
+        "compareAtPrice": "70.00"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129547845936",
+        "title": "Blue / M",
+        "price": "49.00",
+        "compareAtPrice": "70.00"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129547878704",
+        "title": "Blue / L",
+        "price": "49.00",
+        "compareAtPrice": "70.00"
+      }
+    ]
+  },
+  {
+    "id": "gid://shopify/Product/15367752745264",
+    "title": "VELA TROUSERS",
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/68129548173616",
+        "title": "White / S",
+        "price": "80.00",
+        "compareAtPrice": null
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129548206384",
+        "title": "White / M",
+        "price": "80.00",
+        "compareAtPrice": null
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68129548239152",
+        "title": "White / L",
+        "price": "80.00",
+        "compareAtPrice": null
+      }
+    ]
+  }
+]
