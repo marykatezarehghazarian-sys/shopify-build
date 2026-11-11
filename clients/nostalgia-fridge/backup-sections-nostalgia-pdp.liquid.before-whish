@@ -1,0 +1,203 @@
+{% render 'nostalgia-assets' %}
+{%- liquid
+  assign p = product
+  assign cur = p.selected_or_first_available_variant
+-%}
+{%- capture colour_map -%}
+{
+{%- for v in p.variants -%}
+  {%- assign ckey = v.option1 | downcase | split: ' ' | last -%}
+  "{{ v.option1 | escape }}": {
+    "id": {{ v.id }},
+    "key": "{{ ckey }}",
+    "price": {{ v.price | json }},
+    "priceText": {{ v.price | money_without_trailing_zeros | json }},
+    "available": {{ v.available }},
+    "sku": {{ v.sku | json }},
+    "images": [
+      {%- assign shown = 0 -%}
+      {%- for img in p.images -%}
+        {%- if img.alt contains ckey -%}
+          {%- if shown > 0 %},{% endif -%}
+          {{ img | image_url: width: 1400 | json }}
+          {%- assign shown = shown | plus: 1 -%}
+        {%- endif -%}
+      {%- endfor -%}
+    ]
+  }{%- unless forloop.last -%},{%- endunless -%}
+{%- endfor -%}
+}
+{%- endcapture -%}
+
+<section class="ns-section ns-pdp">
+  <div class="ns-wrap ns-pdp__grid">
+
+    <div class="ns-pdp__media">
+      <div class="ns-gal" data-gal>
+        <div class="ns-gal__rail" data-gal-rail></div>
+        <div class="ns-gal__dots" data-gal-dots></div>
+      </div>
+    </div>
+
+    <div class="ns-pdp__info">
+      <h1 class="ns-pdp__title">{{ p.title }}</h1>
+      <p class="ns-pdp__price"><span data-price>{{ cur.price | money_without_trailing_zeros }}</span></p>
+      <p class="ns-pdp__note">{{ section.settings.price_note }}</p>
+
+      <div class="ns-pdp__opt">
+        <p class="ns-pdp__optlabel">Colour<span data-colour-name>{{ cur.option1 }}</span></p>
+        <div class="ns-swatches" role="group" aria-label="Choose a colour">
+          {%- for v in p.variants -%}
+            {%- assign ckey = v.option1 | downcase | split: ' ' | last -%}
+            <button type="button" class="ns-sw" data-colour="{{ v.option1 | escape }}"
+              style="--sw: var(--ns-{{ ckey }})"
+              aria-pressed="{% if v.id == cur.id %}true{% else %}false{% endif %}"
+              title="{{ v.option1 }}"><span class="ns-vh">{{ v.option1 }}</span></button>
+          {%- endfor -%}
+        </div>
+      </div>
+
+      <form method="post" action="/cart/add" class="ns-pdp__form" data-cart-form>
+        <input type="hidden" name="id" value="{{ cur.id }}" data-variant-input>
+        <input type="hidden" name="quantity" value="1">
+        <button type="submit" class="ns-btn ns-btn--block" data-add>{{ section.settings.cta }}</button>
+      </form>
+
+      {%- if section.settings.whatsapp != blank -%}
+        <a class="ns-btn ns-btn--ghost ns-btn--block" data-wa
+           href="https://wa.me/{{ section.settings.whatsapp | remove: '+' | remove: ' ' }}">{{ section.settings.wa_cta }}</a>
+      {%- endif -%}
+
+      <ul class="ns-pdp__trust">
+        <li>Cash on delivery</li>
+        <li>Delivery in 2 to 3 days, free in Beirut</li>
+        <li>One year warranty</li>
+      </ul>
+    </div>
+  </div>
+
+{%- liquid
+  assign two = false
+  if product and product.handle contains 'two-door'
+    assign two = true
+  endif
+-%}
+  <div class="ns-wrap ns-pdp__below">
+    <div class="ns-keyspecs">
+      {%- for b in section.blocks -%}
+        {%- if b.type == 'spec' -%}
+          <div class="ns-keyspec">
+            <span class="ns-keyspec__v">{% if two and b.settings.value_two != blank %}{{ b.settings.value_two }}{% else %}{{ b.settings.value }}{% endif %}</span>
+            <span class="ns-keyspec__k">{{ b.settings.label }}</span>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    <div class="ns-acc">
+      {%- for b in section.blocks -%}
+        {%- if b.type == 'panel' -%}
+          <details class="ns-acc__item"{% if forloop.index == 1 %} open{% endif %}>
+            <summary class="ns-acc__sum">{{ b.settings.heading }}</summary>
+            <div class="ns-acc__body">{% if two and b.settings.body_two != blank %}{{ b.settings.body_two }}{% else %}{{ b.settings.body }}{% endif %}</div>
+          </details>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<div class="ns-buybar-spacer"></div>
+<div class="ns-buybar" data-buybar>
+  <div class="ns-buybar__label">
+    <b data-buybar-color>{{ cur.option1 }}</b>
+    <span data-buybar-price>{{ cur.price | money_without_trailing_zeros }}</span>
+  </div>
+  <button type="button" class="ns-btn" data-buybar-add>{{ section.settings.cta }}</button>
+</div>
+
+<script type="application/json" data-colour-map>{{ colour_map }}</script>
+
+{% schema %}
+{
+  "name": "NS Product",
+  "settings": [
+    {
+      "type": "text",
+      "id": "cta",
+      "label": "Add to cart label",
+      "default": "Add to cart"
+    },
+    {
+      "type": "text",
+      "id": "price_note",
+      "label": "Price note",
+      "default": "Cash on delivery. Free delivery in Beirut, $10 everywhere else in Lebanon. VAT added at checkout."
+    },
+    {
+      "type": "text",
+      "id": "wa_cta",
+      "label": "WhatsApp CTA",
+      "default": "Order on WhatsApp"
+    },
+    {
+      "type": "text",
+      "id": "whatsapp",
+      "label": "WhatsApp number"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "spec",
+      "name": "Key spec",
+      "settings": [
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value",
+          "default": "90 L"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Capacity"
+        },
+        {
+          "type": "text",
+          "id": "value_two",
+          "label": "Value on the Two Door page (optional)"
+        }
+      ]
+    },
+    {
+      "type": "panel",
+      "name": "Accordion panel",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Specifications"
+        },
+        {
+          "type": "richtext",
+          "id": "body",
+          "label": "Body",
+          "default": "<p>Details here.</p>"
+        },
+        {
+          "type": "richtext",
+          "id": "body_two",
+          "label": "Body on the Two Door page (optional)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NS Product"
+    }
+  ]
+}
+{% endschema %}

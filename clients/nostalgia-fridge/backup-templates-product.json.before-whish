@@ -1,0 +1,126 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "nostalgia-pdp",
+      "blocks": {
+        "s1": {
+          "type": "spec",
+          "settings": {
+            "value": "90 L",
+            "label": "Capacity"
+          }
+        },
+        "s2": {
+          "type": "spec",
+          "settings": {
+            "value": "0.3 A",
+            "label": "Power draw",
+            "value_two": "0.7 A"
+          }
+        },
+        "s3": {
+          "type": "spec",
+          "settings": {
+            "value": "37 dB",
+            "label": "Noise"
+          }
+        },
+        "s4": {
+          "type": "spec",
+          "settings": {
+            "value": "1 year",
+            "label": "Warranty"
+          }
+        },
+        "p1": {
+          "type": "panel",
+          "settings": {
+            "heading": "Specifications",
+            "body": "<ul><li>90 litre capacity<\/li><li>0.3 amp draw, runs on solar or generator<\/li><li>37 dB, quiet enough for a bedroom<\/li><li>LED interior lighting<\/li><li>Two removable glass shelves<\/li><li>Crisper basket<\/li><li>Ice box with hinged cover<\/li><li>Three door bins<\/li><li>High gloss enamel, chrome trim<\/li><\/ul>",
+            "body_two": "<ul><li>90 litre capacity<\/li><li>0.7 amp draw, runs on solar or generator<\/li><li>37 dB, quiet enough for a bedroom<\/li><li>LED interior lighting<\/li><li>Freezer with its own door<\/li><li>Removable glass shelves<\/li><li>Crisper drawer<\/li><li>Door bins for bottles and cans<\/li><li>Chrome bottle opener on the side<\/li><li>High gloss enamel, chrome trim<\/li><\/ul>"
+          }
+        },
+        "p2": {
+          "type": "panel",
+          "settings": {
+            "heading": "Delivery and payment",
+            "body": "<p>Free delivery in Beirut and $10 anywhere else in Lebanon, in two to three days.<\/p><p>You pay cash when it arrives. No cards, no deposit.<\/p><p>We carry it in and set it in place.<\/p>"
+          }
+        },
+        "p3": {
+          "type": "panel",
+          "settings": {
+            "heading": "Warranty",
+            "body": "<p>One year on parts and labour, handled here in Lebanon.<\/p><p>Nothing ships overseas. Message us and we sort it.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "settings": {
+        "cta": "Add to cart",
+        "price_note": "Cash on delivery. Free delivery in Beirut, $10 everywhere else in Lebanon. VAT added at checkout."
+      }
+    },
+    "ns_open": {
+      "type": "nostalgia-feature",
+      "settings": {
+        "image_file": "ns-one-red-open.jpg",
+        "image_alt": "Nostalgia fridge open, showing white LED-lit shelves stocked with fruit and bottles",
+        "eyebrow": "OPEN IT UP",
+        "title": "Small outside. Serious inside.",
+        "body": "Ninety litres, lit like a little stage. Shelves come out. Tall bottles fit.",
+        "bullets": "Two removable glass shelves\nCrisper basket for fruit and veg\nIce box with its own cover\nThree door bins",
+        "flip": false,
+        "paper": true,
+        "image_alt_two": "Nostalgia two door fridge open, freezer on top and LED lit shelves below stocked with fruit and bottles",
+        "body_two": "Ninety litres of fridge under a freezer with its own door. Shelves come out. Tall bottles fit.",
+        "bullets_two": "Freezer with its own door\nGlass shelves that come out\nCrisper drawer for fruit and veg\nDoor bins for bottles and cans"
+      }
+    },
+    "ns_detail": {
+      "type": "nostalgia-feature",
+      "settings": {
+        "image_file": "ns-one-red-detail.jpg",
+        "image_alt": "Close-up of the raised chrome Nostalgia script badge and art-deco lever handle",
+        "eyebrow": "THE DETAILS",
+        "title": "Chrome, not stickers.",
+        "body": "The badge is raised polished chrome on standoffs. The handle is a proper art deco lever.",
+        "bullets": "Raised chrome script badge\nArt deco lever handle\nPolished chrome trim\nHigh gloss enamel body",
+        "flip": true,
+        "paper": false,
+        "image_alt_two": "Hand opening a bottle on the chrome bottle opener fixed to the side of the Nostalgia two door fridge",
+        "body_two": "The badge is raised polished chrome on standoffs. The handles are proper art deco levers, and a chrome bottle opener is fixed to the side.",
+        "bullets_two": "Raised chrome script badge\nTwo art deco lever handles\nChrome bottle opener on the side\nHigh gloss enamel body"
+      }
+    },
+    "ns_specs": {
+      "type": "nostalgia-specs",
+      "settings": {
+        "paper": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "ns_open",
+    "ns_detail",
+    "ns_specs"
+  ]
+}

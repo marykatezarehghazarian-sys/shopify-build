@@ -1,0 +1,61 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "ns_hero": {
+      "type": "nostalgia-hero",
+      "settings": {}
+    },
+    "ns_color": {
+      "type": "nostalgia-colourpicker",
+      "settings": {}
+    },
+    "ns_open": {
+      "type": "nostalgia-feature",
+      "settings": {
+        "image_file": "ns-one-red-open.jpg",
+        "image_alt": "Nostalgia fridge open, showing white LED-lit shelves stocked with fruit and bottles",
+        "eyebrow": "OPEN IT UP",
+        "title": "Small outside. Serious inside.",
+        "body": "Ninety litres, lit like a little stage. Shelves come out. Tall bottles fit.",
+        "bullets": "",
+        "flip": false,
+        "paper": false
+      }
+    },
+    "ns_compare": {
+      "type": "nostalgia-compare",
+      "settings": {}
+    },
+    "ns_trust": {
+      "type": "nostalgia-trust",
+      "settings": {}
+    },
+    "ns_buybar": {
+      "type": "nostalgia-buybar",
+      "settings": {}
+    },
+    "ns_reels": {
+      "type": "nostalgia-reels",
+      "settings": {
+        "paper": false
+      }
+    }
+  },
+  "order": [
+    "ns_hero",
+    "ns_color",
+    "ns_reels",
+    "ns_open",
+    "ns_compare",
+    "ns_trust",
+    "ns_buybar"
+  ]
+}

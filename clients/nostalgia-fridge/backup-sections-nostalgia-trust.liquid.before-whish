@@ -1,0 +1,32 @@
+{% render 'nostalgia-assets' %}
+<section class="ns-section ns-trust">
+  <div class="ns-wrap">
+    <div class="ns-trust__head">
+      <p class="ns-eyebrow">{{ section.settings.eyebrow }}</p>
+      <h2 class="ns-h2">{{ section.settings.title }}</h2>
+    </div>
+    <div class="ns-trust__grid">
+      <div class="ns-trust__item"><h3>Cash on delivery</h3><p>Pay when it arrives. No cards, no deposit.</p></div>
+      <div class="ns-trust__item"><h3>Delivery in 2 to 3 days</h3><p>Free in Beirut, $10 anywhere else in Lebanon. We carry it in and set it in place.</p></div>
+      <div class="ns-trust__item"><h3>Order on WhatsApp</h3><p>Message us and a real person answers. Most orders happen in the chat.</p></div>
+    </div>
+    {% if section.settings.whatsapp != blank %}
+      <a class="ns-btn ns-btn--wa" href="https://wa.me/{{ section.settings.whatsapp | remove: '+' | remove: ' ' }}">{{ section.settings.cta }}</a>
+    {% else %}
+      <a class="ns-btn ns-btn--wa" href="#buy">{{ section.settings.cta }}</a>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NS Trust",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "THE EASY PART" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Ordering is the easy part." },
+    { "type": "text", "id": "cta", "label": "CTA label", "default": "Message us on WhatsApp" },
+    { "type": "text", "id": "whatsapp", "label": "WhatsApp number (with country code)" }
+  ],
+  "presets": [{ "name": "NS Trust" }]
+}
+{% endschema %}

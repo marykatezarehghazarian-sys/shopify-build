@@ -1,0 +1,15 @@
+{%- comment -%}
+  "Pay with Whish" badge with the Whish Money logo (owner request, Nov 2026).
+  Usage: {% render 'ns-pay-whish' %}  (optional: align: 'center')
+{%- endcomment -%}
+<div class="ns-pay{% if align == 'center' %} ns-pay--center{% endif %}">
+  <span class="ns-pay__label">Pay with</span>
+  <img class="ns-pay__logo" src="{{ 'whish-logo.svg' | asset_url }}" alt="Whish Money" width="124" height="28" loading="lazy">
+  <span class="ns-pay__or">or cash on delivery</span>
+</div>
+<style>
+  .ns-pay { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 10px; margin: 14px 0 0; font-size: 0.9rem; }
+  .ns-pay--center { justify-content: center; }
+  .ns-pay__label, .ns-pay__or { opacity: 0.75; }
+  .ns-pay img.ns-pay__logo { height: 34px !important; width: auto !important; max-width: 150px !important; display: block; box-sizing: content-box; padding: 5px 10px; background: #fff7ef; border-radius: 999px; }
+</style>
