@@ -45,22 +45,22 @@
           "type": "panel",
           "settings": {
             "heading": "Specifications",
-            "body": "<ul><li>90 litre capacity<\/li><li>0.3 amp draw, runs on solar or generator<\/li><li>37 dB, quiet enough for a bedroom<\/li><li>LED interior lighting<\/li><li>Two removable glass shelves<\/li><li>Crisper basket<\/li><li>Ice box with hinged cover<\/li><li>Three door bins<\/li><li>High gloss enamel, chrome trim<\/li><\/ul>",
-            "body_two": "<ul><li>90 litre capacity<\/li><li>0.7 amp draw, runs on solar or generator<\/li><li>37 dB, quiet enough for a bedroom<\/li><li>LED interior lighting<\/li><li>Freezer with its own door<\/li><li>Removable glass shelves<\/li><li>Crisper drawer<\/li><li>Door bins for bottles and cans<\/li><li>Chrome bottle opener on the side<\/li><li>High gloss enamel, chrome trim<\/li><\/ul>"
+            "body": "<ul><li>90 litre capacity</li><li>0.3 amp draw, runs on solar or generator</li><li>37 dB, quiet enough for a bedroom</li><li>LED interior lighting</li><li>Two removable glass shelves</li><li>Crisper basket</li><li>Ice box with hinged cover</li><li>Three door bins</li><li>High gloss enamel, chrome trim</li></ul>",
+            "body_two": "<ul><li>90 litre capacity</li><li>0.7 amp draw, runs on solar or generator</li><li>37 dB, quiet enough for a bedroom</li><li>LED interior lighting</li><li>Freezer with its own door</li><li>Removable glass shelves</li><li>Crisper drawer</li><li>Door bins for bottles and cans</li><li>Chrome bottle opener on the side</li><li>High gloss enamel, chrome trim</li></ul>"
           }
         },
         "p2": {
           "type": "panel",
           "settings": {
             "heading": "Delivery and payment",
-            "body": "<p>Free delivery in Beirut and $10 anywhere else in Lebanon, in two to three days.<\/p><p>Pay cash when it arrives, or pay with Whish. No deposit.<\/p><p>We carry it in and set it in place.<\/p>"
+            "body": "<p>Free delivery in Beirut and $10 anywhere else in Lebanon, in two to three days.</p><p>Pay cash when it arrives, or pay with Whish. No deposit.</p><p>We carry it in and set it in place.</p>"
           }
         },
         "p3": {
           "type": "panel",
           "settings": {
             "heading": "Warranty",
-            "body": "<p>One year on parts and labour, handled here in Lebanon.<\/p><p>Nothing ships overseas. Message us and we sort it.<\/p>"
+            "body": "<p>One year on parts and labour, handled here in Lebanon.</p><p>Nothing ships overseas. Message us and we sort it.</p>"
           }
         }
       },
@@ -75,7 +75,8 @@
       ],
       "settings": {
         "cta": "Add to cart",
-        "price_note": "Cash on delivery. Free delivery in Beirut, $10 everywhere else in Lebanon. VAT added at checkout."
+        "price_note": "Cash on delivery. Free delivery in Beirut, $10 everywhere else in Lebanon. VAT added at checkout.",
+        "whatsapp": "+961 76 419 911"
       }
     },
     "ns_open": {

@@ -1,0 +1,21 @@
+{% render 'nostalgia-assets' %}
+<div class="ns-buybar-spacer"></div>
+<div class="ns-buybar" data-buybar>
+  <div class="ns-buybar__label">
+    <b data-buybar-color>Retro Red</b>
+    <span>{{ section.settings.note }}</span>
+  </div>
+  <a class="ns-btn" href="{{ section.settings.link | default: '#buy' }}">{{ section.settings.cta }}</a>
+</div>
+
+{% schema %}
+{
+  "name": "NS Buybar",
+  "settings": [
+    { "type": "text", "id": "cta", "label": "CTA label", "default": "Get yours" },
+    { "type": "url", "id": "link", "label": "CTA link" },
+    { "type": "text", "id": "note", "label": "Note", "default": "From $239 · cash on delivery" }
+  ],
+  "presets": [{ "name": "NS Buybar" }]
+}
+{% endschema %}

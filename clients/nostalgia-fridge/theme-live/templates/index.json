@@ -36,7 +36,9 @@
     },
     "ns_trust": {
       "type": "nostalgia-trust",
-      "settings": {}
+      "settings": {
+        "whatsapp": "+961 76 419 911"
+      }
     },
     "ns_buybar": {
       "type": "nostalgia-buybar",

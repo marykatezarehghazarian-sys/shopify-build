@@ -1,0 +1,57 @@
+{% render 'nostalgia-assets' %}
+<section class="ns-section ns-hero">
+  <div class="ns-wrap ns-hero__grid">
+    <div class="ns-hero__stage">
+      <div class="ns-hero__img" data-hero-img>
+        <img src="{{ 'ns-one-red-model.jpg' | asset_url }}" data-color="red" class="is-on" width="1400" height="1400" alt="Nostalgia one-door retro fridge in red" fetchpriority="high">
+        <img src="{{ 'ns-one-blue-model.jpg' | asset_url }}" data-color="blue" width="1400" height="1400" alt="Nostalgia one-door retro fridge in Tiffany blue" loading="lazy">
+        <img src="{{ 'ns-one-pink-model.jpg' | asset_url }}" data-color="pink" width="1400" height="1400" alt="Nostalgia one-door retro fridge in pink" loading="lazy">
+        <img src="{{ 'ns-one-yellow-model.jpg' | asset_url }}" data-color="yellow" width="1400" height="1400" alt="Nostalgia one-door retro fridge in butter yellow" loading="lazy">
+        <img src="{{ 'ns-one-black-model.jpg' | asset_url }}" data-color="black" width="1400" height="1400" alt="Nostalgia one-door retro fridge in matte black" loading="lazy">
+      </div>
+    </div>
+
+    <div class="ns-hero__copy">
+      <p class="ns-hero__kicker">{{ section.settings.kicker }}</p>
+      <h1 class="ns-display ns-hero__title">{{ section.settings.title }}</h1>
+      <p class="ns-lede">{{ section.settings.lede }}</p>
+
+      <p class="ns-optlabel">Colour<span data-chiplabel>Retro Red</span></p>
+      <div class="ns-chips" role="group" aria-label="Choose your colour">
+        <button type="button" class="ns-chip" data-color="red" style="--chip:#db2736" aria-pressed="true"><span class="ns-chip__name">Retro Red</span></button>
+        <button type="button" class="ns-chip" data-color="blue" style="--chip:#b4e2d2" aria-pressed="false"><span class="ns-chip__name">Tiffany Blue</span></button>
+        <button type="button" class="ns-chip" data-color="pink" style="--chip:#f2c2cc" aria-pressed="false"><span class="ns-chip__name">Powder Pink</span></button>
+        <button type="button" class="ns-chip" data-color="yellow" style="--chip:#e7bc0b" aria-pressed="false"><span class="ns-chip__name">Butter Yellow</span></button>
+        <button type="button" class="ns-chip" data-color="black" style="--chip:#1f2020" aria-pressed="false"><span class="ns-chip__name">Matte Black</span></button>
+      </div>
+
+      <div class="ns-hero__ctas">
+        <a class="ns-btn" href="{{ section.settings.cta_link | default: '/products/nostalgia-one-door-retro-fridge' }}">{{ section.settings.cta_label }}</a>
+        <span class="ns-hero__price">{{ section.settings.price_text }}<span class="unit">{{ section.settings.price_note }}</span></span>
+      </div>
+
+      <div class="ns-hero__trust">
+        <span>Free delivery in Beirut</span>
+        <span>Cash on delivery</span>
+        <span>Runs on solar</span>
+      </div>
+    </div>
+  </div>
+</section>
+<div data-buybar-after></div>
+
+{% schema %}
+{
+  "name": "NS Hero",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Script kicker", "default": "bringing the cool back" },
+    { "type": "text", "id": "title", "label": "Headline", "default": "The fridge your kitchen has been missing since 1955." },
+    { "type": "textarea", "id": "lede", "label": "Lede", "default": "Retro outside. Brand new inside. Runs on 0.3 amps, so solar and generators handle it easily." },
+    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Get yours" },
+    { "type": "url", "id": "cta_link", "label": "CTA link" },
+    { "type": "text", "id": "price_text", "label": "Price text", "default": "From $239" },
+    { "type": "text", "id": "price_note", "label": "Price note", "default": "cash on delivery" }
+  ],
+  "presets": [{ "name": "NS Hero" }]
+}
+{% endschema %}

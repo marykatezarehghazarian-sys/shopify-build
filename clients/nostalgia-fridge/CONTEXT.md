@@ -31,5 +31,5 @@ Store: hp01yp-xp.myshopify.com
   - Wording: homepage card "Cash on delivery / No cards, no deposit" became "Cash or Whish / Pay cash when it arrives, or pay with Whish. No deposit." The product delivery accordion text was changed the same way.
   - Backups: backup-*.before-whish.
 - OPEN:
-  - No WhatsApp number anywhere. snippets/nostalgia-whatsapp.liquid ns_wa_number is '', and the nostalgia-trust and nostalgia-pdp `whatsapp` settings are empty, so "Message us on WhatsApp" links to #buy. Waiting for Joe's number.
+  - DONE 2026-11-12: WhatsApp number +961 76 419 911 (from the owner) is set in snippets/nostalgia-whatsapp.liquid (floating button, which also pre-fills "Hi, I would like to order a Nostalgia fridge."), in the homepage nostalgia-trust section setting and in the product nostalgia-pdp section setting. Every WhatsApp button now goes to wa.me/96176419911; checked on the homepage and both product pages. Backups: backup-*.before-whatsapp.
   - VAT 11% must be changed in admin (Settings → Taxes and duties → Lebanon); it can't be done through the API.
