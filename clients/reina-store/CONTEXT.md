@@ -91,3 +91,4 @@ Access: Dev Dashboard app (client ID + secret in .env), broad scopes incl. produ
   - Checked live: Add to bag shows, no "Coming soon".
   - Backups: backup-launch-gemma-danza.json, backup-collection-new-in.before-launch-gemma-danza.json.
   - Rose Top (the navy belted top in the same photos) is still coming soon; asked the owner.
+- 2026-11-13: Reina said the Danza Skirt flat product shot was missing; added it as the 5th image (after the 4 model photos). Source: photos/danza-skirt-flat.jpg.
