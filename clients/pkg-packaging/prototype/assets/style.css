@@ -108,12 +108,14 @@ ul.clean { list-style: none; margin: 0; padding: 0; }
 @media (max-width: 520px) { .cats { grid-template-columns: 1fr 1fr; gap: 10px; } .cat { min-height: 190px; padding: 16px; } .cat__name { font-size: 1.05rem; } .cat__icon { width: 56px; height: 56px; } }
 
 /* Industries */
-.inds { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px; background: rgba(243, 238, 230, 0.18); border: 1px solid rgba(243, 238, 230, 0.18); }
+.inds { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(243, 238, 230, 0.18); border: 1px solid rgba(243, 238, 230, 0.18); }
 .ind { background: var(--ink); padding: 26px 20px; }
 .ind h3 { font-size: 1.1rem; text-transform: uppercase; margin: 14px 0 8px; }
+.ind p, .ind h3 { text-align: left; hyphens: none; }
+.ind__bar { display: block; width: 28px; height: 4px; background: var(--accent); }
 .ind p { margin: 0; font-size: 0.9rem; color: #c9c2b7; }
 .ind svg { width: 40px; height: 40px; color: var(--kraft); }
-@media (max-width: 1000px) { .inds { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 1000px) { .inds { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) { .inds { grid-template-columns: repeat(2, 1fr); } }
 
 /* Steps */

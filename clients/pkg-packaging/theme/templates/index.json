@@ -82,7 +82,7 @@
           "settings": {
             "icon": "food",
             "title": "Restaurants",
-            "text": "Burger, pizza and meal boxes for dine-in and delivery."
+            "text": "Menus, delivery bags, napkins, wrappers and food packaging."
           }
         },
         "i2": {
@@ -90,7 +90,7 @@
           "settings": {
             "icon": "bakery",
             "title": "Bakeries",
-            "text": "Cake, pastry and cupcake boxes that travel well."
+            "text": "Cake boxes, trays, chocolate boxes, Bûche de Noël boxes and labels."
           }
         },
         "i3": {
@@ -98,31 +98,47 @@
           "settings": {
             "icon": "coffee",
             "title": "Coffee shops",
-            "text": "Cups, sleeves and carriers with your brand on every order."
+            "text": "Paper cups, cup holders, napkins, stickers and takeaway packaging."
           }
         },
         "i4": {
           "type": "industry",
           "settings": {
-            "icon": "school",
-            "title": "Schools",
-            "text": "Notebooks, certificates and school stationery."
+            "icon": "retail",
+            "title": "Clothing stores",
+            "text": "Paper bags, tags, stickers, boxes and premium retail packaging."
           }
         },
         "i5": {
           "type": "industry",
           "settings": {
-            "icon": "retail",
-            "title": "Clothing stores",
-            "text": "Bags, mailer boxes, hang tags and tissue."
+            "icon": "school",
+            "title": "Schools & universities",
+            "text": "Books, notebooks, folders, reports, certificates and event material."
           }
         },
         "i6": {
           "type": "industry",
           "settings": {
+            "icon": "labels",
+            "title": "Events & weddings",
+            "text": "Invitations, envelopes, programs, tags, gift bags and custom cards."
+          }
+        },
+        "i7": {
+          "type": "industry",
+          "settings": {
             "icon": "corporate",
             "title": "Corporate offices",
-            "text": "Business cards, letterheads, folders and gifts."
+            "text": "Business cards, letterheads, folders, catalogs and stationery."
+          }
+        },
+        "i8": {
+          "type": "industry",
+          "settings": {
+            "icon": "bags",
+            "title": "Product brands",
+            "text": "Labels, product boxes, sleeves, display stands and launch packaging."
           }
         }
       },
@@ -132,9 +148,16 @@
         "i3",
         "i4",
         "i5",
-        "i6"
+        "i6",
+        "i7",
+        "i8"
       ],
-      "settings": {}
+      "settings": {
+        "eyebrow": "Industries we serve",
+        "heading": "Printing and packaging for every type of business.",
+        "text": "From one café to a chain of branches, we print the packaging and paperwork your customers see every day.",
+        "show_icons": false
+      }
     },
     "featured": {
       "type": "pkg-featured",
