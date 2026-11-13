@@ -300,7 +300,11 @@
         "q4",
         "q5"
       ],
-      "settings": {}
+      "settings": {
+        "eyebrow": "FAQ",
+        "heading": "Questions, answered.",
+        "text": "Need a specific answer? Message us on WhatsApp and we'll help you with your order."
+      }
     },
     "pay": {
       "type": "pkg-paybar",
@@ -347,6 +351,28 @@
         "button_2": "Contact page",
         "link_2": "/pages/contact"
       }
+    },
+    "factory": {
+      "type": "pkg-factory",
+      "blocks": {
+        "m1": {
+          "type": "machine",
+          "settings": {
+            "image": "shopify://shop_images/pkg-digital-press.jpg",
+            "caption": "Digital printing"
+          }
+        }
+      },
+      "block_order": [
+        "m1"
+      ],
+      "settings": {
+        "eyebrow": "Our factory",
+        "heading": "Printed in-house, on our own machines",
+        "text": "Offset, digital printing and die-cutting under one roof, so we control the quality and the timing of every order.",
+        "button_label": "Visit the showroom",
+        "button_link": "/pages/showroom"
+      }
     }
   },
   "order": [
@@ -354,6 +380,7 @@
     "ticker",
     "categories",
     "industries",
+    "factory",
     "featured",
     "steps",
     "why",

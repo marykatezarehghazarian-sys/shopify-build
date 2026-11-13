@@ -223,13 +223,15 @@ ul.clean { list-style: none; margin: 0; padding: 0; }
 .vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 /* FAQ */
-.faq { border-top: 2px solid var(--ink); }
-.faq details { border-bottom: 1px solid var(--line); padding: 4px 0; }
-.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 16px; padding: 18px 0; font: 800 1.15rem/1.25 var(--font-head); }
+.faq-wrap { max-width: 920px; }
+.faq__title { font-size: clamp(2.4rem, 6vw, 4.2rem); line-height: 0.98; letter-spacing: -0.02em; }
+.faq { border-top: 1px solid rgba(18,18,18,.22); margin-top: clamp(28px, 4vw, 44px); }
+.faq details { border-bottom: 1px solid rgba(18,18,18,.22); }
+.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 24px 0; font: 700 1.08rem/1.35 var(--font-body); letter-spacing: 0.01em; }
 .faq summary::-webkit-details-marker { display: none; }
-.faq summary::after { content: "+"; font-size: 1.6rem; line-height: 1; color: var(--accent); transition: transform .2s; }
-.faq details[open] summary::after { transform: rotate(45deg); }
-.faq details p { margin: 0 0 18px; color: var(--muted); max-width: 62ch; }
+.faq summary::after { content: ""; flex: none; width: 10px; height: 10px; margin-right: 4px; border-right: 2px solid var(--accent); border-bottom: 2px solid var(--accent); transform: translateY(-3px) rotate(45deg); transition: transform .2s; }
+.faq details[open] summary::after { transform: translateY(2px) rotate(-135deg); }
+.faq details p { margin: -6px 0 24px; color: var(--muted); max-width: 62ch; }
 .ind [data-icon] svg, .ind span svg { width: 40px; height: 40px; }
 
 /* Theme additions */
@@ -250,3 +252,9 @@ img.cover, .stack img, .map img { width: 100%; height: 100%; object-fit: cover; 
 .step p { color: var(--ink-2); }
 .section--ink .step p { color: #c9c2b7; }
 .hero .display { max-width: 9ch; }
+.factory__grid { display: grid; gap: 14px; }
+.factory__grid--multi { grid-template-columns: 1fr 1fr; }
+.factory__shot { margin: 0; position: relative; border-radius: var(--radius); overflow: hidden; border: 2px solid var(--ink); background: var(--ink); }
+.factory__shot img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.factory__shot figcaption { position: absolute; left: 12px; bottom: 12px; background: var(--ink); color: var(--paper); font: 700 0.78rem/1 var(--font-body); letter-spacing: 0.12em; text-transform: uppercase; padding: 8px 10px; border-radius: 6px; }
+@media (max-width: 560px) { .factory__grid--multi { grid-template-columns: 1fr; } }
