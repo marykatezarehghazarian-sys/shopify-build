@@ -1,1 +1,22 @@
-{ "sections": { "main": { "type": "main-collection" } }, "order": ["main"] }
+{
+  "sections": {
+    "main": {
+      "type": "main-collection",
+      "settings": {
+        "menu": "catalogue"
+      }
+    },
+    "cta": {
+      "type": "pkg-band",
+      "settings": {
+        "heading": "Don't see what you need?",
+        "text": "We print custom sizes and products too. Tell us what you have in mind.",
+        "no_top": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "cta"
+  ]
+}

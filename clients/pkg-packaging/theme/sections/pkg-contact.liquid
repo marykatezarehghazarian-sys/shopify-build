@@ -1,0 +1,25 @@
+<section class="section"><div class="wrap split" style="align-items:start">
+  <form class="panel form" data-wa-form data-wa="{{ settings.whatsapp | remove: '+' | remove: ' ' | remove: '-' }}">
+    <div class="form__row"><label>Your name<input name="name" required autocomplete="name"></label><label>Business name<input name="business" autocomplete="organization"></label></div>
+    <div class="form__row"><label>Product<select name="product">
+      <option value="">Choose a product (optional)</option>
+      {%- for c in collections -%}{%- if c.handle == 'all' or c.handle == 'frontpage' or c.products_count == 0 -%}{%- continue -%}{%- endif -%}
+        <optgroup label="{{ c.title | escape }}">{%- for p in c.products -%}<option data-handle="{{ p.handle }}">{{ p.title | escape }}</option>{%- endfor -%}</optgroup>
+      {%- endfor -%}
+    </select></label><label>Quantity<input name="qty" inputmode="numeric" placeholder="e.g. 1,000"></label></div>
+    <label>Details<textarea name="details" placeholder="Size, colours, deadline, anything else"></textarea></label>
+    <button class="btn btn--wa btn--block" type="submit">{% render 'pkg-icon', name: 'whatsapp' %}{{ section.settings.button }}</button>
+    <p class="pdp__note" style="margin:0">{{ section.settings.note }}</p>
+  </form>
+  <div class="info-list" style="margin-top:0">
+    {%- if settings.whatsapp != blank -%}<div><h4>WhatsApp / Phone</h4><p><a href="{% render 'wa-url' %}" target="_blank" rel="noopener" style="text-decoration:none">{{ settings.whatsapp }}</a></p></div>{%- endif -%}
+    {%- if settings.email != blank -%}<div><h4>Email</h4><p><a href="mailto:{{ settings.email }}" style="text-decoration:none">{{ settings.email }}</a></p></div>{%- endif -%}
+    {%- if settings.instagram != blank -%}<div><h4>Instagram</h4><p><a href="https://instagram.com/{{ settings.instagram }}" target="_blank" rel="noopener" style="text-decoration:none">@{{ settings.instagram }}</a></p></div>{%- endif -%}
+    <div><h4>Showroom</h4><p><a href="{{ section.settings.showroom_link | default: '/pages/showroom' }}">See address &amp; hours →</a></p></div>
+    <div><h4>Payment</h4><p>{{ settings.payment_line }}</p></div>
+    <div><h4>Delivery</h4><p>{{ settings.delivery_line }}</p></div>
+  </div>
+</div></section>
+{% schema %}
+{ "name": "PKG contact", "settings": [ { "type": "text", "id": "button", "label": "Form button", "default": "Send on WhatsApp" }, { "type": "text", "id": "note", "label": "Note under form", "default": "Attach your logo in the WhatsApp chat after it opens." }, { "type": "url", "id": "showroom_link", "label": "Showroom page" } ], "presets": [{ "name": "PKG contact" }] }
+{% endschema %}

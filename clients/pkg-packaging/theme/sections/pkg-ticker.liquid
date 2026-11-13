@@ -1,0 +1,7 @@
+{%- assign items = section.settings.items | split: ',' -%}
+<div class="ticker" aria-hidden="true"><div class="ticker__track">
+  {%- for n in (1..2) -%}{%- for it in items -%}<span>{{ it | strip }}</span>{%- endfor -%}{%- endfor -%}
+</div></div>
+{% schema %}
+{ "name": "PKG ticker", "settings": [ { "type": "text", "id": "items", "label": "Words (comma separated)", "default": "Custom boxes, Paper cups, Paper bags, Labels & stickers, Business print, Mailer boxes" } ], "presets": [{ "name": "PKG ticker" }] }
+{% endschema %}

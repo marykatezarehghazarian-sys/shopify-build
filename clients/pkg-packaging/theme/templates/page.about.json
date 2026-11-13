@@ -1,0 +1,76 @@
+{
+  "sections": {
+    "hero": {
+      "type": "pkg-page-hero",
+      "settings": {
+        "eyebrow": "About us",
+        "heading": "We print the packaging your customers <em>remember.</em>"
+      }
+    },
+    "story": {
+      "type": "pkg-text-image",
+      "settings": {
+        "link_2": "/pages/showroom"
+      }
+    },
+    "values": {
+      "type": "pkg-steps",
+      "blocks": {
+        "v1": {
+          "type": "step",
+          "settings": {
+            "title": "Quality print",
+            "text": "Clean colours and sharp logos on every box, cup and bag."
+          }
+        },
+        "v2": {
+          "type": "step",
+          "settings": {
+            "title": "Made for you",
+            "text": "Sizes, materials and finishes chosen around your product."
+          }
+        },
+        "v3": {
+          "type": "step",
+          "settings": {
+            "title": "Clear quotes",
+            "text": "You know the price, material and timing before we print."
+          }
+        },
+        "v4": {
+          "type": "step",
+          "settings": {
+            "title": "Reliable delivery",
+            "text": "Across Lebanon and the Middle East."
+          }
+        }
+      },
+      "block_order": [
+        "v1",
+        "v2",
+        "v3",
+        "v4"
+      ],
+      "settings": {
+        "eyebrow": "What we stand for",
+        "heading": "How we work",
+        "text": "",
+        "style": "ink"
+      }
+    },
+    "cta": {
+      "type": "pkg-band",
+      "settings": {
+        "heading": "Ready to start?",
+        "text": "Send us your logo and what you need. We'll take it from there.",
+        "no_top": false
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "story",
+    "values",
+    "cta"
+  ]
+}

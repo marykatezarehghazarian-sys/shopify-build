@@ -1,11 +1,31 @@
-<footer class="footer"><div class="page-width">
-  {%- if section.settings.text != blank %}{{ section.settings.text }}{% endif -%}
-  <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}</p>
-</div></footer>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <a class="logo" href="{{ routes.root_url }}">
+          {%- if settings.logo -%}{{ settings.logo | image_url: height: 160 | image_tag: alt: shop.name }}{%- else -%}{{ settings.logo_text }}<span class="logo__dot">.</span><span class="logo__sub">{{ settings.logo_sub | replace: ' ', '<br>' }}</span>{%- endif -%}
+        </a>
+        <p style="color:#c9c2b7;max-width:34ch;margin-top:16px">{{ section.settings.about }}</p>
+      </div>
+      <div><h4>{{ section.settings.menu_1.title | default: 'Catalogue' }}</h4><ul class="clean">{%- for l in section.settings.menu_1.links -%}<li><a href="{{ l.url }}">{{ l.title }}</a></li>{%- endfor -%}</ul></div>
+      <div><h4>{{ section.settings.menu_2.title | default: 'Company' }}</h4><ul class="clean">{%- for l in section.settings.menu_2.links -%}<li><a href="{{ l.url }}">{{ l.title }}</a></li>{%- endfor -%}</ul></div>
+      <div><h4>Talk to us</h4><ul class="clean">
+        {%- if settings.whatsapp != blank -%}<li><a href="{% render 'wa-url' %}" target="_blank" rel="noopener">WhatsApp {{ settings.whatsapp }}</a></li>{%- endif -%}
+        {%- if settings.email != blank -%}<li><a href="mailto:{{ settings.email }}">{{ settings.email }}</a></li>{%- endif -%}
+        {%- if settings.instagram != blank -%}<li><a href="https://instagram.com/{{ settings.instagram }}" target="_blank" rel="noopener">@{{ settings.instagram }}</a></li>{%- endif -%}
+      </ul></div>
+    </div>
+    <div class="footer__bottom"><span>© {{ 'now' | date: '%Y' }} {{ shop.name }}</span><span>{{ settings.payment_line }}</span></div>
+  </div>
+</footer>
+
 {% schema %}
 {
   "name": "Footer",
-  "enabled_on": { "groups": ["footer"] },
-  "settings": [{ "type": "richtext", "id": "text", "label": "Text" }]
+  "settings": [
+    { "type": "textarea", "id": "about", "label": "Short description", "default": "Custom printing and packaging for restaurants, bakeries, coffee shops, schools, fashion brands and offices." },
+    { "type": "link_list", "id": "menu_1", "label": "First menu", "default": "footer" },
+    { "type": "link_list", "id": "menu_2", "label": "Second menu" }
+  ]
 }
 {% endschema %}

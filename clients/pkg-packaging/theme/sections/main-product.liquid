@@ -1,48 +1,54 @@
-{%- assign current = product.selected_or_first_available_variant -%}
-<div class="page-width product">
-  <div class="product__media">
-    {%- for media in product.media -%}
-      {{ media | image_url: width: 1200 | image_tag: widths: '600,900,1200', sizes: '(min-width: 750px) 50vw, 100vw', loading: 'lazy' }}
-    {%- else -%}
-      {{ 'product-1' | placeholder_svg_tag: 'placeholder' }}
-    {%- endfor -%}
+{%- liquid
+  assign c = product.collections.first
+  assign msg = 'Hi PKG, I would like a quote for: ' | append: product.title
+  if c
+    assign msg = msg | append: ' (' | append: c.title | append: ')'
+  endif
+  assign msg = msg | append: '. Quantity: ... Size: ... I will send my logo here.'
+-%}
+<section><div class="wrap pdp">
+  <div class="pdp__media">
+    {%- if product.media.size > 0 -%}
+      <div class="pdp__gallery">
+        {%- for m in product.media -%}{%- if m.media_type == 'image' -%}{{ m | image_url: width: 1400 | image_tag: loading: 'eager', class: 'cover', alt: m.alt | default: product.title }}{%- endif -%}{%- endfor -%}
+      </div>
+    {%- else -%}{% render 'pkg-art', product: product %}{%- endif -%}
   </div>
-  <div class="product__info">
-    {%- for block in section.blocks -%}
-      {%- case block.type -%}
-        {%- when 'title' -%}<h1 {{ block.shopify_attributes }}>{{ product.title | escape }}</h1>
-        {%- when 'price' -%}<div {{ block.shopify_attributes }}>{% render 'price', product: product, variant: current %}</div>
-        {%- when 'description' -%}<div {{ block.shopify_attributes }}>{{ product.description }}</div>
-        {%- when 'buy_buttons' -%}
-          {%- form 'product', product, data-product-form: '' -%}
-            <input type="hidden" name="id" value="{{ current.id }}">
-            {%- unless product.has_only_default_variant -%}
-              {%- for option in product.options_with_values -%}
-                <label>{{ option.name }}
-                  <select data-option>
-                    {%- for value in option.values -%}<option {% if value.selected %}selected{% endif %}>{{ value }}</option>{%- endfor -%}
-                  </select>
-                </label>
-              {%- endfor -%}
-            {%- endunless -%}
-            <script type="application/json" data-variants>{{ product.variants | json }}</script>
-            <p><input type="number" name="quantity" value="1" min="1" aria-label="{{ 'products.quantity' | t }}"></p>
-            <button class="button" type="submit" {% unless current.available %}disabled{% endunless %}>{{ 'products.add_to_cart' | t }}</button>
-          {%- endform -%}
-        {%- when '@app' -%}{% render block %}
-      {%- endcase -%}
-    {%- endfor -%}
+  <div>
+    <p class="crumbs"><a href="{{ routes.collections_url }}/all">Catalogue</a>{% if c %} / <a href="{{ c.url }}">{{ c.title }}</a>{% endif %}</p>
+    <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+    <h1>{{ product.title }}</h1>
+    {%- if product.description != blank -%}<div class="lead rte">{{ product.description }}</div>{%- endif -%}
+    <dl class="specs">
+      {%- if product.metafields.custom.material != blank -%}<div><dt>Material</dt><dd>{{ product.metafields.custom.material }}</dd></div>{%- endif -%}
+      {%- if product.metafields.custom.sizes != blank -%}<div><dt>Sizes</dt><dd>{{ product.metafields.custom.sizes }}</dd></div>{%- endif -%}
+      <div><dt>Printing</dt><dd>{{ product.metafields.custom.printing | default: section.settings.printing }}</dd></div>
+      <div><dt>Minimum order</dt><dd>{{ product.metafields.custom.minimum_order | default: section.settings.moq }}</dd></div>
+      <div><dt>Delivery</dt><dd>{{ settings.delivery_line }}</dd></div>
+    </dl>
+    <div class="pdp__ctas">
+      {%- if settings.whatsapp != blank -%}<a class="btn btn--wa btn--block" href="{% render 'wa-url', message: msg %}" target="_blank" rel="noopener">{% render 'pkg-icon', name: 'whatsapp' %}{{ section.settings.button }}</a>{%- endif -%}
+      <a class="btn btn--ghost btn--block" href="{{ section.settings.contact_link | default: '/pages/contact' }}?p={{ product.handle }}">{{ section.settings.button_2 }}</a>
+    </div>
+    <p class="pdp__note">{{ section.settings.note }}</p>
   </div>
-</div>
+</div></section>
+{%- assign rel = c | default: collections.all -%}
+<section class="section" style="padding-top:0"><div class="wrap">
+  <div class="section__head"><div><p class="eyebrow">More to explore</p><h2 class="h2">{{ section.settings.related_heading }}</h2></div></div>
+  <div class="grid">
+    {%- assign n = 0 -%}
+    {%- for p in rel.products -%}{%- if p.id == product.id -%}{%- continue -%}{%- endif -%}{%- render 'product-card', product: p -%}{%- assign n = n | plus: 1 -%}{%- if n >= 4 -%}{%- break -%}{%- endif -%}{%- endfor -%}
+  </div>
+</div></section>
 {% schema %}
-{
-  "name": "Product information",
-  "blocks": [
-    { "type": "@app" },
-    { "type": "title", "name": "Title", "limit": 1 },
-    { "type": "price", "name": "Price", "limit": 1 },
-    { "type": "description", "name": "Description", "limit": 1 },
-    { "type": "buy_buttons", "name": "Buy buttons", "limit": 1 }
-  ]
-}
+{ "name": "Product", "settings": [
+  { "type": "text", "id": "eyebrow", "label": "Small heading", "default": "Made to order" },
+  { "type": "text", "id": "printing", "label": "Default printing line", "default": "Your logo, from one colour to full colour" },
+  { "type": "text", "id": "moq", "label": "Default minimum order", "default": "On request" },
+  { "type": "text", "id": "button", "label": "WhatsApp button", "default": "Get a quote on WhatsApp" },
+  { "type": "text", "id": "button_2", "label": "Second button", "default": "Send a request instead" },
+  { "type": "url", "id": "contact_link", "label": "Contact page" },
+  { "type": "textarea", "id": "note", "label": "Note", "default": "Pay by cash on delivery, Whish or OMT. We'll confirm the price and timing with you on WhatsApp." },
+  { "type": "text", "id": "related_heading", "label": "Related heading", "default": "You may also need" } ] }
 {% endschema %}

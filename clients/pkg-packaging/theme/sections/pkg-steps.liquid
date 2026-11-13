@@ -1,0 +1,22 @@
+<section class="section {% if section.settings.style == 'kraft' %}section--kraft{% elsif section.settings.style == 'ink' %}section--ink{% endif %}"><div class="wrap">
+    <div class="section__head">
+      <div>{%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}<h2 class="h2">{{ section.settings.heading }}</h2></div>
+      {%- if section.settings.text != blank -%}<p class="lead" style="max-width:44ch">{{ section.settings.text }}</p>{%- endif -%}
+    </div>
+    <div class="steps">
+      {%- for block in section.blocks -%}<div class="step reveal" {{ block.shopify_attributes }}{% if section.settings.style == 'ink' %} style="border-color:var(--paper)"{% endif %}><h3>{{ block.settings.title }}</h3><p>{{ block.settings.text }}</p></div>{%- endfor -%}
+    </div>
+</div></section>
+{% schema %}
+{
+  "name": "PKG steps",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Small heading", "default": "How it works" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "From idea to delivery" },
+    { "type": "textarea", "id": "text", "label": "Text" },
+    { "type": "select", "id": "style", "label": "Background", "default": "kraft", "options": [ { "value": "kraft", "label": "Kraft" }, { "value": "ink", "label": "Dark" }, { "value": "paper", "label": "Light" } ] }
+  ],
+  "blocks": [ { "type": "step", "name": "Step", "settings": [ { "type": "text", "id": "title", "label": "Title", "default": "Step" }, { "type": "textarea", "id": "text", "label": "Text" } ] } ],
+  "presets": [{ "name": "PKG steps" }]
+}
+{% endschema %}

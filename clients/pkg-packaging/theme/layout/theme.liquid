@@ -4,19 +4,31 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="canonical" href="{{ canonical_url }}">
-    <title>{{ page_title }}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}</title>
+    <title>{{ page_title }}{% unless page_title contains shop.name %} | {{ shop.name }}{% endunless %}</title>
     {% if page_description %}<meta name="description" content="{{ page_description | escape }}">{% endif %}
-    {% render 'css-variables' %}
-    {{ 'base.css' | asset_url | stylesheet_tag }}
-    <script src="{{ 'theme.js' | asset_url }}" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --ink: {{ settings.color_ink }};
+        --paper: {{ settings.color_paper }};
+        --kraft: {{ settings.color_kraft }};
+        --accent: {{ settings.color_accent }};
+      }
+    </style>
+    {{ 'pkg.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'pkg.js' | asset_url }}" defer></script>
     {{ content_for_header }}
   </head>
   <body class="template-{{ template.name }}">
-    <a class="skip-link" href="#MainContent">{{ 'accessibility.skip_to_content' | t }}</a>
+    <a class="vh" href="#MainContent">Skip to content</a>
     {% sections 'header-group' %}
     <main id="MainContent" role="main" tabindex="-1">
       {{ content_for_layout }}
     </main>
     {% sections 'footer-group' %}
+    {%- if settings.wa_float and settings.whatsapp != blank -%}
+      <a class="wa-float" href="{% render 'wa-url' %}" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">{% render 'pkg-icon', name: 'whatsapp' %}</a>
+    {%- endif -%}
   </body>
 </html>

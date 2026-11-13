@@ -1,13 +1,49 @@
 [
-  { "name": "theme_info", "theme_name": "Shopify Build", "theme_version": "0.1.0", "theme_author": "shopify-build",
-    "theme_documentation_url": "https://shopify.dev/docs/storefronts/themes", "theme_support_url": "https://shopify.dev" },
-  { "name": "Colors", "settings": [
-    { "type": "color", "id": "color_background", "label": "Background", "default": "#ffffff" },
-    { "type": "color", "id": "color_text", "label": "Text", "default": "#121212" },
-    { "type": "color", "id": "color_accent", "label": "Accent / buttons", "default": "#121212" } ] },
-  { "name": "Typography", "settings": [
-    { "type": "font_picker", "id": "font_heading", "label": "Headings", "default": "assistant_n4" },
-    { "type": "font_picker", "id": "font_body", "label": "Body", "default": "assistant_n4" } ] },
-  { "name": "Layout", "settings": [
-    { "type": "range", "id": "page_width", "label": "Page width", "min": 1000, "max": 1600, "step": 100, "unit": "px", "default": 1200 } ] }
+  {
+    "name": "theme_info",
+    "theme_name": "PKG Packaging",
+    "theme_version": "1.0.0",
+    "theme_author": "shopify-build",
+    "theme_documentation_url": "https://shopify.dev/docs/storefronts/themes",
+    "theme_support_url": "https://shopify.dev"
+  },
+  {
+    "name": "Brand",
+    "settings": [
+      { "type": "image_picker", "id": "logo", "label": "Logo", "info": "Leave empty to show the text logo \"PKG.\"" },
+      { "type": "range", "id": "logo_height", "label": "Logo height", "min": 24, "max": 80, "step": 2, "unit": "px", "default": 40 },
+      { "type": "text", "id": "logo_text", "label": "Text logo", "default": "PKG" },
+      { "type": "text", "id": "logo_sub", "label": "Text logo subtitle", "default": "Packaging Factory" },
+      { "type": "color", "id": "color_ink", "label": "Ink (text, dark sections)", "default": "#121212" },
+      { "type": "color", "id": "color_paper", "label": "Background", "default": "#F3EEE6" },
+      { "type": "color", "id": "color_kraft", "label": "Kraft", "default": "#C9A27A" },
+      { "type": "color", "id": "color_accent", "label": "Accent", "default": "#E5432D" }
+    ]
+  },
+  {
+    "name": "Contact & WhatsApp",
+    "settings": [
+      { "type": "text", "id": "whatsapp", "label": "WhatsApp number", "info": "International format, e.g. +961 3 400 054", "default": "+961 3 400 054" },
+      { "type": "text", "id": "wa_message", "label": "Default WhatsApp message", "default": "Hi PKG, I would like a quote." },
+      { "type": "text", "id": "email", "label": "Email", "default": "rafi@printw-ps.com" },
+      { "type": "text", "id": "instagram", "label": "Instagram handle (without @)", "default": "pkg.packagingfactory" },
+      { "type": "checkbox", "id": "wa_float", "label": "Show floating WhatsApp button", "default": true }
+    ]
+  },
+  {
+    "name": "Showroom",
+    "settings": [
+      { "type": "text", "id": "showroom_address", "label": "Address" },
+      { "type": "textarea", "id": "showroom_hours", "label": "Opening hours" },
+      { "type": "url", "id": "showroom_map_link", "label": "Google Maps link (Directions button)" },
+      { "type": "text", "id": "showroom_map_query", "label": "Map search text", "info": "Shown as an embedded map, e.g. \"PKG Packaging Factory, Beirut\"" }
+    ]
+  },
+  {
+    "name": "Payment & delivery",
+    "settings": [
+      { "type": "text", "id": "payment_line", "label": "Payment line", "default": "Cash on delivery · Whish · OMT" },
+      { "type": "text", "id": "delivery_line", "label": "Delivery line", "default": "All over Lebanon and the Middle East" }
+    ]
+  }
 ]

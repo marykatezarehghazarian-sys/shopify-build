@@ -1,0 +1,21 @@
+{%- comment -%} Picks a category icon from a collection handle (or the "icon:<name>" tag). handle: string {%- endcomment -%}
+{%- liquid
+  assign h = handle | downcase
+  assign icon = 'food'
+  if h contains 'bake' or h contains 'pastr' or h contains 'cake'
+    assign icon = 'bakery'
+  elsif h contains 'coffee' or h contains 'drink' or h contains 'cup'
+    assign icon = 'coffee'
+  elsif h contains 'bag'
+    assign icon = 'bags'
+  elsif h contains 'label' or h contains 'sticker'
+    assign icon = 'labels'
+  elsif h contains 'retail' or h contains 'cloth' or h contains 'fashion'
+    assign icon = 'retail'
+  elsif h contains 'corporate' or h contains 'office' or h contains 'business'
+    assign icon = 'corporate'
+  elsif h contains 'school' or h contains 'education'
+    assign icon = 'school'
+  endif
+  render 'pkg-icon', name: icon
+-%}

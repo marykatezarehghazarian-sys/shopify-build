@@ -1,12 +1,7 @@
-<div class="section page-width">
-  <h1>{{ 'collections.all' | t }}</h1>
-  <div class="grid">
-    {%- for collection in collections -%}
-      <a class="product-card" href="{{ collection.url }}">
-        {%- if collection.featured_image %}{{ collection.featured_image | image_url: width: 600 | image_tag: loading: 'lazy' }}{% endif -%}
-        <h3 class="product-card__title">{{ collection.title | escape }}</h3>
-      </a>
-    {%- endfor -%}
-  </div>
-</div>
-{% schema %}{ "name": "Collections list" }{% endschema %}
+<section class="page-hero"><div class="wrap"><p class="eyebrow">Catalogue</p><h1 class="display" style="font-size:clamp(2.4rem,6vw,4.8rem)">All categories</h1></div></section>
+<section class="section"><div class="wrap"><div class="cats">
+  {%- for c in collections -%}{%- if c.handle == 'frontpage' or c.products_count == 0 -%}{%- continue -%}{%- endif -%}
+    <a class="cat" href="{{ c.url }}"><span class="cat__arrow" aria-hidden="true">→</span><span class="cat__icon">{% render 'pkg-icon-for', handle: c.handle %}</span><span><span class="cat__name">{{ c.title }}</span><span class="cat__count" style="display:block">{{ c.products_count }} products</span></span></a>
+  {%- endfor -%}
+</div></div></section>
+{% schema %}{ "name": "Categories" }{% endschema %}

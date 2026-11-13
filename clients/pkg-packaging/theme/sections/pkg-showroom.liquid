@@ -1,0 +1,22 @@
+<section class="section"><div class="wrap split" style="align-items:start">
+  <div class="panel">
+    <div class="info-list">
+      <div><h4>Address</h4><p>{{ settings.showroom_address | default: '<span class="todo">Add the address in Theme settings → Showroom</span>' }}</p></div>
+      <div><h4>Opening hours</h4><p>{{ settings.showroom_hours | newline_to_br | default: '<span class="todo">Add opening hours in Theme settings → Showroom</span>' }}</p></div>
+      {%- if settings.whatsapp != blank -%}<div><h4>Phone / WhatsApp</h4><p>{{ settings.whatsapp }}</p></div>{%- endif -%}
+      {%- if settings.email != blank -%}<div><h4>Email</h4><p>{{ settings.email }}</p></div>{%- endif -%}
+    </div>
+    <div class="pdp__ctas">
+      {%- if settings.whatsapp != blank -%}<a class="btn btn--wa btn--block" href="{% render 'wa-url', message: section.settings.wa_message %}" target="_blank" rel="noopener">{% render 'pkg-icon', name: 'whatsapp' %}{{ section.settings.button }}</a>{%- endif -%}
+      {%- if settings.showroom_map_link != blank -%}<a class="btn btn--ghost btn--block" href="{{ settings.showroom_map_link }}" target="_blank" rel="noopener">Get directions</a>{%- endif -%}
+    </div>
+  </div>
+  <div class="map">
+    {%- if settings.showroom_map_query != blank -%}
+      <iframe title="Map" loading="lazy" src="https://www.google.com/maps?q={{ settings.showroom_map_query | url_encode }}&output=embed"></iframe>
+    {%- else -%}<div><p class="eyebrow">Map</p><p class="muted">The map appears here once the showroom address is added in Theme settings → Showroom.</p></div>{%- endif -%}
+  </div>
+</div></section>
+{% schema %}
+{ "name": "PKG showroom", "settings": [ { "type": "text", "id": "button", "label": "WhatsApp button", "default": "Book a visit on WhatsApp" }, { "type": "text", "id": "wa_message", "label": "WhatsApp message", "default": "Hi PKG, I would like to visit the showroom. When can I come?" } ], "presets": [{ "name": "PKG showroom" }] }
+{% endschema %}

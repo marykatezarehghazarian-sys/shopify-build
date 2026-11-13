@@ -32,3 +32,16 @@ Owner / contact: Raffi · WhatsApp/phone 03 4000 54 (= +961 3 400 054) · rafi@p
   - Placeholders the owner must fill (yellow [..] marks): about text, showroom address and hours, map.
   - No invented stats, testimonials or years in business. Minimum order is "On request".
   - Tested on desktop and mobile: no horizontal overflow, all WhatsApp links OK, no JS errors.
+- 2026-11-13 Shopify build (store zzfd11-gp, password-protected):
+  - Theme "PKG Packaging" (id 160203079820), UNPUBLISHED. The live theme is still Horizon. Source in `theme/`, built from the prototype design.
+    - Layout plus sections: pkg-hero, pkg-ticker, pkg-categories (collection blocks), pkg-industries, pkg-featured (products tagged `popular`), pkg-steps, pkg-why, pkg-faq, pkg-paybar, pkg-band, pkg-page-hero, pkg-text-image, pkg-showroom, pkg-contact, main-collection (category chips from the `catalogue` menu + live search), main-product (specs from custom.* metafields + WhatsApp quote with the product name), main-list-collections.
+    - Theme settings: logo, colours, WhatsApp/email/Instagram, showroom (address, hours, map link, map query), payment/delivery lines.
+    - Products without photos show a coloured placeholder with the category icon. Inline-richtext settings can't contain <br>.
+    - Upload with `npm run theme -- push --client pkg-packaging --theme 160203079820`. `npm install` is needed first in a fresh container.
+  - Store content via scripts/setup-store.mjs (idempotent):
+    - product metafield definitions custom.material / sizes / printing / minimum_order (pinned)
+    - 8 collections, published: food-takeaway, bakery-pastry, coffee-drinks, paper-bags, labels-stickers, retail-clothing, corporate-print, school-print
+    - 26 sample products, DRAFT, tagged `sample` (+`popular` on 8): price 0, inventory tracked at 0 with DENY, so they can't be bought; published to Online Store
+    - pages about / showroom / contact (template suffixes)
+    - menus main-menu, catalogue, company
+  - TODO: owner's logo, photos and real product list (replace the `sample` products); showroom address/hours/map in Theme settings; about text; shop name is still "My Store" (admin: Settings → General); currency LBP. Activate the products and publish the theme only after the owner OKs it.

@@ -1,4 +1,341 @@
-{ "sections": {
-  "hero": { "type": "rich-text", "blocks": { "h": { "type": "heading" }, "t": { "type": "text" }, "b": { "type": "button" } }, "block_order": ["h", "t", "b"] },
-  "featured": { "type": "featured-collection" } },
-  "order": ["hero", "featured"] }
+{
+  "sections": {
+    "hero": {
+      "type": "pkg-hero",
+      "settings": {
+        "button_2_link": "/collections/all"
+      }
+    },
+    "ticker": {
+      "type": "pkg-ticker",
+      "settings": {}
+    },
+    "categories": {
+      "type": "pkg-categories",
+      "blocks": {
+        "c1": {
+          "type": "category",
+          "settings": {
+            "collection": "food-takeaway"
+          }
+        },
+        "c2": {
+          "type": "category",
+          "settings": {
+            "collection": "bakery-pastry"
+          }
+        },
+        "c3": {
+          "type": "category",
+          "settings": {
+            "collection": "coffee-drinks"
+          }
+        },
+        "c4": {
+          "type": "category",
+          "settings": {
+            "collection": "paper-bags"
+          }
+        },
+        "c5": {
+          "type": "category",
+          "settings": {
+            "collection": "labels-stickers"
+          }
+        },
+        "c6": {
+          "type": "category",
+          "settings": {
+            "collection": "retail-clothing"
+          }
+        },
+        "c7": {
+          "type": "category",
+          "settings": {
+            "collection": "corporate-print"
+          }
+        },
+        "c8": {
+          "type": "category",
+          "settings": {
+            "collection": "school-print"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7",
+        "c8"
+      ],
+      "settings": {}
+    },
+    "industries": {
+      "type": "pkg-industries",
+      "blocks": {
+        "i1": {
+          "type": "industry",
+          "settings": {
+            "icon": "food",
+            "title": "Restaurants",
+            "text": "Burger, pizza and meal boxes for dine-in and delivery."
+          }
+        },
+        "i2": {
+          "type": "industry",
+          "settings": {
+            "icon": "bakery",
+            "title": "Bakeries",
+            "text": "Cake, pastry and cupcake boxes that travel well."
+          }
+        },
+        "i3": {
+          "type": "industry",
+          "settings": {
+            "icon": "coffee",
+            "title": "Coffee shops",
+            "text": "Cups, sleeves and carriers with your brand on every order."
+          }
+        },
+        "i4": {
+          "type": "industry",
+          "settings": {
+            "icon": "school",
+            "title": "Schools",
+            "text": "Notebooks, certificates and school stationery."
+          }
+        },
+        "i5": {
+          "type": "industry",
+          "settings": {
+            "icon": "retail",
+            "title": "Clothing stores",
+            "text": "Bags, mailer boxes, hang tags and tissue."
+          }
+        },
+        "i6": {
+          "type": "industry",
+          "settings": {
+            "icon": "corporate",
+            "title": "Corporate offices",
+            "text": "Business cards, letterheads, folders and gifts."
+          }
+        }
+      },
+      "block_order": [
+        "i1",
+        "i2",
+        "i3",
+        "i4",
+        "i5",
+        "i6"
+      ],
+      "settings": {}
+    },
+    "featured": {
+      "type": "pkg-featured",
+      "settings": {}
+    },
+    "steps": {
+      "type": "pkg-steps",
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "title": "Tell us what you need",
+            "text": "Pick a product and send us the quantity, size and your logo on WhatsApp."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "title": "Get your quote",
+            "text": "We confirm the price, material and timing, and send a design proof."
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "title": "We print it",
+            "text": "Your order is produced in our factory once you approve the proof."
+          }
+        },
+        "s4": {
+          "type": "step",
+          "settings": {
+            "title": "Delivered to you",
+            "text": "We deliver all over Lebanon and the Middle East. Pay cash, Whish or OMT."
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "settings": {}
+    },
+    "why": {
+      "type": "pkg-why",
+      "blocks": {
+        "w1": {
+          "type": "point",
+          "settings": {
+            "title": "Made to order",
+            "text": "Your logo, colours and sizes on every product."
+          }
+        },
+        "w2": {
+          "type": "point",
+          "settings": {
+            "title": "Design help",
+            "text": "Send your logo and we prepare the proof for you to approve."
+          }
+        },
+        "w3": {
+          "type": "point",
+          "settings": {
+            "title": "Everything in one place",
+            "text": "Packaging and business print from a single supplier."
+          }
+        },
+        "w4": {
+          "type": "point",
+          "settings": {
+            "title": "Wide delivery",
+            "text": "All over Lebanon and across the Middle East."
+          }
+        },
+        "w5": {
+          "type": "point",
+          "settings": {
+            "title": "Easy payment",
+            "text": "Cash on delivery, Whish or OMT."
+          }
+        }
+      },
+      "block_order": [
+        "w1",
+        "w2",
+        "w3",
+        "w4",
+        "w5"
+      ],
+      "settings": {
+        "link_1": "/pages/about",
+        "link_2": "/pages/showroom"
+      }
+    },
+    "faq": {
+      "type": "pkg-faq",
+      "blocks": {
+        "q1": {
+          "type": "qa",
+          "settings": {
+            "question": "Can you print my logo on any product?",
+            "answer": "Yes. Every product in the catalogue is made to order with your logo and colours, from one colour up to full colour."
+          }
+        },
+        "q2": {
+          "type": "qa",
+          "settings": {
+            "question": "What is the minimum order?",
+            "answer": "It depends on the product and the printing. Tell us what you need on WhatsApp and we'll confirm the minimum with your quote."
+          }
+        },
+        "q3": {
+          "type": "qa",
+          "settings": {
+            "question": "How do I pay?",
+            "answer": "Cash on delivery, Whish or OMT. We'll confirm the total with you before production."
+          }
+        },
+        "q4": {
+          "type": "qa",
+          "settings": {
+            "question": "Where do you deliver?",
+            "answer": "All over Lebanon and across the Middle East. Delivery time depends on the product and the quantity."
+          }
+        },
+        "q5": {
+          "type": "qa",
+          "settings": {
+            "question": "Can I see samples first?",
+            "answer": "Yes. Visit our showroom to see and feel the materials, or ask us on WhatsApp for photos of similar work."
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5"
+      ],
+      "settings": {}
+    },
+    "pay": {
+      "type": "pkg-paybar",
+      "blocks": {
+        "p1": {
+          "type": "item",
+          "settings": {
+            "title": "Cash on delivery",
+            "text": "Pay when your order arrives."
+          }
+        },
+        "p2": {
+          "type": "item",
+          "settings": {
+            "title": "Whish",
+            "text": "Pay by Whish Money transfer."
+          }
+        },
+        "p3": {
+          "type": "item",
+          "settings": {
+            "title": "OMT",
+            "text": "Pay by OMT transfer."
+          }
+        },
+        "p4": {
+          "type": "item",
+          "settings": {
+            "title": "Delivery",
+            "text": "Lebanon and the Middle East."
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ]
+    },
+    "cta": {
+      "type": "pkg-band",
+      "settings": {
+        "button_2": "Contact page",
+        "link_2": "/pages/contact"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "ticker",
+    "categories",
+    "industries",
+    "featured",
+    "steps",
+    "why",
+    "faq",
+    "pay",
+    "cta"
+  ]
+}

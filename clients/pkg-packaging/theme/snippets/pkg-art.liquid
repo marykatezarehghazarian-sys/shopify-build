@@ -1,0 +1,30 @@
+{%- comment -%} Product visual: the featured image, or a coloured placeholder with the category icon. product: product {%- endcomment -%}
+{%- if product.featured_image -%}
+  {{ product.featured_image | image_url: width: 800 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 25vw, 50vw', widths: '360,540,720,800', alt: product.featured_image.alt | default: product.title }}
+{%- else -%}
+  {%- liquid
+    assign h = product.collections.first.handle | default: product.type | downcase
+    assign bg = '#c9a27a'
+    assign fg = '#121212'
+    if h contains 'bake'
+      assign bg = '#f1d9c9'
+    elsif h contains 'coffee'
+      assign bg = '#2b2622'
+      assign fg = '#f3eee6'
+    elsif h contains 'bag'
+      assign bg = '#a9825a'
+      assign fg = '#f3eee6'
+    elsif h contains 'label'
+      assign bg = '#e5432d'
+      assign fg = '#ffffff'
+    elsif h contains 'retail'
+      assign bg = '#e9e2d6'
+    elsif h contains 'corporate'
+      assign bg = '#121212'
+      assign fg = '#f3eee6'
+    elsif h contains 'school'
+      assign bg = '#d8c6a5'
+    endif
+  -%}
+  <div class="art" style="background:{{ bg }};color:{{ fg }}">{% render 'pkg-icon-for', handle: h %}<span class="art__note">Photo coming</span></div>
+{%- endif -%}

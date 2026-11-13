@@ -1,0 +1,8 @@
+<section class="page-hero"><div class="wrap">
+  {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+  <h1 class="display" style="font-size:clamp(2.4rem,6vw,4.8rem)">{{ section.settings.heading | default: page.title }}</h1>
+  {%- if section.settings.text != blank -%}<p class="lead" style="margin-top:16px">{{ section.settings.text }}</p>{%- endif -%}
+</div></section>
+{% schema %}
+{ "name": "PKG page heading", "settings": [ { "type": "text", "id": "eyebrow", "label": "Small heading" }, { "type": "inline_richtext", "id": "heading", "label": "Heading (empty = page title)" }, { "type": "textarea", "id": "text", "label": "Text" } ], "presets": [{ "name": "PKG page heading" }] }
+{% endschema %}

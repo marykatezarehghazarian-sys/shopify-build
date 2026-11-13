@@ -1,0 +1,20 @@
+{
+  "sections": {
+    "hero": {
+      "type": "pkg-page-hero",
+      "settings": {
+        "eyebrow": "Showroom & location",
+        "heading": "See it. Touch it. Then order it.",
+        "text": "Visit our showroom to see real samples, compare materials and finishes, and plan your packaging with our team."
+      }
+    },
+    "main": {
+      "type": "pkg-showroom",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "main"
+  ]
+}

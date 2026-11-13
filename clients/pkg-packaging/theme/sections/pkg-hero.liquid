@@ -1,0 +1,43 @@
+<section class="hero">
+  <div class="wrap hero__grid">
+    <div>
+      {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      <h1 class="display">{{ section.settings.heading }}</h1>
+      {%- if section.settings.text != blank -%}<p class="lead" style="margin-top:22px">{{ section.settings.text }}</p>{%- endif -%}
+      <div class="hero__actions">
+        {%- if settings.whatsapp != blank -%}<a class="btn btn--wa" href="{% render 'wa-url', message: section.settings.wa_message %}" target="_blank" rel="noopener">{% render 'pkg-icon', name: 'whatsapp' %}{{ section.settings.button_1 }}</a>{%- endif -%}
+        {%- if section.settings.button_2 != blank -%}<a class="btn btn--ghost" href="{{ section.settings.button_2_link | default: routes.collections_url }}">{{ section.settings.button_2 }}</a>{%- endif -%}
+      </div>
+      <ul class="clean hero__facts">
+        {%- for i in (1..3) -%}{%- assign k = 'fact_' | append: i -%}{%- if section.settings[k] != blank -%}<li>{{ section.settings[k] }}</li>{%- endif -%}{%- endfor -%}
+      </ul>
+    </div>
+    <div class="hero__visual" aria-hidden="true">
+      <div class="stack stack--a">{% if section.settings.image_1 %}{{ section.settings.image_1 | image_url: width: 1000 | image_tag: loading: 'eager', class: 'cover' }}{% else %}<div class="art" style="background:var(--kraft);color:var(--ink)">{% render 'pkg-icon', name: 'food' %}</div>{% endif %}</div>
+      <div class="stack stack--b">{% if section.settings.image_2 %}{{ section.settings.image_2 | image_url: width: 900 | image_tag: class: 'cover' }}{% else %}<div class="art" style="background:var(--ink);color:var(--paper)">{% render 'pkg-icon', name: 'bags' %}</div>{% endif %}</div>
+      <div class="stack stack--c">{% if section.settings.image_3 %}{{ section.settings.image_3 | image_url: width: 500 | image_tag: class: 'cover' }}{% else %}<div class="art" style="background:var(--accent);color:#fff">{% render 'pkg-icon', name: 'coffee' %}</div>{% endif %}</div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PKG hero",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Small heading", "default": "Printing & packaging factory · Lebanon" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "info": "Italic words show in the accent colour.", "default": "Packaging that <em>sells</em> your brand." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Custom printed boxes, cups, bags, labels and business print, made to order for restaurants, bakeries, coffee shops, schools, fashion brands and offices." },
+    { "type": "text", "id": "button_1", "label": "WhatsApp button", "default": "Get a quote on WhatsApp" },
+    { "type": "text", "id": "wa_message", "label": "WhatsApp message", "default": "Hi PKG, I would like a quote for custom packaging." },
+    { "type": "text", "id": "button_2", "label": "Second button", "default": "Browse the catalogue →" },
+    { "type": "url", "id": "button_2_link", "label": "Second button link" },
+    { "type": "text", "id": "fact_1", "label": "Fact 1", "default": "Made to order with your logo" },
+    { "type": "text", "id": "fact_2", "label": "Fact 2", "default": "Delivery across Lebanon & the Middle East" },
+    { "type": "text", "id": "fact_3", "label": "Fact 3", "default": "Cash on delivery, Whish or OMT" },
+    { "type": "image_picker", "id": "image_1", "label": "Photo 1 (large)" },
+    { "type": "image_picker", "id": "image_2", "label": "Photo 2" },
+    { "type": "image_picker", "id": "image_3", "label": "Photo 3 (small)" }
+  ],
+  "presets": [{ "name": "PKG hero" }]
+}
+{% endschema %}

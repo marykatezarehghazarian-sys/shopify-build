@@ -1,10 +1,11 @@
-{%- comment -%} Usage: {% render 'product-card', product: product %} {%- endcomment -%}
-<a class="product-card" href="{{ product.url }}">
-  {%- if product.featured_media -%}
-    {{ product.featured_media | image_url: width: 600 | image_tag: loading: 'lazy', widths: '300,450,600', sizes: '(min-width: 750px) 25vw, 50vw', alt: product.featured_media.alt | escape }}
-  {%- else -%}
-    {{ 'product-1' | placeholder_svg_tag: 'placeholder' }}
-  {%- endif -%}
-  <h3 class="product-card__title">{{ product.title | escape }}</h3>
-  {% render 'price', product: product %}
+<a class="card reveal" href="{{ product.url }}">
+  <div class="card__media" style="position:relative">
+    {% render 'pkg-art', product: product %}
+    {%- if product.tags contains 'popular' -%}<span class="badge">Popular</span>{%- endif -%}
+  </div>
+  <div class="card__body">
+    {%- if product.collections.first -%}<span class="card__cat">{{ product.collections.first.title }}</span>{%- endif -%}
+    <span class="card__title">{{ product.title }}</span>
+    <span class="card__cta">Get a quote →</span>
+  </div>
 </a>

@@ -1,0 +1,5 @@
+{%- comment -%} WhatsApp link. Optional: message (string). {%- endcomment -%}
+{%- liquid
+  assign n = settings.whatsapp | remove: '+' | remove: ' ' | remove: '-' | remove: '(' | remove: ')'
+  assign m = message | default: settings.wa_message
+-%}https://wa.me/{{ n }}?text={{ m | url_encode }}

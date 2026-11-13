@@ -1,1 +1,15 @@
-{ "sections": { "main": { "type": "main-page" } }, "order": ["main"] }
+{
+  "sections": {
+    "hero": {
+      "type": "pkg-page-hero",
+      "settings": {}
+    },
+    "main": {
+      "type": "main-page"
+    }
+  },
+  "order": [
+    "hero",
+    "main"
+  ]
+}

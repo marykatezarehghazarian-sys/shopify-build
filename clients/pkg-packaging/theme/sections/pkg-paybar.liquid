@@ -1,0 +1,6 @@
+<section class="section" style="padding-top:0"><div class="wrap"><div class="paybar">
+  {%- for block in section.blocks -%}<div class="paybar__item reveal" {{ block.shopify_attributes }}><h3>{{ block.settings.title }}</h3><p>{{ block.settings.text }}</p></div>{%- endfor -%}
+</div></div></section>
+{% schema %}
+{ "name": "PKG payment & delivery", "blocks": [ { "type": "item", "name": "Item", "settings": [ { "type": "text", "id": "title", "label": "Title", "default": "Cash on delivery" }, { "type": "text", "id": "text", "label": "Text" } ] } ], "presets": [{ "name": "PKG payment & delivery" }] }
+{% endschema %}

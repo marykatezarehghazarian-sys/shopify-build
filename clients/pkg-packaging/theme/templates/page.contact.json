@@ -1,0 +1,22 @@
+{
+  "sections": {
+    "hero": {
+      "type": "pkg-page-hero",
+      "settings": {
+        "eyebrow": "Contact",
+        "heading": "Get a quote",
+        "text": "The fastest way is WhatsApp. Or fill in the form below and it opens WhatsApp with your request ready to send."
+      }
+    },
+    "main": {
+      "type": "pkg-contact",
+      "settings": {
+        "showroom_link": "/pages/showroom"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "main"
+  ]
+}

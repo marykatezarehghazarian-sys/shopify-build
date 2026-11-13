@@ -1,13 +1,39 @@
-<div class="section page-width">
-  <h1>{{ collection.title | escape }}</h1>
-  {{ collection.description }}
-  {%- paginate collection.products by section.settings.per_page -%}
-    <div class="grid">
-      {%- for product in collection.products -%}{% render 'product-card', product: product %}{%- else -%}<p>{{ 'collections.empty' | t }}</p>{%- endfor -%}
+{%- liquid
+  assign current = collection.handle
+-%}
+<section class="page-hero"><div class="wrap">
+  <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+  <h1 class="display" style="font-size:clamp(2.4rem,6vw,4.8rem)">{% if current == 'all' %}{{ section.settings.all_title }}{% else %}{{ collection.title }}{% endif %}</h1>
+  <p class="lead" style="margin-top:16px">{% if current == 'all' or collection.description == blank %}{{ section.settings.all_text }}{% else %}{{ collection.description | strip_html }}{% endif %}</p>
+</div></section>
+<section class="section" style="padding-top:36px"><div class="wrap">
+  <nav class="filters" aria-label="Categories">
+    <a class="chip" href="{{ routes.collections_url }}/all"{% if current == 'all' %} aria-pressed="true"{% endif %}>All products</a>
+    {%- for c in section.settings.menu.links -%}
+      <a class="chip" href="{{ c.url }}"{% if c.object.handle == current %} aria-pressed="true"{% endif %}>{{ c.title }}</a>
+    {%- endfor -%}
+  </nav>
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:24px">
+    <label class="vh" for="pkg-search">Search products</label>
+    <input class="search" id="pkg-search" type="search" placeholder="Search: cups, boxes, bags…" data-filter-input>
+    <span class="muted" data-filter-count>{{ collection.products_count }} products</span>
+  </div>
+  {%- paginate collection.products by 48 -%}
+    <div class="grid" data-filter-grid>
+      {%- for product in collection.products -%}
+        <div data-filter-text="{{ product.title | downcase | escape }} {{ product.type | downcase | escape }} {{ product.tags | join: ' ' | downcase | escape }}">{%- render 'product-card', product: product -%}</div>
+      {%- else -%}
+        <p class="muted">{{ 'collections.empty' | t }}</p>
+      {%- endfor -%}
     </div>
-    {%- if paginate.pages > 1 %}<nav class="section">{{ paginate | default_pagination }}</nav>{% endif -%}
+    <p class="muted" data-filter-empty hidden>Nothing matches that search. Try another word, or message us on WhatsApp.</p>
+    {%- if paginate.pages > 1 -%}<div class="filters" style="margin-top:28px">{{ paginate | default_pagination }}</div>{%- endif -%}
   {%- endpaginate -%}
-</div>
+</div></section>
 {% schema %}
-{ "name": "Collection grid", "settings": [{ "type": "range", "id": "per_page", "label": "Products per page", "min": 8, "max": 48, "step": 4, "default": 24 }] }
+{ "name": "Catalogue", "settings": [
+  { "type": "text", "id": "eyebrow", "label": "Small heading", "default": "Catalogue" },
+  { "type": "text", "id": "all_title", "label": "Title on \"All products\"", "default": "Our catalogue" },
+  { "type": "textarea", "id": "all_text", "label": "Text", "default": "Everything is made to order with your logo, colours and sizes. Pick a product and ask for a quote on WhatsApp." },
+  { "type": "link_list", "id": "menu", "label": "Category buttons menu" } ] }
 {% endschema %}
