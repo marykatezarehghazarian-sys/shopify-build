@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catalogue | PKG. Packaging Factory</title>
+  <meta name="description" content="Custom printed packaging and business print, made to order.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="catalogue" data-nav="catalogue.html">
+  <div id="site-header"></div>
+  <main>
+    <section class="page-hero"><div class="wrap">
+      <p class="eyebrow">Catalogue</p>
+      <h1 class="display" id="cat-title" style="font-size:clamp(2.4rem,6vw,4.8rem)">Our catalogue</h1>
+      <p class="lead" id="cat-blurb" style="margin-top:16px"></p>
+    </div></section>
+    <section class="section" style="padding-top:36px"><div class="wrap">
+      <div class="filters" id="chips" role="group" aria-label="Filter by category"></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:24px">
+        <label class="vh" for="search">Search products</label>
+        <input class="search" id="search" type="search" placeholder="Search: cups, boxes, bags…">
+        <span class="muted" id="count"></span>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div></section>
+    <section class="section">
+      <div class="wrap"><div class="band">
+        <div><h2 class="h2">Don't see what you need?</h2><p class="lead" style="margin-top:14px">We print custom sizes and products too. Tell us what you have in mind.</p></div>
+        <div class="band__actions"><a class="btn btn--light" data-wa="Hi PKG, I would like a quote.">WhatsApp us</a></div>
+      </div></div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="assets/app.js"></script>
+</body>
+</html>
