@@ -1,6 +1,6 @@
 # PKG. Packaging Factory
 
-Store: (not set yet). Build the site first, then connect a Shopify store.
+Store: zzfd11-gp.myshopify.com (connected 2026-11-13; shop name still "My Store", currency LBP, theme Horizon, 0 products, location "Shop location" LB). Owner email on the store: rafi@printw-ps.com. Access: Dev Dashboard app, Client ID c41c50… + secret in .env (gitignored); client-credentials exchange works, with full scopes incl. themes and products.
 Owner / contact: Raffi · WhatsApp/phone 03 4000 54 (= +961 3 400 054) · rafi@printw-ps.com · Instagram @pkg.packagingfactory
 
 ## Brief (owner form, 2026-11-13)
