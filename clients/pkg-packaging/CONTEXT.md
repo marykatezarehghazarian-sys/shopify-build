@@ -13,7 +13,8 @@ Owner / contact: Raffi · WhatsApp/phone 03 4000 54 (= +961 3 400 054) · rafi@p
 
 ## Brand
 - Voice / tone: confident, practical, B2B-friendly.
-- Colours / fonts (proposed until the logo arrives): ink #121212, kraft #C9A27A, paper #F3EEE6, accent signal red #E5432D. Headings: Archivo (bold, condensed feel). Body: Inter.
+- Logo received 2026-11-13 (PDF, vector): square stacked "PKG PACKAGING" in white on green #52BE36, with a dark green #21642F "FACTORY" tag. PNG in `brand-logo-square.png`; uploaded to Shopify Files as pkg-logo.png and set as the theme logo (height 64px).
+- Colours / fonts: ink #121212, kraft #C9A27A, paper #F3EEE6, accent dark green #21642F (from the logo; replaced the proposed red, which clashed). The bright logo green #52BE36 isn't used behind white text: the contrast is too low. Headings: Archivo (bold, condensed feel). Body: Inter.
 
 ## Catalog
 - Categories (proposed): Food & takeaway, Bakery & pastry, Coffee & drinks, Bags, Labels & stickers, Retail & clothing, Corporate print, School print.
@@ -45,3 +46,5 @@ Owner / contact: Raffi · WhatsApp/phone 03 4000 54 (= +961 3 400 054) · rafi@p
     - pages about / showroom / contact (template suffixes)
     - menus main-menu, catalogue, company
   - TODO: owner's logo, photos and real product list (replace the `sample` products); showroom address/hours/map in Theme settings; about text; shop name is still "My Store" (admin: Settings → General); currency LBP. Activate the products and publish the theme only after the owner OKs it.
+- 2026-11-13: Raffi's feedback PDF: remove the emoji icons from the industries cards. The industries section now uses his 8 industries and wording (Restaurants, Bakeries, Coffee shops, Clothing stores, Schools & universities, Events & weddings, Corporate offices, Product brands) with a short accent bar, no icons (section setting `show_icons`, off). Text is left-aligned (his screenshots had justified text with big gaps).
+- 2026-11-13: machine photos (offset presses, Bobst die-cutter) were sent as chat images and are not usable yet. Asked for the files and to confirm they're his own machines, not photos from the internet.

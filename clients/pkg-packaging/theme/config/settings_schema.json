@@ -10,40 +10,137 @@
   {
     "name": "Brand",
     "settings": [
-      { "type": "image_picker", "id": "logo", "label": "Logo", "info": "Leave empty to show the text logo \"PKG.\"" },
-      { "type": "range", "id": "logo_height", "label": "Logo height", "min": 24, "max": 80, "step": 2, "unit": "px", "default": 40 },
-      { "type": "text", "id": "logo_text", "label": "Text logo", "default": "PKG" },
-      { "type": "text", "id": "logo_sub", "label": "Text logo subtitle", "default": "Packaging Factory" },
-      { "type": "color", "id": "color_ink", "label": "Ink (text, dark sections)", "default": "#121212" },
-      { "type": "color", "id": "color_paper", "label": "Background", "default": "#F3EEE6" },
-      { "type": "color", "id": "color_kraft", "label": "Kraft", "default": "#C9A27A" },
-      { "type": "color", "id": "color_accent", "label": "Accent", "default": "#E5432D" }
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo",
+        "info": "Leave empty to show the text logo \"PKG.\""
+      },
+      {
+        "type": "range",
+        "id": "logo_height",
+        "label": "Logo height",
+        "min": 24,
+        "max": 80,
+        "step": 2,
+        "unit": "px",
+        "default": 40
+      },
+      {
+        "type": "text",
+        "id": "logo_text",
+        "label": "Text logo",
+        "default": "PKG"
+      },
+      {
+        "type": "text",
+        "id": "logo_sub",
+        "label": "Text logo subtitle",
+        "default": "Packaging Factory"
+      },
+      {
+        "type": "color",
+        "id": "color_ink",
+        "label": "Ink (text, dark sections)",
+        "default": "#121212"
+      },
+      {
+        "type": "color",
+        "id": "color_paper",
+        "label": "Background",
+        "default": "#F3EEE6"
+      },
+      {
+        "type": "color",
+        "id": "color_kraft",
+        "label": "Kraft",
+        "default": "#C9A27A"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent",
+        "default": "#21642F"
+      }
     ]
   },
   {
     "name": "Contact & WhatsApp",
     "settings": [
-      { "type": "text", "id": "whatsapp", "label": "WhatsApp number", "info": "International format, e.g. +961 3 400 054", "default": "+961 3 400 054" },
-      { "type": "text", "id": "wa_message", "label": "Default WhatsApp message", "default": "Hi PKG, I would like a quote." },
-      { "type": "text", "id": "email", "label": "Email", "default": "rafi@printw-ps.com" },
-      { "type": "text", "id": "instagram", "label": "Instagram handle (without @)", "default": "pkg.packagingfactory" },
-      { "type": "checkbox", "id": "wa_float", "label": "Show floating WhatsApp button", "default": true }
+      {
+        "type": "text",
+        "id": "whatsapp",
+        "label": "WhatsApp number",
+        "info": "International format, e.g. +961 3 400 054",
+        "default": "+961 3 400 054"
+      },
+      {
+        "type": "text",
+        "id": "wa_message",
+        "label": "Default WhatsApp message",
+        "default": "Hi PKG, I would like a quote."
+      },
+      {
+        "type": "text",
+        "id": "email",
+        "label": "Email",
+        "default": "rafi@printw-ps.com"
+      },
+      {
+        "type": "text",
+        "id": "instagram",
+        "label": "Instagram handle (without @)",
+        "default": "pkg.packagingfactory"
+      },
+      {
+        "type": "checkbox",
+        "id": "wa_float",
+        "label": "Show floating WhatsApp button",
+        "default": true
+      }
     ]
   },
   {
     "name": "Showroom",
     "settings": [
-      { "type": "text", "id": "showroom_address", "label": "Address" },
-      { "type": "textarea", "id": "showroom_hours", "label": "Opening hours" },
-      { "type": "url", "id": "showroom_map_link", "label": "Google Maps link (Directions button)" },
-      { "type": "text", "id": "showroom_map_query", "label": "Map search text", "info": "Shown as an embedded map, e.g. \"PKG Packaging Factory, Beirut\"" }
+      {
+        "type": "text",
+        "id": "showroom_address",
+        "label": "Address"
+      },
+      {
+        "type": "textarea",
+        "id": "showroom_hours",
+        "label": "Opening hours"
+      },
+      {
+        "type": "url",
+        "id": "showroom_map_link",
+        "label": "Google Maps link (Directions button)"
+      },
+      {
+        "type": "text",
+        "id": "showroom_map_query",
+        "label": "Map search text",
+        "info": "Shown as an embedded map, e.g. \"PKG Packaging Factory, Beirut\""
+      }
     ]
   },
   {
     "name": "Payment & delivery",
     "settings": [
-      { "type": "text", "id": "payment_line", "label": "Payment line", "default": "Cash on delivery · Whish · OMT" },
-      { "type": "text", "id": "delivery_line", "label": "Delivery line", "default": "All over Lebanon and the Middle East" }
+      {
+        "type": "text",
+        "id": "payment_line",
+        "label": "Payment line",
+        "default": "Cash on delivery · Whish · OMT"
+      },
+      {
+        "type": "text",
+        "id": "delivery_line",
+        "label": "Delivery line",
+        "default": "All over Lebanon and the Middle East"
+      }
     ]
   }
 ]
