@@ -29,3 +29,9 @@ Store: hd8wtv-ck.myshopify.com
   - Card details are never handled. Customer data is never committed.
   - Order format checked with a price check on another store (creates nothing).
   - Still needs Feels Good Club API access: create an app in the store's Dev Dashboard with scopes `write_draft_orders`, `read_products`, `write_orders`, `read_customers`, `write_customers`, `read_shipping` (plus whatever else we manage), then save the keys with `npm run client -- set feels-good-club ...`. The store owner must install the app; if client credentials are refused, use the authorization-code OAuth flow (redirect https://example.com/).
+- 2026-11-15: connected. App keys in .env; the client-credentials exchange works. Scopes: draft orders, orders, products (read), customers, shipping (read). No themes or markets scopes.
+  - DM order agent tested end to end: quote → draft #D943 (Lebanon address, $60 + $4 Standard) → checkout link generated → draft deleted. No email sent, no order created.
+  - Shipping (General profile):
+    - Domestic = Lebanon, Standard $4
+    - UAE $10
+    - International (27 countries incl. US) "International" $1,700,000. Looks like a typo (an LBP amount entered as USD?), and the US quote returned no shipping rates at all. Flagged to the user; not changed.
