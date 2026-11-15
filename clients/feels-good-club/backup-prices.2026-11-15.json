@@ -1,0 +1,108 @@
+[
+  {
+    "id": "gid://shopify/Product/8793731858631",
+    "title": "Migraine Relief Cap",
+    "variants": {
+      "nodes": [
+        {
+          "id": "gid://shopify/ProductVariant/46831330427079",
+          "title": "1 Cap",
+          "price": "20.00",
+          "compareAtPrice": "24.99"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/46831330459847",
+          "title": "2 Caps",
+          "price": "20.00",
+          "compareAtPrice": "79.98"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/46831330492615",
+          "title": "3 Caps",
+          "price": "20.00",
+          "compareAtPrice": "119.97"
+        }
+      ]
+    }
+  },
+  {
+    "id": "gid://shopify/Product/8793731989703",
+    "title": "Pimple Patches (360 Pcs)",
+    "variants": {
+      "nodes": [
+        {
+          "id": "gid://shopify/ProductVariant/46831330721991",
+          "title": "1 Pack",
+          "price": "20.00",
+          "compareAtPrice": "16.99"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/46831330754759",
+          "title": "2 Packs",
+          "price": "20.00",
+          "compareAtPrice": "33.98"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/46831330787527",
+          "title": "3 Packs",
+          "price": "20.00",
+          "compareAtPrice": "50.97"
+        }
+      ]
+    }
+  },
+  {
+    "id": "gid://shopify/Product/8793732055239",
+    "title": "Teeth Whitening Strips (14 Pcs)",
+    "variants": {
+      "nodes": [
+        {
+          "id": "gid://shopify/ProductVariant/46831330885831",
+          "title": "1 Kit",
+          "price": "20.00",
+          "compareAtPrice": "34.99"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/46831330918599",
+          "title": "2 Kits",
+          "price": "20.00",
+          "compareAtPrice": "69.98"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/46831330951367",
+          "title": "3 Kits",
+          "price": "20.00",
+          "compareAtPrice": "104.97"
+        }
+      ]
+    }
+  },
+  {
+    "id": "gid://shopify/Product/15379384139975",
+    "title": "Nose Strips",
+    "variants": {
+      "nodes": [
+        {
+          "id": "gid://shopify/ProductVariant/67793943593159",
+          "title": "Default Title",
+          "price": "20.00",
+          "compareAtPrice": null
+        }
+      ]
+    }
+  },
+  {
+    "id": "gid://shopify/Product/15386484211911",
+    "title": "Purple Teeth Whitening Toothpaste",
+    "variants": {
+      "nodes": [
+        {
+          "id": "gid://shopify/ProductVariant/67815239024839",
+          "title": "Default Title",
+          "price": "20.00",
+          "compareAtPrice": null
+        }
+      ]
+    }
+  }
+]
