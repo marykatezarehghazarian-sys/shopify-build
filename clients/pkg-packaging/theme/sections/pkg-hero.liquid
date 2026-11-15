@@ -1,8 +1,7 @@
 <section class="hero">
   <div class="wrap hero__grid">
     <div>
-      {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
-      <h1 class="display">{{ section.settings.heading }}</h1>
+      {%- if section.settings.eyebrow != blank -%}<h1 class="eyebrow">{{ section.settings.eyebrow }}</h1><p class="display">{{ section.settings.heading }}</p>{%- else -%}<h1 class="display">{{ section.settings.heading }}</h1>{%- endif -%}
       {%- if section.settings.text != blank -%}<p class="lead" style="margin-top:22px">{{ section.settings.text }}</p>{%- endif -%}
       <div class="hero__actions">
         {%- if settings.whatsapp != blank -%}<a class="btn btn--wa" href="{% render 'wa-url', message: section.settings.wa_message %}" target="_blank" rel="noopener">{% render 'pkg-icon', name: 'whatsapp' %}{{ section.settings.button_1 }}</a>{%- endif -%}

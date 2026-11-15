@@ -52,3 +52,19 @@ Owner / contact: Raffi · WhatsApp/phone 03 4000 54 (= +961 3 400 054) · rafi@p
 - 2026-11-13: "Our factory" section (pkg-factory, after industries on Home): machine photo blocks with captions; only blocks with a photo show. First photo: digital press (photos/factory/digital-press.jpg, Shopify file pkg-digital-press.jpg). Waiting on the offset press and Bobst die-cutter photos as files. Raffi confirmed the machines are his.
 - 2026-11-13: FAQ restyled after Raffi's example (lebclean.vip FAQ; layout only, not their text): heading on top, large title "Questions, answered.", thin divider lines, red→accent chevrons, all questions closed by default.
 - The theme is now LIVE, so `theme push` needs `--allow-live` (otherwise the CLI asks for confirmation and fails non-interactively).
+- 2026-11-15 SEO (Raffi wants strong Google presence):
+  - Theme: `snippets/seo-meta.liquid` (rendered in layout/theme.liquid) outputs:
+    - title (brand appended only if the title is ≤45 chars) and meta description, with fallbacks
+    - Open Graph / Twitter tags
+    - optional favicon and Google Search Console verification meta
+    - JSON-LD: LocalBusiness+Organization on every page (address/city/geo/hours/map/Instagram/Facebook from theme settings); WebSite on home; Product; BreadcrumbList on product/collection/page
+  - FAQ section outputs FAQPage JSON-LD.
+  - Home hero: the keyword eyebrow "Custom printing & packaging factory in Lebanon" is now the H1; the big slogan is a <p>.
+  - Product images: only the first is eager, with responsive widths.
+  - New theme settings:
+    - "SEO & Google" group: home title/description, fallback description, share image, Search Console code
+    - Business name, favicon, Facebook link
+    - Showroom city, hours for Google, latitude/longitude
+  - Content: `scripts/seo-content.mjs --apply` sets the 8 collections' SEO title/description, a short `custom.intro` metafield (shown under the H1) and a longer description (shown below the product grid with a WhatsApp button), plus SEO title/description for the about/showroom/contact pages. Claims are kept to what's confirmed (own factory: offset, digital, die-cutting; delivery Lebanon + Middle East). No invented years, stats or finishes.
+  - Not verified in the browser yet: the storefront is password-protected and we don't have the password.
+  - Owner side: remove the password (Google can't index a password-protected store), connect a domain, verify in Google Search Console and submit /sitemap.xml, create a Google Business Profile (biggest win for "printing Lebanon" searches), shop name in Settings → General, real products with descriptive text and photo alt text, link the site from Instagram.

@@ -10,7 +10,12 @@
   <div class="pdp__media">
     {%- if product.media.size > 0 -%}
       <div class="pdp__gallery">
-        {%- for m in product.media -%}{%- if m.media_type == 'image' -%}{{ m | image_url: width: 1400 | image_tag: loading: 'eager', class: 'cover', alt: m.alt | default: product.title }}{%- endif -%}{%- endfor -%}
+        {%- for m in product.media -%}{%- if m.media_type == 'image' -%}{%- liquid
+          assign ld = 'lazy'
+          if forloop.first
+            assign ld = 'eager'
+          endif
+        -%}{{ m | image_url: width: 1400 | image_tag: loading: ld, widths: '600,900,1200,1400', sizes: '(min-width: 900px) 50vw, 100vw', class: 'cover', alt: m.alt | default: product.title }}{%- endif -%}{%- endfor -%}
       </div>
     {%- else -%}{% render 'pkg-art', product: product %}{%- endif -%}
   </div>

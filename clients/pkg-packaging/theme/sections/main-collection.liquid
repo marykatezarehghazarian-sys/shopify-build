@@ -4,7 +4,7 @@
 <section class="page-hero"><div class="wrap">
   <p class="eyebrow">{{ section.settings.eyebrow }}</p>
   <h1 class="display" style="font-size:clamp(2.4rem,6vw,4.8rem)">{% if current == 'all' %}{{ section.settings.all_title }}{% else %}{{ collection.title }}{% endif %}</h1>
-  <p class="lead" style="margin-top:16px">{% if current == 'all' or collection.description == blank %}{{ section.settings.all_text }}{% else %}{{ collection.description | strip_html }}{% endif %}</p>
+  <p class="lead" style="margin-top:16px">{% if current == 'all' %}{{ section.settings.all_text }}{% elsif collection.metafields.custom.intro != blank %}{{ collection.metafields.custom.intro }}{% elsif collection.description != blank %}{{ collection.description | strip_html | truncatewords: 30 }}{% else %}{{ section.settings.all_text }}{% endif %}</p>
 </div></section>
 <section class="section" style="padding-top:36px"><div class="wrap">
   <nav class="filters" aria-label="Categories">
@@ -29,6 +29,10 @@
     <p class="muted" data-filter-empty hidden>Nothing matches that search. Try another word, or message us on WhatsApp.</p>
     {%- if paginate.pages > 1 -%}<div class="filters" style="margin-top:28px">{{ paginate | default_pagination }}</div>{%- endif -%}
   {%- endpaginate -%}
+  {%- if current != 'all' and collection.description != blank -%}
+    {%- assign wa_msg = 'Hi PKG, I would like a quote for ' | append: collection.title -%}
+    <div class="seo-text rte">{{ collection.description }}<p><a class="btn btn--wa" href="{% render 'wa-url', message: wa_msg %}" target="_blank" rel="noopener">Get a quote on WhatsApp</a></p></div>
+  {%- endif -%}
 </div></section>
 {% schema %}
 { "name": "Catalogue", "settings": [

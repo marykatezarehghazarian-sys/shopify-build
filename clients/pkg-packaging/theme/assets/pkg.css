@@ -258,3 +258,7 @@ img.cover, .stack img, .map img { width: 100%; height: 100%; object-fit: cover; 
 .factory__shot img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
 .factory__shot figcaption { position: absolute; left: 12px; bottom: 12px; background: var(--ink); color: var(--paper); font: 700 0.78rem/1 var(--font-body); letter-spacing: 0.12em; text-transform: uppercase; padding: 8px 10px; border-radius: 6px; }
 @media (max-width: 560px) { .factory__grid--multi { grid-template-columns: 1fr; } }
+.seo-text { margin-top: clamp(48px, 7vw, 80px); padding-top: clamp(28px, 4vw, 40px); border-top: 1px solid rgba(18,18,18,.22); max-width: 760px; }
+.seo-text h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); margin: 0 0 14px; }
+.seo-text p { color: var(--muted); margin: 0 0 14px; }
+.seo-text .btn { margin-top: 8px; }

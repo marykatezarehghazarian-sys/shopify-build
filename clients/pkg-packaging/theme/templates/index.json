@@ -3,7 +3,8 @@
     "hero": {
       "type": "pkg-hero",
       "settings": {
-        "button_2_link": "/collections/all"
+        "button_2_link": "/collections/all",
+        "eyebrow": "Custom printing & packaging factory in Lebanon"
       }
     },
     "ticker": {

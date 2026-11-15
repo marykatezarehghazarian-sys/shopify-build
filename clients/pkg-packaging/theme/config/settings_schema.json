@@ -11,6 +11,12 @@
     "name": "Brand",
     "settings": [
       {
+        "type": "text",
+        "id": "business_name",
+        "label": "Business name (Google & social)",
+        "default": "PKG. Packaging Factory"
+      },
+      {
         "type": "image_picker",
         "id": "logo",
         "label": "Logo",
@@ -25,6 +31,12 @@
         "step": 2,
         "unit": "px",
         "default": 40
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon (square, 96px+)",
+        "info": "Shown in the browser tab and Google results."
       },
       {
         "type": "text",
@@ -93,6 +105,11 @@
         "default": "pkg.packagingfactory"
       },
       {
+        "type": "url",
+        "id": "facebook_url",
+        "label": "Facebook page link"
+      },
+      {
         "type": "checkbox",
         "id": "wa_float",
         "label": "Show floating WhatsApp button",
@@ -109,6 +126,12 @@
         "label": "Address"
       },
       {
+        "type": "text",
+        "id": "business_city",
+        "label": "City / area",
+        "info": "e.g. Dekwaneh. Used by Google."
+      },
+      {
         "type": "textarea",
         "id": "showroom_hours",
         "label": "Opening hours"
@@ -123,6 +146,23 @@
         "id": "showroom_map_query",
         "label": "Map search text",
         "info": "Shown as an embedded map, e.g. \"PKG Packaging Factory, Beirut\""
+      },
+      {
+        "type": "text",
+        "id": "opening_hours_schema",
+        "label": "Opening hours for Google",
+        "info": "Format: Mo-Fr 08:00-17:00, Sa 08:00-13:00"
+      },
+      {
+        "type": "text",
+        "id": "geo_lat",
+        "label": "Map latitude",
+        "info": "From Google Maps (right-click the pin)."
+      },
+      {
+        "type": "text",
+        "id": "geo_lng",
+        "label": "Map longitude"
       }
     ]
   },
@@ -140,6 +180,43 @@
         "id": "delivery_line",
         "label": "Delivery line",
         "default": "All over Lebanon and the Middle East"
+      }
+    ]
+  },
+  {
+    "name": "SEO & Google",
+    "settings": [
+      {
+        "type": "text",
+        "id": "seo_home_title",
+        "label": "Homepage title in Google",
+        "info": "Up to ~60 characters.",
+        "default": "PKG. Packaging Factory | Custom Printing & Packaging in Lebanon"
+      },
+      {
+        "type": "textarea",
+        "id": "seo_home_description",
+        "label": "Homepage description in Google",
+        "info": "Up to ~155 characters.",
+        "default": "Custom printed boxes, paper bags, cups, labels and business print for restaurants, bakeries, cafés and brands. Made in Lebanon. Quote on WhatsApp."
+      },
+      {
+        "type": "textarea",
+        "id": "seo_default_description",
+        "label": "Fallback description",
+        "default": "PKG. Packaging Factory prints custom packaging and business print in Lebanon: boxes, paper bags, cups, labels, menus and stationery. Delivery across Lebanon and the Middle East."
+      },
+      {
+        "type": "image_picker",
+        "id": "share_image",
+        "label": "Share image (WhatsApp, Facebook)",
+        "info": "1200×630 recommended. Falls back to the logo."
+      },
+      {
+        "type": "text",
+        "id": "google_site_verification",
+        "label": "Google Search Console verification code",
+        "info": "Only the content=\"...\" value."
       }
     ]
   }

@@ -1,0 +1,158 @@
+{%- comment -%} Titles, descriptions, social cards and structured data (schema.org JSON-LD) for Google. {%- endcomment -%}
+{%- liquid
+  assign seo_title = page_title
+  if request.page_type == 'index' and settings.seo_home_title != blank
+    assign seo_title = settings.seo_home_title
+  endif
+  assign seo_desc = page_description
+  if request.page_type == 'index' and settings.seo_home_description != blank
+    assign seo_desc = settings.seo_home_description
+  endif
+  if seo_desc == blank
+    assign seo_desc = settings.seo_default_description
+  endif
+  assign brand = settings.business_name | default: shop.name
+  assign og_image = settings.share_image | default: settings.logo
+  if request.page_type == 'product' and product.featured_image
+    assign og_image = product.featured_image
+  elsif request.page_type == 'collection' and collection.image
+    assign og_image = collection.image
+  endif
+  assign og_type = 'website'
+  if request.page_type == 'product'
+    assign og_type = 'product'
+  endif
+  assign wa_digits = settings.whatsapp | remove: ' ' | remove: '-' | remove: '(' | remove: ')'
+-%}
+<title>{{ seo_title }}{% if current_tags %} – {{ current_tags | join: ', ' }}{% endif %}{% if current_page != 1 %} – Page {{ current_page }}{% endif %}{% unless seo_title contains brand or seo_title.size > 45 %} | {{ brand }}{% endunless %}</title>
+{%- if seo_desc != blank %}
+<meta name="description" content="{{ seo_desc | strip_html | strip_newlines | truncate: 160 | escape }}">
+{%- endif %}
+<meta property="og:site_name" content="{{ brand | escape }}">
+<meta property="og:url" content="{{ canonical_url }}">
+<meta property="og:title" content="{{ seo_title | escape }}">
+<meta property="og:type" content="{{ og_type }}">
+<meta property="og:description" content="{{ seo_desc | strip_html | strip_newlines | truncate: 200 | escape }}">
+<meta property="og:locale" content="en_LB">
+{%- if og_image %}
+<meta property="og:image" content="https:{{ og_image | image_url: width: 1200 }}">
+<meta property="og:image:secure_url" content="https:{{ og_image | image_url: width: 1200 }}">
+<meta property="og:image:alt" content="{{ og_image.alt | default: seo_title | escape }}">
+{%- endif %}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ seo_title | escape }}">
+<meta name="twitter:description" content="{{ seo_desc | strip_html | strip_newlines | truncate: 200 | escape }}">
+<meta name="theme-color" content="{{ settings.color_paper }}">
+{%- if settings.favicon %}
+<link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 96, height: 96 }}">
+<link rel="apple-touch-icon" href="{{ settings.favicon | image_url: width: 180, height: 180 }}">
+{%- endif %}
+{%- if settings.google_site_verification != blank %}
+<meta name="google-site-verification" content="{{ settings.google_site_verification | escape }}">
+{%- endif %}
+
+{%- comment -%} Business: shown on every page so Google links the site, the showroom and the socials. {%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "Organization"],
+  "@id": {{ routes.root_url | prepend: request.origin | append: '#business' | json }},
+  "name": {{ brand | json }},
+  "url": {{ request.origin | append: routes.root_url | json }},
+  "description": {{ settings.seo_default_description | default: seo_desc | strip_html | json }}
+  {%- if settings.logo %},
+  "logo": {{ settings.logo | image_url: width: 600 | prepend: 'https:' | json }},
+  "image": {{ settings.logo | image_url: width: 1200 | prepend: 'https:' | json }}
+  {%- endif %}
+  {%- if wa_digits != blank %},
+  "telephone": {{ wa_digits | json }}
+  {%- endif %}
+  {%- if settings.email != blank %},
+  "email": {{ settings.email | json }}
+  {%- endif %},
+  "priceRange": "$$",
+  "areaServed": [{"@type": "Country", "name": "Lebanon"}, {"@type": "Place", "name": "Middle East"}],
+  "address": {
+    "@type": "PostalAddress",
+    {%- if settings.showroom_address != blank %}
+    "streetAddress": {{ settings.showroom_address | json }},
+    {%- endif %}
+    {%- if settings.business_city != blank %}
+    "addressLocality": {{ settings.business_city | json }},
+    {%- endif %}
+    "addressCountry": "LB"
+  }
+  {%- if settings.showroom_map_link != blank %},
+  "hasMap": {{ settings.showroom_map_link | json }}
+  {%- endif %}
+  {%- if settings.geo_lat != blank and settings.geo_lng != blank %},
+  "geo": {"@type": "GeoCoordinates", "latitude": {{ settings.geo_lat | json }}, "longitude": {{ settings.geo_lng | json }}}
+  {%- endif %}
+  {%- if settings.opening_hours_schema != blank %},
+  "openingHours": {{ settings.opening_hours_schema | split: ',' | json }}
+  {%- endif %},
+  "sameAs": [
+    {%- if settings.instagram != blank -%}{{ 'https://www.instagram.com/' | append: settings.instagram | json }}{%- endif -%}
+    {%- if settings.facebook_url != blank -%}{% if settings.instagram != blank %},{% endif %}{{ settings.facebook_url | json }}{%- endif -%}
+  ]
+}
+</script>
+
+{%- if request.page_type == 'index' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": {{ brand | json }},
+  "url": {{ request.origin | append: routes.root_url | json }}
+}
+</script>
+{%- endif %}
+
+{%- if request.page_type == 'product' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": {{ product.title | json }},
+  "url": {{ request.origin | append: product.url | json }},
+  "description": {{ product.description | strip_html | strip_newlines | truncate: 500 | json }},
+  "brand": {"@type": "Brand", "name": {{ brand | json }}},
+  "manufacturer": {"@id": {{ routes.root_url | prepend: request.origin | append: '#business' | json }}}
+  {%- if product.featured_image %},
+  "image": [{%- for m in product.images limit: 6 -%}{{ m | image_url: width: 1200 | prepend: 'https:' | json }}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]
+  {%- endif %}
+  {%- if product.collections.first %},
+  "category": {{ product.collections.first.title | json }}
+  {%- endif %}
+  {%- if product.metafields.custom.material.value != blank %},
+  "material": {{ product.metafields.custom.material.value | json }}
+  {%- endif %}
+}
+</script>
+{%- endif %}
+
+{%- if request.page_type == 'product' or request.page_type == 'collection' or request.page_type == 'page' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": {{ request.origin | append: routes.root_url | json }}}
+    {%- if request.page_type == 'product' %},
+    {"@type": "ListItem", "position": 2, "name": "Catalogue", "item": {{ request.origin | append: routes.collections_url | json }}}
+    {%- if product.collections.first %},
+    {"@type": "ListItem", "position": 3, "name": {{ product.collections.first.title | json }}, "item": {{ request.origin | append: product.collections.first.url | json }}},
+    {"@type": "ListItem", "position": 4, "name": {{ product.title | json }}, "item": {{ request.origin | append: product.url | json }}}
+    {%- else %},
+    {"@type": "ListItem", "position": 3, "name": {{ product.title | json }}, "item": {{ request.origin | append: product.url | json }}}
+    {%- endif %}
+    {%- elsif request.page_type == 'collection' %},
+    {"@type": "ListItem", "position": 2, "name": {{ collection.title | json }}, "item": {{ request.origin | append: collection.url | json }}}
+    {%- else %},
+    {"@type": "ListItem", "position": 2, "name": {{ page.title | json }}, "item": {{ request.origin | append: page.url | json }}}
+    {%- endif %}
+  ]
+}
+</script>
+{%- endif %}
