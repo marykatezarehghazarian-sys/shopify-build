@@ -36,3 +36,13 @@ Store: hd8wtv-ck.myshopify.com
     - UAE $10
     - International (27 countries incl. US) "International" $1,700,000. Looks like a typo (an LBP amount entered as USD?), and the US quote returned no shipping rates at all. Flagged to the user; not changed.
 - 2026-11-15 DM orders: all cash on delivery. The price quoted to customers INCLUDES delivery (e.g. $20 total), so shipping is $0. Customers send only the area name: address1 = area, city = area, country LB; the courier calls the customer. Use `orders:cod` (draft payment terms are blocked on this plan). First one: #1896.
+- 2026-11-15: user wants DM orders placed through the website checkout (so they show as Online Store, not "via import"):
+  - `scripts/checkout.mjs <order.json> [--submit] [--shot png]` fills the checkout as the customer (phone as contact, name, area as address/city, Lebanon) and picks Cash on Delivery.
+    - Uses visible fields by role; the checkout has hidden honeypot inputs with the same labels.
+    - Without --submit it stops before "Complete order". `expectTotal` blocks the submit if the total differs.
+    - Dry run OK: $20 + $4 shipping = $24.
+  - Decisions:
+    - contact = customer's phone
+    - Lebanon shipping to be made free so checkout totals match the $20-incl.-delivery price. The app has only read_shipping: the owner changes it in admin, or adds write_shipping to the app.
+    - #1896 (made via API) cancelled, restocked, no notification; to be re-placed via checkout.
+  - Checkout needs a last name.
