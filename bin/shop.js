@@ -3,7 +3,7 @@
 // JSON flags (e.g. --json '{"title":"x"}' or --json @file.json) pass straight through to the API helpers.
 import { readFileSync } from 'node:fs';
 import { clientConfig } from '../lib/clients.js';
-import { gql, shop, products, inventory, collections, discounts, shipping } from '../lib/index.js';
+import { gql, shop, products, inventory, collections, discounts, shipping, orders } from '../lib/index.js';
 
 function parseArgs(argv) {
   const pos = [], flags = {};
@@ -97,6 +97,14 @@ const commands = {
     }),
   },
   'shipping:update': { help: '<profileId> --json {...DeliveryProfileInput}', run: ({ pos, flags }) => shipping.updateDeliveryProfile(pos[0], readJson(flags.json)) },
+
+  'orders:variants': { help: '[words]  find sellable variants by name (for DM orders)', run: ({ pos }) => orders.findVariants(pos.join(' ')) },
+  'orders:quote': { help: '--json {order}|@file  totals + shipping rates, creates nothing', run: ({ flags }) => orders.quoteDraft(readJson(flags.json)) },
+  'orders:draft': { help: '--json {order}|@file  create a draft order; returns its checkout link (invoiceUrl)', run: ({ flags }) => orders.createDraft(readJson(flags.json)) },
+  'orders:invoice': { help: '<draftId> [--to email] [--message text]  email the checkout link', run: ({ pos, flags }) => orders.sendInvoice(pos[0], { to: flags.to, customMessage: flags.message }) },
+  'orders:paid': { help: '<draftId>  complete the draft as a PAID order (only once the money is received)', run: ({ pos }) => orders.completeDraft(pos[0]) },
+  'orders:get': { help: '<draftId>', run: ({ pos }) => orders.getDraft(pos[0]) },
+  'orders:drafts': { help: '[--query "tag:dm-order status:open"]', run: ({ flags }) => orders.listDrafts(flags.query) },
 
   'gql': {
     help: '<query string | @file.graphql> [--vars {...}]  (escape hatch for anything else)',

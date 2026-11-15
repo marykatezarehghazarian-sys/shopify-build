@@ -23,3 +23,9 @@ Store: hd8wtv-ck.myshopify.com
 - 2026-11-02: owner says every item was set to $20. Public /products.json at that time still showed: toothpaste $12, nose strips $12, whitening strips $20 for 1/2/3 kits (compare-at 34.99/69.98/104.97), pimple patches $12/$22/$32 (compare-at 16.99/33.98/50.97), migraine cap $18 for 1/2/3 caps (compare-at 24.99/79.98/119.97).
 - 2026-11-02 (later): public /products.json now shows $20.00 on all 11 variants. Compare-at prices unchanged (Pimple Patches 1 Pack compare-at $16.99 is now below its price, so it won't show as a sale).
 - 2026-11-03: keys sent as "Feels Good Club" turned out to belong to Tech Global (svc4nx-e5), "app not installed" on hd8wtv-ck. Removed from here and moved to `clients/tech-global/`. Feels Good Club still has no credentials.
+- 2026-11-15: DM order agent (`/dm-order` skill, `.claude/skills/dm-order/SKILL.md`): orders customers place by DM are entered as Shopify draft orders.
+  - Commands: `orders:variants`, `orders:quote`, `orders:draft`, `orders:invoice`, `orders:paid`, `orders:drafts`, `orders:get` in bin/shop.js; helpers in lib/admin/orders.js.
+  - The customer pays by card on Shopify's checkout link (invoiceUrl). Cash on delivery = payment due on fulfillment. `orders:paid` only once the money is received.
+  - Card details are never handled. Customer data is never committed.
+  - Order format checked with a price check on another store (creates nothing).
+  - Still needs Feels Good Club API access: create an app in the store's Dev Dashboard with scopes `write_draft_orders`, `read_products`, `write_orders`, `read_customers`, `write_customers`, `read_shipping` (plus whatever else we manage), then save the keys with `npm run client -- set feels-good-club ...`. The store owner must install the app; if client credentials are refused, use the authorization-code OAuth flow (redirect https://example.com/).
