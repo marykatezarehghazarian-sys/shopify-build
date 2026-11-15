@@ -46,3 +46,4 @@ Store: hd8wtv-ck.myshopify.com
     - Lebanon shipping to be made free so checkout totals match the $20-incl.-delivery price. The app has only read_shipping: the owner changes it in admin, or adds write_shipping to the app.
     - #1896 (made via API) cancelled, restocked, no notification; to be re-placed via checkout.
   - Checkout needs a last name.
+- 2026-11-15: owner decision: ALL products/variants are $16 on the website; delivery in Lebanon stays $4, so a DM order = $20 total. Free-shipping plan dropped. Price change pending: the app lacks write_products (asked the user to add write_products + write_shipping to the app, or change the prices in admin).
