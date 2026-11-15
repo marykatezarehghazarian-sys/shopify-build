@@ -35,3 +35,4 @@ Store: hd8wtv-ck.myshopify.com
     - Domestic = Lebanon, Standard $4
     - UAE $10
     - International (27 countries incl. US) "International" $1,700,000. Looks like a typo (an LBP amount entered as USD?), and the US quote returned no shipping rates at all. Flagged to the user; not changed.
+- 2026-11-15 DM orders: all cash on delivery. The price quoted to customers INCLUDES delivery (e.g. $20 total), so shipping is $0. Customers send only the area name: address1 = area, city = area, country LB; the courier calls the customer. Use `orders:cod` (draft payment terms are blocked on this plan). First one: #1896.

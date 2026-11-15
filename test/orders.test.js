@@ -22,8 +22,7 @@ test('toDraftInput maps a DM order to DraftOrderInput', () => {
   assert.equal(i.paymentTerms, undefined);
 });
 
-test('shipping rate handle and pay-on-delivery terms', () => {
-  const i = toDraftInput({ items: [], shippingRateHandle: 'h1', paymentPending: true });
+test('shipping rate handle', () => {
+  const i = toDraftInput({ items: [], shippingRateHandle: 'h1' });
   assert.deepEqual(i.shippingLine, { shippingRateHandle: 'h1' });
-  assert.ok(i.paymentTerms.paymentTermsTemplateId.endsWith('/9'));
 });

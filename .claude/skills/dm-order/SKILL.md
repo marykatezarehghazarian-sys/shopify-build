@@ -29,7 +29,7 @@ Customers who order by DM become real Shopify orders through **draft orders**: t
 5. **Create:** `npm run shop -- orders:draft --json @<scratchpad>/order.json --client <slug>`. This returns the draft id (`#D12`) and the **checkout link** (`invoiceUrl`).
 6. **Get paid:**
    - **Card / online:** give the user the `invoiceUrl` to send to the customer in the DM. Or email it with `orders:invoice <draftId> [--message "..."]`, which needs an email. When the customer pays, Shopify turns the draft into an order automatically.
-   - **Cash on delivery:** set `"paymentPending": true` in the order before step 5, then run `orders:paid <draftId>`. That creates the order with payment due on fulfillment (not paid).
+   - **Cash on delivery:** skip the draft. Run `npm run shop -- orders:cod --json @<scratchpad>/order.json --client <slug>` with `"shipping": {"amount": N}` (0 = delivery included). That creates a real order, payment PENDING, gateway "Cash on Delivery (COD)", with no email sent and stock reduced. Draft-order payment terms aren't available on Basic plans.
    - **Transfer / cash already received:** after the user confirms the money arrived, run `orders:paid <draftId>`, which creates the order marked as paid.
 7. Report the order number (`order.name`, e.g. #1005), or the draft and its link if it's still waiting for payment.
 
@@ -43,7 +43,7 @@ Check open DM drafts with `orders:drafts` (default query `tag:dm-order`) and a s
   "items": [ { "variantId": "gid://shopify/ProductVariant/123", "quantity": 2 } ],
   "shippingRateHandle": "<from orders:quote>",
   "discount": { "percent": 10, "reason": "Instagram promo" },
-  "paymentPending": false,
+  "shipping": { "title": "Standard", "amount": 4 },
   "note": "Ordered via Instagram DM",
   "tags": ["instagram"]
 }
