@@ -48,3 +48,4 @@ Store: hd8wtv-ck.myshopify.com
   - Checkout needs a last name.
 - 2026-11-15: owner decision: ALL products/variants are $16 on the website; delivery in Lebanon stays $4, so a DM order = $20 total. Free-shipping plan dropped. Price change pending: the app lacks write_products (asked the user to add write_products + write_shipping to the app, or change the prices in admin).
 - 2026-11-15: write_products/write_shipping granted (re-approved via the OAuth link). All 11 variants set to $16.00 (compare-at untouched; backup in backup-prices.2026-11-15.json, all were $20). Checkout dry run for 1 item to LB = $20.00 ($16 + $4).
+- 2026-11-15: first website-checkout DM order placed: #1897 (Online Store, source web, COD pending, $20). Workflow is in the /dm-order skill, Feels Good Club section.

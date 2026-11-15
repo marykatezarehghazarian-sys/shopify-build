@@ -35,6 +35,15 @@ Customers who order by DM become real Shopify orders through **draft orders**: t
 
 Check open DM drafts with `orders:drafts` (default query `tag:dm-order`) and a single one with `orders:get <draftId>`.
 
+## Feels Good Club: place orders through the website checkout
+The owner wants DM orders to show as **Online Store** orders, so don't use the API order commands for this store:
+- Every order is cash on delivery. The product is $16 and Lebanon delivery is $4, so the customer pays **$20 per item**.
+- The user sends `name / phone / item / area`. With no last name, use "."; the phone goes in with the +961 prefix.
+- Find variant ids with `orders:variants`. Write `<scratchpad>/co/oN.json`:
+  `{"items":[{"variantId":"<numeric id>","quantity":1}],"firstName":"","lastName":".","phone":"+961…","address":"<area>","city":"<area>","countryCode":"LB","expectTotal":"<16×qty + 4>"}`
+- Dry run with `node clients/feels-good-club/scripts/checkout.mjs <file>`, then the same command with `--submit` once the total matches. `expectTotal` blocks a wrong total.
+- Confirm in the admin: the latest order should have source `web`, gateway COD, and status PENDING. Report the order number.
+
 ## order.json shape
 ```json
 {
