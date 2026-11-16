@@ -1,0 +1,4 @@
+{ "sections": {
+  "hero": { "type": "rich-text", "blocks": { "h": { "type": "heading" }, "t": { "type": "text" }, "b": { "type": "button" } }, "block_order": ["h", "t", "b"] },
+  "featured": { "type": "featured-collection" } },
+  "order": ["hero", "featured"] }

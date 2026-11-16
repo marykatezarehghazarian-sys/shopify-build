@@ -1,0 +1,12 @@
+{%- liquid
+  assign target = variant | default: product.selected_or_first_available_variant
+-%}
+<div class="price">
+  {%- if target.compare_at_price > target.price -%}
+    <s class="price__compare">{{ target.compare_at_price | money }}</s>
+    <span class="price__sale">{{ target.price | money }}</span>
+  {%- else -%}
+    <span>{{ target.price | money }}</span>
+  {%- endif -%}
+  {%- unless target.available %}<span class="badge">{{ 'products.sold_out' | t }}</span>{% endunless -%}
+</div>
