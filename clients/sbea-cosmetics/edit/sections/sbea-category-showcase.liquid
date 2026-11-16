@@ -1,0 +1,154 @@
+<style>.sbea-category-card__photo.sbea-category-card__photo--custom{object-position:50% 8%}</style>
+<section class="sbea-category-showcase section section--page-width">
+  <div class="sbea-category-showcase__header">
+    {% if section.settings.eyebrow != blank %}<p class="sbea-category-showcase__eyebrow">{{ section.settings.eyebrow }}</p>{% endif %}
+    <h2>{{ section.settings.heading }}</h2>
+    {% if section.settings.subheading != blank %}<p class="sbea-category-showcase__subheading">{{ section.settings.subheading }}</p>{% endif %}
+  </div>
+
+  <div class="sbea-category-showcase__grid" tabindex="0" role="region" aria-label="Shop collections">
+    {% for block in section.blocks %}
+      {% assign product_1 = block.settings.product_1 %}
+      {% assign product_2 = block.settings.product_2 %}
+      {% assign product_3 = block.settings.product_3 %}
+      {% assign product_4 = block.settings.product_4 %}
+
+      {% if product_1 == blank and block.settings.product_1_handle != blank %}{% assign product_1 = all_products[block.settings.product_1_handle] %}{% endif %}
+      {% if product_2 == blank and block.settings.product_2_handle != blank %}{% assign product_2 = all_products[block.settings.product_2_handle] %}{% endif %}
+      {% if product_3 == blank and block.settings.product_3_handle != blank %}{% assign product_3 = all_products[block.settings.product_3_handle] %}{% endif %}
+      {% if product_4 == blank and block.settings.product_4_handle != blank %}{% assign product_4 = all_products[block.settings.product_4_handle] %}{% endif %}
+
+      {% assign card_link = block.settings.link %}
+      {% if card_link == blank %}{% assign card_link = routes.all_products_collection_url %}{% endif %}
+
+      <a class="sbea-category-card sbea-category-card--{{ block.settings.visual_style }}" href="{{ card_link }}" aria-label="{{ block.settings.alt_text | default: block.settings.title | escape }}" {{ block.shopify_attributes }}>
+        {% if block.settings.visual_style == 'bundle' %}<span class="sbea-category-card__shine" aria-hidden="true"></span>{% endif %}
+        <div class="sbea-category-card__media">
+          {% if block.settings.image != blank %}
+            {{ block.settings.image | image_url: width: 1200 | image_tag: widths: '400, 600, 900, 1200', sizes: '(min-width: 750px) 50vw, 90vw', loading: 'lazy', class: 'sbea-category-card__photo sbea-category-card__photo--custom', alt: block.settings.image.alt | default: block.settings.alt_text }}
+          {% elsif block.settings.visual_style == 'body' %}
+            <img class="sbea-category-card__photo" src="https://cdn.shopify.com/s/files/1/0998/7211/2944/files/sbea-mixed-berries-body-care-category.png?v=1791580826" alt="SBEA Mixed Berries Body Scrub with raspberries and blueberries" width="1122" height="1402" loading="lazy">
+          {% elsif block.settings.visual_style == 'hair' %}
+            <img class="sbea-category-card__photo" src="https://cdn.shopify.com/s/files/1/0998/7211/2944/files/sbea-bubble-gum-cotton-candy-card.png?v=1791590713" alt="SBEA Bubble Gum body lotion resting on pink cotton candy" width="1122" height="1402" loading="lazy">
+          {% elsif block.settings.visual_style == 'bundle' %}
+            <img class="sbea-category-card__photo" src="https://cdn.shopify.com/s/files/1/0998/7211/2944/files/sbea-mixed-berries-raspberries-card.png?v=1791590326" alt="SBEA Mixed Berries body lotion among fresh raspberries" width="1122" height="1402" loading="lazy">
+          {% else %}
+          <div class="sbea-category-stage" aria-hidden="true">
+            {% if block.settings.visual_style == 'body' %}
+              <span class="sbea-category-stage__cream"></span>
+              <span class="sbea-category-stage__petal sbea-category-stage__petal--1"></span>
+              <span class="sbea-category-stage__petal sbea-category-stage__petal--2"></span>
+            {% elsif block.settings.visual_style == 'hair' %}
+              <span class="sbea-category-stage__ribbon"></span>
+              <span class="sbea-category-stage__drop sbea-category-stage__drop--1"></span>
+              <span class="sbea-category-stage__drop sbea-category-stage__drop--2"></span>
+              <span class="sbea-category-stage__drop sbea-category-stage__drop--3"></span>
+            {% elsif block.settings.visual_style == 'bundle' %}
+              <span class="sbea-category-stage__gift-box"></span>
+              <span class="sbea-category-stage__gift-ribbon"></span>
+            {% endif %}
+
+            {% for product_number in (1..4) %}
+              {% case product_number %}
+                {% when 1 %}{% assign item = product_1 %}
+                {% when 2 %}{% assign item = product_2 %}
+                {% when 3 %}{% assign item = product_3 %}
+                {% when 4 %}{% assign item = product_4 %}
+              {% endcase %}
+              {% if item.featured_image != blank %}
+                <div class="sbea-category-stage__product sbea-category-stage__product--{{ forloop.index }}">
+                  {{ item.featured_image | image_url: width: 700 | image_tag: widths: '220, 360, 520, 700', sizes: '(min-width: 990px) 14vw, (min-width: 750px) 22vw, 36vw', loading: 'lazy', class: 'sbea-category-stage__image', alt: item.featured_image.alt | default: item.title }}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+
+        <div class="sbea-category-card__content">
+          <div class="sbea-category-card__title-row">
+            <h3>{{ block.settings.kicker | default: block.settings.title | escape }}</h3>
+            
+          </div>
+          {% if block.settings.kicker != blank %}<p class="sbea-category-card__tagline">{{ block.settings.title | escape }}</p>{% endif %}
+          {% if block.settings.text != blank %}<p class="sbea-category-card__description">{{ block.settings.text }}</p>{% endif %}
+          <span class="sbea-category-card__cta">Explore collection </span>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+
+{% stylesheet %}
+
+.sbea-category-showcase{padding-block:64px;color:#542634}
+.sbea-category-showcase__header{max-width:720px;margin:0 auto 36px;text-align:center}
+.sbea-category-showcase__eyebrow{margin:0 0 12px;font-size:.75rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#BD3261}
+.sbea-category-showcase__header h2{margin:0 0 12px;font-size:clamp(2rem,3.6vw,3rem);line-height:1.12;letter-spacing:-.035em}
+.sbea-category-showcase__subheading{margin:0;line-height:1.65;color:#805563;font-size:1rem}
+.sbea-category-showcase__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-items:stretch}
+.sbea-category-card{display:flex;flex-direction:column;overflow:hidden;border-radius:20px;background:#FFFFFF;color:#542634;text-decoration:none;border:1px solid #F5D6D8;box-shadow:0 4px 16px rgba(84,43,61,.035);transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
+.sbea-category-card__media{aspect-ratio:4/5;overflow:hidden;background:#FFE3DE}
+.sbea-category-card__photo{display:block;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .4s ease}
+.sbea-category-card__content{display:flex;flex-direction:column;flex:1;padding:26px 26px 24px;background:linear-gradient(145deg,#FFFFFF,#FFE8E1)}
+.sbea-category-card__title-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-bottom:16px;margin-bottom:16px;border-bottom:1px solid #F2BDCA}
+.sbea-category-card__title-row h3{margin:0;font-family:var(--font-body--family,inherit);font-size:clamp(1.3rem,2.15vw,1.85rem);font-weight:750;letter-spacing:-.03em;line-height:1.2;color:#BD3261}
+.sbea-category-card__arrow{display:grid;place-items:center;flex:0 0 36px;width:36px;height:36px;border-radius:50%;background:#FFD5DC;color:#BD3261;font-size:1.2rem;transition:background .2s ease,color .2s ease}
+.sbea-category-card__tagline{margin:0 0 8px;font-size:1rem;font-weight:650;line-height:1.4;color:#542634}
+.sbea-category-card__description{margin:0 0 22px;font-size:.9rem;line-height:1.65;color:#805563}
+.sbea-category-card__cta{display:flex;justify-content:space-between;align-items:center;margin-top:auto;font-size:.8rem;font-weight:700;letter-spacing:.025em;color:#BD3261;gap:12px}
+.sbea-category-card:hover{transform:translateY(-4px);border-color:#EB99B0;box-shadow:0 12px 30px rgba(84,43,61,.09)}
+.sbea-category-card:hover .sbea-category-card__photo{transform:scale(1.025)}
+.sbea-category-card:hover .sbea-category-card__arrow{background:#BD3261;color:#FFFFFF}
+.sbea-category-card:focus-visible{outline:3px solid #BD3261;outline-offset:4px}
+@media(max-width:989px) and (min-width:750px){.sbea-category-showcase__grid{gap:16px}.sbea-category-card__content{padding:20px 16px}.sbea-category-card__title-row h3{font-size:1.3rem}.sbea-category-card__arrow{flex-basis:28px;width:28px;height:28px}}
+@media(max-width:749px){.sbea-category-showcase{padding-block:40px}.sbea-category-showcase__header{margin-bottom:26px;padding-inline:8px}.sbea-category-showcase__grid{grid-template-columns:1fr;gap:24px}.sbea-category-card{border-radius:18px}.sbea-category-card__content{padding:24px}.sbea-category-card__title-row h3{font-size:1.75rem}.sbea-category-card__description{font-size:.95rem}}
+@media(prefers-reduced-motion:reduce){.sbea-category-card,.sbea-category-card__photo,.sbea-category-card__arrow{transition:none}.sbea-category-card:hover,.sbea-category-card:hover .sbea-category-card__photo{transform:none}}
+
+.sbea-category-card--bundle{position:relative;isolation:isolate}
+.sbea-category-card--bundle .sbea-category-card__shine{position:absolute;top:-30%;bottom:-30%;left:-80%;width:42%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-20deg);animation:sbea-card-shine 5s ease-in-out infinite;pointer-events:none;z-index:2}
+@keyframes sbea-card-shine{0%,25%{transform:translateX(0) skewX(-20deg);opacity:0}35%{opacity:1}65%,100%{transform:translateX(500%) skewX(-20deg);opacity:0}}
+@media(prefers-reduced-motion:reduce){.sbea-category-card--bundle .sbea-category-card__shine{animation:none;display:none}}
+.sbea-category-showcase__grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:2px;gap:24px;padding:4px 2px 18px;scrollbar-width:thin;scrollbar-color:#D83C78 #FBEAF0}
+.sbea-category-showcase__grid .sbea-category-card{flex:0 0 calc((100% - 24px)/2);scroll-snap-align:start}
+.sbea-category-card__media{aspect-ratio:5/4}
+.sbea-category-card__content{background:#FFF6F9}
+.sbea-category-showcase__header h2{color:#C7356C}
+@media(max-width:749px){.sbea-category-showcase__grid{gap:16px}.sbea-category-showcase__grid .sbea-category-card{flex-basis:86%}.sbea-category-card__media{aspect-ratio:1}.sbea-category-card__content{padding:22px}}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "SBEA category showcase",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Shop your ritual" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Find your SBEA ritual" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Explore body care, hair care and bundles for your daily routine" }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category card",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Card photo", "info": "Optional. Replaces the default photo for this card." },
+        { "type": "select", "id": "visual_style", "label": "Visual style", "options": [{"value":"body","label":"Body care"},{"value":"hair","label":"Hair care"},{"value":"bundle","label":"Bundle"}], "default": "body" },
+        { "type": "product", "id": "product_1", "label": "Product 1" },
+        { "type": "product", "id": "product_2", "label": "Product 2" },
+        { "type": "product", "id": "product_3", "label": "Product 3" },
+        { "type": "product", "id": "product_4", "label": "Product 4" },
+        { "type": "text", "id": "product_1_handle", "label": "Fallback product 1 handle" },
+        { "type": "text", "id": "product_2_handle", "label": "Fallback product 2 handle" },
+        { "type": "text", "id": "product_3_handle", "label": "Fallback product 3 handle" },
+        { "type": "text", "id": "product_4_handle", "label": "Fallback product 4 handle" },
+        { "type": "text", "id": "kicker", "label": "Small label" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Category" },
+        { "type": "textarea", "id": "text", "label": "Description" },
+        { "type": "url", "id": "link", "label": "Link" },
+        { "type": "text", "id": "alt_text", "label": "Visual alt text" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [{ "name": "SBEA category showcase" }]
+}
+{% endschema %}

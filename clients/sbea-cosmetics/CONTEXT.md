@@ -36,3 +36,8 @@ Store: pk1610-hu.myshopify.com (SBEA, https://sbeacosmetics.com)
   - Instagram URL: the label shows "SBEACOSMETICS.LB". Asked to confirm.
   - Hair bundle photo: waiting.
 - 2026-11-16: confirmed phone +961 76 556 123 (not 555) and Instagram @sbeacosmetics.lb. Contact page now has phone (wa.me/96176556123), email and Instagram. Footer social-links block instagram_url = https://www.instagram.com/sbeacosmetics.lb/ (backup-footer-group.before-instagram.json). Checked live.
+- 2026-11-16: Homepage 'Find your SBEA ritual' (section category_showcase, sbea-category-showcase.liquid):
+  - The Hair care card showed a Bubble Gum lotion on cotton candy (hard-coded photo). It now uses the owner's photo (hair serum + hair oil in a hair bun; file sbea-hair-care-card.jpg, source hair-care-card.jpg).
+  - Added a per-card 'Card photo' image_picker that overrides the hard-coded image, cropped to the top with an inline <style> (object-position 50% 8%). Notes: image_tag drops style=; {% stylesheet %} changes are cached.
+  - Backups: backup-sbea-category-showcase.before-hair-image.liquid, backup-index.before-hair-image.json. Checked on mobile and desktop.
+  - Note: the Hair care card links to /collections/all, not /collections/hair-care (left as is).
