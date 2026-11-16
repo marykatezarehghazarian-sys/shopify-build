@@ -1,0 +1,1857 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "slideshow": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_KKa8xm": {
+          "type": "slide",
+          "settings": {
+            "background_image": "shopify://shop_images/premium-australian-homeware-decor-gold-mirror-table-lamps-cushions_avif.avif",
+            "background_image_focal_point": "center",
+            "background_image_mobile_focal_point": "center",
+            "media_link": "",
+            "custom_width": 900,
+            "text_position": "center_center",
+            "text_position_mobile": "center_center",
+            "accent": "Elevate Your Space, Where Style Meets Comfort.",
+            "accent_divider_enable": false,
+            "accent_divider_color": "accent",
+            "title": "Premium Homeware & Decor by Shopica",
+            "heading_tag": "h1",
+            "heading_font_size": 7,
+            "text": "",
+            "text_font_size": 6,
+            "button_1_button_link": "shopify://collections/homeware-and-decor",
+            "button_1_button_label": "Shop Now",
+            "button_1_button_style": "primary",
+            "button_2_button_link": "#",
+            "button_2_button_label": "",
+            "button_2_button_style": "outline",
+            "image_overlay_tint_opacity": 40,
+            "image_overlay_tint_style": "solid",
+            "image_overlay_override_with_custom_colors": false,
+            "image_overlay_override_color_text": "#ffffff",
+            "image_overlay_override_color_tint": "#000000",
+            "enable_text_box": false,
+            "text_box_style": "solid_thick",
+            "text_box_color_scheme": "accent",
+            "text_box_override_with_custom_colors": false,
+            "text_box_override_color_text": "#e20814",
+            "text_box_override_color_background": "#ffffff"
+          }
+        },
+        "slide_3": {
+          "type": "slide",
+          "settings": {
+            "background_image": "shopify://shop_images/banner-living-room.jpg",
+            "background_image_focal_point": "center",
+            "background_image_mobile_focal_point": "center",
+            "media_link": "",
+            "custom_width": 900,
+            "text_position": "center_center",
+            "text_position_mobile": "center_center",
+            "accent": "Shop Smarter, Live Better",
+            "accent_divider_enable": false,
+            "accent_divider_color": "accent",
+            "title": "Curated Homeware. Timeless Living.",
+            "heading_tag": "h2",
+            "heading_font_size": 7,
+            "text": "",
+            "text_font_size": 6,
+            "button_1_button_link": "shopify://collections/living-room",
+            "button_1_button_label": "Shop Now",
+            "button_1_button_style": "primary",
+            "button_2_button_link": "",
+            "button_2_button_label": "",
+            "button_2_button_style": "outline",
+            "image_overlay_tint_opacity": 40,
+            "image_overlay_tint_style": "solid",
+            "image_overlay_override_with_custom_colors": false,
+            "image_overlay_override_color_text": "#ffffff",
+            "image_overlay_override_color_tint": "#000000",
+            "enable_text_box": false,
+            "text_box_style": "solid_thick",
+            "text_box_color_scheme": "accent",
+            "text_box_override_with_custom_colors": false,
+            "text_box_override_color_text": "#e20814",
+            "text_box_override_color_background": "#ffffff"
+          }
+        },
+        "slide_QXh4zk": {
+          "type": "slide",
+          "settings": {
+            "background_image": "shopify://shop_images/banner-dining-room.jpg",
+            "background_image_focal_point": "center",
+            "background_image_mobile_focal_point": "center",
+            "media_link": "",
+            "custom_width": 900,
+            "text_position": "center_center",
+            "text_position_mobile": "center_center",
+            "accent": "Elevated Dining Living",
+            "accent_divider_enable": false,
+            "accent_divider_color": "accent",
+            "title": "Thoughtfully Styled Dining Essentials.",
+            "heading_tag": "h2",
+            "heading_font_size": 7,
+            "text": "",
+            "text_font_size": 6,
+            "button_1_button_link": "shopify://collections/dining",
+            "button_1_button_label": "Shop Now",
+            "button_1_button_style": "primary",
+            "button_2_button_link": "#",
+            "button_2_button_label": "",
+            "button_2_button_style": "outline",
+            "image_overlay_tint_opacity": 40,
+            "image_overlay_tint_style": "solid",
+            "image_overlay_override_with_custom_colors": false,
+            "image_overlay_override_color_text": "#ffffff",
+            "image_overlay_override_color_tint": "#000000",
+            "enable_text_box": false,
+            "text_box_style": "solid_thick",
+            "text_box_color_scheme": "accent",
+            "text_box_override_with_custom_colors": false,
+            "text_box_override_color_text": "#e20814",
+            "text_box_override_color_background": "#ffffff"
+          }
+        },
+        "slide_c3UWKg": {
+          "type": "slide",
+          "settings": {
+            "background_image": "shopify://shop_images/banner-outdoor-furniture.jpg",
+            "background_image_focal_point": "center",
+            "background_image_mobile_focal_point": "center",
+            "media_link": "",
+            "custom_width": 900,
+            "text_position": "center_center",
+            "text_position_mobile": "center_center",
+            "accent": "Comfort Meets Outdoor Elegance",
+            "accent_divider_enable": false,
+            "accent_divider_color": "accent",
+            "title": "Comfort For Every Outdoor Moment.",
+            "heading_tag": "h2",
+            "heading_font_size": 7,
+            "text": "",
+            "text_font_size": 6,
+            "button_1_button_link": "shopify://collections/outdoor-furniture",
+            "button_1_button_label": "Shop Now",
+            "button_1_button_style": "primary",
+            "button_2_button_link": "#",
+            "button_2_button_label": "",
+            "button_2_button_style": "outline",
+            "image_overlay_tint_opacity": 40,
+            "image_overlay_tint_style": "solid",
+            "image_overlay_override_with_custom_colors": false,
+            "image_overlay_override_color_text": "#ffffff",
+            "image_overlay_override_color_tint": "#000000",
+            "enable_text_box": false,
+            "text_box_style": "solid_thick",
+            "text_box_color_scheme": "accent",
+            "text_box_override_with_custom_colors": false,
+            "text_box_override_color_text": "#e20814",
+            "text_box_override_color_background": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "slide_KKa8xm",
+        "slide_3",
+        "slide_QXh4zk",
+        "slide_c3UWKg"
+      ],
+      "settings": {
+        "enable_full_width": true,
+        "image_height_type": "custom",
+        "custom_height_desktop": "80vh",
+        "custom_height_mobile": "550px",
+        "enable_autoplay": true,
+        "duration_autoplay": 8,
+        "navigation_size": "narrow",
+        "navigation_size_mobile": "narrow",
+        "navigation_alignment": "center",
+        "navigation_alignment_mobile": "center",
+        "show_drop_shadows": false,
+        "navigation_color_foreground": "#ffffff",
+        "navigation_color_background": "rgba(0,0,0,0)",
+        "navigation_background_opacity": 79,
+        "navigation_background_style": "gradient",
+        "section_style_spacing_top": 0,
+        "section_style_spacing_bottom": 0,
+        "section_style_enable_animation": false
+      }
+    },
+    "sales_banner_inline_fyLefX": {
+      "type": "sales-banner-inline",
+      "name": "Sales banner (inline)",
+      "settings": {
+        "min_height": 80,
+        "min_height_mobile": 200,
+        "full_width": false,
+        "heading": "Flash Sale",
+        "heading_font_size": 5,
+        "sale_type": "Get",
+        "sale_amount": "30",
+        "sale_unit": "percent_off",
+        "terms_and_conditions": "on Homeware & Décor",
+        "sale_font_size": 56,
+        "sale_font_size_mobile": 36,
+        "currency_symbol_position": "before",
+        "tagline": "",
+        "sub_items": "",
+        "button_1_button_link": "shopify://collections/homeware-and-decor",
+        "button_1_button_label": "Shop now",
+        "button_1_button_style": "secondary",
+        "button_2_button_link": "shopify://collections",
+        "button_2_button_label": "",
+        "button_2_button_style": "outline",
+        "color_scheme": "sale",
+        "override_with_custom_colors": true,
+        "override_color_text": "#fafafa",
+        "override_color_background": "#d1672e",
+        "background_image_focal_point": "image_presentation",
+        "background_image_mobile_focal_point": "image_presentation",
+        "image_overlay_tint_opacity": 50,
+        "image_overlay_tint_style": "solid",
+        "image_overlay_override_with_custom_colors": false,
+        "image_overlay_override_color_text": "#ffffff",
+        "image_overlay_override_color_tint": "#000000",
+        "section_style_spacing_top": 0,
+        "section_style_spacing_bottom": 0,
+        "section_style_enable_animation": true
+      }
+    },
+    "grid_kfa86R": {
+      "type": "grid",
+      "blocks": {
+        "item_7mrdjY": {
+          "type": "item",
+          "settings": {
+            "width": "25",
+            "height": 420,
+            "mobile_height": 300,
+            "media_type": "image",
+            "background_video_focal_point": "center",
+            "mobile_background_video_focal_point": "center",
+            "background_image": "shopify://shop_images/col-cushions.jpg",
+            "background_image_focal_point": "image_presentation",
+            "background_image_mobile_focal_point": "image_presentation",
+            "text_position": "flex-start_flex-end",
+            "text_position_mobile": "flex-start_flex-end",
+            "accent": "",
+            "accent_divider_enable": true,
+            "accent_divider_color": "accent",
+            "title": "Cushions",
+            "heading_tag": "h3",
+            "heading_font_size": 4,
+            "text": "<p>Discover our premium duck feather throw cushions.</p>",
+            "text_font_size": 3,
+            "maximum_text_width": 250,
+            "button_link": "shopify://collections/cushions",
+            "button_label": "Shop Now",
+            "button_style": "primary",
+            "image_overlay_tint_opacity": 30,
+            "image_overlay_tint_style": "solid",
+            "image_overlay_override_with_custom_colors": false,
+            "image_overlay_override_color_text": "#ffffff",
+            "image_overlay_override_color_tint": "#000000"
+          }
+        },
+        "item_MrRDQ6": {
+          "type": "item",
+          "settings": {
+            "width": "25",
+            "height": 420,
+            "mobile_height": 300,
+            "media_type": "image",
+            "background_video_focal_point": "center",
+            "mobile_background_video_focal_point": "center",
+            "background_image": "shopify://shop_images/col-floor-lamps.jpg",
+            "background_image_focal_point": "image_presentation",
+            "background_image_mobile_focal_point": "image_presentation",
+            "text_position": "flex-start_flex-end",
+            "text_position_mobile": "flex-start_flex-end",
+            "accent": "",
+            "accent_divider_enable": true,
+            "accent_divider_color": "accent",
+            "title": "Floor Lamps",
+            "heading_tag": "h3",
+            "heading_font_size": 4,
+            "text": "<p>Discover our premium modern and coastal standing lamps.</p>",
+            "text_font_size": 3,
+            "maximum_text_width": 250,
+            "button_link": "shopify://collections/floor-lamps",
+            "button_label": "Shop Now",
+            "button_style": "primary",
+            "image_overlay_tint_opacity": 30,
+            "image_overlay_tint_style": "solid",
+            "image_overlay_override_with_custom_colors": false,
+            "image_overlay_override_color_text": "#ffffff",
+            "image_overlay_override_color_tint": "#000000"
+          }
+        },
+        "item_pdL6MG": {
+          "type": "item",
+          "settings": {
+            "width": "25",
+            "height": 420,
+            "mobile_height": 300,
+            "media_type": "image",
+            "background_video_focal_point": "center",
+            "mobile_background_video_focal_point": "center",
+            "background_image": "shopify://shop_images/col-table-lamps.jpg",
+            "background_image_focal_point": "image_presentation",
+            "background_image_mobile_focal_point": "image_presentation",
+            "text_position": "flex-start_flex-end",
+            "text_position_mobile": "flex-start_flex-end",
+            "accent": "",
+            "accent_divider_enable": true,
+            "accent_divider_color": "accent",
+            "title": "Table Lamps",
+            "heading_tag": "h3",
+            "heading_font_size": 4,
+            "text": "<p>Discover our premium Table Lamp Collection.</p>",
+            "text_font_size": 3,
+            "maximum_text_width": 250,
+            "button_link": "shopify://collections/table-lamps",
+            "button_label": "Shop Now",
+            "button_style": "primary",
+            "image_overlay_tint_opacity": 30,
+            "image_overlay_tint_style": "solid",
+            "image_overlay_override_with_custom_colors": false,
+            "image_overlay_override_color_text": "#ffffff",
+            "image_overlay_override_color_tint": "#000000"
+          }
+        },
+        "item_kqQB7b": {
+          "type": "item",
+          "settings": {
+            "width": "25",
+            "height": 420,
+            "mobile_height": 300,
+            "media_type": "image",
+            "background_video_focal_point": "center",
+            "mobile_background_video_focal_point": "center",
+            "background_image": "shopify://shop_images/col-mirrors-clocks.jpg",
+            "background_image_focal_point": "image_presentation",
+            "background_image_mobile_focal_point": "image_presentation",
+            "text_position": "flex-start_flex-end",
+            "text_position_mobile": "flex-start_flex-end",
+            "accent": "",
+            "accent_divider_enable": true,
+            "accent_divider_color": "accent",
+            "title": "Mirrors and Clocks",
+            "heading_tag": "h3",
+            "heading_font_size": 4,
+            "text": "<p>Make any room feel larger, lighter and more considered.</p>",
+            "text_font_size": 3,
+            "maximum_text_width": 250,
+            "button_link": "shopify://collections/mirrors-and-clocks",
+            "button_label": "Shop Now",
+            "button_style": "primary",
+            "image_overlay_tint_opacity": 30,
+            "image_overlay_tint_style": "solid",
+            "image_overlay_override_with_custom_colors": false,
+            "image_overlay_override_color_text": "#ffffff",
+            "image_overlay_override_color_tint": "#000000"
+          }
+        },
+        "item_wPii7Y": {
+          "type": "item",
+          "settings": {
+            "width": "25",
+            "height": 420,
+            "mobile_height": 300,
+            "media_type": "image",
+            "background_video_focal_point": "center",
+            "mobile_background_video_focal_point": "center",
+            "background_image": "shopify://shop_images/col-bedside-tables.jpg",
+            "background_image_focal_point": "image_presentation",
+            "background_image_mobile_focal_point": "image_presentation",
+            "text_position": "flex-start_flex-end",
+            "text_position_mobile": "flex-start_flex-end",
+            "accent": "",
+            "accent_divider_enable": true,
+            "accent_divider_color": "accent",
+            "title": "Bedside Tables",
+            "heading_tag": "h3",
+            "heading_font_size": 4,
+            "text": "<p>Discover our premium accent drawers & modern bedroom storage.</p>",
+            "text_font_size": 3,
+            "maximum_text_width": 250,
+            "button_link": "shopify://collections/bedside-tables",
+            "button_label": "Shop Now",
+            "button_style": "primary",
+            "image_overlay_tint_opacity": 30,
+            "image_overlay_tint_style": "solid",
+            "image_overlay_override_with_custom_colors": false,
+            "image_overlay_override_color_text": "#ffffff",
+            "image_overlay_override_color_tint": "#000000"
+          }
+        },
+        "item_W8U7t8": {
+          "type": "item",
+          "settings": {
+            "width": "25",
+            "height": 420,
+            "mobile_height": 300,
+            "media_type": "image",
+            "background_video_focal_point": "center",
+            "mobile_background_video_focal_point": "center",
+            "background_image": "shopify://shop_images/Tv_and_Entertainment_Units_Collection_Image.avif",
+            "background_image_focal_point": "image_presentation",
+            "background_image_mobile_focal_point": "image_presentation",
+            "text_position": "flex-start_flex-end",
+            "text_position_mobile": "flex-start_flex-end",
+            "accent": "",
+            "accent_divider_enable": true,
+            "accent_divider_color": "accent",
+            "title": "Entertainment and Tv Units",
+            "heading_tag": "h3",
+            "heading_font_size": 4,
+            "text": "<p>Discover our premium media consoles and living room storage.</p>",
+            "text_font_size": 3,
+            "maximum_text_width": 250,
+            "button_link": "shopify://collections/entertainment-and-tv-units",
+            "button_label": "Shop Now",
+            "button_style": "primary",
+            "image_overlay_tint_opacity": 30,
+            "image_overlay_tint_style": "solid",
+            "image_overlay_override_with_custom_colors": false,
+            "image_overlay_override_color_text": "#ffffff",
+            "image_overlay_override_color_tint": "#000000"
+          }
+        },
+        "item_LTCxKp": {
+          "type": "item",
+          "settings": {
+            "width": "25",
+            "height": 420,
+            "mobile_height": 300,
+            "media_type": "image",
+            "background_video_focal_point": "center",
+            "mobile_background_video_focal_point": "center",
+            "background_image": "shopify://shop_images/Azure_Oasis_Round_Coffee_Table_with_Golden_Touch.avif",
+            "background_image_focal_point": "image_presentation",
+            "background_image_mobile_focal_point": "image_presentation",
+            "text_position": "flex-start_flex-end",
+            "text_position_mobile": "flex-start_flex-end",
+            "accent": "",
+            "accent_divider_enable": true,
+            "accent_divider_color": "accent",
+            "title": "Coffee Tables and Side Tables",
+            "heading_tag": "h3",
+            "heading_font_size": 4,
+            "text": "<p>Discover our premium statement centerpieces & living room accents.</p>",
+            "text_font_size": 3,
+            "maximum_text_width": 250,
+            "button_link": "shopify://collections/coffee-tables-and-side-tables",
+            "button_label": "Shop Now",
+            "button_style": "primary",
+            "image_overlay_tint_opacity": 30,
+            "image_overlay_tint_style": "solid",
+            "image_overlay_override_with_custom_colors": false,
+            "image_overlay_override_color_text": "#ffffff",
+            "image_overlay_override_color_tint": "#000000"
+          }
+        },
+        "item_fkDhUK": {
+          "type": "item",
+          "settings": {
+            "width": "25",
+            "height": 420,
+            "mobile_height": 300,
+            "media_type": "image",
+            "background_video_focal_point": "center",
+            "mobile_background_video_focal_point": "center",
+            "background_image": "shopify://shop_images/hall-table-and-console-table_avif.avif",
+            "background_image_focal_point": "image_presentation",
+            "background_image_mobile_focal_point": "image_presentation",
+            "text_position": "flex-start_flex-end",
+            "text_position_mobile": "flex-start_flex-end",
+            "accent": "",
+            "accent_divider_enable": true,
+            "accent_divider_color": "accent",
+            "title": "Hall & Console Tables",
+            "heading_tag": "h3",
+            "heading_font_size": 4,
+            "text": "<p>Discover our premium narrow units and modern entryway storage.</p>",
+            "text_font_size": 3,
+            "maximum_text_width": 250,
+            "button_link": "shopify://collections/console-and-hall-tables",
+            "button_label": "Shop Now",
+            "button_style": "primary",
+            "image_overlay_tint_opacity": 30,
+            "image_overlay_tint_style": "solid",
+            "image_overlay_override_with_custom_colors": false,
+            "image_overlay_override_color_text": "#ffffff",
+            "image_overlay_override_color_tint": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "item_7mrdjY",
+        "item_MrRDQ6",
+        "item_pdL6MG",
+        "item_kqQB7b",
+        "item_wPii7Y",
+        "item_W8U7t8",
+        "item_LTCxKp",
+        "item_fkDhUK"
+      ],
+      "settings": {
+        "center_content": false,
+        "preheading": "",
+        "heading": "Browse Store",
+        "section_header_heading_tag": "h2",
+        "subheading": "",
+        "section_header_subheading_tag": "h2",
+        "maximum_content_width": 650,
+        "full_width": false,
+        "grid_spacing": 24,
+        "color_scheme": "default",
+        "override_with_custom_colors": false,
+        "override_color_text": "#393939",
+        "override_color_background": "#ffffff",
+        "section_style_spacing_top": 40,
+        "section_style_spacing_bottom": 40,
+        "section_style_enable_animation": true
+      }
+    },
+    "52682bd1-d9fd-4176-bcc6-46b17ff22973": {
+      "type": "featured-collection",
+      "settings": {
+        "center_content": true,
+        "preheading": "Curated Objects",
+        "heading": "Decor",
+        "section_header_heading_tag": "h2",
+        "subheading": "",
+        "section_header_subheading_tag": "h2",
+        "maximum_content_width": 650,
+        "button_1_button_link": "",
+        "button_1_button_label": "",
+        "button_1_button_style": "primary",
+        "button_2_button_link": "",
+        "button_2_button_label": "",
+        "button_2_button_style": "tertiary",
+        "button_position": "header",
+        "collection": "vases-jars",
+        "maximum_products": 10,
+        "num_columns": "5",
+        "num_columns_mobile": "1",
+        "enable_slider_desktop": true,
+        "enable_slider_mobile": true,
+        "show_view_all_tile": false,
+        "tile_location": "beginning",
+        "accent": "",
+        "title": "Discover Areaware",
+        "heading_tag": "h3",
+        "text": "Shop all",
+        "text_position": "flex-start_flex-start",
+        "color_scheme": "accent",
+        "override_with_custom_colors": false,
+        "override_color_text": "#e20814",
+        "override_color_background": "#c6e5ff",
+        "background_image_focal_point": "image_presentation",
+        "image_overlay_tint_opacity": 50,
+        "image_overlay_tint_style": "gradient_down",
+        "image_overlay_override_with_custom_colors": false,
+        "image_overlay_override_color_text": "#ffffff",
+        "image_overlay_override_color_tint": "#000000",
+        "section_style_spacing_top": 0,
+        "section_style_spacing_bottom": 40,
+        "section_style_enable_animation": true
+      }
+    },
+    "grid_mExmHH": {
+      "type": "grid",
+      "blocks": {
+        "item_CbcRxV": {
+          "type": "item",
+          "settings": {
+            "width": "25",
+            "height": 640,
+            "mobile_height": 300,
+            "media_type": "image",
+            "background_video_focal_point": "center",
+            "mobile_background_video_focal_point": "center",
+            "background_image": "shopify://shop_images/col-bedroom.jpg",
+            "background_image_focal_point": "image_presentation",
+            "background_image_mobile_focal_point": "image_presentation",
+            "text_position": "flex-start_flex-end",
+            "text_position_mobile": "flex-start_flex-end",
+            "accent": "",
+            "accent_divider_enable": true,
+            "accent_divider_color": "accent",
+            "title": "Bedroom Comfort",
+            "heading_tag": "h3",
+            "heading_font_size": 4,
+            "text": "<p>Bedside tables, table lamps and throws for a bedroom that feels calm and considered.</p>",
+            "text_font_size": 3,
+            "maximum_text_width": 350,
+            "button_link": "shopify://collections/bedroom",
+            "button_label": "View Collection",
+            "button_style": "primary",
+            "image_overlay_tint_opacity": 30,
+            "image_overlay_tint_style": "solid",
+            "image_overlay_override_with_custom_colors": false,
+            "image_overlay_override_color_text": "#ffffff",
+            "image_overlay_override_color_tint": "#000000"
+          }
+        },
+        "item_WwaAMD": {
+          "type": "item",
+          "settings": {
+            "width": "25",
+            "height": 640,
+            "mobile_height": 300,
+            "media_type": "image",
+            "background_video_focal_point": "center",
+            "mobile_background_video_focal_point": "center",
+            "background_image": "shopify://shop_images/col-living-room.jpg",
+            "background_image_focal_point": "image_presentation",
+            "background_image_mobile_focal_point": "image_presentation",
+            "text_position": "flex-start_flex-end",
+            "text_position_mobile": "flex-start_flex-end",
+            "accent": "",
+            "accent_divider_enable": true,
+            "accent_divider_color": "accent",
+            "title": "Living Room",
+            "heading_tag": "h3",
+            "heading_font_size": 4,
+            "text": "<p>Cushions, floor lamps and mirrors that make your living room feel finished.</p>",
+            "text_font_size": 3,
+            "maximum_text_width": 350,
+            "button_link": "shopify://collections/living-room",
+            "button_label": "View Collection",
+            "button_style": "primary",
+            "image_overlay_tint_opacity": 30,
+            "image_overlay_tint_style": "solid",
+            "image_overlay_override_with_custom_colors": false,
+            "image_overlay_override_color_text": "#ffffff",
+            "image_overlay_override_color_tint": "#000000"
+          }
+        },
+        "item_LbpMLC": {
+          "type": "item",
+          "settings": {
+            "width": "25",
+            "height": 640,
+            "mobile_height": 300,
+            "media_type": "image",
+            "background_video_focal_point": "center",
+            "mobile_background_video_focal_point": "center",
+            "background_image": "shopify://shop_images/col-dining.jpg",
+            "background_image_focal_point": "image_presentation",
+            "background_image_mobile_focal_point": "image_presentation",
+            "text_position": "flex-start_flex-end",
+            "text_position_mobile": "flex-start_flex-end",
+            "accent": "",
+            "accent_divider_enable": true,
+            "accent_divider_color": "accent",
+            "title": "Dining In Style",
+            "heading_tag": "h3",
+            "heading_font_size": 4,
+            "text": "<p>Dining tables, chairs and buffets for meals that feel more than just dinner.</p>",
+            "text_font_size": 3,
+            "maximum_text_width": 350,
+            "button_link": "shopify://collections/dining",
+            "button_label": "View Collection",
+            "button_style": "primary",
+            "image_overlay_tint_opacity": 30,
+            "image_overlay_tint_style": "solid",
+            "image_overlay_override_with_custom_colors": false,
+            "image_overlay_override_color_text": "#ffffff",
+            "image_overlay_override_color_tint": "#000000"
+          }
+        },
+        "item_aKTxRf": {
+          "type": "item",
+          "settings": {
+            "width": "25",
+            "height": 640,
+            "mobile_height": 300,
+            "media_type": "image",
+            "background_video_focal_point": "center",
+            "mobile_background_video_focal_point": "center",
+            "background_image": "shopify://shop_images/col-outdoor-living.jpg",
+            "background_image_focal_point": "image_presentation",
+            "background_image_mobile_focal_point": "image_presentation",
+            "text_position": "flex-start_flex-end",
+            "text_position_mobile": "flex-start_flex-end",
+            "accent": "",
+            "accent_divider_enable": true,
+            "accent_divider_color": "accent",
+            "title": "Outdoor Living",
+            "heading_tag": "h3",
+            "heading_font_size": 4,
+            "text": "<p>Dining settings, lounges and egg chairs for a backyard worth spending time in.</p>",
+            "text_font_size": 3,
+            "maximum_text_width": 350,
+            "button_link": "shopify://collections/outdoor-lounges",
+            "button_label": "View Collection",
+            "button_style": "primary",
+            "image_overlay_tint_opacity": 30,
+            "image_overlay_tint_style": "solid",
+            "image_overlay_override_with_custom_colors": false,
+            "image_overlay_override_color_text": "#ffffff",
+            "image_overlay_override_color_tint": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "item_CbcRxV",
+        "item_WwaAMD",
+        "item_LbpMLC",
+        "item_aKTxRf"
+      ],
+      "settings": {
+        "center_content": false,
+        "preheading": "",
+        "heading": "Shop by Room",
+        "section_header_heading_tag": "h2",
+        "subheading": "",
+        "section_header_subheading_tag": "h2",
+        "maximum_content_width": 650,
+        "full_width": false,
+        "grid_spacing": 24,
+        "color_scheme": "default",
+        "override_with_custom_colors": false,
+        "override_color_text": "#393939",
+        "override_color_background": "#ffffff",
+        "section_style_spacing_top": 0,
+        "section_style_spacing_bottom": 40,
+        "section_style_enable_animation": true
+      }
+    },
+    "scrolling_content_wzni8A": {
+      "type": "scrolling-content",
+      "blocks": {
+        "text_UGPWFr": {
+          "type": "text",
+          "settings": {
+            "text": "&nbsp; Flash Sale - Get 30% Off* on Homeware & décor &nbsp;",
+            "link": "#",
+            "enable_highlighting": false
+          }
+        }
+      },
+      "block_order": [
+        "text_UGPWFr"
+      ],
+      "name": "t:sections.scrolling_content.presets.name",
+      "settings": {
+        "font_type": "body",
+        "font_size": 3,
+        "duration": 10,
+        "direction": "normal",
+        "gap_desktop": 50,
+        "gap_mobile": 30,
+        "color_scheme": "default",
+        "override_with_custom_colors": true,
+        "override_color_text": "#ffffff",
+        "override_color_background": "#d1672e",
+        "override_color_accent": "#c31818",
+        "section_style_spacing_top": 36,
+        "section_style_spacing_bottom": 36,
+        "section_style_enable_animation": true
+      }
+    },
+    "grid": {
+      "type": "grid",
+      "blocks": {
+        "item_gxF78m": {
+          "type": "item",
+          "settings": {
+            "width": "50",
+            "height": 800,
+            "mobile_height": 300,
+            "media_type": "image",
+            "background_video_focal_point": "center",
+            "mobile_background_video_focal_point": "center",
+            "background_image": "shopify://shop_images/col-sofas.jpg",
+            "background_image_focal_point": "image_presentation",
+            "background_image_mobile_focal_point": "image_presentation",
+            "text_position": "center_flex-end",
+            "text_position_mobile": "center_flex-end",
+            "accent": "",
+            "accent_divider_enable": true,
+            "accent_divider_color": "accent",
+            "title": "Lounges and Sofa Beds",
+            "heading_tag": "h3",
+            "heading_font_size": 5,
+            "text": "<p>Discover our premium leather suites, fabric chaises, and home theatre lounges.</p>",
+            "text_font_size": 3,
+            "maximum_text_width": 500,
+            "button_link": "shopify://collections/lounges-and-sofa-beds",
+            "button_label": "Shop Now",
+            "button_style": "primary",
+            "image_overlay_tint_opacity": 30,
+            "image_overlay_tint_style": "solid",
+            "image_overlay_override_with_custom_colors": false,
+            "image_overlay_override_color_text": "#ffffff",
+            "image_overlay_override_color_tint": "#000000"
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "width": "50",
+            "height": 800,
+            "mobile_height": 300,
+            "media_type": "image",
+            "background_video_focal_point": "center",
+            "mobile_background_video_focal_point": "center",
+            "background_image": "shopify://shop_images/col-throws.jpg",
+            "background_image_focal_point": "image_presentation",
+            "background_image_mobile_focal_point": "image_presentation",
+            "text_position": "center_flex-end",
+            "text_position_mobile": "center_flex-end",
+            "accent": "",
+            "accent_divider_enable": true,
+            "accent_divider_color": "accent",
+            "title": "Throws",
+            "heading_tag": "h3",
+            "heading_font_size": 5,
+            "text": "<p>Discover our premium velvet, brushed, and patterned throw blankets for your living spaces.</p>",
+            "text_font_size": 3,
+            "maximum_text_width": 500,
+            "button_link": "shopify://collections/throws",
+            "button_label": "Shop Now",
+            "button_style": "primary",
+            "image_overlay_tint_opacity": 30,
+            "image_overlay_tint_style": "solid",
+            "image_overlay_override_with_custom_colors": false,
+            "image_overlay_override_color_text": "#ffffff",
+            "image_overlay_override_color_tint": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "item_gxF78m",
+        "item_2"
+      ],
+      "settings": {
+        "center_content": false,
+        "preheading": "",
+        "heading": "",
+        "section_header_heading_tag": "h2",
+        "subheading": "",
+        "section_header_subheading_tag": "h2",
+        "maximum_content_width": 650,
+        "full_width": false,
+        "grid_spacing": 24,
+        "color_scheme": "default",
+        "override_with_custom_colors": false,
+        "override_color_text": "#393939",
+        "override_color_background": "#ffffff",
+        "section_style_spacing_top": 40,
+        "section_style_spacing_bottom": 40,
+        "section_style_enable_animation": true
+      }
+    },
+    "media_with_content_split_BN8MyP": {
+      "type": "media-with-content-split",
+      "blocks": {
+        "accent_T3g3DP": {
+          "type": "accent",
+          "settings": {
+            "text": "Elevate Your Everyday",
+            "accent_font_size": 6,
+            "accent_divider_enable": false,
+            "accent_divider_color": "current"
+          }
+        },
+        "heading_3cjFri": {
+          "type": "heading",
+          "settings": {
+            "title": "Homeware, Decor and Furniture for Australian Homes",
+            "heading_tag": "h2",
+            "heading_font_size": 6
+          }
+        },
+        "text_VdJhRh": {
+          "type": "text",
+          "settings": {
+            "text": "<p>There is a moment when a room stops feeling like a collection of furniture and starts feeling like yours. Sometimes it is a cushion that finally gets the colour right. Sometimes it is a floor lamp that makes the corner of the living room somewhere you actually want to sit. Sometimes it is a mirror that catches the afternoon light and makes the whole space feel bigger and calmer.<br/><br/>Shopica stocks cushions in linen, velvet and textured fabrics that suit coastal, Hamptons and contemporary Australian interiors. Floor lamps and table lamps that add warmth to rooms that deserve better than a single overhead globe. Mirrors that do real work on any wall. Throws, vases and candle holders that bring a room to life without a renovation budget.<br/><br/></p>",
+            "text_font_size": 3
+          }
+        },
+        "button_bjhqcf": {
+          "type": "button",
+          "settings": {
+            "button_link": "shopify://collections/homeware-and-decor",
+            "button_label": "Browse Homeware and Decor",
+            "button_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "accent_T3g3DP",
+        "heading_3cjFri",
+        "text_VdJhRh",
+        "button_bjhqcf"
+      ],
+      "custom_css": [],
+      "name": "t:sections.media_with_content_split.presets.name",
+      "settings": {
+        "media_width": 60,
+        "media_position_desktop": "left",
+        "media_position_mobile": "above",
+        "media_type": "image",
+        "image": "shopify://shop_images/home-homeware.jpg",
+        "media_aspect_ratio": "landscape_wide_alt",
+        "mobile_media_aspect_ratio": "square",
+        "media_focal_point": "center",
+        "mobile_media_focal_point": "center",
+        "content_width": "full",
+        "custom_width": 500,
+        "content_alignment": "left",
+        "color_scheme": "default",
+        "override_with_custom_colors": false,
+        "override_color_text": "#393939",
+        "override_color_background": "#ffffff",
+        "section_style_spacing_top": 0,
+        "section_style_spacing_bottom": 40,
+        "section_style_enable_animation": true
+      }
+    },
+    "grid_mQVY3X": {
+      "type": "grid",
+      "blocks": {
+        "item_cj8ia7": {
+          "type": "item",
+          "settings": {
+            "width": "50",
+            "height": 800,
+            "mobile_height": 300,
+            "media_type": "image",
+            "background_video_focal_point": "center",
+            "mobile_background_video_focal_point": "center",
+            "background_image": "shopify://shop_images/home-lamps.jpg",
+            "background_image_focal_point": "image_presentation",
+            "background_image_mobile_focal_point": "image_presentation",
+            "text_position": "center_flex-end",
+            "text_position_mobile": "center_flex-end",
+            "accent": "",
+            "accent_divider_enable": true,
+            "accent_divider_color": "accent",
+            "title": "Your Home. Your Way. Explore your Shopica Styles",
+            "heading_tag": "h3",
+            "heading_font_size": 5,
+            "text": "",
+            "text_font_size": 3,
+            "maximum_text_width": 225,
+            "button_link": "shopify://collections/homeware-and-decor",
+            "button_label": "Shop Now",
+            "button_style": "primary",
+            "image_overlay_tint_opacity": 30,
+            "image_overlay_tint_style": "solid",
+            "image_overlay_override_with_custom_colors": false,
+            "image_overlay_override_color_text": "#ffffff",
+            "image_overlay_override_color_tint": "#000000"
+          }
+        },
+        "item_fJczFr": {
+          "type": "item",
+          "settings": {
+            "width": "50",
+            "height": 800,
+            "mobile_height": 300,
+            "media_type": "image",
+            "background_video_focal_point": "center",
+            "mobile_background_video_focal_point": "center",
+            "background_image": "shopify://shop_images/home-babies.jpg",
+            "background_image_focal_point": "image_presentation",
+            "background_image_mobile_focal_point": "image_presentation",
+            "text_position": "center_flex-end",
+            "text_position_mobile": "center_flex-end",
+            "accent": "",
+            "accent_divider_enable": true,
+            "accent_divider_color": "accent",
+            "title": "Nursery",
+            "heading_tag": "h3",
+            "heading_font_size": 5,
+            "text": "",
+            "text_font_size": 3,
+            "maximum_text_width": 500,
+            "button_link": "shopify://collections/nursery",
+            "button_label": "Shop Now",
+            "button_style": "primary",
+            "image_overlay_tint_opacity": 30,
+            "image_overlay_tint_style": "solid",
+            "image_overlay_override_with_custom_colors": false,
+            "image_overlay_override_color_text": "#ffffff",
+            "image_overlay_override_color_tint": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "item_cj8ia7",
+        "item_fJczFr"
+      ],
+      "custom_css": [
+        "@media (max-width: 1300px) {.section-inner {padding-top: 0 !important; }}"
+      ],
+      "settings": {
+        "center_content": false,
+        "preheading": "",
+        "heading": "",
+        "section_header_heading_tag": "h2",
+        "subheading": "",
+        "section_header_subheading_tag": "h2",
+        "maximum_content_width": 650,
+        "full_width": false,
+        "grid_spacing": 24,
+        "color_scheme": "default",
+        "override_with_custom_colors": false,
+        "override_color_text": "#393939",
+        "override_color_background": "#ffffff",
+        "section_style_spacing_top": 0,
+        "section_style_spacing_bottom": 40,
+        "section_style_enable_animation": true
+      }
+    },
+    "video_carousel_xx9YN3": {
+      "type": "video-carousel",
+      "blocks": {
+        "video_XYkD9B": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/video-home-1.mp4",
+            "video_url": "",
+            "caption": "",
+            "subcaption": ""
+          }
+        },
+        "video_X4EXMt": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/video-home-2.mp4",
+            "video_url": "",
+            "caption": "",
+            "subcaption": ""
+          }
+        },
+        "video_KUWdVA": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/video-home-3.mp4",
+            "video_url": "",
+            "caption": "",
+            "subcaption": ""
+          }
+        },
+        "video_p6qEcq": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/video-home-4.mp4",
+            "video_url": "",
+            "caption": "",
+            "subcaption": ""
+          }
+        },
+        "video_QiBYHD": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/video-home-5.mp4",
+            "video_url": "",
+            "caption": "",
+            "subcaption": ""
+          }
+        },
+        "video_jnM8cp": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/video-home-6.mp4",
+            "video_url": "",
+            "caption": "",
+            "subcaption": ""
+          }
+        },
+        "video_mXziUP": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/video-home-7.mp4",
+            "video_url": "",
+            "caption": "",
+            "subcaption": ""
+          }
+        },
+        "video_KiKHxq": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/video-home-8.mp4",
+            "video_url": "",
+            "caption": "",
+            "subcaption": ""
+          }
+        },
+        "video_CeVM6J": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/video-home-9.mp4",
+            "video_url": "",
+            "caption": "",
+            "subcaption": ""
+          }
+        },
+        "video_gy8yT9": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/home-video-10.mp4",
+            "video_url": "",
+            "caption": "",
+            "subcaption": ""
+          }
+        },
+        "video_qb9JpF": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/home-video-11.mp4",
+            "video_url": "",
+            "caption": "",
+            "subcaption": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_XYkD9B",
+        "video_X4EXMt",
+        "video_KUWdVA",
+        "video_p6qEcq",
+        "video_QiBYHD",
+        "video_jnM8cp",
+        "video_mXziUP",
+        "video_KiKHxq",
+        "video_CeVM6J",
+        "video_gy8yT9",
+        "video_qb9JpF"
+      ],
+      "custom_css": [
+        "@media (max-width: 767px) {.video-carousel {padding-top: 0 !important; }}"
+      ],
+      "name": "Video carousel",
+      "settings": {
+        "subheading": "",
+        "heading": "Made for Life's Moments",
+        "heading_tag": "h2",
+        "heading_font_size": 6,
+        "description": "<p>Every piece is chosen because it belongs somewhere specific, in your home, in your room, in your life.</p>",
+        "slides_per_view": 5,
+        "slide_gap": 16,
+        "slide_radius": 0,
+        "aspect_ratio": "9-16",
+        "show_pagination": true,
+        "enable_autoplay": true,
+        "autoplay_speed": 4,
+        "pause_on_hover": true,
+        "color_scheme": "default",
+        "override_with_custom_colors": false,
+        "override_color_text": "#393939",
+        "override_color_background": "#ffffff",
+        "section_style_spacing_top": 0,
+        "section_style_spacing_bottom": 40
+      }
+    },
+    "rich_text_wEiqgf": {
+      "type": "rich-text",
+      "blocks": {
+        "text_79h6Qp": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Australian homes are lived in differently to European or American homes. Open plan living and dining spaces that need furniture to work from multiple angles. North facing windows that flood rooms with afternoon light and show every flaw in a poorly finished mirror or lamp. Outdoor areas that face salt air, UV exposure and temperature extremes that destroy lesser materials within a season. We source with all of this in mind.</p>",
+            "text_font_size": 3
+          }
+        }
+      },
+      "block_order": [
+        "text_79h6Qp"
+      ],
+      "settings": {
+        "alignment": "center_center",
+        "content_width": "full",
+        "custom_content_width": 800,
+        "color_scheme": "default",
+        "override_with_custom_colors": false,
+        "override_color_text": "#1b1c1c",
+        "override_color_background": "#ffffff",
+        "section_style_spacing_top": 0,
+        "section_style_spacing_bottom": 40,
+        "section_style_enable_animation": true
+      }
+    },
+    "scrolling_content_fHpqxi": {
+      "type": "scrolling-content",
+      "blocks": {
+        "text_G9khyK": {
+          "type": "text",
+          "settings": {
+            "text": "&nbsp;Flash Sale - Get 30% Off* on Homeware & décor&nbsp;",
+            "link": "#",
+            "enable_highlighting": false
+          }
+        }
+      },
+      "block_order": [
+        "text_G9khyK"
+      ],
+      "name": "t:sections.scrolling_content.presets.name",
+      "settings": {
+        "font_type": "body",
+        "font_size": 3,
+        "duration": 10,
+        "direction": "normal",
+        "gap_desktop": 50,
+        "gap_mobile": 30,
+        "color_scheme": "default",
+        "override_with_custom_colors": true,
+        "override_color_text": "#ffffff",
+        "override_color_background": "#d1672e",
+        "override_color_accent": "#c31818",
+        "section_style_spacing_top": 36,
+        "section_style_spacing_bottom": 36,
+        "section_style_enable_animation": true
+      }
+    },
+    "grid_MX64NR": {
+      "type": "grid",
+      "blocks": {
+        "item_dKHBn9": {
+          "type": "item",
+          "settings": {
+            "width": "50",
+            "height": 800,
+            "mobile_height": 300,
+            "media_type": "image",
+            "background_video_focal_point": "center",
+            "mobile_background_video_focal_point": "center",
+            "background_image": "shopify://shop_images/Shopica-Candle-Holders-and-Lanterns_avif.avif",
+            "background_image_focal_point": "image_presentation",
+            "background_image_mobile_focal_point": "image_presentation",
+            "text_position": "center_flex-end",
+            "text_position_mobile": "center_flex-end",
+            "accent": "",
+            "accent_divider_enable": true,
+            "accent_divider_color": "accent",
+            "title": "Candle Holders and Lanterns",
+            "heading_tag": "h3",
+            "heading_font_size": 4,
+            "text": "<p>Decorative candle holders and lanterns for warm home styling.</p>",
+            "text_font_size": 3,
+            "maximum_text_width": 500,
+            "button_link": "shopify://collections/candle-holders-lanterns",
+            "button_label": "SHOP NOW",
+            "button_style": "primary",
+            "image_overlay_tint_opacity": 30,
+            "image_overlay_tint_style": "solid",
+            "image_overlay_override_with_custom_colors": false,
+            "image_overlay_override_color_text": "#ffffff",
+            "image_overlay_override_color_tint": "#000000"
+          }
+        },
+        "item_QFVQdn": {
+          "type": "item",
+          "settings": {
+            "width": "50",
+            "height": 800,
+            "mobile_height": 300,
+            "media_type": "image",
+            "background_video_focal_point": "center",
+            "mobile_background_video_focal_point": "center",
+            "background_image": "shopify://shop_images/Shopica-Artificial-Flowers-Plants_avif.avif",
+            "background_image_focal_point": "image_presentation",
+            "background_image_mobile_focal_point": "image_presentation",
+            "text_position": "center_flex-end",
+            "text_position_mobile": "center_flex-end",
+            "accent": "",
+            "accent_divider_enable": true,
+            "accent_divider_color": "accent",
+            "title": "Artificial Flowers and Plants",
+            "heading_tag": "h3",
+            "heading_font_size": 4,
+            "text": "<p>Realistic artificial plants and flowers for low-maintenance home styling.</p>",
+            "text_font_size": 3,
+            "maximum_text_width": 500,
+            "button_link": "shopify://collections/artificial-flowers-plants",
+            "button_label": "Shop Now",
+            "button_style": "primary",
+            "image_overlay_tint_opacity": 30,
+            "image_overlay_tint_style": "solid",
+            "image_overlay_override_with_custom_colors": false,
+            "image_overlay_override_color_text": "#ffffff",
+            "image_overlay_override_color_tint": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "item_dKHBn9",
+        "item_QFVQdn"
+      ],
+      "settings": {
+        "center_content": false,
+        "preheading": "",
+        "heading": "",
+        "section_header_heading_tag": "h2",
+        "subheading": "",
+        "section_header_subheading_tag": "h2",
+        "maximum_content_width": 650,
+        "full_width": false,
+        "grid_spacing": 24,
+        "color_scheme": "default",
+        "override_with_custom_colors": false,
+        "override_color_text": "#393939",
+        "override_color_background": "#ffffff",
+        "section_style_spacing_top": 40,
+        "section_style_spacing_bottom": 40,
+        "section_style_enable_animation": true
+      }
+    },
+    "featured_collection_nnQLfJ": {
+      "type": "featured-collection",
+      "settings": {
+        "center_content": true,
+        "preheading": "",
+        "heading": "Have you seen these?",
+        "section_header_heading_tag": "h2",
+        "subheading": "",
+        "section_header_subheading_tag": "h2",
+        "maximum_content_width": 650,
+        "button_1_button_link": "",
+        "button_1_button_label": "",
+        "button_1_button_style": "text",
+        "button_2_button_link": "",
+        "button_2_button_label": "",
+        "button_2_button_style": "tertiary",
+        "button_position": "header",
+        "collection": "homeware-and-decor",
+        "maximum_products": 10,
+        "num_columns": "5",
+        "num_columns_mobile": "1",
+        "enable_slider_desktop": true,
+        "enable_slider_mobile": true,
+        "show_view_all_tile": false,
+        "tile_location": "beginning",
+        "accent": "",
+        "title": "Featured collection",
+        "heading_tag": "h3",
+        "text": "Shop all",
+        "text_position": "flex-start_flex-start",
+        "color_scheme": "default",
+        "override_with_custom_colors": false,
+        "override_color_text": "#393939",
+        "override_color_background": "#ffffff",
+        "background_image_focal_point": "image_presentation",
+        "image_overlay_tint_opacity": 50,
+        "image_overlay_tint_style": "solid",
+        "image_overlay_override_with_custom_colors": false,
+        "image_overlay_override_color_text": "#ffffff",
+        "image_overlay_override_color_tint": "#000000",
+        "section_style_spacing_top": 0,
+        "section_style_spacing_bottom": 40,
+        "section_style_enable_animation": true
+      }
+    },
+    "feature_card_content_rN4yF7": {
+      "type": "feature-card-content",
+      "blocks": {
+        "feature_zz7CMB": {
+          "type": "feature",
+          "settings": {
+            "icon_image": "shopify://shop_images/ico-sydney.png",
+            "heading": "Sydney-Based, Family-Owned",
+            "description": "Proudly local and family-run"
+          }
+        },
+        "feature_Xg8DdV": {
+          "type": "feature",
+          "settings": {
+            "icon_image": "shopify://shop_images/ico-support.png",
+            "heading": "Dispatched Within 1–3 Business Days",
+            "description": "Carefully prepared and dispatched with tracking"
+          }
+        },
+        "feature_JzdzgP": {
+          "type": "feature",
+          "settings": {
+            "icon_image": "shopify://shop_images/ico-tracking.png",
+            "heading": "Tracking on Every Order",
+            "description": "Stay updated from dispatch to delivery"
+          }
+        },
+        "feature_34eE4D": {
+          "type": "feature",
+          "settings": {
+            "icon_image": "shopify://shop_images/ico-returns.png",
+            "heading": "30-Day Returns on Eligible Items",
+            "description": "Conditions apply. See our Returns Policy"
+          }
+        },
+        "feature_hanJkN": {
+          "type": "feature",
+          "settings": {
+            "icon_image": "shopify://shop_images/ico-ship.png",
+            "heading": "Mon–Fri Customer Support",
+            "description": "Real support from our friendly team"
+          }
+        }
+      },
+      "block_order": [
+        "feature_zz7CMB",
+        "feature_Xg8DdV",
+        "feature_JzdzgP",
+        "feature_34eE4D",
+        "feature_hanJkN"
+      ],
+      "name": "Feature card + content",
+      "settings": {
+        "layout": "card-left",
+        "card_max_width": 320,
+        "content_max_width": 720,
+        "accent": "WHY SHOPICA?",
+        "heading": "Quality You Can Trust",
+        "heading_tag": "h2",
+        "heading_font_size": 6,
+        "text": "<p>Shopica is a Sydney-based, family-owned homeware, décor and furniture store founded by Eliane El Khoury. What started as a passion for beautiful, considered interiors has grown into a trusted destination for Australians who care about how their home looks and feels. We curate cushions, floor lamps, mirrors, bedside tables, dining tables, outdoor furniture and decorative pieces chosen specifically for Australian homes. Every piece is held to the same standard we would demand for our own. We do not stock products simply because they are popular. We stock them because they are well made, beautifully designed and worth every dollar.<br/><br/>Our Sydney-based team understands how Australian homes are lived in. The open plan living and dining spaces that define modern Australian architecture. The need for furniture that is beautiful on the weekend and durable through the week. The importance of getting the details right, from the cushion on the sofa to the lamp beside the bed. We source every product with all of this in mind.<br/><br/>With Australia-wide delivery, orders generally dispatched within 1–3 business days from our Sydney warehouse, and personal customer support from a team that genuinely cares about your home, Shopica is here to help you create a space that feels as good as it looks. One considered piece at a time.</p>",
+        "text_font_size": 3,
+        "button_1_label": "Call 1300 718 807",
+        "button_1_link": "tel:1300718807",
+        "button_1_style": "solid",
+        "button_2_label": "Email us",
+        "button_2_link": "mailto:admin@shopica.com.au",
+        "button_2_style": "outline",
+        "color_scheme": "default",
+        "override_with_custom_colors": true,
+        "override_color_text": "#393939",
+        "override_color_background": "#ffffff",
+        "card_background": "#ffffff",
+        "card_border_color": "#e5e5e5",
+        "content_background": "#ffffff",
+        "content_padding": 40,
+        "accent_color": "#c16432",
+        "background_image": "shopify://shop_images/featcard-content-bg.jpg",
+        "background_image_focal_point": "image_presentation",
+        "background_image_mobile_focal_point": "image_presentation",
+        "image_overlay_tint_opacity": 0,
+        "image_overlay_tint_style": "solid",
+        "image_overlay_override_with_custom_colors": true,
+        "image_overlay_override_color_text": "#393939",
+        "image_overlay_override_color_tint": "#ffffff",
+        "section_style_spacing_top": 0,
+        "section_style_spacing_bottom": 40
+      }
+    },
+    "icon_with_text_columns_jTYB4A": {
+      "type": "icon-with-text-columns",
+      "blocks": {
+        "column_rm7Ngi": {
+          "type": "column",
+          "settings": {
+            "icon": "delivery-truck-left",
+            "custom_icon_image": "shopify://shop_images/ico_home.png",
+            "link": "",
+            "accent": "",
+            "heading": "Curated With Care",
+            "text": "<p>Thoughtfully Selected Pieces for Australian Homes</p>"
+          }
+        },
+        "column_bjTD8U": {
+          "type": "column",
+          "settings": {
+            "icon": "delivery-truck-left",
+            "custom_icon_image": "shopify://shop_images/ico_home.png",
+            "link": "",
+            "accent": "",
+            "heading": "Quality You Can Feel",
+            "text": "<p>Beautiful designs, made to last</p>"
+          }
+        },
+        "column_mCBbkx": {
+          "type": "column",
+          "settings": {
+            "icon": "delivery-truck-left",
+            "custom_icon_image": "shopify://shop_images/ico_home.png",
+            "link": "",
+            "accent": "",
+            "heading": "Here to Help",
+            "text": "<p>Real people, real support when you need it</p>"
+          }
+        },
+        "column_wXEeyk": {
+          "type": "column",
+          "settings": {
+            "icon": "delivery-truck-left",
+            "custom_icon_image": "shopify://shop_images/ico_home.png",
+            "link": "",
+            "accent": "",
+            "heading": "Secure & Reliable",
+            "text": "<p>Safe payments and careful handling, every time</p>"
+          }
+        }
+      },
+      "block_order": [
+        "column_rm7Ngi",
+        "column_bjTD8U",
+        "column_mCBbkx",
+        "column_wXEeyk"
+      ],
+      "name": "t:sections.icon_with_text_columns.presets.name",
+      "settings": {
+        "icon_border": "none",
+        "icon_border_style": "outlined",
+        "icon_border_color": "accent",
+        "icon_size": 32,
+        "icon_size_mobile": 32,
+        "accent_font_size": 3,
+        "heading_font_size": 1,
+        "text_font_size": 3,
+        "desktop_alignment": "left_left",
+        "columns_per_row": 4,
+        "content_width": "full",
+        "custom_width": 1000,
+        "color_scheme": "default",
+        "override_with_custom_colors": true,
+        "override_color_text": "#393939",
+        "override_color_background": "#fcf7f5",
+        "section_style_spacing_top": 36,
+        "section_style_spacing_bottom": 36,
+        "section_style_enable_animation": true
+      }
+    },
+    "logo_list_F8NWeJ": {
+      "type": "logo-list",
+      "blocks": {
+        "logo_hgEGAw": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo-msn.png",
+            "link": "https://www.msn.com/en-us/news/other/table-lamps-as-home-d%C3%A9cor-how-lighting-can-transform-your-living-space/ar-AA205k9B?disableErrorRedirect=true&infiniteContentCount=0  https://www.usatoday.com/press-release/story/22317/shopica-pty-ltd-releases-update-on-functional-use-of-soft-furnishings-in-everyday-home-settings",
+            "open_in_new_tab": true
+          }
+        },
+        "logo_Vkr6Cx": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo-times-daily.png",
+            "link": "https://www.timesdaily.com/sponsored/how-throws-shape-warmth-texture-and-visual-calm-in-the-modern-home/article_3193b58d-9eb4-4716-be89-42dcd071f6bf.html",
+            "open_in_new_tab": true
+          }
+        },
+        "logo_xqkyeD": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo-jerusalem-post.png",
+            "link": "https://www.jpost.com/consumerism/article-874014",
+            "open_in_new_tab": true
+          }
+        },
+        "logo_geXezP": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo-yahoo.png",
+            "link": "https://finance.yahoo.com/news/shopica-redefines-modern-home-lighting-080000841.html",
+            "open_in_new_tab": true
+          }
+        },
+        "logo_UiA9L3": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo-usa-today.png",
+            "link": "https://www.usatoday.com/press-release/story/22317/shopica-pty-ltd-releases-update-on-functional-use-of-soft-furnishings-in-everyday-home-settings",
+            "open_in_new_tab": true
+          }
+        },
+        "logo_FY77j4": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo-opple-house.png",
+            "link": "https://opplehouse.com/how-dining-chairs-affect-the-way-we-sit-share-and-connect/",
+            "open_in_new_tab": true
+          }
+        },
+        "logo_NwVe8R": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo-cuindependent.png",
+            "link": "https://www.cuindependent.com/how-dining-chairs-support-the-everyday-life-of-a-home/",
+            "open_in_new_tab": true
+          }
+        }
+      },
+      "block_order": [
+        "logo_hgEGAw",
+        "logo_Vkr6Cx",
+        "logo_xqkyeD",
+        "logo_geXezP",
+        "logo_UiA9L3",
+        "logo_FY77j4",
+        "logo_NwVe8R"
+      ],
+      "disabled": true,
+      "name": "Logo list",
+      "settings": {
+        "heading": "As Seen In",
+        "heading_tag": "h2",
+        "heading_font_size": 3,
+        "alignment": "center",
+        "logo_max_height": 100,
+        "logo_max_height_mobile": 36,
+        "logo_gap": 68,
+        "logo_opacity": 100,
+        "color_scheme": "default",
+        "override_with_custom_colors": false,
+        "override_color_text": "#393939",
+        "override_color_background": "#ffffff",
+        "section_style_spacing_top": 40,
+        "section_style_spacing_bottom": 40
+      }
+    },
+    "newsletter_compact_VxgR93": {
+      "type": "newsletter-compact",
+      "blocks": {
+        "text_content_whmiLd": {
+          "type": "text_content",
+          "settings": {
+            "width": "unconstrained",
+            "text_alignment": "left",
+            "accent": "Join Us!",
+            "accent_divider_enable": false,
+            "accent_divider_color": "accent",
+            "title": "Get exclusive deals, new arrivals, and the latest updates straight to your inbox.",
+            "heading_font_size": 3,
+            "heading_tag": "h2",
+            "text": "<p>Subscribe today for exclusive deals and sales. By subscribing, you are agreeing to our Terms & Privacy Policy, and to receiving marketing communications from us.</p>",
+            "text_font_size": 3
+          }
+        },
+        "image_wYKwzj": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/newsletter.jpg",
+            "image_width": "full",
+            "image_size": 500,
+            "image_size_mobile": 200
+          }
+        },
+        "newsletter_signup_CbBVhL": {
+          "type": "newsletter_signup",
+          "settings": {
+            "enable_collect_customer_name": false,
+            "signup_link_text": "Sign up",
+            "button_style": "solid",
+            "footer_text": "<p>By completing this form, you are signing up to receive our emails and can unsubscribe at any time.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_content_whmiLd",
+        "image_wYKwzj",
+        "newsletter_signup_CbBVhL"
+      ],
+      "name": "t:sections.newsletter_compact.presets.name",
+      "settings": {
+        "spacing_mode": "compact",
+        "color_forms": "default",
+        "color_scheme": "default",
+        "override_with_custom_colors": true,
+        "override_color_text": "#393939",
+        "override_color_background": "#fcf7f5",
+        "background_image_focal_point": "image_presentation",
+        "background_image_mobile_focal_point": "image_presentation",
+        "image_overlay_tint_opacity": 50,
+        "image_overlay_tint_style": "solid",
+        "image_overlay_override_with_custom_colors": false,
+        "image_overlay_override_color_text": "#ffffff",
+        "image_overlay_override_color_tint": "#000000",
+        "section_style_spacing_top": 0,
+        "section_style_spacing_bottom": 0,
+        "section_style_enable_animation": true
+      }
+    },
+    "multi_column_67qxAR": {
+      "type": "multi-column",
+      "blocks": {
+        "image_column_KD7dgF": {
+          "type": "image_column",
+          "settings": {
+            "image": "shopify://shop_images/Review_Ratings_Banner.png",
+            "image_width": 100,
+            "aspect_ratio": "natural",
+            "focal_point": "center",
+            "image_position": "below_text",
+            "image_link": "",
+            "small_caption": "",
+            "text_max_width": 100,
+            "accent": "Shop with confidence",
+            "heading": "Australia’s trusted online-only furniture and homewares retailer",
+            "heading_tag": "h2",
+            "heading_font_size": 3,
+            "text": "",
+            "text_font_size": 3,
+            "button_link": "",
+            "button_label": "",
+            "button_style": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "image_column_KD7dgF"
+      ],
+      "custom_css": [
+        ".multi-column__grid-item-inner {display: flex; flex-direction: row; align-items: center;}",
+        "@media (max-width: 1024px) {.multi-column__grid-item-inner {flex-direction: column !important; }}"
+      ],
+      "name": "t:sections.multi_column.presets.name",
+      "settings": {
+        "center_content": true,
+        "preheading": "",
+        "heading": "",
+        "section_header_heading_tag": "h2",
+        "subheading": "",
+        "section_header_subheading_tag": "h2",
+        "maximum_content_width": 900,
+        "button_1_button_link": "",
+        "button_1_button_label": "",
+        "button_1_button_style": "primary",
+        "num_columns": "1",
+        "column_spacing": 24,
+        "row_spacing": 24,
+        "column_alignment": "left",
+        "row_alignment": "top",
+        "num_columns_mobile": "1",
+        "column_spacing_mobile": 24,
+        "row_spacing_mobile": 24,
+        "column_alignment_mobile": "left",
+        "row_alignment_mobile": "top",
+        "enable_text_box": false,
+        "text_box_style": "soft_small",
+        "text_box_color_scheme": "default",
+        "text_box_override_with_custom_colors": false,
+        "text_box_override_color_text": "#393939",
+        "text_box_override_color_background": "#ffffff",
+        "color_scheme": "default",
+        "override_with_custom_colors": false,
+        "override_color_text": "#393939",
+        "override_color_background": "#ffffff",
+        "section_style_spacing_top": 40,
+        "section_style_spacing_bottom": 40,
+        "section_style_enable_animation": true
+      }
+    },
+    "1778565368bc1913f2": {
+      "type": "apps",
+      "blocks": {
+        "google_reviews_carousel_widget_block_Ye6YAG": {
+          "type": "shopify://apps/google-reviews/blocks/carousel-widget-block/8b378e9e-c56d-47ce-a754-feca5e0caf59",
+          "settings": {
+            "contentIndex": "1",
+            "variant": "carousel",
+            "headerType_rotator": "top",
+            "headerType_carousel": "none",
+            "navigationType": "arrows",
+            "customContentIndex": 31,
+            "font": "default",
+            "themeId": "custom",
+            "ratingType": "stars",
+            "emojiType": "0",
+            "cardColor": "#fcf7f5",
+            "starsColor": "#fbb000",
+            "textColor": "#1b1c1c",
+            "transparent": 1,
+            "solidShadow": false,
+            "hasShadow": false,
+            "autoscroll": true,
+            "fluidScrolling": false,
+            "delay": 9,
+            "reviewPhotosType_carousel": "small",
+            "reviewPhotosType_rotator": "small",
+            "writeReview": true,
+            "writeReview_rotator": true,
+            "fixedReviewsHeight": true
+          }
+        }
+      },
+      "block_order": [
+        "google_reviews_carousel_widget_block_Ye6YAG"
+      ],
+      "custom_css": [
+        ".section-header.animation--container {text-align: center;}"
+      ],
+      "settings": {
+        "heading": "Trusted by customers across Australia",
+        "heading_tag": "h2",
+        "section_style_spacing_top": 0,
+        "section_style_spacing_bottom": 40,
+        "section_style_enable_animation": true
+      }
+    },
+    "1781049524966fb357": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block_nz7ARm": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "@Shopicaliving",
+            "title_color": "",
+            "title_size_v2": 0,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "center",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_nz7ARm"
+      ],
+      "custom_css": [
+        "h4 {color: #d1672e; letter-spacing: 4px; font-size: var(--font-size-body-100); font-weight: 500; text-align: center;}",
+        ".section-header {margin-bottom: 0px;}",
+        "#insta-feed h2 {font-size: var(--font-size-heading-display-3);}"
+      ],
+      "settings": {
+        "heading": "FOLLOW OUR JOURNEY",
+        "heading_tag": "h4",
+        "section_style_spacing_top": 0,
+        "section_style_spacing_bottom": 20,
+        "section_style_enable_animation": true
+      }
+    }
+  },
+  "order": [
+    "slideshow",
+    "sales_banner_inline_fyLefX",
+    "grid_kfa86R",
+    "52682bd1-d9fd-4176-bcc6-46b17ff22973",
+    "grid_mExmHH",
+    "scrolling_content_wzni8A",
+    "grid",
+    "media_with_content_split_BN8MyP",
+    "grid_mQVY3X",
+    "video_carousel_xx9YN3",
+    "rich_text_wEiqgf",
+    "scrolling_content_fHpqxi",
+    "grid_MX64NR",
+    "featured_collection_nnQLfJ",
+    "feature_card_content_rN4yF7",
+    "icon_with_text_columns_jTYB4A",
+    "logo_list_F8NWeJ",
+    "newsletter_compact_VxgR93",
+    "multi_column_67qxAR",
+    "1778565368bc1913f2",
+    "1781049524966fb357"
+  ]
+}

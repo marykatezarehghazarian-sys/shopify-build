@@ -38,3 +38,14 @@ Store: shopica-pty-ltd.myshopify.com
   - header-group.json: announcement bar enabled (was disabled) with "BLACK FRIDAY: 30% off all beds. Ends 1 December" → /collections/beds. The 2nd block is disabled. Background #111111 (was #444444). Reminder set for 2 Dec 00:05 Sydney to restore it.
   - Checked live: no Liquid errors; Ella Bed page shows the badge plus "from $1,176.00"; the beds grid has badges.
   - The store already has its own orange "Flash Sale, Get 30% off on Homeware & décor" banner from another developer's code (lumen_flash in product-block-header). Not ours, left alone.
+- 2026-11-16 Black Friday v2 (user):
+  - "Flash Sale" → "Black Friday Sale" everywhere (same deal):
+    - templates/index, collection and product .json: orange banner heading and text "Black Friday Sale - Get 30% Off* on Homeware & décor"
+    - product-block-header.liquid line "Black Friday Sale: 30% Off!" (Lumen's homeware line)
+  - Black top strip: "BLACK FRIDAY SALE: 30% off Bedroom and Homeware & Décor" → /collections/sales.
+  - Homeware & Decor's 30% was never a discount: it's compare-at pricing (514/835 variants at exactly 30%). The smart collection `sales` = IS_PRICE_REDUCED.
+  - Bedroom (154 products, 185 variants, incl. beds, bedside tables, mattresses, packages) now uses the same method: compareAtPrice = old price, price = 70% rounded to the cent. Script: bf-bedroom-prices.mjs (dry run / --apply / --restore <backup>). Backup: backup-bedroom-prices.2026-11-16T22-33.json (all had no compare-at before).
+  - Automatic discount "Black Friday: 30% off beds" deactivated, so there's no double discount. Cart check: Ella Bed $1,176, no extra discount.
+  - snippets/bf-beds.liquid emptied; the theme's own crossed-out price and "30% off" badge show instead.
+  - Theme backups in theme-live-backup/before-bf-rename/.
+  - Pending: free delivery on Bedroom except bedside tables (Starshipit; needs scope: Sydney metro / NSW / all of Australia); whether the bedroom prices go back after 1 Dec.
