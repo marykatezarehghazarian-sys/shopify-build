@@ -1,0 +1,929 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs_7aqzk7": {
+      "type": "breadcrumbs",
+      "name": "Breadcrumbs",
+      "settings": {
+        "home_label": "Home",
+        "separator": ">",
+        "alignment": "left",
+        "font_size": 13,
+        "letter_spacing": 0,
+        "background_color": "#ffffff",
+        "text_color": "#969696",
+        "current_color": "#1b1c1c",
+        "separator_color": "#999999",
+        "section_style_spacing_top": 12,
+        "section_style_spacing_bottom": 12
+      }
+    },
+    "sales_banner_inline_4pYN9W": {
+      "type": "sales-banner-inline",
+      "name": "Sales banner (inline)",
+      "settings": {
+        "min_height": 80,
+        "min_height_mobile": 200,
+        "full_width": false,
+        "heading": "Flash Sale",
+        "heading_font_size": 5,
+        "sale_type": "Get",
+        "sale_amount": "30",
+        "sale_unit": "percent_off",
+        "terms_and_conditions": "on Homeware & décor ",
+        "sale_font_size": 56,
+        "sale_font_size_mobile": 36,
+        "currency_symbol_position": "before",
+        "tagline": "",
+        "sub_items": "",
+        "button_1_button_link": "shopify://collections",
+        "button_1_button_label": "",
+        "button_1_button_style": "secondary",
+        "button_2_button_link": "shopify://collections",
+        "button_2_button_label": "",
+        "button_2_button_style": "outline",
+        "color_scheme": "sale",
+        "override_with_custom_colors": true,
+        "override_color_text": "#fafafa",
+        "override_color_background": "#d1672e",
+        "background_image_focal_point": "image_presentation",
+        "background_image_mobile_focal_point": "image_presentation",
+        "image_overlay_tint_opacity": 50,
+        "image_overlay_tint_style": "solid",
+        "image_overlay_override_with_custom_colors": false,
+        "image_overlay_override_color_text": "#ffffff",
+        "image_overlay_override_color_tint": "#000000",
+        "section_style_spacing_top": 0,
+        "section_style_spacing_bottom": 0,
+        "section_style_enable_animation": true
+      }
+    },
+    "main": {
+      "type": "main-product--default",
+      "blocks": {
+        "product_header": {
+          "type": "product_header",
+          "settings": {
+            "show_divider": true,
+            "show_vendor": true,
+            "show_sku": true,
+            "show_price": true,
+            "show_discount": true,
+            "discount_format": "percent_off",
+            "show_shop_pay": false,
+            "show_product_rating": true,
+            "show_rating_count": false,
+            "rating_style": "regular",
+            "show_sale_badge": false,
+            "show_new_badge": true,
+            "show_custom_badges": true,
+            "product_header_always_top_mobile": "above"
+          }
+        },
+        "custom_liquid_Hcn4jV": {
+          "type": "custom_liquid",
+          "settings": {
+            "column_placement": "right",
+            "custom_liquid": "{% assign current_variant = product.selected_or_first_available_variant %}\n{% assign qty = current_variant.inventory_quantity %}\n\n{% if current_variant.inventory_management == blank %}\n  {% assign stock_state = 'in-stock' %}\n{% elsif qty <= 0 %}\n  {% assign stock_state = 'out-stock' %}\n{% elsif qty < 3 %}\n  {% assign stock_state = 'low-stock' %}\n{% else %}\n  {% assign stock_state = 'in-stock' %}\n{% endif %}\n\n<div class=\"shopica-stock-card {{ stock_state }}\">\n\n  <div class=\"shopica-stock-content\">\n\n    {% if stock_state == 'out-stock' %}\n\n      <div class=\"shopica-stock-heading\">\n        <span class=\"shopica-stock-dot\"></span>\n        <span><strong>Out of stock</strong></span>\n      </div>\n\n    {% elsif stock_state == 'low-stock' %}\n\n      <div class=\"shopica-stock-heading\">\n        <span class=\"shopica-stock-dot\"></span>\n\n        {% if qty == 1 %}\n          <span><strong>Only 1 left in stock</strong></span>\n        {% else %}\n          <span><strong>Only {{ qty }} left in stock</strong></span>\n        {% endif %}\n      </div>\n\n      <div class=\"shopica-stock-subtext\">\n        Order soon — limited stock available.\n      </div>\n\n    {% else %}\n\n      <div class=\"shopica-stock-heading\">\n        <span class=\"shopica-stock-dot\"></span>\n        <span><strong>In stock,</strong> ready to ship</span>\n      </div>\n\n      <div class=\"shopica-stock-subtext\">\n        Dispatched from Sydney warehouse within <strong> 3 business days. </strong>\n      </div>\n\n    {% endif %}\n\n  </div>\n\n  {% unless stock_state == 'out-stock' %}\n    <div class=\"shopica-stock-icon\">\n      <svg width=\"25\" height=\"25\" viewBox=\"0 0 24 24\" fill=\"none\">\n        <path d=\"M3 6H14V16H3V6Z\"\n          stroke=\"currentColor\" stroke-width=\"1.5\"/>\n        <path d=\"M14 10H18L21 13V16H14V10Z\"\n          stroke=\"currentColor\" stroke-width=\"1.5\"/>\n        <circle cx=\"7\" cy=\"17.5\" r=\"1.5\"\n          stroke=\"currentColor\" stroke-width=\"1.5\"/>\n        <circle cx=\"18\" cy=\"17.5\" r=\"1.5\"\n          stroke=\"currentColor\" stroke-width=\"1.5\"/>\n      </svg>\n    </div>\n  {% endunless %}\n\n</div>\n\n<style>\n\n.shopica-stock-card {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 15px;\n\n  padding: 14px 16px;\n  margin: 10px 0 16px;\n\n  border-radius: 7px;\n  border: 1px solid;\n}\n\n.shopica-stock-heading {\n  display: flex;\n  align-items: center;\n  gap: 9px;\n\n  font-size: 14px;\n  line-height: 1.4;\n}\n\n.shopica-stock-heading strong {\n  font-weight: 600;\n}\n\n.shopica-stock-dot {\n  width: 9px;\n  height: 9px;\n  min-width: 9px;\n  border-radius: 50%;\n}\n\n.shopica-stock-subtext {\n  margin-top: 4px;\n  margin-left: 18px;\n  font-size: 12.5px;\n  line-height: 1.4;\n}\n\n.shopica-stock-icon {\n  flex-shrink: 0;\n}\n\n\n/* IN STOCK */\n\n.shopica-stock-card.in-stock {\n  background: #eaf5ea !important;\n  border-color: #bfd8bf !important;\n}\n\n.shopica-stock-card.in-stock .shopica-stock-dot {\n  background: #4c9a4b;\n}\n\n.shopica-stock-card.in-stock .shopica-stock-heading {\n  color: #344639;\n}\n\n.shopica-stock-card.in-stock .shopica-stock-heading strong {\n  color: #377b3d;\n}\n\n.shopica-stock-card.in-stock .shopica-stock-subtext {\n  color: #626b64;\n}\n\n.shopica-stock-card.in-stock .shopica-stock-icon {\n  color: #4f6655;\n}\n\n\n/* LOW STOCK — 1 OR 2 */\n\n.shopica-stock-card.low-stock {\n  background: #fff8ed;\n  border-color: #ecd9b9;\n}\n\n.shopica-stock-card.low-stock .shopica-stock-dot {\n  background: #d59233;\n}\n\n.shopica-stock-card.low-stock .shopica-stock-heading {\n  color: #765520;\n}\n\n.shopica-stock-card.low-stock .shopica-stock-heading strong {\n  color: #a36919;\n}\n\n.shopica-stock-card.low-stock .shopica-stock-subtext {\n  color: #776951;\n}\n\n.shopica-stock-card.low-stock .shopica-stock-icon {\n  color: #a87934;\n}\n\n\n/* OUT OF STOCK */\n\n.shopica-stock-card.out-stock {\n  background: #fff4f4;\n  border-color: #ead1d1;\n}\n\n.shopica-stock-card.out-stock .shopica-stock-dot {\n  background: #b94c4c;\n}\n\n.shopica-stock-card.out-stock .shopica-stock-heading {\n  color: #8e3e3e;\n}\n\n.shopica-stock-card.out-stock .shopica-stock-heading strong {\n  color: #9f3f3f;\n}\n\n\n@media screen and (max-width: 749px) {\n\n  .shopica-stock-card {\n    padding: 13px 14px;\n  }\n\n  .shopica-stock-heading {\n    font-size: 14px;\n  }\n\n  .shopica-stock-subtext {\n    font-size: 12px;\n  }\n\n}\n\n</style>"
+          }
+        },
+        "inventory_counter": {
+          "type": "inventory-counter",
+          "disabled": true,
+          "settings": {
+            "label": "",
+            "inventory_max": "20",
+            "low_inventory_threshold": "5",
+            "indicator_style": "dot_with_text",
+            "show_status_bar": false,
+            "show_inventory_transfer": true,
+            "show_untracked_quantity": true
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "variant_popup_option": "Size",
+            "variant_popup_icon": "measuring-tape",
+            "variant_popup_text": "Size guide",
+            "variant_popup_page": "",
+            "swatch_size": "medium",
+            "siblings_show_product_image": true,
+            "siblings_option_name": "Color",
+            "chip_layout": "3col"
+          }
+        },
+        "payments_and_trust_Vztpah": {
+          "type": "payments_and_trust",
+          "settings": {
+            "column_placement": "right",
+            "add_box": false,
+            "content_alignment": "left",
+            "show_payment_icons": true,
+            "payment_heading": "100% Secure payments",
+            "payment_heading_icon": "shield-lock",
+            "payment_text": "<p>Your details are protected and safe with us.</p>",
+            "payment_text_position": "above",
+            "trust_heading": "",
+            "trust_heading_icon": "none",
+            "trust_text": "",
+            "trust_text_position": "above",
+            "image_size": 100,
+            "display_as_collapsible_row": false,
+            "expand_by_default": false,
+            "collapsible_row_title": ""
+          }
+        },
+        "shipcalc_pdp_quote_emHea6": {
+          "type": "shopify://apps/shipcalc/blocks/pdp-quote/019de6b9-e050-7d04-962b-5c4defd44ac4",
+          "settings": {
+            "title": "Check delivery to your postcode",
+            "helper_text": "Enter your postcode to see shipping cost and estimated delivery time.",
+            "button_label": "Check",
+            "postcode_placeholder": "",
+            "layout_preset": "card",
+            "variant_input_selector": "form[action*='/cart/add'] [name='id']",
+            "quantity_input_selector": "form[action*='/cart/add'] [name='quantity']"
+          }
+        },
+        "text_txWDeJ": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "column_placement": "right",
+            "text_font_size": 1,
+            "text": "<p>Our&nbsp;Delivery rates&nbsp;are automatically calculated at checkout according to couriers rates, weight, dimensions and delivery address.</p>"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "enable_sticky_atc_bar_desktop": true,
+            "enable_sticky_atc_bar_mobile": true,
+            "drop_shadow": "shadow",
+            "show_quantity_selector": true,
+            "show_quantity_in_cart": true,
+            "show_pickup_availability": true
+          }
+        },
+        "wishlist_plus_wishlist_pdp_button_WxAzgG": {
+          "type": "shopify://apps/wishlist-plus/blocks/wishlist-pdp-button/80c3b1fc-3a8f-407e-8367-ffdeebb8b612",
+          "settings": {
+            "swym_atw_button_icon": "heart",
+            "swym_atw_icon_thickness": 1.5,
+            "swym_atw_display_btn_text": true,
+            "swym_button_position": "default",
+            "swym_atw_button_vertical_offset": 0,
+            "swym_atw_full_width": true,
+            "swym_atw_button_alignment": "center",
+            "swym_add_to_wishlist_color": "#ffffff",
+            "swym_added_to_wishlist_color": "#222222",
+            "swym_button_text_color": "#1b1c1c",
+            "swym_atw_border_color": "#bbbbbb",
+            "swym_atw_border_thickness": 2,
+            "swym_atw_button_border_radius": 4,
+            "swym_enable_hover_customization": true,
+            "swym_hover_add_to_wishlist_color": "#a6bdb6",
+            "swym_hover_added_to_wishlist_color": "#222222",
+            "swym_hover_button_text_color": "#fff",
+            "swym_hover_atw_border_color": "#000",
+            "swym_hover_atw_border_thickness": 0,
+            "swym_hover_atw_button_border_radius": 0,
+            "swym_custom_css": ""
+          }
+        },
+        "tolstoy_ads_image_video_tolstoy_builder_NriwRn": {
+          "type": "shopify://apps/tolstoy-ads-image-video/blocks/tolstoy-builder/06fa8282-42ff-403e-b67c-1936776aed11",
+          "settings": {
+            "custom_code": "<tolstoy-widget data-tolstoy-widget-id=\"01M47V4ZGFBZXVV6N9936KJKV6\" data-product-id=\"PRODUCT_ID\" data-tags=\"PRODUCT_TAGS\"></tolstoy-widget>\n<script src=\"https://ai-widgets.gotolstoy.com/d2187f45-6f6a-488a-853d-f6905b460c41/01M47V4ZGFBZXVV6N9936KJKV6/latest/dist/widget.iife.js\" defer></script>"
+          }
+        },
+        "text_list_with_icons_Q7Cdaq": {
+          "type": "text-list-with-icons",
+          "disabled": true,
+          "settings": {
+            "column_placement": "right",
+            "title": "",
+            "add_box": false,
+            "add_dividers": false,
+            "truncate_num_lines": "0",
+            "icon_border": "none",
+            "icon_border_style": "filled",
+            "icon_border_color": "accent",
+            "icon_size": 23,
+            "icon_size_mobile": 24,
+            "icon_1": "checkmark-badge",
+            "custom_icon_image_1": "shopify://shop_images/ico-ship-line.png",
+            "icon_alignment_1": "icon_center",
+            "text_1": "<p>Ships from Sydney daily</p>",
+            "icon_2": "package",
+            "custom_icon_image_2": "shopify://shop_images/ico-tracking-line.png",
+            "icon_alignment_2": "icon_center",
+            "text_2": "<p>Tracking on every order</p>",
+            "icon_3": "message-bubble",
+            "custom_icon_image_3": "shopify://shop_images/ico-truck-line.png",
+            "icon_alignment_3": "icon_center",
+            "text_3": "<p>Fast shipping</p>",
+            "icon_4": "email",
+            "custom_icon_image_4": "shopify://shop_images/ico-return-line.png",
+            "icon_alignment_4": "icon_center",
+            "text_4": "<p>30 day returns</p>",
+            "icon_5": "none",
+            "icon_alignment_5": "icon_center",
+            "text_5": "",
+            "icon_6": "none",
+            "icon_alignment_6": "icon_center",
+            "text_6": "",
+            "display_as_collapsible_row": false,
+            "expand_by_default": false
+          }
+        },
+        "complementary_products_GkRTbU": {
+          "type": "complementary_products",
+          "disabled": true,
+          "settings": {
+            "column_placement": "left",
+            "heading": "You may also like",
+            "enable_slider_desktop": true,
+            "enable_slider_mobile": true,
+            "max_products": 5,
+            "product_source": "app-recommendations",
+            "product_list": "{{ product.metafields[\"shopify--discovery--product_recommendation\"].related_products.value }}"
+          }
+        },
+        "same_type_products_aJxr6C": {
+          "type": "same_type_products",
+          "disabled": true,
+          "settings": {
+            "heading": "You may also like",
+            "max_products": 6,
+            "column_placement": "left",
+            "enable_slider_desktop": true,
+            "enable_slider_mobile": true
+          }
+        },
+        "product_text_columns_8eLGBJ": {
+          "type": "product_text_columns",
+          "settings": {
+            "column_placement": "right",
+            "add_box": true,
+            "add_dividers": true,
+            "icon_border": "none",
+            "icon_border_style": "filled",
+            "icon_border_color": "accent",
+            "icon_size": 24,
+            "icon_size_mobile": 24,
+            "icon_1": "package",
+            "custom_icon_image_1": "shopify://shop_images/ico-australia.svg",
+            "heading_1": "Australian Family Owned",
+            "text_1": "",
+            "icon_2": "delivery-truck-left",
+            "heading_2": "DISPATCH IN 1–3 BUSINESS DAYS",
+            "text_2": "",
+            "icon_3": "package",
+            "heading_3": "30-Day Returns ON ELIGIBLE ITEMS",
+            "text_3": "",
+            "icon_4": "padlock",
+            "heading_4": "Secure Checkout",
+            "text_4": "",
+            "icon_5": "headphones",
+            "heading_5": "Local Customer Support",
+            "text_5": ""
+          }
+        },
+        "folder_product_tabs_app_TbaM7t": {
+          "type": "shopify://apps/folder-product-tabs/blocks/app/e4a7401b-931e-422d-bab8-fc6ef5da44a4",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "product_header",
+        "custom_liquid_Hcn4jV",
+        "inventory_counter",
+        "variant_picker",
+        "payments_and_trust_Vztpah",
+        "shipcalc_pdp_quote_emHea6",
+        "text_txWDeJ",
+        "buy_buttons",
+        "wishlist_plus_wishlist_pdp_button_WxAzgG",
+        "tolstoy_ads_image_video_tolstoy_builder_NriwRn",
+        "text_list_with_icons_Q7Cdaq",
+        "complementary_products_GkRTbU",
+        "same_type_products_aJxr6C",
+        "product_text_columns_8eLGBJ",
+        "folder_product_tabs_app_TbaM7t"
+      ],
+      "settings": {
+        "enable_sticky_product_details": true,
+        "enable_sticky_gallery": true,
+        "sticky_gallery_offset": 140,
+        "show_breadcrumbs": false,
+        "show_navigation_buttons": false,
+        "gallery_size": "large",
+        "desktop_gallery_layout": "thumbnails",
+        "thumbnail_position": "left",
+        "thumbnail_size": "medium",
+        "enable_video_looping": true,
+        "enable_product_lightbox": true,
+        "show_thumbs_in_product_lightbox": true,
+        "image_aspect_ratio": "square",
+        "enable_multiple_variant_media": false,
+        "enable_gift_card_recipient": true,
+        "show_recommended_products_on_desktop": false,
+        "show_recommended_products_on_mobile": false,
+        "max_recommended_products": 3,
+        "enable_quick_view_recommended_products": false,
+        "recommended_products_heading": "",
+        "section_style_enable_animation": true
+      }
+    },
+    "icon_with_text_columns_bgczXh": {
+      "type": "icon-with-text-columns",
+      "blocks": {
+        "column_GKgY9G": {
+          "type": "column",
+          "settings": {
+            "icon": "package",
+            "custom_icon_image": "shopify://shop_images/ico-australia.svg",
+            "link": "",
+            "accent": "",
+            "heading": "Australian  Family Owned",
+            "text": ""
+          }
+        },
+        "column_XfmVXM": {
+          "type": "column",
+          "settings": {
+            "icon": "delivery-truck-left",
+            "link": "",
+            "accent": "",
+            "heading": "Ships from Sydney Daily",
+            "text": ""
+          }
+        },
+        "column_ikPVfi": {
+          "type": "column",
+          "settings": {
+            "icon": "package",
+            "link": "",
+            "accent": "",
+            "heading": "30- Day Returns",
+            "text": ""
+          }
+        },
+        "column_H8WtJB": {
+          "type": "column",
+          "settings": {
+            "icon": "padlock",
+            "link": "",
+            "accent": "",
+            "heading": "Secure Checkout",
+            "text": ""
+          }
+        },
+        "column_azwnpg": {
+          "type": "column",
+          "settings": {
+            "icon": "headphones",
+            "link": "",
+            "accent": "",
+            "heading": "Local Customer Support",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_GKgY9G",
+        "column_XfmVXM",
+        "column_ikPVfi",
+        "column_H8WtJB",
+        "column_azwnpg"
+      ],
+      "disabled": true,
+      "name": "t:sections.icon_with_text_columns.presets.name",
+      "settings": {
+        "icon_border": "none",
+        "icon_border_style": "outlined",
+        "icon_border_color": "accent",
+        "icon_size": 32,
+        "icon_size_mobile": 32,
+        "accent_font_size": 3,
+        "heading_font_size": 1,
+        "text_font_size": 3,
+        "desktop_alignment": "left_left",
+        "columns_per_row": 5,
+        "content_width": "full",
+        "custom_width": 1000,
+        "color_scheme": "default",
+        "override_with_custom_colors": true,
+        "override_color_text": "#393939",
+        "override_color_background": "#f5f5f5",
+        "section_style_spacing_top": 36,
+        "section_style_spacing_bottom": 36,
+        "section_style_enable_animation": true
+      }
+    },
+    "1790891914d99027da": {
+      "type": "apps",
+      "blocks": {
+        "folder_product_tabs_app_z4HhNB": {
+          "type": "shopify://apps/folder-product-tabs/blocks/app/e4a7401b-931e-422d-bab8-fc6ef5da44a4",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "folder_product_tabs_app_z4HhNB"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "",
+        "heading_tag": "h3",
+        "section_style_spacing_top": 12,
+        "section_style_spacing_bottom": 12,
+        "section_style_enable_animation": true
+      }
+    },
+    "featured_collection_with_media_metafield_m4CM8m": {
+      "type": "featured-collection-with-media-metafield",
+      "blocks": {
+        "featured_image_XgFcLm": {
+          "type": "featured_image",
+          "settings": {
+            "background_image": "{{ product.featured_image }}",
+            "background_image_media_fit": "cover",
+            "background_image_focal_point": "image_presentation",
+            "background_image_mobile_focal_point": "image_presentation",
+            "media_link": "",
+            "image_overlay_tint_opacity": 50,
+            "image_overlay_tint_style": "solid",
+            "image_overlay_override_with_custom_colors": false,
+            "image_overlay_override_color_text": "#ffffff",
+            "image_overlay_override_color_tint": "#000000",
+            "maximum_content_width": 400,
+            "accent": "",
+            "accent_divider_enable": true,
+            "accent_divider_color": "accent",
+            "title": "Your Home. Your Way. Explore your Shopica Styles",
+            "heading_tag": "h3",
+            "heading_font_size": 5,
+            "text": "",
+            "text_font_size": 3,
+            "text_position": "center_flex-end",
+            "text_position_mobile": "center_center"
+          }
+        }
+      },
+      "block_order": [
+        "featured_image_XgFcLm"
+      ],
+      "name": "Featured products + media",
+      "settings": {
+        "center_content": false,
+        "preheading": "",
+        "heading": "",
+        "section_header_heading_tag": "h2",
+        "subheading": "",
+        "section_header_subheading_tag": "h2",
+        "maximum_content_width": 650,
+        "maximum_products": 6,
+        "num_columns": "3",
+        "enable_slider_desktop": false,
+        "enable_slider_mobile": true,
+        "media_position": "left",
+        "media_width": 35,
+        "media_height": 410,
+        "media_position_mobile": "above",
+        "media_height_mobile": 360,
+        "section_style_spacing_top": 40,
+        "section_style_spacing_bottom": 20,
+        "section_style_enable_animation": true
+      }
+    },
+    "1778651933f68ca2f0": {
+      "type": "apps",
+      "blocks": {
+        "avada_seo_suite_avada_faqs_9cFaTj": {
+          "type": "shopify://apps/avada-seo-suite/blocks/avada-faqs/15507c6e-1aa3-45d3-b698-7e175e033440",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "avada_seo_suite_avada_faqs_9cFaTj"
+      ],
+      "settings": {
+        "heading": "",
+        "heading_tag": "h3",
+        "section_style_spacing_top": 0,
+        "section_style_spacing_bottom": 40,
+        "section_style_enable_animation": true
+      }
+    },
+    "same_product_type_Npfgf8": {
+      "type": "same-product-type",
+      "name": "Same product type",
+      "settings": {
+        "heading": "Your may also like",
+        "heading_alignment": "center",
+        "max_products": 6,
+        "hide_sold_out": true,
+        "columns_desktop": 5,
+        "columns_mobile": "2",
+        "enable_slider_desktop": true,
+        "enable_slider_mobile": true,
+        "padding_top": 12,
+        "padding_bottom": 60,
+        "padding_top_mobile": 12,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "1778651647f5445f08": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_hGbged": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "real_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "other_products_reviews"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_hGbged"
+      ],
+      "custom_css": [
+        ".section-header__heading {text-align: center;}",
+        "h2.jdgm-rev-widg__title {display: none;}"
+      ],
+      "settings": {
+        "heading": "Customer Reviews",
+        "heading_tag": "h2",
+        "section_style_spacing_top": 0,
+        "section_style_spacing_bottom": 40,
+        "section_style_enable_animation": false
+      }
+    },
+    "multi_column_mQrVeA": {
+      "type": "multi-column",
+      "blocks": {
+        "image_column_iGKhJP": {
+          "type": "image_column",
+          "settings": {
+            "image": "shopify://shop_images/ratings.png",
+            "image_width": 100,
+            "aspect_ratio": "natural",
+            "focal_point": "center",
+            "image_position": "below_text",
+            "image_link": "",
+            "small_caption": "",
+            "text_max_width": 100,
+            "accent": "Shop with confidence",
+            "heading": "Australia’s trusted online-only furniture and homewares retailer",
+            "heading_tag": "h2",
+            "heading_font_size": 3,
+            "text": "",
+            "text_font_size": 3,
+            "button_link": "",
+            "button_label": "",
+            "button_style": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "image_column_iGKhJP"
+      ],
+      "custom_css": [
+        ".multi-column__grid-item-inner {display: flex; flex-direction: row; align-items: center;}",
+        "@media (max-width: 1024px) {.multi-column__grid-item-inner {flex-direction: column !important; }}"
+      ],
+      "name": "t:sections.multi_column.presets.name",
+      "settings": {
+        "center_content": true,
+        "preheading": "",
+        "heading": "",
+        "section_header_heading_tag": "h2",
+        "subheading": "",
+        "section_header_subheading_tag": "h2",
+        "maximum_content_width": 900,
+        "button_1_button_link": "",
+        "button_1_button_label": "",
+        "button_1_button_style": "primary",
+        "num_columns": "1",
+        "column_spacing": 24,
+        "row_spacing": 24,
+        "column_alignment": "left",
+        "row_alignment": "top",
+        "num_columns_mobile": "1",
+        "column_spacing_mobile": 24,
+        "row_spacing_mobile": 24,
+        "column_alignment_mobile": "left",
+        "row_alignment_mobile": "top",
+        "enable_text_box": false,
+        "text_box_style": "soft_small",
+        "text_box_color_scheme": "default",
+        "text_box_override_with_custom_colors": false,
+        "text_box_override_color_text": "#393939",
+        "text_box_override_color_background": "#ffffff",
+        "color_scheme": "default",
+        "override_with_custom_colors": false,
+        "override_color_text": "#393939",
+        "override_color_background": "#ffffff",
+        "section_style_spacing_top": 0,
+        "section_style_spacing_bottom": 40,
+        "section_style_enable_animation": true
+      }
+    },
+    "apps_EcMErm": {
+      "type": "apps",
+      "blocks": {
+        "google_reviews_carousel_widget_block_Q8PLtV": {
+          "type": "shopify://apps/google-reviews/blocks/carousel-widget-block/8b378e9e-c56d-47ce-a754-feca5e0caf59",
+          "settings": {
+            "contentIndex": "1",
+            "variant": "carousel",
+            "headerType_rotator": "top",
+            "headerType_carousel": "none",
+            "navigationType": "arrows",
+            "customContentIndex": 31,
+            "font": "default",
+            "themeId": "custom",
+            "ratingType": "stars",
+            "emojiType": "0",
+            "cardColor": "#fcf7f5",
+            "starsColor": "#fbb000",
+            "textColor": "#1b1c1c",
+            "transparent": 1,
+            "solidShadow": false,
+            "hasShadow": false,
+            "autoscroll": true,
+            "fluidScrolling": false,
+            "delay": 9,
+            "reviewPhotosType_carousel": "small",
+            "reviewPhotosType_rotator": "small",
+            "writeReview": true,
+            "writeReview_rotator": true,
+            "fixedReviewsHeight": true
+          }
+        }
+      },
+      "block_order": [
+        "google_reviews_carousel_widget_block_Q8PLtV"
+      ],
+      "custom_css": [
+        ".section-header.animation--container {text-align: center;}"
+      ],
+      "settings": {
+        "heading": "Trusted by customers across Australia",
+        "heading_tag": "h2",
+        "section_style_spacing_top": 0,
+        "section_style_spacing_bottom": 40,
+        "section_style_enable_animation": true
+      }
+    },
+    "scrolling_content_TK9g9C": {
+      "type": "scrolling-content",
+      "blocks": {
+        "text_F4YhaF": {
+          "type": "text",
+          "settings": {
+            "text": "&nbsp; Flash Sale - Get 30% Off* on Homeware & décor &nbsp;",
+            "link": "#",
+            "enable_highlighting": false
+          }
+        }
+      },
+      "block_order": [
+        "text_F4YhaF"
+      ],
+      "name": "t:sections.scrolling_content.presets.name",
+      "settings": {
+        "font_type": "body",
+        "font_size": 3,
+        "duration": 10,
+        "direction": "normal",
+        "gap_desktop": 50,
+        "gap_mobile": 30,
+        "color_scheme": "default",
+        "override_with_custom_colors": true,
+        "override_color_text": "#ffffff",
+        "override_color_background": "#d1672e",
+        "override_color_accent": "#c31818",
+        "section_style_spacing_top": 36,
+        "section_style_spacing_bottom": 36,
+        "section_style_enable_animation": true
+      }
+    },
+    "recently_viewed_products_ib4hBq": {
+      "type": "recently-viewed-products",
+      "name": "t:sections.recently_viewed.presets.name",
+      "settings": {
+        "center_content": true,
+        "preheading": "",
+        "heading": "Recently viewed products",
+        "section_header_heading_tag": "h2",
+        "subheading": "",
+        "section_header_subheading_tag": "h2",
+        "maximum_content_width": 650,
+        "maximum_products": 5,
+        "num_columns": "5",
+        "num_columns_mobile": "2",
+        "section_style_spacing_top": 40,
+        "section_style_spacing_bottom": 40,
+        "section_style_enable_animation": true
+      }
+    },
+    "feature_card_content_EPWnNk": {
+      "type": "feature-card-content",
+      "blocks": {
+        "feature_DtBJLk": {
+          "type": "feature",
+          "settings": {
+            "icon_image": "shopify://shop_images/ico-sydney.png",
+            "heading": "Sydney-Based, Family-Owned",
+            "description": "Proudly local and family-run"
+          }
+        },
+        "feature_9kNgJa": {
+          "type": "feature",
+          "settings": {
+            "icon_image": "shopify://shop_images/ico-support.png",
+            "heading": "Dispatched Within 1-3 Business Days",
+            "description": "Carefully prepared and dispatched with tracking"
+          }
+        },
+        "feature_fXCgFM": {
+          "type": "feature",
+          "settings": {
+            "icon_image": "shopify://shop_images/ico-tracking.png",
+            "heading": "Tracking on Every Order",
+            "description": "Stay updated from dispatch to delivery"
+          }
+        },
+        "feature_nb3RaE": {
+          "type": "feature",
+          "settings": {
+            "icon_image": "shopify://shop_images/ico-returns.png",
+            "heading": "30-Day Returns on Eligible Items",
+            "description": "Conditions apply. See our Returns Policy"
+          }
+        },
+        "feature_WVj8e6": {
+          "type": "feature",
+          "settings": {
+            "icon_image": "shopify://shop_images/ico-ship.png",
+            "heading": "Mon–Fri Customer Support",
+            "description": "Real support from our friendly team"
+          }
+        }
+      },
+      "block_order": [
+        "feature_DtBJLk",
+        "feature_9kNgJa",
+        "feature_fXCgFM",
+        "feature_nb3RaE",
+        "feature_WVj8e6"
+      ],
+      "name": "Feature card + content",
+      "settings": {
+        "layout": "card-left",
+        "card_max_width": 320,
+        "content_max_width": 720,
+        "accent": "WHY SHOPICA?",
+        "heading": "Quality You Can Trust",
+        "heading_tag": "h2",
+        "heading_font_size": 6,
+        "text": "<p>Shopica is a Sydney-based, family-owned homeware, décor and furniture store founded by Eliane El Khoury. What started as a passion for beautiful, considered interiors has grown into a trusted destination for Australians who care about how their home looks and feels. We curate cushions, floor lamps, mirrors, bedside tables, dining tables, outdoor furniture and decorative pieces chosen specifically for Australian homes. Every piece is held to the same standard we would demand for our own. We do not stock products simply because they are popular. We stock them because they are well made, beautifully designed and worth every dollar.<br/><br/>Our Sydney-based team understands how Australian homes are lived in. The open plan living and dining spaces that define modern Australian architecture. The need for furniture that is beautiful on the weekend and durable through the week. The importance of getting the details right, from the cushion on the sofa to the lamp beside the bed. We source every product with all of this in mind.<br/><br/>With Australia-wide delivery, orders generally dispatched within 1–3 business days from our Sydney warehouse, and personal customer support from a team that genuinely cares about your home, Shopica is here to help you create a space that feels as good as it looks. One considered piece at a time.</p>",
+        "text_font_size": 3,
+        "button_1_label": "Call 1300 718 807",
+        "button_1_link": "tel:1300718807",
+        "button_1_style": "solid",
+        "button_2_label": "Email us",
+        "button_2_link": "mailto:admin@shopica.com.au",
+        "button_2_style": "outline",
+        "color_scheme": "default",
+        "override_with_custom_colors": true,
+        "override_color_text": "#393939",
+        "override_color_background": "#ffffff",
+        "card_background": "#ffffff",
+        "card_border_color": "#e5e5e5",
+        "content_background": "#ffffff",
+        "content_padding": 40,
+        "accent_color": "#c16432",
+        "background_image": "shopify://shop_images/featcard-content-bg.jpg",
+        "background_image_focal_point": "image_presentation",
+        "background_image_mobile_focal_point": "image_presentation",
+        "image_overlay_tint_opacity": 0,
+        "image_overlay_tint_style": "solid",
+        "image_overlay_override_with_custom_colors": true,
+        "image_overlay_override_color_text": "#393939",
+        "image_overlay_override_color_tint": "#ffffff",
+        "section_style_spacing_top": 40,
+        "section_style_spacing_bottom": 40
+      }
+    },
+    "icon_with_text_columns_UMPefQ": {
+      "type": "icon-with-text-columns",
+      "blocks": {
+        "column_DWnbir": {
+          "type": "column",
+          "settings": {
+            "icon": "delivery-truck-left",
+            "custom_icon_image": "shopify://shop_images/ico_home.png",
+            "link": "",
+            "accent": "",
+            "heading": "Curated With Care",
+            "text": "<p>Thoughtfully Selected Pieces for Australian Homes</p>"
+          }
+        },
+        "column_6DPWyF": {
+          "type": "column",
+          "settings": {
+            "icon": "delivery-truck-left",
+            "custom_icon_image": "shopify://shop_images/ico_home.png",
+            "link": "",
+            "accent": "",
+            "heading": "Quality You Can Feel",
+            "text": "<p>Beautiful designs, made to last</p>"
+          }
+        },
+        "column_nAPFC4": {
+          "type": "column",
+          "settings": {
+            "icon": "delivery-truck-left",
+            "custom_icon_image": "shopify://shop_images/ico_home.png",
+            "link": "",
+            "accent": "",
+            "heading": "Here to Help",
+            "text": "<p>Real people, real support when you need it</p>"
+          }
+        },
+        "column_LtcmX4": {
+          "type": "column",
+          "settings": {
+            "icon": "delivery-truck-left",
+            "custom_icon_image": "shopify://shop_images/ico_home.png",
+            "link": "",
+            "accent": "",
+            "heading": "Secure & Reliable",
+            "text": "<p>Safe payments and careful handling, every time</p>"
+          }
+        }
+      },
+      "block_order": [
+        "column_DWnbir",
+        "column_6DPWyF",
+        "column_nAPFC4",
+        "column_LtcmX4"
+      ],
+      "name": "t:sections.icon_with_text_columns.presets.name",
+      "settings": {
+        "icon_border": "none",
+        "icon_border_style": "outlined",
+        "icon_border_color": "accent",
+        "icon_size": 32,
+        "icon_size_mobile": 32,
+        "accent_font_size": 3,
+        "heading_font_size": 1,
+        "text_font_size": 3,
+        "desktop_alignment": "left_left",
+        "columns_per_row": 4,
+        "content_width": "full",
+        "custom_width": 1000,
+        "color_scheme": "default",
+        "override_with_custom_colors": true,
+        "override_color_text": "#393939",
+        "override_color_background": "#fcf7f5",
+        "section_style_spacing_top": 36,
+        "section_style_spacing_bottom": 36,
+        "section_style_enable_animation": true
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs_7aqzk7",
+    "sales_banner_inline_4pYN9W",
+    "main",
+    "icon_with_text_columns_bgczXh",
+    "1790891914d99027da",
+    "featured_collection_with_media_metafield_m4CM8m",
+    "1778651933f68ca2f0",
+    "same_product_type_Npfgf8",
+    "1778651647f5445f08",
+    "multi_column_mQrVeA",
+    "apps_EcMErm",
+    "scrolling_content_TK9g9C",
+    "recently_viewed_products_ib4hBq",
+    "feature_card_content_EPWnNk",
+    "icon_with_text_columns_UMPefQ"
+  ]
+}

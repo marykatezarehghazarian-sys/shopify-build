@@ -1,0 +1,33 @@
+{%- comment -%}
+  Black Friday 2026: 30% off everything in the "beds" collection (automatic discount, ends 1 Dec 23:59 Sydney).
+  Hides itself after the end date. mode: 'badge' | 'card' | 'product'
+{%- endcomment -%}
+{%- liquid
+  assign bf_now = 'now' | date: '%s' | plus: 0
+  assign bf_live = false
+  if bf_now < 1796129999 and prod != blank
+    assign bf_handles = prod.collections | map: 'handle'
+    if bf_handles contains 'beds'
+      assign bf_live = true
+    endif
+  endif
+-%}
+{%- if bf_live -%}
+  {%- assign bf_price = prod.price | times: 0.7 | round -%}
+  {%- case mode -%}
+    {%- when 'badge' -%}
+      {% render 'product-badge', text: '30% OFF', type: 'sale' %}
+    {%- when 'card' -%}
+      <span class="bf-beds bf-beds--card">Black Friday {% if prod.price_varies %}from {% endif %}<strong>{{ bf_price | money }}</strong></span>
+    {%- else -%}
+      <div class="bf-beds bf-beds--product">
+        <strong>Black Friday: 30% off</strong>, {% if prod.price_varies %}from {% endif %}<strong>{{ bf_price | money }}</strong>. Taken off automatically in your cart. Ends 1 December.
+      </div>
+  {%- endcase -%}
+  {%- unless bf_css_done -%}
+    <style>
+      .bf-beds{display:block;color:#b3261e;font-size:.9em;line-height:1.35;margin-top:4px}
+      .bf-beds--product{margin-top:10px;padding:10px 12px;border-radius:6px;background:#fdecea;color:#7a1712;font-size:.95rem}
+    </style>
+  {%- endunless -%}
+{%- endif -%}
