@@ -64,3 +64,15 @@ Store: hd8wtv-ck.myshopify.com
   - Left by the owner for the test: COD still offered in Kuwait.
   - Currency stays USD: Shopify Payments has no KWD option.
   - The store has no refund or shipping policy pages (both 404).
+
+## Kuwait ads test (started 2026-11-16)
+- Status: the owner chose to launch the test as-is. Kuwait checkout works (card via Shopify Payments; COD still shown). Prices in USD (Shopify Payments has no KWD). Delivery currently shows "Standard $19.27" from the Kuwait market's shipping override, so 1 item = $35.27. Fix: Settings → Markets → Kuwait → ⊖ on Shipping → Save, so our free "Kuwait" zone applies. When judging the test, look at add-to-carts and checkouts started, not only orders.
+- Ad set location: Kuwait only. Each ad links to its own product page with UTM tags (for TikTok use utm_source=tiktok):
+  - Migraine Relief Cap: https://feelsgoodclub.com/products/migraine-relief-cap?utm_source=meta&utm_medium=paid&utm_campaign=kuwait_test
+  - Pimple Patches: https://feelsgoodclub.com/products/pimple-patches?utm_source=meta&utm_medium=paid&utm_campaign=kuwait_test
+  - Teeth Whitening Strips: https://feelsgoodclub.com/products/teeth-whitening-strips?utm_source=meta&utm_medium=paid&utm_campaign=kuwait_test
+  - Nose Strips: https://feelsgoodclub.com/products/nose-strips?utm_source=meta&utm_medium=paid&utm_campaign=kuwait_test
+  - Purple Teeth Whitening Toothpaste: https://feelsgoodclub.com/products/purple-teeth-whitening-toothpaste?utm_source=meta&utm_medium=paid&utm_campaign=kuwait_test
+- Results: Shopify Analytics → Reports → sessions/sales by UTM campaign `kuwait_test`.
+- Policies: generic refund, shipping and privacy texts are ready in `policies/` but not live. They need write_legal_policies on the app, or the owner pastes them in Settings → Policies. The owner will refine them later.
+- Pending app scopes, if we want to manage these via API: read/write_markets, read/write_legal_policies.
