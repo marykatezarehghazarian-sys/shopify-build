@@ -35,3 +35,4 @@ Store: pk1610-hu.myshopify.com (SBEA, https://sbeacosmetics.com)
   - Return policy: the app has only read_legal_policies. Owner pastes it in Settings → Policies, or we add write_legal_policies.
   - Instagram URL: the label shows "SBEACOSMETICS.LB". Asked to confirm.
   - Hair bundle photo: waiting.
+- 2026-11-16: confirmed phone +961 76 556 123 (not 555) and Instagram @sbeacosmetics.lb. Contact page now has phone (wa.me/96176556123), email and Instagram. Footer social-links block instagram_url = https://www.instagram.com/sbeacosmetics.lb/ (backup-footer-group.before-instagram.json). Checked live.
