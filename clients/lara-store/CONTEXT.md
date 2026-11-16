@@ -90,3 +90,4 @@ Store: kc30cj-dq.myshopify.com
   - Homepage: tile kicker "Unisex fingerprint pouch"; real-life tile caption "Unisex fingerprint-lock pouch, $190".
   - Backups: backup-smart-description.before-unisex.json, backup-live-index.before-unisex.json.
 - 2026-11-16: Owner asked to remove the Christmas ornaments: 'Plexi Christmas ornament' (Product/15479285907700) set to DRAFT (not deleted; photos, variants and the variant-picker code kept, so it can come back next Christmas). /products/christmas-ornament now 404; no homepage or theme references.
+- 2026-11-16: Homepage (live theme 190234099956): 'pieces' ornament tile p5 disabled (kept for next year), columns 5→4, intro 'Five pieces'→'Four pieces'; story text no longer mentions ornaments ('…leather you carry every day and keepsakes for the little ones.'). Backup: backup-live-index.before-no-ornament.json. Checked desktop and mobile: 0 'ornament' mentions, 4 tiles in a row.
