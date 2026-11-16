@@ -41,3 +41,10 @@ Store: pk1610-hu.myshopify.com (SBEA, https://sbeacosmetics.com)
   - Added a per-card 'Card photo' image_picker that overrides the hard-coded image, cropped to the top with an inline <style> (object-position 50% 8%). Notes: image_tag drops style=; {% stylesheet %} changes are cached.
   - Backups: backup-sbea-category-showcase.before-hair-image.liquid, backup-index.before-hair-image.json. Checked on mobile and desktop.
   - Note: the Hair care card links to /collections/all, not /collections/hair-care (left as is).
+- 2026-11-16 Site check (all 31 products, collections, pages, cart, search, policies; mobile):
+  - Homepage category cards now link to their collections: body → /collections/body-care, hair → /collections/hair-care (both were /collections/all).
+  - Homepage had 2 h1s: Horizon's hidden '<h1 visually-hidden>{{ shop.name }}' in sections/header.liquid plus the hero h1. Changed the hidden one to <p>; backup backup-header.before-h1.liquid.
+  - No Liquid errors, broken images or horizontal overflow. All internal links 200; the 429s seen were rate limiting from the crawl, and all of those re-checked fine.
+  - The only console error on pages is a Meta pixel request to connect.facebook.net returning 404 (Facebook's side, harmless).
+  - Add to cart + checkout works (Cheese Cake Scrub $18, COD).
+  - Missing: refund, shipping and terms policies (404). Only the privacy policy exists. Search results page has no h1 (Horizon default, minor).

@@ -214,7 +214,7 @@
             "kicker": "Body care",
             "title": "Soft skin, signature scent",
             "text": "Discover scrubs, lotions and body care in your favorite SBEA scents",
-            "link": "/collections/all",
+            "link": "/collections/body-care",
             "alt_text": "SBEA body scrub, body lotion, and body butter arranged on a soft pink background"
           }
         },
@@ -229,7 +229,7 @@
             "kicker": "Hair care",
             "title": "Shine starts here",
             "text": "Care for your hair with nourishing oils, smoothing serum and fragrant mists",
-            "link": "/collections/all",
+            "link": "/collections/hair-care",
             "alt_text": "SBEA Gloss and Glow Hair Serum and Silk and Bloom Hair Oil in a braided hair bun",
             "image": "shopify://shop_images/sbea-hair-care-card.jpg"
           }
