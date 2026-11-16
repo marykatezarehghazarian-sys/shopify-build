@@ -89,3 +89,4 @@ Store: kc30cj-dq.myshopify.com
   - Tags: unisex and for-him added; for-her kept.
   - Homepage: tile kicker "Unisex fingerprint pouch"; real-life tile caption "Unisex fingerprint-lock pouch, $190".
   - Backups: backup-smart-description.before-unisex.json, backup-live-index.before-unisex.json.
+- 2026-11-16: Owner asked to remove the Christmas ornaments: 'Plexi Christmas ornament' (Product/15479285907700) set to DRAFT (not deleted; photos, variants and the variant-picker code kept, so it can come back next Christmas). /products/christmas-ornament now 404; no homepage or theme references.
