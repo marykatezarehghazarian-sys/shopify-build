@@ -58,3 +58,9 @@ Store: hd8wtv-ck.myshopify.com
     - currency is still USD (KWD not active)
   - Hiding COD for one country: no native per-market setting. Use a payment customization app from the App Store (Shopify Functions, Basic plan OK: Settings → Payments → Payment customizations). Custom-app Functions are Plus-only, so we can't build our own.
   - This is a test to see demand in Kuwait. The owner has a shipping agency there.
+- 2026-11-16 Kuwait full check:
+  - OK: country listed with governorates; all 5 products can be added to cart from KW ($16 each, USD); card payment offered; Lebanon unaffected (dry run $20 incl. $4).
+  - Not fixed yet: market Shipping override 'Standard' $19.27 (should be removed so the free Kuwait zone applies).
+  - Left by the owner for the test: COD still offered in Kuwait.
+  - Currency stays USD: Shopify Payments has no KWD option.
+  - The store has no refund or shipping policy pages (both 404).
