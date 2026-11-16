@@ -50,3 +50,11 @@ Store: hd8wtv-ck.myshopify.com
 - 2026-11-15: write_products/write_shipping granted (re-approved via the OAuth link). All 11 variants set to $16.00 (compare-at untouched; backup in backup-prices.2026-11-15.json, all were $20). Checkout dry run for 1 item to LB = $20.00 ($16 + $4).
 - 2026-11-15: first website-checkout DM order placed: #1897 (Online Store, source web, COD pending, $20). Workflow is in the /dm-order skill, Feels Good Club section.
 - 2026-11-16: Selling in Kuwait (user): free delivery, card payments online, prices in KWD. Done: shipping zone 'Kuwait' (KW, 'Free delivery' $0) in the General profile. A test quote to a KW address returns NO shipping rates: Kuwait isn't in any market (checkout only lists Lebanon and UAE, which also explains why the US gets no rates). Needs Kuwait added to Markets with KWD (the app lacks read/write_markets; asked the user to add them) and a card payment provider (checkout today shows only COD).
+- 2026-11-16 Kuwait, checked live after the owner set up the market and Shopify Payments:
+  - Kuwait is in the checkout country list (with governorates); credit card shows.
+  - Still wrong:
+    - Delivery shows "Standard $19.27" (a market-level rate overriding our free Kuwait zone)
+    - Cash on Delivery is also shown
+    - currency is still USD (KWD not active)
+  - Hiding COD for one country: no native per-market setting. Use a payment customization app from the App Store (Shopify Functions, Basic plan OK: Settings → Payments → Payment customizations). Custom-app Functions are Plus-only, so we can't build our own.
+  - This is a test to see demand in Kuwait. The owner has a shipping agency there.
