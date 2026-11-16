@@ -49,3 +49,9 @@ Store: shopica-pty-ltd.myshopify.com
   - snippets/bf-beds.liquid emptied; the theme's own crossed-out price and "30% off" badge show instead.
   - Theme backups in theme-live-backup/before-bf-rename/.
   - Pending: free delivery on Bedroom except bedside tables (Starshipit; needs scope: Sydney metro / NSW / all of Australia); whether the bedroom prices go back after 1 Dec.
+- 2026-11-16: decisions:
+  - Free delivery on Bedroom except bedside tables = Sydney metro only.
+  - Bedroom prices revert on 2 Dec.
+  - Tag `bf-free-delivery` added to the 119 Bedroom products that are not bedside tables (for the Starshipit rule; the search index showed 94 right after, still catching up).
+  - The free-delivery rule itself must be made in Starshipit (we have no access). Sydney metro postcodes used: 2000–2234, 2555–2574, 2740–2786.
+  - Reminder trig_01DqAdUcsn3hRtEYfGBYVvjY at 2 Dec 00:05 Sydney (replaces the banner-only one): restore prices from backup, rename banners back to "Flash Sale", disable the announcement bar, remove the free-delivery rule and tag.
