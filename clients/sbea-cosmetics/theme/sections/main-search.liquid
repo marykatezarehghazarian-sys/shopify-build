@@ -1,0 +1,11 @@
+<div class="section page-width">
+  <form action="{{ routes.search_url }}"><input type="search" name="q" value="{{ search.terms | escape }}" aria-label="{{ 'general.search' | t }}"><button class="button">{{ 'general.search' | t }}</button></form>
+  {%- if search.performed -%}
+    <div class="grid section">
+      {%- for item in search.results -%}
+        {%- if item.object_type == 'product' -%}{% render 'product-card', product: item %}{%- else -%}<a href="{{ item.url }}">{{ item.title | escape }}</a>{%- endif -%}
+      {%- else -%}<p>{{ 'general.no_results' | t }}</p>{%- endfor -%}
+    </div>
+  {%- endif -%}
+</div>
+{% schema %}{ "name": "Search" }{% endschema %}
