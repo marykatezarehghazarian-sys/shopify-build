@@ -1,0 +1,128 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "bundle_picker": {
+      "type": "sbea-bundle-picker",
+      "settings": {
+        "eyebrow": "Bundle & save",
+        "heading": "Choose your SBEA bundle",
+        "subheading": "Find your body and hair care routine in one bundle",
+        "button_text": "Add to cart",
+        "draft_button_text": "Available after approval"
+      },
+      "blocks": {
+        "hair_duo": {
+          "type": "bundle",
+          "settings": {
+            "product": "hair-duo-bundle",
+            "title_override": "Hair Duo Bundle",
+            "included_text": "Silk and Bloom Hair Oil\nGloss and Glow Hair Serum",
+            "regular_price": "34.00",
+            "bundle_price": "28.00",
+            "savings_text": "Save $6.00 (18%)",
+            "highlighted": false,
+            "badge_text": "Most Popular"
+          }
+        },
+        "body_duo": {
+          "type": "bundle",
+          "settings": {
+            "product": "body-care-bundle",
+            "title_override": "Body Care Bundle",
+            "included_text": "Body Lotion\nBody Scrub\nChoose: Mix Berries, Oud and Amber, Flowery Vanilla, or Bubble Gum",
+            "regular_price": "29.50",
+            "bundle_price": "25.00",
+            "savings_text": "Save $4.50 (15%)",
+            "highlighted": false,
+            "badge_text": "Most Popular"
+          }
+        },
+        "hair_trio": {
+          "type": "bundle",
+          "settings": {
+            "product": "hair-trio-bundle",
+            "title_override": "Hair Trio Bundle",
+            "included_text": "Silk and Bloom Hair Oil\nGloss and Glow Hair Serum\nHair Mist: Fruity Dream or Flowery Bomb",
+            "regular_price": "47.00",
+            "bundle_price": "37.00",
+            "savings_text": "Save $10.00 (21%)",
+            "highlighted": false,
+            "badge_text": "Most Popular"
+          }
+        },
+        "body_trio": {
+          "type": "bundle",
+          "settings": {
+            "product": "body-care-trio-bundle",
+            "title_override": "Body Care Trio Bundle",
+            "included_text": "Body Scrub\nBody Butter\nBody Oil\n1 Free Gift\nChoose one of four signature fragrances",
+            "regular_price": "44.00",
+            "bundle_price": "37.00",
+            "savings_text": "Save $7.00 (16%)",
+            "highlighted": false,
+            "badge_text": "Most Popular"
+          }
+        },
+        "family": {
+          "type": "bundle",
+          "settings": {
+            "product": "the-family-bundle",
+            "title_override": "The Family Bundle",
+            "included_text": "Body Scrub\nBody Butter\nBody Lotion\nBody Oil\n1 Free Gift\nChoose one of four signature fragrances",
+            "regular_price": "59.00",
+            "bundle_price": "50.00",
+            "savings_text": "Save $9.00 (15%)",
+            "highlighted": false,
+            "badge_text": "Most Popular"
+          }
+        },
+        "star": {
+          "type": "bundle",
+          "settings": {
+            "product": "the-star-bundle",
+            "title_override": "The Star Bundle",
+            "included_text": "Body Scrub\nBody Butter\nBody Lotion\nBody Oil\nHair Mist\n1 Free Gift",
+            "regular_price": "72.00",
+            "bundle_price": "59.00",
+            "savings_text": "Save $13.00 (18%)",
+            "highlighted": true,
+            "badge_text": "Most Popular"
+          }
+        },
+        "all_in": {
+          "type": "bundle",
+          "settings": {
+            "product": "all-in-bundle",
+            "title_override": "All In Bundle",
+            "included_text": "Silk and Bloom Hair Oil\nGloss and Glow Hair Serum\nHair Mist\nBody Butter\nBody Scrub\nBody Oil\n2 Free Gifts",
+            "regular_price": "91.00",
+            "bundle_price": "75.00",
+            "savings_text": "Save $16.00 (18%)",
+            "highlighted": false,
+            "badge_text": "Most Popular"
+          }
+        }
+      },
+      "block_order": [
+        "hair_duo",
+        "body_duo",
+        "hair_trio",
+        "body_trio",
+        "family",
+        "star",
+        "all_in"
+      ]
+    }
+  },
+  "order": [
+    "bundle_picker"
+  ]
+}

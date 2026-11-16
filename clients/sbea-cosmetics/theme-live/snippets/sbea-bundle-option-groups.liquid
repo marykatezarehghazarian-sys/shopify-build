@@ -1,0 +1,60 @@
+{% doc %}
+Renders separate pill-based option groups for an SBEA bundle product.
+@param {product} product - Bundle product.
+@param {variant} current_variant - Initially selected variant.
+@param {string} block_id - Unique bundle card block ID.
+@param {string} surface - Picker surface identifier such as inline or sheet.
+@param {boolean} show_checkmark - Whether selected pills show a checkmark.
+@param {boolean} show_scent_dot - Whether pills show a swatch or decorative dot.
+{% enddoc %}
+
+{% unless product.has_only_default_variant %}
+  <div class="sbea-bundle-options" data-bundle-options data-picker-surface="{{ surface }}">
+    {% for product_option in product.options_with_values %}
+      {% assign option_index = forloop.index0 %}
+      {% assign selected_option_name = current_variant.options | slice: option_index, 1 | first %}
+      <fieldset class="sbea-bundle-option-group" data-bundle-option-group data-option-index="{{ option_index }}">
+        <legend class="sbea-bundle-option-group__legend">
+          <span>{{ product_option.name | escape }}</span>
+          <span class="sbea-bundle-option-group__selected" data-selected-option-name>{{ selected_option_name | escape }}</span>
+        </legend>
+        <div class="sbea-bundle-option-group__pills">
+          {% for option_value in product_option.values %}
+            {% assign input_id = 'SbeaBundle-' | append: block_id | append: '-' | append: surface | append: '-' | append: option_index | append: '-' | append: forloop.index0 %}
+            <label class="sbea-bundle-pill{% unless option_value.available %} is-sold-out{% endunless %}" data-bundle-option-pill for="{{ input_id }}">
+              <input
+                id="{{ input_id }}"
+                class="sbea-bundle-pill__input"
+                type="radio"
+                name="BundleOption-{{ block_id }}-{{ surface }}-{{ option_index }}"
+                value="{{ option_value.name | escape }}"
+                data-bundle-option-input
+                data-option-index="{{ option_index }}"
+                data-option-value-id="{{ option_value.id }}"
+                data-option-available="{{ option_value.available }}"
+                {% if option_value.name == selected_option_name %}checked{% endif %}
+                {% unless option_value.available %}disabled{% endunless %}
+              >
+              <span class="sbea-bundle-pill__content">
+                {% if show_scent_dot %}
+                  <span
+                    class="sbea-bundle-pill__dot{% if option_value.swatch.image %} sbea-bundle-pill__dot--image{% endif %}"
+                    aria-hidden="true"
+                    {% if option_value.swatch.color %}style="--sbea-pill-dot: {{ option_value.swatch.color }};"{% endif %}
+                  >
+                    {% if option_value.swatch.image %}
+                      {{ option_value.swatch.image | image_url: width: 48 | image_tag: width: 24, height: 24, loading: 'lazy', alt: '' }}
+                    {% endif %}
+                  </span>
+                {% endif %}
+                {% if show_checkmark %}<span class="sbea-bundle-pill__check" aria-hidden="true">✓</span>{% endif %}
+                <span class="sbea-bundle-pill__text">{{ option_value.name | escape }}</span>
+                <span class="sbea-bundle-pill__sold-out">{{ 'products.product.sold_out' | t }}</span>
+              </span>
+            </label>
+          {% endfor %}
+        </div>
+      </fieldset>
+    {% endfor %}
+  </div>
+{% endunless %}

@@ -1,0 +1,33 @@
+<section class="sbea-newsletter section section--page-width">
+    <div class="sbea-story__newsletter">
+      
+      <div>
+        <h3>{{ section.settings.newsletter_heading }}</h3>
+        <p>{{ section.settings.newsletter_text }}</p>
+      </div>
+      {% form 'customer', class: 'sbea-story__form' %}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <label class="visually-hidden" for="SbeaNewsletter-{{ section.id }}">{{ section.settings.newsletter_placeholder }}</label>
+        <input id="SbeaNewsletter-{{ section.id }}" type="email" name="contact[email]" value="{{ form.email }}" autocorrect="off" autocapitalize="off" autocomplete="email" placeholder="{{ section.settings.newsletter_placeholder | escape }}" required>
+        <button type="submit" class="button button--primary">{{ section.settings.newsletter_button }}</button>
+        {% if form.posted_successfully? %}<p class="sbea-story__message">{{ section.settings.newsletter_success }}</p>{% endif %}
+        {% if form.errors %}<div class="sbea-story__message">{{ form.errors | default_errors }}</div>{% endif %}
+      {% endform %}
+    </div>
+
+</section>
+{% stylesheet %}
+.sbea-story__newsletter{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;margin-top:44px;padding:32px 40px;border-radius:20px;background:#F8E3E8}
+.sbea-story__newsletter-media{display:none}
+.sbea-story__newsletter h3{margin:0 0 8px;font-family:inherit;font-size:24px;line-height:1.15;letter-spacing:-.03em;color:#C7356C}
+.sbea-story__newsletter p{margin:0;color:#805563;font-size:14px;line-height:1.6}
+.sbea-story__form{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center}
+.sbea-story__form input{min-width:0;width:100%;height:50px;padding:0 18px;border:1px solid #EBCAD4;border-radius:999px;background:#FFFFFF;color:#542634;font:inherit;font-size:14px}
+.sbea-story__form .button{height:50px;min-height:50px;padding:0 22px;border-radius:999px;background:#C7356C;color:#fff;border:0;font-size:14px;white-space:nowrap}
+.sbea-story__message{grid-column:1/-1;font-size:13px}
+
+.sbea-newsletter{padding-block:0 48px}.sbea-newsletter .sbea-story__newsletter{margin-top:0}.sbea-story__form input:focus-visible,.sbea-story__form button:focus-visible{outline:2px solid #C7356C;outline-offset:4px}@media(max-width:749px){.sbea-story__newsletter{grid-template-columns:1fr;padding:24px;gap:20px}.sbea-story__form{grid-template-columns:1fr}.sbea-story__form .button{width:100%}}
+{% endstylesheet %}
+{% schema %}
+{"name":"SBEA newsletter","settings":[{"type":"text","id":"newsletter_heading","label":"Newsletter heading","default":"Stay close to the glow"},{"type":"textarea","id":"newsletter_text","label":"Newsletter text","default":"Get the latest products, offers and care tips in your inbox"},{"type":"text","id":"newsletter_placeholder","label":"Email placeholder","default":"Your email address"},{"type":"text","id":"newsletter_button","label":"Button text","default":"Join SBEA"},{"type":"text","id":"newsletter_success","label":"Success message","default":"You’re on the list."}],"presets":[{"name":"SBEA newsletter"}]}
+{% endschema %}

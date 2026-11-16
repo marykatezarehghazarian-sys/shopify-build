@@ -1,0 +1,91 @@
+<section class="sbea-story section section--page-width">
+  {% assign story_product = section.settings.fallback_product %}
+  <div class="sbea-story__intro">
+    <div class="sbea-story__visual">
+      {% if section.settings.story_image != blank %}
+        {{ section.settings.story_image | image_url: width: 1000 | image_tag: widths: '480, 720, 1000', sizes: '(min-width: 750px) 42vw, 100vw', loading: 'lazy', class: 'sbea-story__image', alt: section.settings.story_image_alt }}
+      {% elsif story_product != blank and story_product.featured_image != blank %}
+        {{ story_product.featured_image | image_url: width: 1000 | image_tag: widths: '480, 720, 1000', sizes: '(min-width: 750px) 42vw, 100vw', loading: 'lazy', class: 'sbea-story__image', alt: story_product.featured_image.alt | default: section.settings.story_image_alt }}
+      {% else %}
+        <div class="sbea-story__placeholder" aria-hidden="true"></div>
+      {% endif %}
+    </div>
+    <div class="sbea-story__copy-wrap">
+      {% if section.settings.eyebrow != blank %}<p class="sbea-story__eyebrow">{{ section.settings.eyebrow }}</p>{% endif %}
+      <h2>{{ section.settings.heading }}</h2>
+      <div class="sbea-story__copy">{{ section.settings.story }}</div>
+      {% if section.settings.button_label != blank %}<a class="sbea-story__shop" href="{{ section.settings.button_link }}">{{ section.settings.button_label | escape }} </a>{% endif %}
+  <div class="sbea-story__benefits">
+    {% for block in section.blocks %}
+      <div class="sbea-benefit" {{ block.shopify_attributes }}>
+        {% if block.settings.icon != blank %}
+          {{ block.settings.icon | image_url: width: 96 | image_tag: width: 48, height: 48, loading: 'lazy', class: 'sbea-benefit__icon', alt: block.settings.icon_alt }}
+        {% else %}
+          <span class="sbea-benefit__mark" aria-hidden="true">✧</span>
+        {% endif %}
+        <h3>{{ block.settings.title }}</h3>
+        <p>{{ block.settings.text }}</p>
+      </div>
+    {% endfor %}
+  </div>
+    </div>
+  </div>
+  {% if section.settings.show_newsletter %}
+    <div class="sbea-story__newsletter">
+      {% if section.settings.newsletter_image != blank %}
+        <div class="sbea-story__newsletter-media">
+          {{ section.settings.newsletter_image | image_url: width: 480 | image_tag: widths: '240, 360, 480', sizes: '180px', loading: 'lazy', class: 'sbea-story__newsletter-image', alt: section.settings.newsletter_image_alt }}
+        </div>
+      {% endif %}
+      <div>
+        <h3>{{ section.settings.newsletter_heading }}</h3>
+        <p>{{ section.settings.newsletter_text }}</p>
+      </div>
+      {% form 'customer', class: 'sbea-story__form' %}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <label class="visually-hidden" for="SbeaNewsletter-{{ section.id }}">{{ section.settings.newsletter_placeholder }}</label>
+        <input id="SbeaNewsletter-{{ section.id }}" type="email" name="contact[email]" value="{{ form.email }}" autocorrect="off" autocapitalize="off" autocomplete="email" placeholder="{{ section.settings.newsletter_placeholder | escape }}" required>
+        <button type="submit" class="button button--primary">{{ section.settings.newsletter_button }}</button>
+        {% if form.posted_successfully? %}<p class="sbea-story__message">{{ section.settings.newsletter_success }}</p>{% endif %}
+        {% if form.errors %}<div class="sbea-story__message">{{ form.errors | default_errors }}</div>{% endif %}
+      {% endform %}
+    </div>
+  {% endif %}
+</section>
+{% stylesheet %}
+
+.sbea-story{padding-block:56px;color:#542634}
+.sbea-story__intro{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(28px,5vw,80px);align-items:center}
+.sbea-story__visual{height:480px;max-height:42vw;border-radius:24px;overflow:hidden;background:#F8E3E8}
+.sbea-story__image{display:block;width:100%;height:100%;object-fit:contain;object-position:center;padding:0;background:#F8E3E8}
+.sbea-story__placeholder{height:100%;background:#F8E3E8}
+.sbea-story__copy-wrap{padding:12px 0}
+.sbea-story__eyebrow{margin:0 0 18px;font-size:12px;font-weight:650;color:#C7356C}
+.sbea-story__copy-wrap h2{max-width:620px;margin:0 0 20px;color:#C7356C;font-family:var(--font-heading--family);font-size:clamp(32px,3.5vw,54px);font-weight:550;line-height:1.06;letter-spacing:-.045em;text-wrap:balance}
+.sbea-story__copy{max-width:540px;font-size:16px;line-height:1.65;color:#805563}
+.sbea-story__copy p{margin:0}
+.sbea-story__shop{display:inline-flex;gap:30px;align-items:center;margin:24px 0 30px;padding:13px 22px;border-radius:999px;background:#C7356C;color:#fff;text-decoration:none;font-size:14px;font-weight:650;transition:background .2s,transform .2s}
+.sbea-story__shop:hover{background:#A72456;transform:translateY(-2px)}
+.sbea-story__shop:focus-visible,.sbea-story__form input:focus-visible,.sbea-story__form button:focus-visible{outline:2px solid #C7356C;outline-offset:4px}
+.sbea-story__benefits{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;padding-top:24px;border-top:1px solid #EBCAD4}
+.sbea-benefit{padding:0;background:transparent;border:0;min-width:0}
+.sbea-benefit__mark{display:block;font-size:25px;line-height:1;color:#C7356C;margin-bottom:14px}
+.sbea-benefit__icon{width:28px;height:28px;object-fit:contain;margin-bottom:12px}
+.sbea-benefit h3{margin:0 0 8px;font-family:inherit;font-size:15px;font-weight:650;line-height:1.3;letter-spacing:0}
+.sbea-benefit p{margin:0;color:#805563;font-size:13px;line-height:1.6}
+.sbea-story__newsletter{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;margin-top:44px;padding:32px 40px;border-radius:20px;background:#F8E3E8}
+.sbea-story__newsletter-media{display:none}
+.sbea-story__newsletter h3{margin:0 0 8px;font-family:inherit;font-size:24px;line-height:1.15;letter-spacing:-.03em;color:#C7356C}
+.sbea-story__newsletter p{margin:0;color:#805563;font-size:14px;line-height:1.6}
+.sbea-story__form{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center}
+.sbea-story__form input{min-width:0;width:100%;height:50px;padding:0 18px;border:1px solid #EBCAD4;border-radius:999px;background:#FFFFFF;color:#542634;font:inherit;font-size:14px}
+.sbea-story__form .button{height:50px;min-height:50px;padding:0 22px;border-radius:999px;background:#C7356C;color:#fff;border:0;font-size:14px;white-space:nowrap}
+.sbea-story__message{grid-column:1/-1;font-size:13px}
+@media(max-width:989px){.sbea-story__intro{gap:28px}.sbea-story__benefits{gap:12px}.sbea-story__newsletter{padding:28px;gap:24px}}
+@media(max-width:749px){.sbea-story{padding-block:36px}.sbea-story__intro{grid-template-columns:1fr;gap:24px}.sbea-story__visual{height:330px;max-height:none;border-radius:20px}.sbea-story__copy-wrap{padding:0}.sbea-story__eyebrow{margin-bottom:12px}.sbea-story__copy-wrap h2{font-size:36px;max-width:400px}.sbea-story__copy{font-size:15px}.sbea-story__shop{margin:20px 0 26px}.sbea-story__benefits{gap:16px}.sbea-benefit h3{font-size:14px}.sbea-benefit p{font-size:12px}.sbea-story__newsletter{grid-template-columns:1fr;margin-top:30px;padding:24px;gap:20px}.sbea-story__newsletter h3{font-size:23px}.sbea-story__form{grid-template-columns:1fr}.sbea-story__form .button{width:100%}}
+@media(prefers-reduced-motion:reduce){.sbea-story__shop{transition:none}}
+
+{% endstylesheet %}
+{% schema %}
+{"name":"SBEA story & benefits","settings":[{"type":"text","id":"eyebrow","label":"Eyebrow","default":"Own your natural glow"},{"type":"text","id":"heading","label":"Heading","default":"Beauty care that feels like you"},{"type":"richtext","id":"story","label":"Brand story","default":"<p>SBEA turns everyday body and hair care into a polished self-care ritual. Thoughtful textures, irresistible scents and glow-focused essentials come together in routines made to feel effortless, feminine and uniquely yours.</p>"},{"type":"image_picker","id":"story_image","label":"Story image"},{"type":"product","id":"fallback_product","label":"Fallback product image"},{"type":"text","id":"story_image_alt","label":"Story image alt text","default":"SBEA beauty ritual in soft pink tones"},{"type":"checkbox","id":"show_newsletter","label":"Show newsletter","default":true},{"type":"image_picker","id":"newsletter_image","label":"Newsletter image"},{"type":"text","id":"newsletter_image_alt","label":"Newsletter image alt text","default":"SBEA cosmetic detail"},{"type":"text","id":"newsletter_heading","label":"Newsletter heading","default":"Stay close to the glow"},{"type":"textarea","id":"newsletter_text","label":"Newsletter text","default":"Be first to discover new drops, bundles and SBEA rituals."},{"type":"text","id":"newsletter_placeholder","label":"Email placeholder","default":"Your email address"},{"type":"text","id":"newsletter_button","label":"Button text","default":"Join SBEA"},{"type":"text","id":"newsletter_success","label":"Success message","default":"You’re on the list."},{"type":"text","id":"button_label","label":"Shop button label","default":"Find your favorites"},{"type":"url","id":"button_link","label":"Shop button link"}],"blocks":[{"type":"benefit","name":"Benefit","settings":[{"type":"image_picker","id":"icon","label":"Icon image"},{"type":"text","id":"icon_alt","label":"Icon alt text"},{"type":"text","id":"title","label":"Title","default":"Benefit"},{"type":"textarea","id":"text","label":"Text"}]}],"max_blocks":4,"presets":[{"name":"SBEA story & benefits"}]}
+{% endschema %}

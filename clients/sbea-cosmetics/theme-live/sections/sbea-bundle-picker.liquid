@@ -1,0 +1,282 @@
+{% liquid
+  assign show_bundle_picker = false
+  if template.name == 'index'
+    assign show_bundle_picker = true
+  elsif collection.handle == 'bundles'
+    assign show_bundle_picker = true
+  endif
+%}
+
+{% if show_bundle_picker %}
+
+{% if template.name == 'index' %}
+<sbea-bundle-gallery class="sbea-curated section section--page-width">
+  <div class="sbea-curated__heading">
+    <div><p>{{ section.settings.eyebrow }}</p><h2>{{ section.settings.heading }}</h2><div class="sbea-curated__sub">{{ section.settings.subheading }}</div></div>
+  </div>
+  <div class="sbea-curated__track" tabindex="0" aria-label="{{ section.settings.heading | escape }}">
+    {% for block in section.blocks %}
+      {% assign bundle = block.settings.product %}
+      {% if bundle != blank %}
+        <article class="sbea-curated__card" {{ block.shopify_attributes }}>
+          <a class="sbea-curated__photo" href="{{ bundle.url }}" aria-label="{{ bundle.title | escape }}">
+            {% if bundle.featured_image != blank %}{{ bundle.featured_image | image_url: width: 900 | image_tag: widths: '320, 480, 640, 900', sizes: '(min-width: 990px) 30vw, (min-width: 750px) 45vw, 82vw', loading: 'lazy', alt: bundle.title }}{% endif %}
+            {% if block.settings.highlighted %}<span class="sbea-curated__badge">{{ block.settings.badge_text }}</span>{% endif %}
+          </a>
+          <div class="sbea-curated__body">
+            <h3><a href="{{ bundle.url }}">{{ bundle.title }}</a></h3>
+            <p>{{ block.settings.included_text | escape | newline_to_br }}</p>
+            <div class="sbea-curated__price">{{ bundle.price | money }}{% if bundle.compare_at_price > bundle.price %}<span>{{ section.settings.was_label }} <s>{{ bundle.compare_at_price | money }}</s></span>{% endif %}</div>
+            <a class="sbea-curated__button" href="{{ bundle.url }}">{{ section.settings.choose_label }} </a>
+          </div>
+        </article>
+      {% endif %}
+    {% endfor %}
+  </div>
+  <a class="sbea-curated__all" href="{{ routes.collections_url }}/bundles">{{ section.settings.all_label }} </a>
+</sbea-bundle-gallery>
+{% else %}
+
+  <script src="{{ 'sbea-bundle-picker.js' | asset_url }}" type="module" fetchpriority="low"></script>
+  <section
+    class="sbea-bundle-picker section section--page-width"
+    style="
+      --sbea-picker-selected-bg: {{ section.settings.selected_background }};
+      --sbea-picker-selected-text: {{ section.settings.selected_text }};
+      --sbea-picker-unselected-bg: {{ section.settings.unselected_background }};
+      --sbea-picker-text: {{ section.settings.option_text }};
+      --sbea-picker-border: {{ section.settings.option_border }};
+      --sbea-picker-hover: {{ section.settings.hover_background }};
+      --sbea-picker-sold-out: {{ section.settings.sold_out_color }};
+      --sbea-picker-radius: {{ section.settings.pill_radius }}px;
+    "
+  >
+    <div class="sbea-bundle-picker__header">
+      {% if section.settings.eyebrow != blank %}<div class="sbea-bundle-picker__eyebrow">{{ section.settings.eyebrow }}</div>{% endif %}
+      <h2>{{ section.settings.heading }}</h2>
+      {% if section.settings.subheading != blank %}<div class="sbea-bundle-picker__subheading">{{ section.settings.subheading }}</div>{% endif %}
+    </div>
+
+    <div class="sbea-bundle-picker__grid">
+      {% for block in section.blocks %}
+        {% assign p = block.settings.product %}
+        {% assign v = p.selected_or_first_available_variant | default: p.variants.first %}
+        {% assign option_value_count = 0 %}
+        {% if p != blank %}
+          {% for product_option in p.options_with_values %}
+            {% assign option_value_count = option_value_count | plus: product_option.values.size %}
+          {% endfor %}
+        {% endif %}
+        {% assign use_mobile_sheet = false %}
+        {% if option_value_count > section.settings.mobile_sheet_threshold %}
+          {% assign use_mobile_sheet = true %}
+        {% endif %}
+
+        {% if p != blank %}
+          {% assign price = v.price %}
+          {% assign compare = v.compare_at_price | default: v.price %}
+          {% assign save = compare | minus: price %}
+          {% if compare > 0 %}
+            {% assign pct = save | times: 100.0 | divided_by: compare | round %}
+          {% else %}
+            {% assign pct = 0 %}
+          {% endif %}
+        {% endif %}
+
+        <sbea-bundle-picker
+          class="sbea-bundle-picker-element"
+          data-save-prefix="{{ section.settings.save_prefix | escape }}"
+          data-add-label="{{ section.settings.button_text | escape }}"
+          data-sold-out-label="{{ section.settings.sold_out_button_text | escape }}"
+        >
+          <article
+            class="sbea-bundle-card{% if block.settings.highlighted %} sbea-bundle-card--highlighted{% endif %}"
+            data-bundle-card
+            data-sheet-enabled="{{ use_mobile_sheet }}"
+            {{ block.shopify_attributes }}
+          >
+            {% if block.settings.highlighted and block.settings.badge_text != blank %}
+              <div class="sbea-bundle-card__badge">{{ block.settings.badge_text }}</div>
+            {% endif %}
+
+            {% if p != blank and p.featured_image != blank %}
+              <div class="sbea-bundle-card__media">
+                {{ p.featured_image | image_url: width: 900 | image_tag: widths: '320, 480, 640, 800, 900', sizes: '(min-width: 990px) 30vw, (min-width: 750px) 46vw, 88vw', loading: 'lazy', class: 'sbea-bundle-card__image', alt: p.featured_image.alt | default: p.title }}
+              </div>
+              {% if section.settings.show_thumbnails and p.media.size > 1 %}
+                <div class="sbea-bundle-card__thumbs" aria-hidden="true">
+                  {% for media in p.media limit: 4 %}
+                    {% if media.preview_image != blank %}
+                      {{ media.preview_image | image_url: width: 120 | image_tag: width: 54, height: 68, loading: 'lazy', class: 'sbea-bundle-card__thumb', alt: '' }}
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              {% endif %}
+            {% endif %}
+
+            <div class="sbea-bundle-card__content">
+              <h3>{{ block.settings.title_override | default: p.title }}</h3>
+              <div class="sbea-bundle-card__includes">{{ block.settings.included_text | newline_to_br }}</div>
+
+              <div class="sbea-bundle-card__price">
+                <span class="sbea-bundle-card__sale" data-bundle-price>{% if p != blank %}{{ price | money }}{% else %}USD {{ block.settings.bundle_price }}{% endif %}</span>
+                <s data-bundle-compare {% if p == blank or compare <= price %}hidden{% endif %}>{% if p != blank %}{{ compare | money }}{% else %}USD {{ block.settings.regular_price }}{% endif %}</s>
+              </div>
+              <div class="sbea-bundle-card__save" data-bundle-save {% if p == blank or compare <= price %}hidden{% endif %}>
+                {% if p != blank %}{{ section.settings.save_prefix }} {{ save | money }} ({{ pct }}%){% else %}{{ block.settings.savings_text }}{% endif %}
+              </div>
+
+              {% if p != blank %}
+                {% form 'product', p, class: 'sbea-bundle-card__form' %}
+                  <input type="hidden" name="id" value="{{ v.id }}" data-bundle-variant-id>
+                  <input type="hidden" name="quantity" value="1">
+
+                  <div class="sbea-bundle-card__options-zone">
+                    {% render 'sbea-bundle-option-groups',
+                      product: p,
+                      current_variant: v,
+                      block_id: block.id,
+                      surface: 'inline',
+                      show_checkmark: section.settings.show_checkmark,
+                      show_scent_dot: section.settings.show_scent_dot
+                    %}
+
+                    {% if use_mobile_sheet and p.has_only_default_variant == false %}
+                      <button class="button button--secondary sbea-bundle-card__open-sheet" type="button" data-open-bundle-sheet>
+                        {{ section.settings.mobile_options_button }}
+                      </button>
+                    {% endif %}
+                  </div>
+
+                  <button class="button button--primary sbea-bundle-card__button" type="submit" data-bundle-add {% unless v.available %}disabled{% endunless %}>
+                    <span data-bundle-add-label>{% if v.available %}{{ section.settings.button_text }}{% else %}{{ section.settings.sold_out_button_text }}{% endif %}</span>
+                  </button>
+
+                  {% if use_mobile_sheet and p.has_only_default_variant == false %}
+                    <dialog class="sbea-bundle-sheet" data-bundle-sheet>
+                      <div class="sbea-bundle-sheet__panel">
+                        <div class="sbea-bundle-sheet__header">
+                          <div>
+                            <div class="sbea-bundle-sheet__eyebrow">{{ block.settings.title_override | default: p.title }}</div>
+                            <h3>{{ section.settings.mobile_sheet_heading }}</h3>
+                          </div>
+                          <button class="sbea-bundle-sheet__close" type="button" data-close-bundle-sheet aria-label="{{ 'accessibility.close_dialog' | t }}">×</button>
+                        </div>
+
+                        <div class="sbea-bundle-sheet__body">
+                          {% render 'sbea-bundle-option-groups',
+                            product: p,
+                            current_variant: v,
+                            block_id: block.id,
+                            surface: 'sheet',
+                            show_checkmark: section.settings.show_checkmark,
+                            show_scent_dot: section.settings.show_scent_dot
+                          %}
+                        </div>
+
+                        <div class="sbea-bundle-sheet__footer">
+                          <div class="sbea-bundle-sheet__pricing">
+                            <span data-bundle-price>{{ price | money }}</span>
+                            <s data-bundle-compare {% if compare <= price %}hidden{% endif %}>{{ compare | money }}</s>
+                            <span class="sbea-bundle-sheet__save" data-bundle-save {% if compare <= price %}hidden{% endif %}>{{ section.settings.save_prefix }} {{ save | money }} ({{ pct }}%)</span>
+                          </div>
+                          <button class="button button--primary sbea-bundle-sheet__add" type="submit" data-bundle-add {% unless v.available %}disabled{% endunless %}>
+                            <span data-bundle-add-label>{% if v.available %}{{ section.settings.button_text }}{% else %}{{ section.settings.sold_out_button_text }}{% endif %}</span>
+                          </button>
+                        </div>
+                      </div>
+                    </dialog>
+                  {% endif %}
+                {% endform %}
+
+                <script type="application/json" data-bundle-variants>
+                  [
+                    {% for variant in p.variants %}
+                      {% assign variant_compare = variant.compare_at_price | default: variant.price %}
+                      {% assign variant_save = variant_compare | minus: variant.price %}
+                      {% assign variant_pct = 0 %}
+                      {% if variant_compare > 0 %}
+                        {% assign variant_pct = variant_save | times: 100.0 | divided_by: variant_compare | round %}
+                      {% endif %}
+                      {% assign has_compare = false %}
+                      {% if variant_compare > variant.price %}{% assign has_compare = true %}{% endif %}
+                      {% assign variant_image = variant.featured_image | default: p.featured_image %}
+                      {
+                        "id": {{ variant.id | json }},
+                        "available": {{ variant.available | json }},
+                        "options": {{ variant.options | json }},
+                        "priceMoney": {{ variant.price | money | json }},
+                        "compareMoney": {{ variant_compare | money | json }},
+                        "hasCompare": {{ has_compare | json }},
+                        "saveAmount": {{ variant_save | json }},
+                        "saveMoney": {{ variant_save | money | json }},
+                        "savePercent": {{ variant_pct | json }},
+                        "image": {{ variant_image | image_url: width: 900 | json }},
+                        "imageAlt": {{ variant_image.alt | default: p.title | json }}
+                      }{% unless forloop.last %},{% endunless %}
+                    {% endfor %}
+                  ]
+                </script>
+              {% else %}
+                <button class="button button--primary sbea-bundle-card__button" type="button" disabled>{{ section.settings.draft_button_text }}</button>
+              {% endif %}
+            </div>
+          </article>
+        </sbea-bundle-picker>
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}
+{% endif %}
+
+{% stylesheet %}
+.sbea-bundle-picker{padding-block:48px 64px}.sbea-bundle-picker__header{text-align:center;max-width:760px;margin:0 auto 32px}.sbea-bundle-picker__header h2{margin:6px 0 8px}.sbea-bundle-picker__eyebrow{font-size:.82rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--sbea-picker-selected-bg)}.sbea-bundle-picker__subheading{opacity:.75;line-height:1.65}.sbea-bundle-picker__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}.sbea-bundle-picker-element{display:block;height:100%}.sbea-bundle-card{position:relative;display:flex;flex-direction:column;border:1px solid color-mix(in srgb,currentColor 12%,transparent);border-radius:20px;background:var(--color-background,#FFFFFF);height:100%;box-shadow:0 8px 24px rgba(74,34,51,.04)}.sbea-bundle-card--highlighted{border:2px solid var(--sbea-picker-selected-bg);transform:translateY(-8px) scale(1.015);box-shadow:0 18px 42px color-mix(in srgb,var(--sbea-picker-selected-bg) 18%,transparent)}.sbea-bundle-card__badge{position:absolute;z-index:3;top:0;left:50%;transform:translate(-50%,-50%);padding:8px 15px;border-radius:999px;background:var(--sbea-picker-selected-bg);color:var(--sbea-picker-selected-text);font-size:.76rem;font-weight:800;letter-spacing:.03em;white-space:nowrap}.sbea-bundle-card__media{aspect-ratio:4/5;overflow:hidden;border-radius:18px 18px 0 0;background:#fff}.sbea-bundle-card__image{width:100%;height:100%;object-fit:contain;object-position:center;padding:6%;background:#fff}.sbea-bundle-card__thumbs{display:flex;justify-content:center;gap:7px;margin:-28px 16px 0;position:relative;z-index:2}.sbea-bundle-card__thumb{width:46px;height:58px;object-fit:contain;padding:3px;border:2px solid #FFFFFF;border-radius:10px;background:#fff;box-shadow:0 4px 12px rgba(74,34,51,.08)}.sbea-bundle-card__content{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}.sbea-bundle-card__content h3{margin:0 0 10px}.sbea-bundle-card__includes{line-height:1.6;opacity:.76;margin-bottom:18px;min-height:7.2em}.sbea-bundle-card__price{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}.sbea-bundle-card__sale{font-size:1.5em;font-weight:800}.sbea-bundle-card__price s{opacity:.5}.sbea-bundle-card__save{display:inline-flex;align-self:flex-start;margin:10px 0 16px;padding:6px 10px;border-radius:999px;background:color-mix(in srgb,var(--sbea-picker-selected-bg) 14%,white);color:color-mix(in srgb,var(--sbea-picker-selected-bg) 80%,#542634);font-size:.82rem;font-weight:800}.sbea-bundle-card__form{display:flex;flex-direction:column;flex:1;gap:14px}.sbea-bundle-card__options-zone{min-height:176px}.sbea-bundle-options{display:grid;gap:16px}.sbea-bundle-option-group{margin:0;padding:0;border:0;min-width:0}.sbea-bundle-option-group__legend{display:flex;align-items:baseline;gap:8px;width:100%;padding:0 0 8px;font-size:.8rem;font-weight:750;color:var(--sbea-picker-text)}.sbea-bundle-option-group__selected{font-weight:600;color:var(--sbea-picker-selected-bg)}.sbea-bundle-option-group__pills{display:flex;flex-wrap:wrap;gap:8px}.sbea-bundle-pill{position:relative;display:inline-flex;min-width:0;cursor:pointer}.sbea-bundle-pill__input{position:absolute;inset:0;opacity:0;pointer-events:none}.sbea-bundle-pill__content{display:flex;align-items:center;justify-content:center;gap:6px;min-height:42px;padding:8px 12px;border:1px solid var(--sbea-picker-border);border-radius:var(--sbea-picker-radius);background:var(--sbea-picker-unselected-bg);color:var(--sbea-picker-text);font-size:.83rem;font-weight:650;line-height:1.15;transition:background-color .18s ease,border-color .18s ease,color .18s ease,box-shadow .18s ease,transform .18s ease}.sbea-bundle-pill:hover .sbea-bundle-pill__content{background:var(--sbea-picker-hover);border-color:color-mix(in srgb,var(--sbea-picker-selected-bg) 42%,var(--sbea-picker-border))}.sbea-bundle-pill__input:focus-visible+.sbea-bundle-pill__content{outline:2px solid var(--sbea-picker-selected-bg);outline-offset:2px}.sbea-bundle-pill__input:checked+.sbea-bundle-pill__content{background:var(--sbea-picker-selected-bg);border-color:var(--sbea-picker-selected-bg);color:var(--sbea-picker-selected-text);box-shadow:0 6px 16px color-mix(in srgb,var(--sbea-picker-selected-bg) 24%,transparent);transform:translateY(-1px)}.sbea-bundle-pill__check{display:none;font-weight:900}.sbea-bundle-pill__input:checked+.sbea-bundle-pill__content .sbea-bundle-pill__check{display:inline}.sbea-bundle-pill__dot{width:9px;height:9px;flex:0 0 9px;border-radius:50%;background:var(--sbea-pill-dot,#F3C5CF);box-shadow:inset 0 0 0 1px rgba(74,34,51,.08)}.sbea-bundle-pill__dot--image{width:20px;height:20px;flex-basis:20px;overflow:hidden}.sbea-bundle-pill__dot--image img{width:100%;height:100%;object-fit:cover;border-radius:inherit}.sbea-bundle-pill__sold-out{display:none;font-size:.68rem;font-weight:700}.sbea-bundle-pill.is-sold-out{cursor:not-allowed}.sbea-bundle-pill.is-sold-out .sbea-bundle-pill__content{background:#f3f1f2;color:var(--sbea-picker-sold-out);border-color:#ddd5d8;box-shadow:none;text-decoration:line-through;opacity:.68}.sbea-bundle-pill.is-sold-out .sbea-bundle-pill__sold-out{display:inline;text-decoration:none}.sbea-bundle-card__button{width:100%;min-height:48px;margin-top:auto}.sbea-bundle-card__open-sheet{display:none;width:100%;min-height:48px}.sbea-bundle-sheet{width:min(620px,calc(100% - 32px));max-width:620px;padding:0;border:0;border-radius:24px;background:transparent;color:inherit;box-shadow:0 28px 80px rgba(74,34,51,.22)}.sbea-bundle-sheet::backdrop{background:rgba(53,25,37,.34);backdrop-filter:blur(3px)}.sbea-bundle-sheet__panel{display:flex;flex-direction:column;max-height:min(84svh,760px);overflow:hidden;border-radius:24px;background:#FFFFFF}.sbea-bundle-sheet__header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 22px 16px;border-bottom:1px solid #F5D6D8}.sbea-bundle-sheet__header h3{margin:2px 0 0}.sbea-bundle-sheet__eyebrow{font-size:.76rem;font-weight:750;color:var(--sbea-picker-selected-bg)}.sbea-bundle-sheet__close{display:grid;place-items:center;width:42px;height:42px;border:1px solid var(--sbea-picker-border);border-radius:50%;background:#fff;color:#542634;font:inherit;font-size:1.35rem;cursor:pointer}.sbea-bundle-sheet__body{overflow:auto;padding:20px 22px 24px}.sbea-bundle-sheet__footer{display:grid;grid-template-columns:1fr minmax(170px,.8fr);gap:16px;align-items:center;padding:16px 22px max(16px,env(safe-area-inset-bottom));border-top:1px solid #F5D6D8;background:#FFFFFF;box-shadow:0 -8px 24px rgba(74,34,51,.05)}.sbea-bundle-sheet__pricing{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px}.sbea-bundle-sheet__pricing>[data-bundle-price]{font-size:1.2rem;font-weight:800}.sbea-bundle-sheet__pricing s{opacity:.5}.sbea-bundle-sheet__save{width:100%;font-size:.76rem;font-weight:750;color:var(--sbea-picker-selected-bg)}.sbea-bundle-sheet__add{width:100%;min-height:48px}
+@media(max-width:989px){.sbea-bundle-picker__grid{grid-template-columns:repeat(2,minmax(0,1fr))}.sbea-bundle-card--highlighted{transform:none}}
+@media(max-width:749px){.sbea-bundle-picker{padding-block:40px}.sbea-bundle-picker__grid{grid-template-columns:1fr}.sbea-bundle-card--highlighted{order:-1}.sbea-bundle-card__includes{min-height:0}.sbea-bundle-card__options-zone{min-height:0}.sbea-bundle-pill__content{min-height:46px;padding:9px 13px;font-size:.86rem}.sbea-bundle-card[data-sheet-enabled='true'] .sbea-bundle-options[data-picker-surface='inline']{display:none}.sbea-bundle-card[data-sheet-enabled='true'] .sbea-bundle-card__open-sheet{display:flex}.sbea-bundle-card[data-sheet-enabled='true']>.sbea-bundle-card__content .sbea-bundle-card__button{display:none}.sbea-bundle-sheet{width:100%;max-width:none;margin:auto 0 0;border-radius:24px 24px 0 0}.sbea-bundle-sheet__panel{max-height:88svh;border-radius:24px 24px 0 0}.sbea-bundle-sheet__footer{grid-template-columns:1fr}.sbea-bundle-sheet__add{position:sticky;bottom:0}}
+
+.sbea-curated{display:block;padding-block:52px;color:#542634}
+.sbea-curated__heading{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:26px}
+.sbea-curated__heading p{margin:0 0 10px;color:#C7356C;font-size:12px;font-weight:650}
+.sbea-curated__heading h2{margin:0 0 12px;color:#C7356C;font-size:clamp(30px,3.3vw,46px);line-height:1.1;letter-spacing:-.04em;text-wrap:balance}
+.sbea-curated__sub{color:#805563;font-size:15px;line-height:1.5}
+.sbea-curated__controls{display:flex;gap:8px;flex-shrink:0}
+.sbea-curated__controls button{width:44px;height:44px;border:1px solid #EBCAD4;border-radius:50%;background:#FFFFFF;color:#C7356C;font-size:22px;cursor:pointer}
+.sbea-curated__controls button:disabled{opacity:.35;cursor:default}
+.sbea-curated__track{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0;scrollbar-width:none;padding:2px 0 12px;align-items:stretch}
+.sbea-curated__track::-webkit-scrollbar{display:none}
+.sbea-curated__card{flex:0 0 calc((100% - 48px)/3);min-width:0;scroll-snap-align:start;display:flex;flex-direction:column;border-radius:20px;overflow:hidden;background:#fff}
+.sbea-curated__photo{position:relative;display:block;aspect-ratio:1;overflow:hidden;background:#F8E3E8}
+.sbea-curated__photo img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .3s}
+.sbea-curated__photo:hover img{transform:scale(1.025)}
+.sbea-curated__badge{position:absolute;top:14px;left:14px;padding:7px 12px;background:#C7356C;color:#fff;border-radius:999px;font-size:11px;font-weight:650}
+.sbea-curated__body{padding:22px;display:flex;flex-direction:column;flex:1}
+.sbea-curated__body h3{font-family:inherit;font-size:20px;line-height:1.2;font-weight:650;letter-spacing:-.02em;margin:0 0 10px}
+.sbea-curated__body h3 a{color:inherit;text-decoration:none}
+.sbea-curated__body p{margin:0 0 18px;min-height:3em;font-size:14px;line-height:1.5;color:#805563}
+.sbea-curated__price{display:flex;align-items:baseline;flex-wrap:wrap;gap:12px;font-size:22px;font-weight:650;margin-top:auto;margin-bottom:18px}
+.sbea-curated__price span{font-size:13px;font-weight:400;color:#805563}
+.sbea-curated__button{display:flex;justify-content:space-between;align-items:center;padding:13px 18px;border-radius:999px;background:#C7356C;color:#fff;font-size:14px;font-weight:650;text-decoration:none}
+.sbea-curated__button:hover{background:#A72456}
+.sbea-curated__all{display:table;margin:24px auto 0;color:#C7356C;font-size:14px;font-weight:650;text-underline-offset:5px}
+.sbea-curated a:focus-visible,.sbea-curated button:focus-visible,.sbea-curated__track:focus-visible{outline:2px solid #C7356C;outline-offset:3px}
+@media(max-width:989px){.sbea-curated__card{flex-basis:calc((100% - 20px)/2)}.sbea-curated__track{gap:20px}}
+@media(max-width:749px){.sbea-curated{padding-block:36px}.sbea-curated__heading{align-items:flex-start;gap:12px}.sbea-curated__heading h2{font-size:30px}.sbea-curated__sub{font-size:14px}.sbea-curated__controls{gap:6px}.sbea-curated__controls button{width:36px;height:36px;font-size:19px}.sbea-curated__card{flex-basis:86%}.sbea-curated__track{gap:14px}.sbea-curated__body{padding:20px}}
+@media(prefers-reduced-motion:reduce){.sbea-curated__photo img{transition:none}}
+.sbea-curated__controls button{width:auto;min-width:72px;padding-inline:14px;font-size:12px}
+.sbea-curated{width:100%;max-width:1280px;margin-inline:auto;padding-inline:32px;box-sizing:border-box;min-width:0}
+.sbea-curated__heading{max-width:680px;margin:0 auto 28px;text-align:center;display:block}
+.sbea-curated__track{width:100%;min-width:0;scrollbar-width:thin;scrollbar-color:#D98AA8 #FBEAF0;padding-bottom:18px}
+.sbea-curated__track::-webkit-scrollbar{display:block;height:4px}
+.sbea-curated__track::-webkit-scrollbar-thumb{background:#D98AA8;border-radius:999px}
+.sbea-curated__card{border:1px solid #F2DCE4;box-shadow:0 4px 16px rgba(84,38,52,.035)}
+.sbea-curated__body{background:#FFF9FB}
+.sbea-curated__button{justify-content:center}
+.sbea-curated__price s{text-decoration:none}
+@media(max-width:749px){.sbea-curated{padding:36px 20px;max-width:100vw}.sbea-curated__heading h2{font-size:30px;line-height:1.14}.sbea-curated__sub{font-size:14px;line-height:1.6}.sbea-curated__track{gap:16px}.sbea-curated__card{flex:0 0 100%;scroll-snap-stop:always;border-radius:22px}.sbea-curated__body{padding:20px}.sbea-curated__body h3{font-size:20px}.sbea-curated__body p{min-height:0}.sbea-curated__price{font-size:22px}}
+{% endstylesheet %}
+
+{% schema %}
+{"name":"SBEA bundle picker","settings":[{"type":"text","id":"eyebrow","label":"Eyebrow","default":"Bundle & save"},{"type":"text","id":"heading","label":"Heading","default":"Choose your SBEA bundle"},{"type":"textarea","id":"subheading","label":"Subheading","default":"Find your body and hair care routine in one bundle"},{"type":"checkbox","id":"show_thumbnails","label":"Show product thumbnails","default":true},{"type":"checkbox","id":"show_checkmark","label":"Show checkmark on selected options","default":true},{"type":"checkbox","id":"show_scent_dot","label":"Show swatch or scent dot","default":true},{"type":"range","id":"mobile_sheet_threshold","label":"Open mobile sheet above this many choices","min":4,"max":20,"step":1,"default":7},{"type":"text","id":"mobile_options_button","label":"Mobile options button","default":"Choose options"},{"type":"text","id":"mobile_sheet_heading","label":"Mobile sheet heading","default":"Choose your options"},{"type":"text","id":"save_prefix","label":"Savings label","default":"Save"},{"type":"text","id":"button_text","label":"Add to cart text","default":"Add to cart"},{"type":"text","id":"sold_out_button_text","label":"Sold-out button text","default":"Sold out"},{"type":"text","id":"draft_button_text","label":"Draft product button text","default":"Available after approval"},{"type":"header","content":"Option colors"},{"type":"color","id":"selected_background","label":"Selected background","default":"#C7356C"},{"type":"color","id":"selected_text","label":"Selected text","default":"#FFFFFF"},{"type":"color","id":"unselected_background","label":"Unselected background","default":"#FFFDFE"},{"type":"color","id":"option_text","label":"Option text","default":"#542634"},{"type":"color","id":"option_border","label":"Option border","default":"#F3C5CF"},{"type":"color","id":"hover_background","label":"Hover background","default":"#FFE8E1"},{"type":"color","id":"sold_out_color","label":"Sold-out text","default":"#8D8287"},{"type":"range","id":"pill_radius","label":"Pill roundness","min":8,"max":32,"step":1,"unit":"px","default":24},{"type":"text","id":"previous_label","label":"Previous button label","default":"Previous bundles"},{"type":"text","id":"next_label","label":"Next button label","default":"Next bundles"},{"type":"text","id":"choose_label","label":"Choose bundle label","default":"Choose bundle"},{"type":"text","id":"all_label","label":"All bundles label","default":"Explore all bundles"},{"type":"text","id":"was_label","label":"Previous price label","default":"Was"}],"blocks":[{"type":"bundle","name":"Bundle card","settings":[{"type":"product","id":"product","label":"Bundle product"},{"type":"text","id":"title_override","label":"Card title"},{"type":"textarea","id":"included_text","label":"Included products"},{"type":"text","id":"regular_price","label":"Original price fallback"},{"type":"text","id":"bundle_price","label":"Bundle price fallback"},{"type":"text","id":"savings_text","label":"Savings fallback"},{"type":"checkbox","id":"highlighted","label":"Highlight this bundle","default":false},{"type":"text","id":"badge_text","label":"Badge text","default":"Most Popular"}]}],"max_blocks":12,"presets":[{"name":"SBEA bundle picker"}]}
+{% endschema %}
+
+

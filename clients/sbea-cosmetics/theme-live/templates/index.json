@@ -1,0 +1,417 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "product_list_fa6P9H": {
+      "type": "product-list",
+      "blocks": {
+        "static-header": {
+          "type": "_product-list-content",
+          "name": "t:names.header",
+          "static": true,
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": false,
+            "horizontal_alignment": "space-between",
+            "vertical_alignment": "flex-end",
+            "align_baseline": true,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_list_text_YFtzcL": {
+              "type": "_product-list-text",
+              "name": "t:names.collection_title",
+              "settings": {
+                "text": "<p>Everyday favorites</p><h2>SBEA Bestsellers</h2><p>Discover your next body and hair care favorites</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h3",
+                "font": "var(--font-heading--family)",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_list_button_MWeP9V": {
+              "type": "_product-list-button",
+              "name": "t:names.product_list_button",
+              "settings": {
+                "label": "Shop all",
+                "open_in_new_tab": false,
+                "style_class": "link",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_list_text_YFtzcL",
+            "product_list_button_MWeP9V"
+          ]
+        },
+        "static-product-card": {
+          "type": "_product-card",
+          "name": "t:names.product_card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 10,
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 18,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_card_gallery_677WP3": {
+              "type": "_product-card-gallery",
+              "name": "t:names.product_card_media",
+              "settings": {
+                "image_ratio": "square",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 18,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title_YXxMTj": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 4,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price_JQzVV4": {
+              "type": "price",
+              "name": "t:names.product_price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h6",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_card_gallery_677WP3",
+            "product_title_YXxMTj",
+            "price_JQzVV4"
+          ]
+        }
+      },
+      "name": "t:names.product_list",
+      "settings": {
+        "collection": "sbea-bestsellers",
+        "layout_type": "grid",
+        "carousel_on_mobile": false,
+        "max_products": 6,
+        "columns": 3,
+        "mobile_columns": "2",
+        "mobile_card_size": "60cqw",
+        "columns_gap": 24,
+        "rows_gap": 32,
+        "icons_style": "arrow",
+        "icons_shape": "none",
+        "section_width": "page-width",
+        "horizontal_alignment": "flex-start",
+        "gap": 32,
+        "background_color": "#FFFFFF",
+        "padding-block-start": 60,
+        "padding-block-end": 64
+      }
+    },
+    "category_showcase": {
+      "type": "sbea-category-showcase",
+      "settings": {
+        "eyebrow": "Shop your ritual",
+        "heading": "Find your SBEA ritual",
+        "subheading": "Explore body care, hair care and bundles for your daily routine"
+      },
+      "blocks": {
+        "body": {
+          "type": "category",
+          "settings": {
+            "visual_style": "body",
+            "product_1_handle": "mix-berries-body-scrub",
+            "product_2_handle": "mix-berries-body-lotion",
+            "product_3_handle": "mix-berries-body-butter",
+            "product_4_handle": "",
+            "kicker": "Body care",
+            "title": "Soft skin, signature scent",
+            "text": "Discover scrubs, lotions and body care in your favorite SBEA scents",
+            "link": "/collections/all",
+            "alt_text": "SBEA body scrub, body lotion, and body butter arranged on a soft pink background"
+          }
+        },
+        "hair": {
+          "type": "category",
+          "settings": {
+            "visual_style": "hair",
+            "product_1_handle": "silk-and-bloom-hair-oil",
+            "product_2_handle": "gloss-and-glow-hair-serum",
+            "product_3_handle": "fruity-dream-hair-mist",
+            "product_4_handle": "",
+            "kicker": "Hair care",
+            "title": "Shine starts here",
+            "text": "Care for your hair with nourishing oils, smoothing serum and fragrant mists",
+            "link": "/collections/all",
+            "alt_text": "SBEA hair oil, hair serum, and hair mist arranged on a soft pink background"
+          }
+        },
+        "bundles": {
+          "type": "category",
+          "settings": {
+            "visual_style": "bundle",
+            "product_1_handle": "mix-berries-body-scrub",
+            "product_2_handle": "mix-berries-body-lotion",
+            "product_3_handle": "silk-and-bloom-hair-oil",
+            "product_4_handle": "gloss-and-glow-hair-serum",
+            "kicker": "Bundle & save",
+            "title": "Build your SBEA ritual",
+            "text": "Enjoy more of your favorite body and hair care with our curated bundles",
+            "link": "/collections/bundles",
+            "alt_text": "A curated SBEA body and hair care gift set on a soft pink background"
+          }
+        }
+      },
+      "block_order": [
+        "bundles",
+        "body",
+        "hair"
+      ]
+    },
+    "bundles_home": {
+      "type": "sbea-bundle-picker",
+      "settings": {
+        "eyebrow": "Bundle & save",
+        "heading": "More care. Better together.",
+        "subheading": "Discover your favorite body and hair care, bundled for less",
+        "button_text": "Add to cart",
+        "draft_button_text": "Available after approval",
+        "show_thumbnails": false
+      },
+      "blocks": {
+        "hair_duo": {
+          "type": "bundle",
+          "settings": {
+            "product": "hair-duo-bundle",
+            "title_override": "Hair Duo Bundle",
+            "included_text": "Nourishing hair oil and smoothing serum",
+            "regular_price": "34.00",
+            "bundle_price": "28.00",
+            "savings_text": "Save $6.00 (18%)",
+            "highlighted": false,
+            "badge_text": "Most Popular"
+          }
+        },
+        "body_duo": {
+          "type": "bundle",
+          "settings": {
+            "product": "body-care-bundle",
+            "title_override": "Body Care Bundle",
+            "included_text": "Body scrub and lotion in your favorite scent",
+            "regular_price": "29.50",
+            "bundle_price": "25.00",
+            "savings_text": "Save $4.50 (15%)",
+            "highlighted": false,
+            "badge_text": "Most Popular"
+          }
+        },
+        "star": {
+          "type": "bundle",
+          "settings": {
+            "product": "the-star-bundle",
+            "title_override": "The Star Bundle",
+            "included_text": "A complete body care ritual with hair mist",
+            "regular_price": "72.00",
+            "bundle_price": "59.00",
+            "savings_text": "Save $13.00 (18%)",
+            "highlighted": true,
+            "badge_text": "Most Popular"
+          }
+        },
+        "all_in": {
+          "type": "bundle",
+          "settings": {
+            "product": "all-in-bundle",
+            "title_override": "All In Bundle",
+            "included_text": "Body and hair essentials in one complete set",
+            "regular_price": "91.00",
+            "bundle_price": "75.00",
+            "savings_text": "Save $16.00 (18%)",
+            "highlighted": false,
+            "badge_text": "Most Popular"
+          }
+        }
+      },
+      "block_order": [
+        "hair_duo",
+        "body_duo",
+        "star",
+        "all_in"
+      ]
+    },
+    "story_benefits": {
+      "type": "sbea-story-benefits",
+      "settings": {
+        "eyebrow": "Own your natural glow",
+        "heading": "A little care. A lasting glow.",
+        "story": "<p>Soft skin, glossy hair and scents you love. Make your everyday routine feel special with SBEA.</p>",
+        "show_newsletter": false,
+        "newsletter_heading": "Stay close to the glow",
+        "newsletter_text": "Get the latest products, offers and care tips in your inbox",
+        "newsletter_placeholder": "Your email address",
+        "newsletter_button": "Join SBEA",
+        "newsletter_success": "You’re on the list.",
+        "fallback_product": "golden-kiss-shimmery-body-oil",
+        "story_image_alt": "SBEA Golden Kiss body oil in a soft pink beauty setting",
+        "newsletter_image": "shopify://shop_images/HairSerum.jpg",
+        "newsletter_image_alt": "SBEA Gloss and Glow Hair Serum",
+        "button_label": "Find your favorites",
+        "button_link": "/collections/all"
+      },
+      "blocks": {
+        "b1": {
+          "type": "benefit",
+          "settings": {
+            "title": "Soft skin",
+            "text": "Nourishing textures for your daily care"
+          }
+        },
+        "b2": {
+          "type": "benefit",
+          "settings": {
+            "title": "Scents you love",
+            "text": "Fresh, fruity and floral favorites"
+          }
+        },
+        "b3": {
+          "type": "benefit",
+          "settings": {
+            "title": "Your daily ritual",
+            "text": "Body and hair care that fits your routine"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "sbea_hero": {
+      "type": "sbea-editorial-hero",
+      "settings": {
+        "eyebrow": "",
+        "heading": "Own your natural glow.",
+        "subline": "Everyday care for soft skin and beautiful hair.",
+        "button_label": "Shop now",
+        "button_link": "/collections/all",
+        "desktop_image": "shopify://shop_images/sbea-bubble-gum-cloud-hero-desktop.png",
+        "mobile_image": "shopify://shop_images/sbea-bubble-gum-cloud-hero-mobile.png",
+        "image_alt": "SBEA Bubble Gum Body Butter floating among soft cotton clouds against a fresh pink backdrop",
+        "media_fit": "cover",
+        "bundles_label": "Shop bundles",
+        "bundles_link": "/collections/bundles"
+      }
+    },
+    "sbea_glow_marquee": {
+      "type": "sbea-glow-marquee",
+      "settings": {
+        "message": "Own your natural glow.",
+        "background": "#D83C78"
+      }
+    },
+    "sbea_trust_marquee": {
+      "type": "sbea-trust-marquee",
+      "settings": {
+        "message": "Made in Lebanon | Body care with shea butter | Real fruit scrubs | Carefully crafted formulas",
+        "background": "#C7356C"
+      }
+    }
+  },
+  "order": [
+    "sbea_hero",
+    "sbea_trust_marquee",
+    "product_list_fa6P9H",
+    "sbea_glow_marquee",
+    "category_showcase",
+    "bundles_home",
+    "story_benefits"
+  ]
+}

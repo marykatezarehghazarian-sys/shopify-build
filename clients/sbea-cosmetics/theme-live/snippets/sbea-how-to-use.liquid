@@ -1,0 +1,51 @@
+{%- liquid
+  assign title_down = product.title | downcase
+  assign instructions = 'Apply a small amount to clean skin or hair as appropriate. Follow the product label directions.'
+  if title_down contains 'bundle' or title_down contains 'set'
+    assign instructions = 'Start with the body scrub on damp skin, rinse thoroughly, and follow with body lotion, butter, or oil. Apply hair oil before washing, then use hair serum on damp or dry lengths. Finish with hair mist as desired. Follow each included product’s label.'
+  elsif title_down contains 'scrub'
+    assign instructions = 'Massage gently onto damp skin in circular motions, then rinse thoroughly. Use 1–2 times weekly. Avoid broken or irritated skin.'
+  elsif title_down contains 'body butter' or title_down contains 'butter'
+    assign instructions = 'Massage a small amount onto clean, dry skin, focusing on areas that need extra moisture. Use daily or as needed.'
+  elsif title_down contains 'lotion'
+    assign instructions = 'Apply generously to clean skin and massage until absorbed. Use daily, especially after showering.'
+  elsif title_down contains 'shimmer' or title_down contains 'golden kiss' or title_down contains 'glow drops'
+    assign instructions = 'Shake gently if needed. Apply a few drops to clean, dry skin and blend over shoulders, arms, legs, or décolletage for a luminous finish.'
+  elsif title_down contains 'body oil' or title_down contains 'body oils'
+    assign instructions = 'Massage a few drops onto clean skin, ideally after showering. Allow to absorb before dressing.'
+  elsif title_down contains 'hair oil'
+    assign instructions = 'Apply a small amount to scalp and hair lengths before washing. Massage gently, leave on as directed on the bottle, then shampoo thoroughly.'
+  elsif title_down contains 'hair serum' or title_down contains 'serum'
+    assign instructions = 'Apply a small amount to damp or dry mid-lengths and ends. Smooth through evenly. Avoid the roots; do not rinse.'
+  elsif title_down contains 'hair mist' or title_down contains 'fruity dream' or title_down contains 'flowery bomb'
+    assign instructions = 'Mist lightly over dry hair from a short distance, focusing on lengths. Refresh as desired. Avoid eyes and face.'
+  endif
+-%}
+<div class="sbea-product-guide">
+  <details class="sbea-guide-disclosure">
+    <summary>
+      <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 5.5c3-1.5 5.5-1.5 8 0v14c-2.5-1.5-5-1.5-8 0zM12 5.5c2.5-1.5 5-1.5 8 0v14c-3-1.5-5.5-1.5-8 0z"/></svg>
+      <span>How to Use</span><span class="sbea-guide-plus" aria-hidden="true">+</span>
+    </summary>
+    <p>{{ instructions | escape }}</p>
+  </details>
+  <div class="sbea-origin-badges" aria-label="Product origin and testing">
+    <div><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12Z"/><circle cx="12" cy="9" r="2.6"/></svg><span>MADE IN<br>LEBANON</span></div>
+    <div><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 3h6M10 3v7L4.5 19a1.3 1.3 0 0 0 1.1 2h12.8a1.3 1.3 0 0 0 1.1-2L14 10V3M8 16h8"/></svg><span>LAB<br>TESTED</span></div>
+  </div>
+</div>
+<style>
+.sbea-product-guide{width:100%;margin-top:4px;color:#81526b;font-family:inherit}
+.sbea-guide-disclosure{border-top:1px solid #ebdce3;border-bottom:1px solid #ebdce3}
+.sbea-guide-disclosure summary{list-style:none;display:flex;align-items:center;gap:12px;padding:16px 2px;cursor:pointer;font-size:15px;font-weight:600}
+.sbea-guide-disclosure summary::-webkit-details-marker{display:none}
+.sbea-guide-disclosure summary svg{flex:none}
+.sbea-guide-plus{margin-left:auto;font-size:23px;font-weight:300}
+.sbea-guide-disclosure[open] .sbea-guide-plus{transform:rotate(45deg)}
+.sbea-guide-disclosure p{font-size:14px;line-height:1.7;padding:0 4px 17px;margin:0;color:#705b66}
+.sbea-origin-badges{display:flex;gap:32px;align-items:center;justify-content:center;padding:23px 8px}
+.sbea-origin-badges>div{display:flex;align-items:center;justify-content:center;gap:10px;flex:1;min-width:0}
+.sbea-origin-badges span{font-size:11px;font-weight:650;letter-spacing:.045em;line-height:1.35}
+.sbea-origin-badges svg{flex:none}
+@media(max-width:400px){.sbea-origin-badges{gap:10px}.sbea-origin-badges span{font-size:10px}}
+</style>

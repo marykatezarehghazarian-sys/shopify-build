@@ -1,0 +1,62 @@
+{% unless customer.accepts_marketing %}
+<dialog id="SbeaWelcome" class="sbea-welcome" aria-labelledby="SbeaWelcomeTitle">
+<button type="button" class="sbea-welcome-close" aria-label="Close welcome offer">×</button>
+<div class="sbea-welcome-grid"><div class="sbea-welcome-copy">
+<div class="sbea-welcome-logo">{% render 'sbea-vector-logo' %}</div>
+<p class="sbea-welcome-eyebrow">A LITTLE TREAT, JUST FOR YOU</p>
+<h2 id="SbeaWelcomeTitle">Welcome to SBEA<br><span>Enjoy 10% off</span></h2>
+<p>Join SBEA and enjoy 10% off your order</p>
+{% form 'customer', id: 'SbeaWelcomeForm' %}
+<input type="hidden" name="contact[tags]" value="newsletter,sbea-welcome">
+{% if form.posted_successfully? %}
+<div class="sbea-welcome-success" role="status" data-welcome-success>
+<p>Welcome to the SBEA circle ♡</p><strong>SBEAGLOW10</strong>
+<p>Use your signup email at checkout. Your discount is valid once per customer.</p>
+<a class="sbea-welcome-submit" href="{{ routes.root_url }}discount/SBEAGLOW10?redirect=/collections/all">Shop with 10% off</a>
+</div>
+{% else %}
+{{ form.errors | default_errors }}
+<label for="SbeaWelcomeEmail" class="visually-hidden">Email address</label>
+<input id="SbeaWelcomeEmail" class="sbea-welcome-email" type="email" name="contact[email]" autocomplete="email" placeholder="Your email address" required>
+<button class="sbea-welcome-submit" type="submit">Unlock my 10% off</button>
+<p class="sbea-welcome-terms">By signing up, you agree to receive SBEA marketing emails. Unsubscribe anytime. One use per customer; cannot be combined with other offers.</p>
+{% endif %}
+{% endform %}
+<button type="button" class="sbea-welcome-dismiss">No thanks, I'll browse</button>
+</div><img class="sbea-welcome-photo" src="https://cdn.shopify.com/s/files/1/0998/7211/2944/files/sbea-welcome-cloche.png?v=1791593743" alt="SBEA Bubble Gum body care beneath a silver cloche" width="1122" height="1402" loading="lazy"></div>
+</dialog>
+<style>
+.sbea-welcome{padding:0;border:0;border-radius:24px;width:min(920px,calc(100vw - 32px));max-height:90dvh;overflow:auto;background:#FFFFFF;color:#542634;box-shadow:0 24px 100px #54263440}
+.sbea-welcome::backdrop{background:#54263465;backdrop-filter:blur(4px)}
+.sbea-welcome-grid{display:grid;grid-template-columns:1fr 1fr}
+.sbea-welcome-copy{padding:42px 38px;text-align:center;align-self:center}
+.sbea-welcome-logo{width:138px;margin:0 auto 26px;color:#C7356C}
+.sbea-welcome-logo svg{width:100%;height:auto}
+.sbea-welcome-eyebrow{font-size:10px;letter-spacing:2px;font-weight:700}
+.sbea-welcome h2{font-family:inherit;font-size:42px;letter-spacing:-1.5px;line-height:1.08;margin:18px 0}
+.sbea-welcome h2 span{color:#C7356C}
+.sbea-welcome-copy>p:not(.sbea-welcome-eyebrow){font-size:14px;line-height:1.6;color:#805563;margin-bottom:24px}
+.sbea-welcome-email{width:100%;border:1px solid #E2BAC6;border-radius:10px;padding:15px;background:#fff;color:#542634;font:inherit}
+.sbea-welcome-submit{display:block;width:100%;border:0;border-radius:10px;padding:15px;background:#C7356C;color:#FFFFFF;font:inherit;font-weight:700;margin-top:12px;text-decoration:none;cursor:pointer}
+.sbea-welcome-terms{font-size:10px;line-height:1.6;color:#805563;margin:14px 0}
+.sbea-welcome-dismiss{background:none;border:0;text-decoration:underline;color:#805563;font-size:12px;cursor:pointer;margin-top:12px}
+.sbea-welcome-close{position:absolute;right:12px;top:12px;z-index:2;width:34px;height:34px;border:0;border-radius:50%;background:#FFFFFF;color:#542634;font-size:25px;cursor:pointer}
+.sbea-welcome-photo{height:100%;width:100%;object-fit:cover;min-height:540px}
+.sbea-welcome-success strong{display:block;background:#FFE3D2;border:1px dashed #C7356C;border-radius:10px;padding:14px;font-size:24px;letter-spacing:2px}
+.sbea-welcome-success p{font-size:13px;line-height:1.6}
+@media(max-width:650px){.sbea-welcome-grid{grid-template-columns:1fr}.sbea-welcome-photo{grid-row:1;height:180px;min-height:0;object-position:center 55%}.sbea-welcome-copy{padding:24px}.sbea-welcome-logo{width:105px;margin-bottom:14px}.sbea-welcome h2{font-size:34px;margin:12px 0}.sbea-welcome-copy>p:not(.sbea-welcome-eyebrow){margin-bottom:16px}}
+</style>
+<script>
+(()=>{const d=document.getElementById('SbeaWelcome');if(!d||!d.showModal)return;
+const key='sbea-welcome-v1';let previous=null;try{previous=localStorage.getItem(key)}catch(e){}
+const success=!!d.querySelector('[data-welcome-success]');const errors=!!d.querySelector('.errors');
+const dismiss=()=>{d.close();try{localStorage.setItem(key,String(Date.now()))}catch(e){}};
+d.querySelectorAll('.sbea-welcome-close,.sbea-welcome-dismiss').forEach(b=>b.addEventListener('click',dismiss));
+d.addEventListener('cancel',()=>{try{localStorage.setItem(key,String(Date.now()))}catch(e){}});
+d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dismiss()}});
+if(success){try{localStorage.setItem(key,String(Date.now()))}catch(e){}}
+if(success||errors||!previous)setTimeout(()=>d.showModal(),success||errors?100:1800);
+})();
+</script>
+{% endunless %}
+{% schema %}{"name":"SBEA welcome offer","settings":[]} {% endschema %}

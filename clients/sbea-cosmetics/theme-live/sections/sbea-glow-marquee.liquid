@@ -1,0 +1,16 @@
+<section class="sbea-glow-marquee" id="SbeaMarquee-{{ section.id }}" aria-label="{{ section.settings.message | escape }}" style="--marquee-pink:{{ section.settings.background }}">
+<div class="sbea-glow-marquee__track" aria-hidden="true">{% for group in (1..2) %}<div class="sbea-glow-marquee__group">{% for repeat in (1..6) %}<span>{{ section.settings.message | escape }}</span><span class="sbea-glow-marquee__spark">✦</span>{% endfor %}</div>{% endfor %}</div>
+</section>
+<style>
+.sbea-glow-marquee{position:relative;overflow:hidden;background:var(--marquee-pink);color:#fff;padding:19px 0;width:100%}
+.sbea-glow-marquee__track{display:flex;width:max-content;animation:sbea-glow-scroll 38s linear infinite}
+.sbea-glow-marquee__group{display:flex;align-items:center;flex-shrink:0;gap:34px;padding-right:34px}
+.sbea-glow-marquee__group span{font-size:17px;font-weight:600;line-height:1.4;letter-spacing:.6px;white-space:nowrap}
+.sbea-glow-marquee__spark{font-size:21px!important}
+
+
+@keyframes sbea-glow-scroll{to{transform:translateX(-50%)}}
+@media(max-width:600px){.sbea-glow-marquee{padding:16px 0}.sbea-glow-marquee__group{gap:24px;padding-right:24px}.sbea-glow-marquee__group span{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.sbea-glow-marquee__track{animation:none}}
+</style>
+{% schema %}{"name":"SBEA moving glow banner","settings":[{"type":"text","id":"message","label":"Message","default":"Own your natural glow."},{"type":"color","id":"background","label":"Pink background","default":"#D83C78"}],"presets":[{"name":"SBEA moving glow banner"}]}{% endschema %}

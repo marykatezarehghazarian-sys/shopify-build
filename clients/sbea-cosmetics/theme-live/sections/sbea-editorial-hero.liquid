@@ -1,0 +1,67 @@
+<section class="sbea-hero">
+  <div class="sbea-hero__shell">
+    <div class="sbea-hero__copy">
+      {% if section.settings.eyebrow != blank %}<p class="sbea-hero__eyebrow">{{ section.settings.eyebrow }}</p>{% endif %}
+      <h1>{{ section.settings.heading }}</h1>
+      {% if section.settings.subline != blank %}<p class="sbea-hero__subline">{{ section.settings.subline }}</p>{% endif %}
+      <div class="sbea-hero__actions">
+      {% if section.settings.button_label != blank %}
+        <a class="button button--primary sbea-hero__button" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">{{ section.settings.button_label }}</a>
+      {% endif %}
+      {% if section.settings.bundles_label != blank %}<a class="button sbea-hero__button sbea-hero__button--shine" href="{{ section.settings.bundles_link | default: routes.all_products_collection_url }}"><span class="sbea-hero__shine" aria-hidden="true"></span>{{ section.settings.bundles_label | escape }}</a>{% endif %}
+      </div>
+    </div>
+    <div class="sbea-hero__media sbea-hero__media--{{ section.settings.media_fit }}">
+      {% if section.settings.desktop_image != blank %}
+        <picture>
+          {% if section.settings.mobile_image != blank %}
+            <source media="(max-width: 749px)" srcset="{{ section.settings.mobile_image | image_url: width: 900 }}">
+          {% endif %}
+          {{ section.settings.desktop_image | image_url: width: 2400 | image_tag: widths: '720, 960, 1200, 1500, 1800, 2400', sizes: '100vw', loading: 'eager', fetchpriority: 'high', class: 'sbea-hero__image', alt: section.settings.image_alt }}
+        </picture>
+      {% else %}
+        <div class="sbea-hero__placeholder" aria-hidden="true"></div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% stylesheet %}
+
+.sbea-hero{width:100%;padding:0;color:#542634}
+.sbea-hero__shell{position:relative;isolation:isolate;min-height:560px;height:clamp(560px,48vw,760px);overflow:hidden;background:#F6B8D0}
+.sbea-hero__media{position:absolute;inset:0;z-index:-2}
+.sbea-hero__media picture{display:block;width:100%;height:100%}
+.sbea-hero__image{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+.sbea-hero__shell::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(248,227,232,.28),transparent 55%);pointer-events:none}
+.sbea-hero__copy{position:relative;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;width:46%;height:100%;padding:clamp(28px,6vw,100px);padding-right:24px}
+.sbea-hero__eyebrow{margin:0 0 22px;font-size:12px;font-weight:650;line-height:1.5;color:#542634;letter-spacing:.035em}
+.sbea-hero__copy h1{max-width:11ch;margin:0 0 22px;font-family:var(--font-heading--family);font-size:clamp(44px,5.1vw,78px);font-weight:500;line-height:.99;letter-spacing:-.05em;text-wrap:balance;color:#542634}
+.sbea-hero__subline{max-width:31ch;margin:0 0 30px;font-size:16px;line-height:1.6;color:#542634}
+.sbea-hero__actions{display:flex;flex-wrap:wrap;gap:12px}
+.sbea-hero__button.button{display:inline-flex;align-items:center;justify-content:space-between;gap:22px;padding:14px 22px;min-height:50px;border:1px solid #542634;border-radius:999px;background:transparent;color:#542634;font-size:14px;font-weight:650;text-decoration:none;box-shadow:none;transition:background .2s,color .2s}
+.sbea-hero__button.button::before,.sbea-hero__button.button::after{display:none}
+.sbea-hero__button.button:hover{background:#542634;color:#fff}
+.sbea-hero__button:focus-visible{outline:2px solid #542634;outline-offset:4px}
+.sbea-hero__placeholder{width:100%;height:100%;background:#F6B8D0}
+@media(max-width:989px) and (min-width:750px){.sbea-hero__copy{padding-left:32px;width:48%}.sbea-hero__copy h1{font-size:52px}.sbea-hero__subline{font-size:15px}.sbea-hero__actions{gap:10px}.sbea-hero__button.button{padding:12px 16px;gap:14px}}
+@media(max-width:749px){.sbea-hero__shell{height:clamp(660px,150vw,820px);min-height:660px}.sbea-hero__image{object-position:center top}.sbea-hero__copy{justify-content:flex-end;align-items:center;text-align:center;width:100%;height:100%;padding:28px 20px 32px}.sbea-hero__shell::after{background:linear-gradient(0deg,rgba(248,227,232,.92),rgba(248,227,232,.7) 27%,transparent 49%)}.sbea-hero__eyebrow{margin-bottom:10px;font-size:11px}.sbea-hero__copy h1{font-size:42px;max-width:13ch;margin-bottom:14px}.sbea-hero__subline{font-size:14px;max-width:32ch;margin-bottom:20px}.sbea-hero__actions{justify-content:center;gap:10px}.sbea-hero__button.button{font-size:13px;padding:13px 18px;gap:18px}}
+@media(prefers-reduced-motion:reduce){.sbea-hero__button.button{transition:none}}
+
+
+.sbea-hero__button--shine{position:relative;overflow:hidden;isolation:isolate}
+.sbea-hero__button--shine .sbea-hero__shine{position:absolute;inset:-60% auto -60% -65%;width:48%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.75),transparent);transform:skewX(-22deg);animation:sbea-button-shine 4s ease-in-out infinite;pointer-events:none;z-index:-1}
+@keyframes sbea-button-shine{0%,15%{transform:translateX(0) skewX(-22deg);opacity:0}25%{opacity:1}55%,100%{transform:translateX(450%) skewX(-22deg);opacity:0}}
+@media(prefers-reduced-motion:reduce){.sbea-hero__button--shine .sbea-hero__shine{animation:none;display:none}}
+.sbea-hero__shell{height:clamp(680px,65vw,920px);min-height:680px}
+.sbea-hero__copy{padding-top:calc(var(--header-height,100px) + 48px)}
+.sbea-hero__button.button{justify-content:center}
+@media(max-width:749px){.sbea-hero__shell{height:max(760px,100svh);min-height:760px}.sbea-hero__copy{padding-top:calc(var(--header-height,80px) + 24px)}}
+.sbea-hero__copy h1{max-width:12ch;font-family:var(--font-body--family);font-size:clamp(42px,4.5vw,68px);font-weight:500;line-height:1.08;letter-spacing:-.035em;margin-bottom:20px}
+.sbea-hero__subline{max-width:29ch;font-size:16px;line-height:1.65;margin-bottom:28px;color:#66404D}
+.sbea-hero__actions{gap:12px}
+@media(max-width:989px) and (min-width:750px){.sbea-hero__copy h1{font-size:48px}}
+@media(max-width:749px){.sbea-hero__copy h1{font-size:38px;max-width:12ch;line-height:1.1;margin-bottom:14px}.sbea-hero__subline{font-size:14px;max-width:29ch;margin-bottom:22px}}
+{% endstylesheet %}
+{% schema %}
+{"name":"SBEA editorial hero","settings":[{"type":"text","id":"eyebrow","label":"Eyebrow","default":"Body & hair care, made to glow"},{"type":"text","id":"heading","label":"Headline","default":"Own Your Natural Glow"},{"type":"textarea","id":"subline","label":"Subline","default":"Body and hair care with nourishing textures and signature scents for your everyday glow"},{"type":"text","id":"button_label","label":"Button label","default":"Shop Now"},{"type":"url","id":"button_link","label":"Button link"},{"type":"image_picker","id":"desktop_image","label":"Desktop hero image"},{"type":"image_picker","id":"mobile_image","label":"Mobile hero image"},{"type":"text","id":"image_alt","label":"Image alt text","default":"SBEA cosmetics in soft pink light"},{"type":"select","id":"media_fit","label":"Image fit","options":[{"value":"contain","label":"Contain"},{"value":"cover","label":"Cover"}],"default":"contain"},{"type":"text","id":"bundles_label","label":"Bundles button label","default":"Shop bundles"},{"type":"url","id":"bundles_link","label":"Bundles button link"}],"presets":[{"name":"SBEA editorial hero"}]}
+{% endschema %}

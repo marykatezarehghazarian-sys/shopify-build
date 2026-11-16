@@ -1,0 +1,17 @@
+<section class="sbea-trust-marquee" id="SbeaTrustMarquee-{{ section.id }}" aria-label="{{ section.settings.message | escape }}" style="--marquee-pink:{{ section.settings.background }}">
+{% assign trust_messages = section.settings.message | split: '|' %}
+<div class="sbea-trust-marquee__track" aria-hidden="true">{% for group in (1..2) %}<div class="sbea-trust-marquee__group">{% for repeat in (1..3) %}{% for trust_message in trust_messages %}<span>{{ trust_message | strip | escape }}</span><span class="sbea-trust-marquee__spark">✦</span>{% endfor %}{% endfor %}</div>{% endfor %}</div>
+</section>
+<style>
+.sbea-trust-marquee{position:relative;overflow:hidden;background:var(--marquee-pink);color:#fff;padding:16px 0;width:100%}
+.sbea-trust-marquee__track{display:flex;width:max-content;animation:sbea-trust-scroll 48s linear infinite}
+.sbea-trust-marquee__group{display:flex;align-items:center;flex-shrink:0;gap:34px;padding-right:34px}
+.sbea-trust-marquee__group span{font-size:14px;font-weight:600;line-height:1.4;letter-spacing:.15px;white-space:nowrap}
+.sbea-trust-marquee__spark{font-size:15px!important}
+
+
+@keyframes sbea-trust-scroll{to{transform:translateX(-50%)}}
+@media(max-width:600px){.sbea-trust-marquee{padding:16px 0}.sbea-trust-marquee__group{gap:24px;padding-right:24px}.sbea-trust-marquee__group span{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.sbea-trust-marquee__track{animation:none}}
+</style>
+{% schema %}{"name":"SBEA trust banner","settings":[{"type":"text","id":"message","label":"Message","default":"Made in Lebanon | Body care with shea butter | Real fruit scrubs | Carefully crafted formulas"},{"type":"color","id":"background","label":"Pink background","default":"#D83C78"}],"presets":[{"name":"SBEA moving glow banner"}]}{% endschema %}
