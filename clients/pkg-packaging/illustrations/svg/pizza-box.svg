@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200">
+<rect width="1200" height="1200" fill="#F3EEE6"/>
+<circle cx="600" cy="560" r="430" fill="#EAE3D7"/>
+<ellipse cx="600" cy="930" rx="520" ry="90" fill="rgba(18,18,18,.10)"/><polygon points="115.0,610.0 600.0,890.0 600.0,820.0 115.0,540.0" fill="#A9825A" stroke="rgba(0,0,0,.08)"/><polygon points="1085.0,610.0 600.0,890.0 600.0,820.0 1085.0,540.0" fill="#C9A27A" stroke="rgba(0,0,0,.08)"/><polygon points="600.0,260.0 1085.0,540.0 600.0,820.0 115.0,540.0" fill="#DCC09E" stroke="rgba(0,0,0,.08)"/><polygon points="115.0,571.5 600.0,851.5 600.0,858.5 115.0,578.5" fill="rgba(0,0,0,.12)" /><g transform="matrix(0.8660254037844387,0.5,-0.8660254037844387,0.5,600,540)"><rect x="-150" y="-70" width="300" height="140" rx="25.2" fill="none" stroke="#21642F" stroke-width="5.6000000000000005" stroke-dasharray="16.8 11.200000000000001"/><text x="0" y="16.128" text-anchor="middle" font-family="Archivo, Arial Black, Arial, sans-serif" font-weight="800" font-size="44.800000000000004" fill="#21642F" letter-spacing="2.688">YOUR LOGO</text></g><g transform="matrix(0.8660254037844387,0.5,-0.8660254037844387,0.5,435.10876311944287,635.2)"><text x="0" y="0" text-anchor="middle" font-family="Inter,Arial" font-size="26" fill="#21642F" letter-spacing="3">HOT &amp; FRESH</text></g>
+<g font-family="Inter, Arial, sans-serif">
+<text x="60" y="1135" font-size="30" font-weight="700" fill="#121212" letter-spacing="1">PIZZA BOX</text>
+<text x="1140" y="1135" text-anchor="end" font-size="26" fill="#6b655d">Made to order · your logo &amp; colours</text>
+</g>
+<g transform="translate(60,60)"><rect width="128" height="48" rx="8" fill="#52BE36"/><text x="64" y="33" text-anchor="middle" font-family="Archivo, Arial Black, Arial, sans-serif" font-weight="900" font-size="26" fill="#fff">PKG.</text></g>
+</svg>

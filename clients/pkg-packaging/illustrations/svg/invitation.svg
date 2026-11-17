@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200">
+<rect width="1200" height="1200" fill="#F3EEE6"/>
+<circle cx="600" cy="560" r="430" fill="#EAE3D7"/>
+<ellipse cx="600" cy="920" rx="420" ry="70" fill="rgba(18,18,18,.10)"/><g transform="rotate(-7 520 610)"><rect x="220" y="400" width="600" height="420" rx="14" fill="#DCC09E"/><polygon points="220,400 520,640 820,400" fill="#C9A27A"/><circle cx="520" cy="640" r="40" fill="#8E2B2B"/><text x="520" y="650" text-anchor="middle" font-family="Georgia,serif" font-size="30" fill="#f3d9c9">A&amp;J</text></g><g transform="rotate(5 720 470)"><rect x="500" y="180" width="440" height="600" rx="10" fill="#FFFFFF" stroke="rgba(0,0,0,.08)"/><rect x="525" y="205" width="390" height="550" rx="6" fill="none" stroke="#C8A96A" stroke-width="3"/>
+<text x="720" y="330" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="34" fill="#6b655d">Together with their families</text>
+<text x="720" y="430" text-anchor="middle" font-family="Georgia,serif" font-size="64" fill="#121212">Your Names</text>
+<text x="720" y="500" text-anchor="middle" font-family="Inter,Arial" font-size="24" fill="#6b655d" letter-spacing="4">INVITE YOU TO CELEBRATE</text>
+<text x="720" y="620" text-anchor="middle" font-family="Inter,Arial" font-size="28" fill="#121212">Saturday · 12 June</text>
+<line x1="640" y1="670" x2="800" y2="670" stroke="#C8A96A" stroke-width="2"/></g>
+<g font-family="Inter, Arial, sans-serif">
+<text x="60" y="1135" font-size="30" font-weight="700" fill="#121212" letter-spacing="1">INVITATION & ENVELOPE</text>
+<text x="1140" y="1135" text-anchor="end" font-size="26" fill="#6b655d">Made to order · your logo &amp; colours</text>
+</g>
+<g transform="translate(60,60)"><rect width="128" height="48" rx="8" fill="#52BE36"/><text x="64" y="33" text-anchor="middle" font-family="Archivo, Arial Black, Arial, sans-serif" font-weight="900" font-size="26" fill="#fff">PKG.</text></g>
+</svg>

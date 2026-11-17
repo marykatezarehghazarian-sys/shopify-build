@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200">
+<rect width="1200" height="1200" fill="#F3EEE6"/>
+<circle cx="600" cy="560" r="430" fill="#EAE3D7"/>
+<ellipse cx="600" cy="930" rx="330" ry="60" fill="rgba(18,18,18,.10)"/><g transform="rotate(-6 600 560)">
+<rect x="350" y="190" width="520" height="720" rx="22" fill="#E6DFD3"/>
+<rect x="330" y="180" width="520" height="720" rx="22" fill="#21642F"/>
+<rect x="330" y="180" width="70" height="720" rx="22" fill="#1A5025"/>
+<g transform="translate(615,470)"><rect x="-165" y="-70" width="330" height="140" rx="25.2" fill="none" stroke="#ffffff" stroke-width="5.6000000000000005" stroke-dasharray="16.8 11.200000000000001"/><text x="0" y="16.128" text-anchor="middle" font-family="Archivo, Arial Black, Arial, sans-serif" font-weight="800" font-size="44.800000000000004" fill="#ffffff" letter-spacing="2.688">YOUR LOGO</text></g>
+<text x="615" y="700" text-anchor="middle" font-family="Inter,Arial" font-size="30" fill="#CFE5C6" letter-spacing="6">NOTES · 2026</text>
+<rect x="820" y="180" width="18" height="720" fill="#52BE36"/></g>
+<g font-family="Inter, Arial, sans-serif">
+<text x="60" y="1135" font-size="30" font-weight="700" fill="#121212" letter-spacing="1">BRANDED NOTEBOOK</text>
+<text x="1140" y="1135" text-anchor="end" font-size="26" fill="#6b655d">Made to order · your logo &amp; colours</text>
+</g>
+<g transform="translate(60,60)"><rect width="128" height="48" rx="8" fill="#52BE36"/><text x="64" y="33" text-anchor="middle" font-family="Archivo, Arial Black, Arial, sans-serif" font-weight="900" font-size="26" fill="#fff">PKG.</text></g>
+</svg>

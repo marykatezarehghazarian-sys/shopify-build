@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200">
+<rect width="1200" height="1200" fill="#F3EEE6"/>
+<circle cx="600" cy="560" r="430" fill="#EAE3D7"/>
+<ellipse cx="640" cy="815" rx="300" ry="50" fill="rgba(18,18,18,.10)"/><path d="M680.6217782649107,165 Q767.2243186433545,45 853.8268590217984,265" fill="none" stroke="#A9825A" stroke-width="16" stroke-linecap="round"/><polygon points="490.1,595.0 836.5,795.0 836.5,375.0 490.1,175.0" fill="#C9A27A" stroke="rgba(0,0,0,.08)"/><polygon points="966.4,720.0 836.5,795.0 836.5,375.0 966.4,300.0" fill="#A9825A" stroke="rgba(0,0,0,.08)"/><polygon points="620.0,100.0 966.4,300.0 836.5,375.0 490.1,175.0" fill="#8E6B46" stroke="rgba(0,0,0,.08)"/><polygon points="620.0,100.0 966.4,300.0 836.5,375.0 490.1,175.0" fill="#6F5236" /><path d="M602.6794919243113,210 Q689.2820323027552,90 775.884572681199,310" fill="none" stroke="#A9825A" stroke-width="16" stroke-linecap="round"/><g transform="matrix(0.8660254037844387,0.5,0,1,663.3012701892219,451.4)"><rect x="-125" y="-55" width="250" height="110" rx="19.8" fill="none" stroke="#121212" stroke-width="4.4" stroke-dasharray="13.2 8.8"/><text x="0" y="12.672" text-anchor="middle" font-family="Archivo, Arial Black, Arial, sans-serif" font-weight="800" font-size="35.2" fill="#121212" letter-spacing="2.112">YOUR LOGO</text></g><polygon points="531.7,526.6 794.9,678.6 794.9,657.6 531.7,505.6" fill="#52BE36" />
+<g font-family="Inter, Arial, sans-serif">
+<text x="60" y="1135" font-size="30" font-weight="700" fill="#121212" letter-spacing="1">KRAFT BAG WITH TWISTED HANDLE</text>
+<text x="1140" y="1135" text-anchor="end" font-size="26" fill="#6b655d">Made to order · your logo &amp; colours</text>
+</g>
+<g transform="translate(60,60)"><rect width="128" height="48" rx="8" fill="#52BE36"/><text x="64" y="33" text-anchor="middle" font-family="Archivo, Arial Black, Arial, sans-serif" font-weight="900" font-size="26" fill="#fff">PKG.</text></g>
+</svg>
