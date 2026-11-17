@@ -9,3 +9,4 @@ clients/*/.token-cache.json
 .shopify/
 *.log
 .DS_Store
+work-*.zip
