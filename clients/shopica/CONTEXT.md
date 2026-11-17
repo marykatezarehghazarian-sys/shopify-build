@@ -71,3 +71,9 @@ Store: shopica-pty-ltd.myshopify.com
   - On 2 Dec the Starshipit rule must be deleted: the owner can do it, or I need a fresh login.
 - 2026-11-17 (later): the client reported Lunar Queen Bed to Wallacia 2745 being charged $177.98. The user confirmed scope = Beds + Kids Bed + Bedroom Packages + Dressers & Mirrors (67 SKUs, 46 active products); Starshipit rule SKU list updated (re-login, session deleted after). Tested: Lunar to Wallacia FREE ($805 total), Ella to Blacktown 2148 FREE, Lunar to Wollongong $183.96. Tag bf-free-delivery is on all 84 products in those collections.
 - 2026-11-17: postcodes replaced with the owner's metro list: 1000–1935, 2000–2249, 2555–2570, 2740–2777, 2890–2897 (1,248 postcodes; saved in full). Edge tests with Ella Bed: 2777 Springwood FREE, 2570 Camden FREE, 2780 Katoomba $269.36, 2574 Picton 'Shipping not available' (no courier rate for that postcode/item; outside the free zone, not caused by the rule).
+- 2026-11-17: Rami (owner) is OK with mixed carts going free, since they deliver themselves. He wants the free Sydney metro delivery KEPT UNTIL AFTER CHRISTMAS, then removed and replaced with a FIXED shipping price for bulky items.
+  - Top strip now rotates 2 blocks (every 5s): "BLACK FRIDAY SALE: 30% off Bedroom and Homeware & Décor" → /collections/sales, and "FREE DELIVERY in Sydney metro on beds, bedroom packages & dressers" → /collections/bedroom (block 2 re-enabled; it was "Shop our new collections", disabled). Backup: theme-live-backup/header-group.before-free-delivery-banner.json.
+  - Reminders:
+    - trig_016rgqJh4VVDveUNnA7JR9pr, 2 Dec 00:05 Sydney: end the 30% (if confirmed), rename back to Flash Sale, disable the BF strip block, keep free delivery.
+    - trig_01Rhg1u1HuHMDWtvVSRLFdXT, 27 Dec 10:07 Sydney: end free delivery, set up the fixed bulky rate.
+  - Still unanswered: does the 30% Bedroom sale end on 1 Dec?
