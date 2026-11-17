@@ -56,3 +56,16 @@ Store: shopica-pty-ltd.myshopify.com
   - The free-delivery rule itself must be made in Starshipit (we have no access). Sydney metro postcodes used: 2000–2234, 2555–2574, 2740–2786.
   - Reminder trig_01DqAdUcsn3hRtEYfGBYVvjY at 2 Dec 00:05 Sydney (replaces the banner-only one): restore prices from backup, rename banners back to "Flash Sale", disable the announcement bar, remove the free-delivery rule and tag.
 - 2026-11-17: Starshipit can't read Shopify product tags at checkout; checkout rules can use Item SKU and Destination Post Code - AU (semicolon list; ranges not documented). Generated starshipit-free-delivery.txt: 302 Sydney metro postcodes + 91 SKUs (76 active Bedroom products excluding bedside tables). How it behaves with mixed carts, and whether conditions are AND/OR, isn't documented, so test it.
+- 2026-11-17: Starshipit rule CREATED (logged in with credentials the owner shared in chat; nothing stored, and the browser session file was deleted afterwards. Recommended the owner change that password).
+  - Location: Settings → Checkout Rates → Rules tab (classic page app.starshipit.com/members/settings/checkoutrates2.aspx).
+  - Rule: Destination Post Code - AU Contains <302 Sydney metro postcodes> AND Item SKU Contains <24 SKUs> → Set Checkout Rates: Allied Express: Free Shipping (Return this item only).
+  - The other checkout rules (PO Box carrier rules, weight margins) are untouched.
+  - Scope changed by the owner the same day to ONLY Bedroom Packages + Dressers and Mirrors (not beds or other bedroom items). SKU list in starshipit-free-delivery.txt; tag bf-free-delivery moved to those 52 products.
+  - Tested on the live checkout (no orders placed):
+    - suite / dresser to Sydney = Free Shipping
+    - dresser to Wollongong = Road Express $230.64
+    - bed to Parramatta = $203.23
+    - suite + cushion to Sydney: Free Shipping offered next to paid Parcel/Express, so the whole cart can go free
+    - Shopify caches carrier rates for a few minutes (the bed showed free once from cache)
+  - Pre-existing issue (not ours): Hampton Black Bedside Table (59 kg) gets "Shipping not available" at every address tested.
+  - On 2 Dec the Starshipit rule must be deleted: the owner can do it, or I need a fresh login.
