@@ -101,3 +101,18 @@ Access: Dev Dashboard app (client ID + secret in .env), broad scopes incl. produ
   - Real test order #1010 (TEST Order, COD, $62.50) placed and then cancelled: restocked, no customer notification, staff note says do not ship. Stock is back (Fiore M = 2). The owner may have received a new-order notification.
   - Abandoned checkouts via API: 3 (13 Nov VESPER TROUSERS $105; 27 Oct WHISPER TOP $50.50 ×2). All stopped before the address (only the country is set). The admin's "~12" includes ones with no contact info, which the API doesn't return.
   - Markets: Lebanon only (active).
+- 2026-11-17: Owner's PDF "Reina Reichouni Collection" (5 pieces, all models wear S) = the last 5 Noctra coming-soon pieces. All LAUNCHED with scripts/launch-noctra-5.mjs:
+  - Fabric lines added (before the Noctra line):
+    - Notte Dress: crepe, detachable lace belt
+    - Prima Set: crepe
+    - Rose Top: crepe, detachable belt
+    - Noctra Blazer: croc leather, fringe on the back
+    - Brezza Set: embossed suede, handmade genuine leather braid
+    - all with "Fit: the model is wearing size S"
+  - Tag coming-soon removed.
+  - `new-in` rules reset to just TAG = fw26 (all Noctra in New Arrivals).
+  - Coming Soon section on templates/collection.new-in.json (live theme 189399957808) set disabled; blocks kept for the next drop.
+  - Notte Dress: 2 new grey-studio photos from the PDF (photos/notte-studio-front.jpg, notte-studio-side.jpg) added as photos 2–3 after the packshot. The other 4 PDF photos are the same shots already on the store at higher resolution, so they were kept.
+  - Backups: backup-launch-noctra5.json, backup-new-in-rules.before-launch-noctra5.json, backup-collection-new-in.before-launch-noctra5.json.
+  - Checked live on mobile: all 5 show Add to bag with the fabric and fit lines, all in New Arrivals, no Coming Soon section, no Liquid errors.
+  - Stock unchanged: 3 S / 2 M / 2 L each.

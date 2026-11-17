@@ -1,0 +1,65 @@
+{
+ "notte-dress": {
+  "id": "gid://shopify/Product/15373569196336",
+  "title": "NOTTE DRESS",
+  "tags": [
+   "black",
+   "coming-soon",
+   "dresses",
+   "fw26",
+   "noctra"
+  ],
+  "descriptionHtml": "<p>A high-neck column gown in black crepe. Beading traces the stand collar, full balloon sleeves gather into a narrow cuff, and a lace belt defines the waist before the skirt falls long and straight.</p><p>Part of <strong>Noctra</strong>, the Fall/Winter 26/27 collection by Reina Reichouni.</p>"
+ },
+ "prima-set": {
+  "id": "gid://shopify/Product/15371345953072",
+  "title": "PRIMA SET",
+  "tags": [
+   "black",
+   "blazers",
+   "coming-soon",
+   "fw26",
+   "noctra",
+   "sets"
+  ],
+  "descriptionHtml": "<p>A two-piece suit. The blazer is collarless and asymmetric, fastened with a single sculpted button, with flared cuffs and a curved hem that soften its precise lines. The trousers are high-waisted and wide-leg, with a pressed crease and a long, clean line.</p><p>The set includes the blazer and the trousers.</p><p>Part of <strong>Noctra</strong>, the Fall/Winter 26/27 collection by Reina Reichouni.</p>"
+ },
+ "rose-top": {
+  "id": "gid://shopify/Product/15371344904496",
+  "title": "ROSE TOP",
+  "tags": [
+   "coming-soon",
+   "fw26",
+   "navy",
+   "noctra",
+   "tops"
+  ],
+  "descriptionHtml": "<p>A high neck and full bishop sleeves, drawn in at the waist by a lace belt that ties in a soft bow at the back. Quiet and composed, made for the hours after dark.</p><p>Part of <strong>Noctra</strong>, the Fall/Winter 26/27 collection by Reina Reichouni.</p>"
+ },
+ "noctra-blazer": {
+  "id": "gid://shopify/Product/15371345232176",
+  "title": "NOCTRA BLAZER",
+  "tags": [
+   "blazers",
+   "coming-soon",
+   "fw26",
+   "noctra",
+   "oxblood"
+  ],
+  "descriptionHtml": "<p>Glossy croc-embossed tailoring in deep oxblood: a wide notch collar, a sculpted waist, and a curtain of fringe across the back that reveals itself as you leave.</p><p>Part of <strong>Noctra</strong>, the Fall/Winter 26/27 collection by Reina Reichouni.</p>"
+ },
+ "brezza-set": {
+  "id": "gid://shopify/Product/15371347198256",
+  "title": "BREZZA SET",
+  "tags": [
+   "cacao-set",
+   "chocolate",
+   "coming-soon",
+   "fw26",
+   "noctra",
+   "sets",
+   "tops"
+  ],
+  "descriptionHtml": "<p>A two-piece set. The Brezza kimono is a cropped caped top with batwing sleeves, braided trim at the neck and cuffs, and a keyhole at the back closed with covered buttons. The Brezza skirt is a high-waisted maxi with a smooth yoke that opens into deep gathers and a sweeping hem.</p><p>The set includes the kimono and the skirt.</p><p>Part of <strong>Noctra</strong>, the Fall/Winter 26/27 collection by Reina Reichouni.</p>"
+ }
+}
