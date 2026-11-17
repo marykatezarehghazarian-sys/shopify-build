@@ -77,3 +77,9 @@ Store: shopica-pty-ltd.myshopify.com
     - trig_016rgqJh4VVDveUNnA7JR9pr, 2 Dec 00:05 Sydney: end the 30% (if confirmed), rename back to Flash Sale, disable the BF strip block, keep free delivery.
     - trig_01Rhg1u1HuHMDWtvVSRLFdXT, 27 Dec 10:07 Sydney: end free delivery, set up the fixed bulky rate.
   - Still unanswered: does the 30% Bedroom sale end on 1 Dec?
+- 2026-11-17: free delivery is now shown everywhere with clear wording, as the owner asked ('only beds, bedroom packages, dressers & mirrors, Sydney metro only'):
+  - Orange sales-banner-inline (index, collection, product templates): tagline '+ FREE delivery on beds, bedroom packages, dressers & mirrors (Sydney metro only)'.
+  - Orange scrolling marquees (index x2, collection, product): extra block text_bffree 'FREE Delivery on Beds, Bedroom Packages, Dressers & Mirrors – Sydney Metro Only'.
+  - Top strip block 2: 'FREE DELIVERY on beds, bedroom packages, dressers & mirrors · Sydney metro only'.
+  - Backups: theme-live-backup/before-free-delivery-orange/. Checked on desktop and mobile; no Liquid errors.
+  - After Christmas, remove the tagline, the text_bffree blocks and strip block 2 along with the Starshipit rule.
