@@ -92,3 +92,12 @@ Access: Dev Dashboard app (client ID + secret in .env), broad scopes incl. produ
   - Backups: backup-launch-gemma-danza.json, backup-collection-new-in.before-launch-gemma-danza.json.
   - Rose Top (the navy belted top in the same photos) is still coming soon; asked the owner.
 - 2026-11-13: Reina said the Danza Skirt flat product shot was missing; added it as the 5th image (after the 4 model photos). Source: photos/danza-skirt-flat.jpg.
+- 2026-11-17 Checkout audit (iPhone 13 + Pixel 7 emulation, FIORE DRESS):
+  - Add to cart works on both, no errors. The only failed request is Shopify's private_access_tokens 401 bot probe, which is normal.
+  - Checkout form: contact (email or mobile), first and last name, address, city required. Postal code and Phone are OPTIONAL: risky for COD, so recommend making phone required. "03 123 456" and "+961 71 123 456" were both accepted.
+  - Shipping: only zone Lebanon, with "Inside Beirut (2–5 days)" $5 and "Outside Beirut (3–6 days)" $8. Inside Beirut is PRE-SELECTED for any city (Jounieh test too), so outside-Beirut buyers likely pay $5 unless they switch. The Lebanese address form has no province field, so the rate can't be automatic by area.
+  - Payment: Cash on Delivery (COD) and Whish Money Transfer (71444242). No card option (no Shopify Payments account). Not in test mode: a real order went through.
+  - Total matched: $57.50 + $5 = $62.50.
+  - Real test order #1010 (TEST Order, COD, $62.50) placed and then cancelled: restocked, no customer notification, staff note says do not ship. Stock is back (Fiore M = 2). The owner may have received a new-order notification.
+  - Abandoned checkouts via API: 3 (13 Nov VESPER TROUSERS $105; 27 Oct WHISPER TOP $50.50 ×2). All stopped before the address (only the country is set). The admin's "~12" includes ones with no contact info, which the API doesn't return.
+  - Markets: Lebanon only (active).
