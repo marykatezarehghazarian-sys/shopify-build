@@ -69,3 +69,4 @@ Store: shopica-pty-ltd.myshopify.com
     - Shopify caches carrier rates for a few minutes (the bed showed free once from cache)
   - Pre-existing issue (not ours): Hampton Black Bedside Table (59 kg) gets "Shipping not available" at every address tested.
   - On 2 Dec the Starshipit rule must be deleted: the owner can do it, or I need a fresh login.
+- 2026-11-17 (later): the client reported Lunar Queen Bed to Wallacia 2745 being charged $177.98. The user confirmed scope = Beds + Kids Bed + Bedroom Packages + Dressers & Mirrors (67 SKUs, 46 active products); Starshipit rule SKU list updated (re-login, session deleted after). Tested: Lunar to Wallacia FREE ($805 total), Ella to Blacktown 2148 FREE, Lunar to Wollongong $183.96. Tag bf-free-delivery is on all 84 products in those collections.
