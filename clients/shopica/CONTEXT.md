@@ -83,3 +83,4 @@ Store: shopica-pty-ltd.myshopify.com
   - Top strip block 2: 'FREE DELIVERY on beds, bedroom packages, dressers & mirrors · Sydney metro only'.
   - Backups: theme-live-backup/before-free-delivery-orange/. Checked on desktop and mobile; no Liquid errors.
   - After Christmas, remove the tagline, the text_bffree blocks and strip block 2 along with the Starshipit rule.
+- 2026-11-17: user re-sent the original Black Friday brief (automatic 30% discount on Bedroom + Homeware, rename Flash Sale, strip text, no free delivery yet). Current state already covers it with sale prices (Bedroom 185/185 variants at 30%, Homeware all 322 active products at 30% except 1 variant at 17%; 0 'Flash Sale' left). Did NOT create an automatic discount (it would stack to 51%). Changed strip block 1 to the exact wording 'BLACK FRIDAY: 30% off Bedroom and Homeware & Décor. Ends 1 December'. Free delivery (Rami-approved today) left live, pending the user's answer.

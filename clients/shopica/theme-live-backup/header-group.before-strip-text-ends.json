@@ -1,0 +1,297 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "t:groups.header_group.name",
+  "sections": {
+    "header": {
+      "type": "header",
+      "blocks": {
+        "meganav_promo_collections_FQE33Q": {
+          "type": "meganav_promo_collections",
+          "settings": {
+            "title": "Dining",
+            "header_area_heading": "",
+            "header_link_link": "",
+            "header_link_label": "",
+            "nav_column_count": 1,
+            "show_column_borders": false,
+            "promo_width": 40,
+            "promo_heading_text": "Featured Collections",
+            "collections": [
+              "indoor-dining-settings",
+              "indoor-dining-chairs-and-stools"
+            ],
+            "promo_column_count": 2,
+            "image_source": "collection",
+            "image_aspect_ratio": "landscape",
+            "collection_title_style": "overlay",
+            "text_position": "flex-start_flex-end",
+            "image_overlay_tint_opacity": 70,
+            "image_overlay_tint_style": "gradient_up",
+            "image_overlay_override_with_custom_colors": false,
+            "image_overlay_override_color_text": "#ffffff",
+            "image_overlay_override_color_tint": "#000000"
+          }
+        },
+        "meganav_promo_collections_HRkiYf": {
+          "type": "meganav_promo_collections",
+          "settings": {
+            "title": "Living Room",
+            "header_area_heading": "",
+            "header_link_link": "",
+            "header_link_label": "",
+            "nav_column_count": 1,
+            "show_column_borders": false,
+            "promo_width": 40,
+            "promo_heading_text": "Featured Collections",
+            "collections": [
+              "arm-chairs-and-ottomans",
+              "coffee-tables-and-side-tables"
+            ],
+            "promo_column_count": 2,
+            "image_source": "collection",
+            "image_aspect_ratio": "landscape",
+            "collection_title_style": "overlay",
+            "text_position": "flex-start_flex-end",
+            "image_overlay_tint_opacity": 70,
+            "image_overlay_tint_style": "gradient_up",
+            "image_overlay_override_with_custom_colors": false,
+            "image_overlay_override_color_text": "#ffffff",
+            "image_overlay_override_color_tint": "#000000"
+          }
+        },
+        "meganav_promo_collections_xg3XVN": {
+          "type": "meganav_promo_collections",
+          "settings": {
+            "title": "Bedroom",
+            "header_area_heading": "",
+            "header_link_link": "",
+            "header_link_label": "",
+            "nav_column_count": 1,
+            "show_column_borders": false,
+            "promo_width": 40,
+            "promo_heading_text": "Featured Collections",
+            "collections": [
+              "bedroom-packages",
+              "beds"
+            ],
+            "promo_column_count": 2,
+            "image_source": "collection",
+            "image_aspect_ratio": "landscape",
+            "collection_title_style": "overlay",
+            "text_position": "flex-start_flex-end",
+            "image_overlay_tint_opacity": 70,
+            "image_overlay_tint_style": "gradient_up",
+            "image_overlay_override_with_custom_colors": false,
+            "image_overlay_override_color_text": "#ffffff",
+            "image_overlay_override_color_tint": "#000000"
+          }
+        },
+        "meganav_promo_collections_zDgDL7": {
+          "type": "meganav_promo_collections",
+          "settings": {
+            "title": "Babies & Kids",
+            "header_area_heading": "",
+            "header_link_link": "",
+            "header_link_label": "",
+            "nav_column_count": 3,
+            "show_column_borders": false,
+            "promo_width": 40,
+            "promo_heading_text": "Featured Collections",
+            "collections": [
+              "bouncers-swings",
+              "cots"
+            ],
+            "promo_column_count": 2,
+            "image_source": "collection",
+            "image_aspect_ratio": "landscape",
+            "collection_title_style": "overlay",
+            "text_position": "flex-start_flex-end",
+            "image_overlay_tint_opacity": 70,
+            "image_overlay_tint_style": "gradient_up",
+            "image_overlay_override_with_custom_colors": false,
+            "image_overlay_override_color_text": "#ffffff",
+            "image_overlay_override_color_tint": "#000000"
+          }
+        },
+        "meganav_promo_collections_hd4zV7": {
+          "type": "meganav_promo_collections",
+          "settings": {
+            "title": "Outdoor Furniture",
+            "header_area_heading": "",
+            "header_link_link": "",
+            "header_link_label": "",
+            "nav_column_count": 3,
+            "show_column_borders": false,
+            "promo_width": 40,
+            "promo_heading_text": "Featured Collections",
+            "collections": [
+              "outdoor-dining-chairs",
+              "outdoor-dining-settings"
+            ],
+            "promo_column_count": 2,
+            "image_source": "collection",
+            "image_aspect_ratio": "landscape",
+            "collection_title_style": "overlay",
+            "text_position": "flex-start_flex-end",
+            "image_overlay_tint_opacity": 70,
+            "image_overlay_tint_style": "gradient_up",
+            "image_overlay_override_with_custom_colors": false,
+            "image_overlay_override_color_text": "#ffffff",
+            "image_overlay_override_color_tint": "#000000"
+          }
+        },
+        "meganav_promo_collections_WmU7t6": {
+          "type": "meganav_promo_collections",
+          "settings": {
+            "title": "Homeware & Decor",
+            "header_area_heading": "",
+            "header_link_link": "",
+            "header_link_label": "",
+            "nav_column_count": 2,
+            "show_column_borders": false,
+            "promo_width": 40,
+            "promo_heading_text": "Featured Collections",
+            "collections": [
+              "floor-lamps",
+              "vases-jars"
+            ],
+            "promo_column_count": 2,
+            "image_source": "collection",
+            "image_aspect_ratio": "landscape",
+            "collection_title_style": "overlay",
+            "text_position": "flex-start_flex-end",
+            "image_overlay_tint_opacity": 70,
+            "image_overlay_tint_style": "gradient_up",
+            "image_overlay_override_with_custom_colors": false,
+            "image_overlay_override_color_text": "#ffffff",
+            "image_overlay_override_color_tint": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "meganav_promo_collections_FQE33Q",
+        "meganav_promo_collections_HRkiYf",
+        "meganav_promo_collections_xg3XVN",
+        "meganav_promo_collections_zDgDL7",
+        "meganav_promo_collections_hd4zV7",
+        "meganav_promo_collections_WmU7t6"
+      ],
+      "settings": {
+        "layout": "below_logo_left_search_center",
+        "layout_mobile": "logo_center_menu_left",
+        "enable_sticky_header": true,
+        "drop_shadow": "none",
+        "logo": "shopify://shop_images/Shopica-Logo-Black.png",
+        "logo_width": 240,
+        "mobile_logo_width": 190,
+        "enable_transparent_on_home": true,
+        "enable_transparent_template_list": "",
+        "enable_transparent_background_tint": true,
+        "logo_transparent": "shopify://shop_images/Shopica-Logo-White.png",
+        "color_text_transparent": "#ffffff",
+        "menu": "main-menu",
+        "menu_interaction": "hover",
+        "featured_link_label": "",
+        "featured_link_color": "#d22919",
+        "show_account_label": true,
+        "show_cart_label": true,
+        "show_search_label": true,
+        "cart_label": "subtotal_only",
+        "cart_icon": "cart",
+        "enable_quick_sign_in": false,
+        "enable_search": true,
+        "desktop_search_appearance": "bar",
+        "mobile_search_appearance": "bar",
+        "hs_typing_phrases": "Homeware & Décor, Bedroom, Living Room, Dining, Outdoor Furniture, Babies & Kids",
+        "hs_typing_prefix": "",
+        "hs_focus_placeholder": "What are you looking for?",
+        "hs_popular_heading": "Popular searches",
+        "hs_popular_searches": "Entertainment Pack, Bed Frames, Dining Tables, Coffee Tables, Desks, Kids Beds",
+        "hs_category_heading": "Shop by category",
+        "hs_suggestion_menu": "",
+        "hs_results_limit": 6
+      }
+    },
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "5ead3ce2-32e3-4045-b7d6-59031d387b93": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "title": "<p><strong>BLACK FRIDAY SALE:</strong> 30% off Bedroom and Homeware & Décor</p>",
+            "title_mobile": "",
+            "link": "shopify://collections/sales",
+            "enable_modal": false,
+            "modal_link_text": "Click for details",
+            "modal_link_style": "text",
+            "modal_heading": "",
+            "heading_tag": "h3",
+            "modal_text": "<p>Add your information popup content here</p>",
+            "page_for_modal_content": ""
+          }
+        },
+        "f91add97-e178-4ed5-8344-501f71d2d66e": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "title": "<p><strong>FREE DELIVERY</strong> on beds, bedroom packages, dressers & mirrors · Sydney metro only</p>",
+            "title_mobile": "",
+            "link": "shopify://collections/bedroom",
+            "enable_modal": false,
+            "modal_link_text": "Click for details",
+            "modal_link_style": "text",
+            "modal_heading": "",
+            "heading_tag": "h3",
+            "modal_text": "<p>Add your information popup content here</p>",
+            "page_for_modal_content": ""
+          }
+        }
+      },
+      "block_order": [
+        "5ead3ce2-32e3-4045-b7d6-59031d387b93",
+        "f91add97-e178-4ed5-8344-501f71d2d66e"
+      ],
+      "settings": {
+        "autoplay_delay": 5,
+        "color_text": "#ffffff",
+        "color_background": "#111111",
+        "show_divider": false,
+        "enable_locale_selector": false,
+        "enable_country_selector": false,
+        "show_country_flags": false,
+        "show_social_media": false,
+        "menu": ""
+      }
+    },
+    "mobile-menu": {
+      "type": "mobile-menu",
+      "settings": {
+        "logo_width": 160,
+        "menu_main": "main-menu",
+        "menu_secondary": "",
+        "featured_link_label": "Sale",
+        "featured_link_color": "#db4827",
+        "enable_quick_sign_in": true,
+        "show_social_media": false,
+        "social_media_icons_columns": 5,
+        "enable_locale_selector": true,
+        "enable_country_selector": true
+      }
+    }
+  },
+  "order": [
+    "header",
+    "announcement-bar",
+    "mobile-menu"
+  ]
+}
