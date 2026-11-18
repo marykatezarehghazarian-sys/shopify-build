@@ -287,3 +287,22 @@ ul.hero__facts { margin: 22px 0 0; padding: 0; line-height: 1.35; }
 .cat__arrow { top: 16px; right: 16px; width: 28px; height: 28px; font-size: 0.85rem; }
 .cats { gap: 12px; }
 @media (max-width: 520px) { .cats { gap: 8px; } .cat { min-height: 118px; padding: 13px; } .cat__name { font-size: 0.92rem; } .cat__icon { width: 36px; height: 36px; } .cat__arrow { top: 10px; right: 10px; width: 24px; height: 24px; font-size: 0.75rem; } .cat__count { font-size: 0.75rem; } }
+
+/* 2026-11-18: phone layout less cramped */
+.menu-btn { color: var(--ink); }
+@media (max-width: 900px) {
+  .header__row { min-height: 60px; }
+  .header .logo img { height: 44px !important; }
+  .announce { font-size: 0.7rem; line-height: 1.4; padding: 6px 12px; }
+  .hero { min-height: 0; display: block; padding: 28px 0 40px; }
+  .hero .eyebrow { font-size: 0.66rem; letter-spacing: 0.12em; line-height: 1.5; margin-bottom: 12px; }
+  .hero .display { font-size: clamp(2rem, 9.4vw, 2.7rem); max-width: none; line-height: 0.98; }
+  .hero .lead { font-size: 0.98rem; line-height: 1.55; margin-top: 16px !important; }
+  .hero__actions { margin-top: 22px; gap: 10px; }
+  .hero__actions .btn { min-height: 48px; font-size: 0.92rem; }
+  ul.hero__facts { font-size: 0.86rem; gap: 8px; margin-top: 20px; }
+}
+@media (max-width: 900px) {
+  .section__head { gap: 12px; margin-bottom: 22px; }
+  .section__head .lead { font-size: 0.98rem; margin: 0; }
+}
