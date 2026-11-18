@@ -61,6 +61,12 @@
           "settings": {
             "collection": "school-print"
           }
+        },
+        "c9": {
+          "type": "category",
+          "settings": {
+            "collection": "events-weddings"
+          }
         }
       },
       "block_order": [
@@ -71,7 +77,8 @@
         "c5",
         "c6",
         "c7",
-        "c8"
+        "c8",
+        "c9"
       ],
       "settings": {}
     },

@@ -72,3 +72,11 @@ Owner / contact: Raffi · WhatsApp/phone 03 4000 54 (= +961 3 400 054) · rafi@p
 - 2026-11-17: Raffi said YES to using his Instagram (@pkg.packagingfactory) photos on the site. The rest (showroom details / list review) will come later. Fetching Instagram automatically was blocked here, so the photos need to be saved from Instagram and sent as files.
 - 2026-11-17: the store is now 'Store unavailable' (HTTP 402 Payment Required on both the Admin API and the storefront): the trial ended or no plan was picked. Nothing could be loaded. Waiting for Raffi to pick a Shopify plan (Settings → Plan). Catalogue loader ready: scripts/load-catalogue.mjs (dry run; --apply creates/updates 56 quote-only products, creates the events-weddings collection, renames retail-clothing to 'Retail & Product Packaging', drafts the old samples).
 - 2026-11-17: no real photos yet (Instagram fetch blocked) and no fake 'photos'. Made a sample set of 10 branded ILLUSTRATIONS (not photos) with a 'YOUR LOGO' spot, one per main category, for Raffi to approve the style: pizza box, burger box, cake box, paper cup, kraft bag, logo stickers, mailer box, business cards, notebook, invitation. Source illustrations/make.mjs (SVG → 1200px PNG); preview PKG-illustrations-preview.png; zip PKG-illustrations.zip. If approved, extend to all 56 products and use them until his real photos arrive.
+- 2026-11-18: Store ACTIVE again (Raffi picked a plan; storefront still password-protected). Ran scripts/load-catalogue.mjs --apply:
+  - 56 products ACTIVE, tag catalogue, quote-only (price 0, stock 0, DENY), with custom.material/sizes/minimum_order ('On request') and SEO; 8 tagged popular.
+  - 12 old sample handles reused/overwritten; the other 14 samples set to DRAFT (still in their manual collections, not visible).
+  - New collection events-weddings (5 products, published). retail-clothing renamed 'Retail & Product Packaging'.
+  - Catalogue menu now 9 items incl. Events & Weddings.
+  - Theme (live 160203079820, pushed --allow-live): homepage categories block c9 events-weddings; .cats grid 3 columns on desktop, odd last card spans the full width on 2-column layouts; events icon/colour in pkg-icon-for / pkg-art.
+  - No product images yet: placeholders until Raffi approves the illustrations or sends photos.
+  - Can't verify the storefront without the store password.
