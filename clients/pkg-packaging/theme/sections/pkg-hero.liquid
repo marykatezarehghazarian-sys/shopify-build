@@ -1,11 +1,14 @@
 <section class="hero">
+  <script>(function(){var s=document.currentScript.parentNode;function f(){document.documentElement.style.setProperty("--hero-top",Math.max(0,s.getBoundingClientRect().top+window.scrollY)+"px")}function v(){document.documentElement.classList.toggle("hero-in-view",window.scrollY<window.innerHeight*0.55)}f();v();addEventListener("resize",f);addEventListener("load",f);addEventListener("scroll",v,{passive:true})})();</script>
   <div class="wrap hero__grid">
-    <div>
+    <div class="hero__text">
+      <div class="hero__copy">
       {%- if section.settings.eyebrow != blank -%}<h1 class="eyebrow">{{ section.settings.eyebrow }}</h1><p class="display">{{ section.settings.heading }}</p>{%- else -%}<h1 class="display">{{ section.settings.heading }}</h1>{%- endif -%}
-      {%- if section.settings.text != blank -%}<p class="lead" style="margin-top:22px">{{ section.settings.text }}</p>{%- endif -%}
+      {%- if section.settings.text != blank -%}<p class="lead">{{ section.settings.text }}</p>{%- endif -%}
       <div class="hero__actions">
         {%- if settings.whatsapp != blank -%}<a class="btn btn--wa" href="{% render 'wa-url', message: section.settings.wa_message %}" target="_blank" rel="noopener">{% render 'pkg-icon', name: 'whatsapp' %}{{ section.settings.button_1 }}</a>{%- endif -%}
         {%- if section.settings.button_2 != blank -%}<a class="btn btn--ghost" href="{{ section.settings.button_2_link | default: routes.collections_url }}">{{ section.settings.button_2 }}</a>{%- endif -%}
+      </div>
       </div>
       <ul class="clean hero__facts">
         {%- for i in (1..3) -%}{%- assign k = 'fact_' | append: i -%}{%- if section.settings[k] != blank -%}<li>{{ section.settings[k] }}</li>{%- endif -%}{%- endfor -%}
