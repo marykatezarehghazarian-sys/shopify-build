@@ -93,3 +93,6 @@ Owner / contact: Raffi · WhatsApp/phone 03 4000 54 (= +961 3 400 054) · rafi@p
   - About page text rewritten (removed the "[Raffi: …]" placeholder): since 1998, factory and showroom in Mkalles, in-house offset/digital printing and die-cutting, delivery Lebanon + Middle East.
   - Opening hours (user): open 24/7 → showroom_hours "Open 24 hours, 7 days a week", opening_hours_schema "Mo-Su 00:00-23:59".
   - Still open: exact street/building (optional), shop name "My Store", domain, remove password, refund/terms/contact policies, 2 machine photos.
+- 2026-11-18: password REMOVED by Raffi; store name now "PKG Packaging Factory"; site is live on zzfd11-gp.myshopify.com (domain to be bought). Visitor check (desktop 1366 + mobile 390): home, catalogue, a collection, a product, about, showroom, contact: all 200, no placeholders, no overflow, no broken images, no JS errors.
+  - Product SEO titles no longer end in " | PKG." (theme already appends the brand): 56 updated; load-catalogue.mjs fixed too.
+  - Still open: domain (+ set as primary), refund/terms/contact policies, Google Search Console + Business Profile after the domain, 2 machine photos.

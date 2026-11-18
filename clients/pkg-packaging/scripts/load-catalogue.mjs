@@ -60,7 +60,7 @@ for (const it of items) {
       { namespace: 'custom', key: 'sizes', type: 'single_line_text_field', value: it.sizes },
       { namespace: 'custom', key: 'minimum_order', type: 'single_line_text_field', value: it.minimum_order || 'On request' },
     ],
-    seo: { title: `${it.name} | Custom Printed in Lebanon | PKG.`, description: `${it.description} Made to order in Lebanon. Ask PKG. Packaging Factory for a quote on WhatsApp.`.slice(0, 160) },
+    seo: { title: `${it.name} | Custom Printed in Lebanon`, description: `${it.description} Made to order in Lebanon. Ask PKG. Packaging Factory for a quote on WhatsApp.`.slice(0, 160) },
   };
   if (ex) input.id = ex.id;
   console.log(ex ? 'update' : 'create', handle);
