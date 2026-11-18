@@ -17,10 +17,10 @@
     "color_accent": "#21642F",
     "showroom_address": "Mkalles, Metn, Lebanon",
     "business_city": "Mkalles",
-    "showroom_map_link": "https://maps.app.goo.gl/BTPRkwacfbGusWqD9",
-    "showroom_map_query": "33.862782,35.55283",
-    "geo_lat": "33.862782",
-    "geo_lng": "35.55283",
+    "showroom_map_link": "https://maps.app.goo.gl/Hb861JArmirQdy686",
+    "showroom_map_query": "33.862125,35.553101",
+    "geo_lat": "33.862125",
+    "geo_lng": "35.553101",
     "showroom_hours": "Open 24 hours, 7 days a week",
     "opening_hours_schema": "Mo-Su 00:00-23:59"
   }
