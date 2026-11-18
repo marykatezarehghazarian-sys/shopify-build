@@ -97,3 +97,4 @@ Owner / contact: Raffi · WhatsApp/phone 03 4000 54 (= +961 3 400 054) · rafi@p
   - Product SEO titles no longer end in " | PKG." (theme already appends the brand): 56 updated; load-catalogue.mjs fixed too.
   - Still open: domain (+ set as primary), refund/terms/contact policies, Google Search Console + Business Profile after the domain, 2 machine photos.
 - 2026-11-18 design tweaks (user): home hero fits the first screen (checked 1366x768, 1440x900, 1920x1080, 390x844, 360x740); heading now uses the bold head font (p.display had no font rule); gap under the hero buttons fixed (`ul.clean` was overriding the facts margin → `ul.hero__facts`); hero picture hidden on phones; category cards smaller (160px desktop, ~140px phone). About page photo = digital press (pkg-digital-press.jpg). Backups in backups/2026-11-18/.
+- 2026-11-18: home hero pictures = mockups (kraft bag, burger box, paper cup) instead of icon placeholders (desktop/tablet only; hidden on phones).

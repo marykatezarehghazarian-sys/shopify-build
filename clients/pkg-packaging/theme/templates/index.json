@@ -1,10 +1,22 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "pkg-hero",
       "settings": {
+        "eyebrow": "Custom printing & packaging factory in Lebanon",
         "button_2_link": "/collections/all",
-        "eyebrow": "Custom printing & packaging factory in Lebanon"
+        "image_1": "shopify://shop_images/pkg-kraft-bag-with-twisted-handle-mockup.jpg",
+        "image_2": "shopify://shop_images/pkg-burger-box-mockup.jpg",
+        "image_3": "shopify://shop_images/pkg-paper-cup-mockup.jpg"
       }
     },
     "ticker": {
@@ -98,7 +110,7 @@
           "settings": {
             "icon": "bakery",
             "title": "Bakeries",
-            "text": "Cake boxes, trays, chocolate boxes, Bûche de Noël boxes and labels."
+            "text": "Cake boxes, trays, chocolate boxes, B\u00fbche de No\u00ebl boxes and labels."
           }
         },
         "i3": {
@@ -163,7 +175,7 @@
       "settings": {
         "eyebrow": "Industries we serve",
         "heading": "Printing and packaging for every type of business.",
-        "text": "From one café to a chain of branches, we print the packaging and paperwork your customers see every day.",
+        "text": "From one caf\u00e9 to a chain of branches, we print the packaging and paperwork your customers see every day.",
         "show_icons": false
       }
     },
@@ -351,7 +363,8 @@
         "p2",
         "p3",
         "p4"
-      ]
+      ],
+      "settings": {}
     },
     "cta": {
       "type": "pkg-band",
