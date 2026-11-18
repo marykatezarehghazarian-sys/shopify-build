@@ -1,5 +1,4 @@
 <section class="hero">
-  <script>(function(){var s=document.currentScript.parentNode;function f(){document.documentElement.style.setProperty("--hero-top",Math.max(0,s.getBoundingClientRect().top+window.scrollY)+"px")}function v(){document.documentElement.classList.toggle("hero-in-view",window.scrollY<window.innerHeight*0.55)}f();v();addEventListener("resize",f);addEventListener("load",f);addEventListener("scroll",v,{passive:true})})();</script>
   <div class="wrap hero__grid">
     <div class="hero__text">
       <div class="hero__copy">
@@ -10,6 +9,8 @@
         {%- if section.settings.button_2 != blank -%}<a class="btn btn--ghost" href="{{ section.settings.button_2_link | default: routes.collections_url }}">{{ section.settings.button_2 }}</a>{%- endif -%}
       </div>
       </div>
+      {%- assign tick = section.settings.ticker_items | split: ',' -%}
+      {%- if tick.size > 0 -%}<div class="ticker hero__ticker" aria-hidden="true"><div class="ticker__track">{%- for n in (1..2) -%}{%- for it in tick -%}<span>{{ it | strip }}</span>{%- endfor -%}{%- endfor -%}</div></div>{%- endif -%}
       <ul class="clean hero__facts">
         {%- for i in (1..3) -%}{%- assign k = 'fact_' | append: i -%}{%- if section.settings[k] != blank -%}<li>{{ section.settings[k] }}</li>{%- endif -%}{%- endfor -%}
       </ul>
@@ -20,6 +21,7 @@
       <div class="stack stack--c">{% if section.settings.image_3 %}{{ section.settings.image_3 | image_url: width: 500 | image_tag: class: 'cover' }}{% else %}<div class="art" style="background:var(--accent);color:#fff">{% render 'pkg-icon', name: 'coffee' %}</div>{% endif %}</div>
     </div>
   </div>
+  <script>(function(){var s=document.currentScript.parentNode;function f(){document.documentElement.style.setProperty("--hero-top",Math.max(0,s.getBoundingClientRect().top+window.scrollY)+"px")}function t(){var k=s.querySelector(".hero__ticker");document.documentElement.style.setProperty("--hero-tick",(k&&k.offsetHeight?k.offsetHeight:0)+"px")}function v(){document.documentElement.classList.toggle("hero-in-view",window.scrollY<window.innerHeight*0.55)}f();t();v();addEventListener("resize",function(){f();t()});addEventListener("load",t);addEventListener("load",f);addEventListener("scroll",v,{passive:true})})();</script>
 </section>
 
 {% schema %}
@@ -36,6 +38,7 @@
     { "type": "text", "id": "fact_1", "label": "Fact 1", "default": "Made to order with your logo" },
     { "type": "text", "id": "fact_2", "label": "Fact 2", "default": "Delivery across Lebanon & the Middle East" },
     { "type": "text", "id": "fact_3", "label": "Fact 3", "default": "Cash on delivery, Whish or OMT" },
+    { "type": "text", "id": "ticker_items", "label": "Phone banner words (comma separated)", "info": "On phones the moving banner sits at the bottom of the first screen.", "default": "Custom boxes, Paper cups, Paper bags, Labels & stickers, Business print, Mailer boxes" },
     { "type": "image_picker", "id": "image_1", "label": "Photo 1 (large)" },
     { "type": "image_picker", "id": "image_2", "label": "Photo 2" },
     { "type": "image_picker", "id": "image_3", "label": "Photo 3 (small)" }
