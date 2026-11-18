@@ -2,7 +2,7 @@
   <div class="panel">
     <div class="info-list">
       <div><h4>Address</h4><p>{{ settings.showroom_address | default: '<span class="todo">Add the address in Theme settings → Showroom</span>' }}</p></div>
-      <div><h4>Opening hours</h4><p>{{ settings.showroom_hours | newline_to_br | default: '<span class="todo">Add opening hours in Theme settings → Showroom</span>' }}</p></div>
+      {%- if settings.showroom_hours != blank -%}<div><h4>Opening hours</h4><p>{{ settings.showroom_hours | newline_to_br }}</p></div>{%- endif -%}
       {%- if settings.whatsapp != blank -%}<div><h4>Phone / WhatsApp</h4><p>{{ settings.whatsapp }}</p></div>{%- endif -%}
       {%- if settings.email != blank -%}<div><h4>Email</h4><p>{{ settings.email }}</p></div>{%- endif -%}
     </div>

@@ -1,0 +1,29 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "pkg-page-hero",
+      "settings": {
+        "eyebrow": "Showroom & location",
+        "heading": "See it. Touch it. Then order it.",
+        "text": "Visit our showroom to see real samples, compare materials and finishes, and plan your packaging with our team."
+      }
+    },
+    "main": {
+      "type": "pkg-showroom",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "main"
+  ]
+}
