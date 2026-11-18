@@ -97,7 +97,7 @@ function newScene(bg = '#ECE7DF') {
   const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); g.setIndex(idx); g.computeVertexNormals();
   const sweep = new THREE.Mesh(g, new THREE.MeshStandardMaterial({ color: bg, roughness: 1 })); sweep.receiveShadow = true; scene.add(sweep);
   const key = new THREE.DirectionalLight('#fff6ec', 2.4); key.position.set(-5, 9, 6); key.castShadow = true;
-  key.shadow.mapSize.set(2048, 2048); key.shadow.radius = 14; key.shadow.blurSamples = 24; key.shadow.bias = -0.0004; key.shadow.normalBias = 0.02;
+  key.shadow.mapSize.set(2048, 2048); key.shadow.radius = 9; key.shadow.blurSamples = 24; key.shadow.bias = -0.0004; key.shadow.normalBias = 0.02;
   Object.assign(key.shadow.camera, { left: -5, right: 5, top: 5, bottom: -5, near: 1, far: 30 }); scene.add(key);
   const rim = new THREE.DirectionalLight('#eef3ff', 0.6); rim.position.set(6, 5, -4); scene.add(rim);
   scene.add(new THREE.HemisphereLight('#ffffff', '#cbbfae', 0.25));
@@ -161,8 +161,10 @@ function rbox(w, h, d, mats, r = 0.02) {
 const lathe = (pts, mat, seg = 96) => new THREE.Mesh(new THREE.LatheGeometry(pts.map(([r, y]) => new THREE.Vector2(r, y)), seg), mat);
 const camU = (cam = [0.85, 1.35]) => { let a = Math.atan2(cam[0], cam[1]); return ((a / (Math.PI * 2)) + 1) % 1; };
 // wrap print for lathe objects: logo centred facing camera
-function wrapPrint(color, kind, size, v = 0.5, ink = INK, opts) {
-  const u = camU(); return paperMat(color, kind, { print: (x, n) => { drawLogo(x, u * n, (1 - v) * n, size * n, ink, opts); drawLogo(x, (u + 1) * n, (1 - v) * n, size * n, ink, opts); } });
+// asp = (circumference / profile length) so the logo stays round on the curved surface
+function wrapPrint(color, kind, size, v = 0.5, ink = INK, opts, asp = 1) {
+  const u = camU(), one = (x, n, uu) => { x.save(); x.translate(uu * n, (1 - v) * n); x.scale(1 / asp, 1); drawLogo(x, 0, 0, size * n, ink, opts); x.restore(); };
+  return paperMat(color, kind, { print: (x, n) => { one(x, n, u); one(x, n, u + 1); } });
 }
 
 // ---------- products ----------
@@ -211,11 +213,11 @@ P['Kraft Bag with Twisted Handle'] = () => {
 function makeCup({ sleeve = false, color = WHITE, logo = 0.26, logoV = 0.45, lidColor = '#F3F2EF' } = {}) {
   const g = new THREE.Group(), H = 1.6, rb = 0.44, rt = 0.6;
   const body = [[0.001, 0.02], [rb - 0.02, 0.0], [rb, 0.03]]; for (let i = 0; i <= 20; i++) { const y = 0.03 + (H - 0.03) * i / 20; body.push([rb + (rt - rb) * (y / H), y]); }
-  const cup = lathe([...body, [rt + 0.015, H + 0.01], [rt + 0.02, H + 0.03], [rt - 0.005, H + 0.04], [rt - 0.02, H]], sleeve ? paperMat(color, 'white') : wrapPrint(color, 'white', logo, logoV));
+  const cup = lathe([...body, [rt + 0.015, H + 0.01], [rt + 0.02, H + 0.03], [rt - 0.005, H + 0.04], [rt - 0.02, H]], sleeve ? paperMat(color, 'white') : wrapPrint(color, 'white', logo, logoV, INK, undefined, 1.55));
   g.add(cup);
   if (sleeve) {
     const s0 = 0.45, s1 = 1.1, sl = []; for (let i = 0; i <= 8; i++) { const y = s0 + (s1 - s0) * i / 8; sl.push([rb + (rt - rb) * (y / H) + 0.012, y]); }
-    g.add(lathe([[sl[0][0] - 0.01, s0 - 0.001], ...sl, [sl[8][0] - 0.01, s1 + 0.001]], wrapPrint(KRAFT, 'kraft', 0.17, 0.5, INK)));
+    g.add(lathe([[sl[0][0] - 0.01, s0 - 0.001], ...sl, [sl[8][0] - 0.01, s1 + 0.001]], wrapPrint(KRAFT, 'kraft', 0.62, 0.5, INK, undefined, 5.2)));
   }
   const lm = new THREE.MeshStandardMaterial({ color: lidColor, roughness: 0.32 });
   g.add(lathe([[rt + 0.035, H - 0.03], [rt + 0.05, H + 0.02], [rt + 0.05, H + 0.07], [rt + 0.02, H + 0.09], [rt - 0.02, H + 0.09], [rt - 0.05, H + 0.1], [rt - 0.09, H + 0.17], [rt - 0.12, H + 0.18], [0.001, H + 0.18]], lm, 128));
@@ -227,6 +229,8 @@ function makeCup({ sleeve = false, color = WHITE, logo = 0.26, logoV = 0.45, lid
 P['Paper Cup'] = () => { const g = makeCup(); shadowAll(g); scene.add(g); contactShadow(1.3, 1.3); frame(g, { fill: 0.6, dir: [0.85, 0.75, 1.35] }); };
 P['Cup Sleeve'] = () => { const g = makeCup({ sleeve: true }); shadowAll(g); scene.add(g); contactShadow(1.3, 1.3); frame(g, { fill: 0.6, dir: [0.85, 0.75, 1.35] }); };
 
+const { register } = await import('./products.js');
+register(P, { THREE, rnd, paperCanvas, paperMat, tex, drawLogo, rbox, frustum, lathe, camU, wrapPrint, makeCup, contactShadow, frame, shadowAll, add: (o) => scene.add(o), cam: () => camera, KRAFT, WHITE, INK, N });
 window.PRODUCTS = P;
 window.renderProduct = (name) => { newScene(); P[name](); return finish(); };
 window.ready = true;
