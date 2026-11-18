@@ -86,3 +86,4 @@ Owner / contact: Raffi · WhatsApp/phone 03 4000 54 (= +961 3 400 054) · rafi@p
 - Drawn images (56) are on the products for now; user said they look AI-made.
 - Tried Wikimedia Commons stock photos; dropped them. They show other companies' products (often with brands), not PKG's, which misleads buyers and puts others' work on the site. Nothing from Commons was uploaded.
 - Decision: real photos of Raffi's own samples (phone photos, we clean them up). Keep the drawings until then.
+- 2026-11-18: user approved the 3D mockup style ("exactly like this"). All 56 rendered by `renders/render.mjs` (three.js, scene in `renders/scene.js` + `renders/products.js`) to `renders/out/<handle>.jpg`; overview sheets in `renders/sheets/`, zip `renders/PKG-mockups-all.zip`. Placeholder print is "YOUR LOGO" in PKG green. Not uploaded yet: waiting for go-ahead to replace the drawings on the store.
