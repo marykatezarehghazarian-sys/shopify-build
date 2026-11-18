@@ -81,3 +81,8 @@ Owner / contact: Raffi · WhatsApp/phone 03 4000 54 (= +961 3 400 054) · rafi@p
   - No product images yet: placeholders until Raffi approves the illustrations or sends photos.
   - Can't verify the storefront without the store password.
 - 2026-11-18: Raffi has NO photos and asked us to design them. Made illustrations for all 56 products (illustrations/make-all.mjs → illustrations/all/<handle>.png, 1200×1200, same approved style with a 'YOUR LOGO' spot and the product name). Uploaded as each product's image (scripts/upload-illustrations.mjs; alt '<name>, custom printed with your logo by PKG. Packaging Factory, Lebanon'). 56/56 READY. Sheets PKG-all-sheet-1/2.png; zip PKG-all-product-images.zip.
+
+## Product photos (2026-11-18)
+- Drawn images (56) are on the products for now; user said they look AI-made.
+- Tried Wikimedia Commons stock photos; dropped them. They show other companies' products (often with brands), not PKG's, which misleads buyers and puts others' work on the site. Nothing from Commons was uploaded.
+- Decision: real photos of Raffi's own samples (phone photos, we clean them up). Keep the drawings until then.
