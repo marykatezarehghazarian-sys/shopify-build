@@ -20,6 +20,8 @@
     "showroom_map_link": "https://maps.app.goo.gl/BTPRkwacfbGusWqD9",
     "showroom_map_query": "33.862782,35.55283",
     "geo_lat": "33.862782",
-    "geo_lng": "35.55283"
+    "geo_lng": "35.55283",
+    "showroom_hours": "Open 24 hours, 7 days a week",
+    "opening_hours_schema": "Mo-Su 00:00-23:59"
   }
 }

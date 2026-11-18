@@ -91,4 +91,5 @@ Owner / contact: Raffi · WhatsApp/phone 03 4000 54 (= +961 3 400 054) · rafi@p
   - Live theme settings: showroom_address "Mkalles, Metn, Lebanon", business_city Mkalles, map link/query, geo lat/lng (backup of the old files in backups/2026-11-18/).
   - pkg-showroom: the "Opening hours" block is hidden while the hours are empty (was a visible "Add opening hours" note).
   - About page text rewritten (removed the "[Raffi: …]" placeholder): since 1998, factory and showroom in Mkalles, in-house offset/digital printing and die-cutting, delivery Lebanon + Middle East.
-  - Still open: opening hours, exact street/building (optional), shop name "My Store", domain, remove password, refund/terms/contact policies, 2 machine photos.
+  - Opening hours (user): open 24/7 → showroom_hours "Open 24 hours, 7 days a week", opening_hours_schema "Mo-Su 00:00-23:59".
+  - Still open: exact street/building (optional), shop name "My Store", domain, remove password, refund/terms/contact policies, 2 machine photos.
