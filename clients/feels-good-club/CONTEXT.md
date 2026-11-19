@@ -76,3 +76,4 @@ Store: hd8wtv-ck.myshopify.com
 - Results: Shopify Analytics → Reports → sessions/sales by UTM campaign `kuwait_test`.
 - Policies: generic refund, shipping and privacy texts are ready in `policies/` but not live. They need write_legal_policies on the app, or the owner pastes them in Settings → Policies. The owner will refine them later.
 - Pending app scopes, if we want to manage these via API: read/write_markets, read/write_legal_policies.
+- 2026-11-19: user: Kuwait checkout must be instant payment only (no COD). Our app can't do it (no payment-customization scopes; custom Functions are Plus-only, store is Basic). Owner installs a payment-customization app from the App Store (search 'hide payment methods') with rule: hide Cash on Delivery when shipping country = Kuwait. Then verify with scripts/checkout.mjs (KW and LB, no --submit).
