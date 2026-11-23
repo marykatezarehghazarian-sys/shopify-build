@@ -5,3 +5,4 @@
 - Requested scopes: products, orders, draft orders, customers, inventory, themes, files, content, navigation, shipping, discounts, publications, locations, markets (read), legal policies.
 - Status: waiting for the ?code=… URL.
 - Brand details, conventions and decisions: (none yet)
+- 2026-11-23: my first Chic Corner authorize links lacked the `state` parameter (every link that returned a code for other clients had one) and Shopify sent the owner to the app URL instead (hmac/host/shop only, no code). New link with state sent. Same client ID/secret as saved.
