@@ -46,8 +46,20 @@
 @media screen and (max-width: 749px) {
   .main-collection-grid .product-grid { padding-inline: 14px !important; box-sizing: border-box; }
 }
-/* Details panel now sits between the colour options and Add to cart */
-.product-details .accordion { margin-block: 4px 8px; }
 
 /* Stop the page from being slightly wider than the phone screen (a wide element made it scroll sideways) */
 html, body { overflow-x: clip; max-width: 100%; }
+
+/* Product title like the reference site: clean, regular weight, smaller */
+.product-details h1 { font-family: var(--font-body--family) !important; font-weight: 500 !important; font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem) !important; line-height: 1.2 !important; letter-spacing: -0.01em; }
+
+/* The custom Chic Corner sections ask for --font-primary--family, which the theme never defined,
+   so they fell back to a generic serif. Point it at the new heading font. */
+:root { --font-primary--family: var(--font-heading--family); }
+
+/* Add to cart and Buy now: same size, stacked, on every screen */
+.product-details .product-form-buttons { flex-wrap: wrap !important; gap: 10px !important; }
+.product-details .product-form-buttons > span,
+.product-details .product-form-buttons > .cc-buy-now { flex: 1 1 100% !important; width: 100%; }
+.product-details .product-form-buttons > span .add-to-cart-button { width: 100%; }
+.cc-buy-now { margin-top: 0; }

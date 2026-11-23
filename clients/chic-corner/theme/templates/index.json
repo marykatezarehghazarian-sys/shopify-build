@@ -1340,7 +1340,8 @@
         "border_radius": 0,
         "padding-block-start": 64,
         "padding-block-end": 72
-      }
+      },
+      "disabled": true
     },
     "product_list_trending": {
       "type": "product-list",

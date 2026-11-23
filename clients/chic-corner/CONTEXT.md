@@ -18,3 +18,6 @@
   - Custom CSS lives in assets/cc-edits.css (loaded from layout/theme.liquid).
   - Note: only 2 of 147 products have a description, so "Product details" is empty on most products.
   - Open questions to the owner: what "White" under the Sunglasses title means; whether to write product descriptions.
+- 2026-11-24 follow-up from the owner (WhatsApp): delete "Shop by occasion" (home section `shop_by_occasion` set to disabled, not deleted), delete the Product details / Care / Size & fit panel (removed from the product page), fonts like lurexia.com (Suisse-style sans → kept Geist; product titles 500 weight, ~24px on phones). Also fixed: custom cc-* sections used an undefined --font-primary--family and fell back to serif (now = heading font); Add to cart + Buy now stacked full width on desktop too.
+- 2026-11-24 PUBLISHED (user: "make sure its perfect and publish"): theme 161514913847 renamed "Chic Corner (live Nov 2026)" is MAIN. Previous live theme "gatello-EDITS" (135489454135) kept unpublished as the backup; to roll back, publish it again (it still uses menu `main-menu`). QA before publishing: 13 pages × phone + desktop, all 200, no JS errors, no broken images, no sideways scroll, no Liquid errors; Buy now reaches checkout.
+- Still open: what "White" under the collection title means; product descriptions (2 of 147 have one).
