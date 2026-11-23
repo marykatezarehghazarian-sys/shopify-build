@@ -1,0 +1,7 @@
+{
+  "accessibility": { "skip_to_content": "Skip to content" },
+  "general": { "cart": "Cart", "search": "Search", "no_results": "No results found.", "404_title": "Page not found" },
+  "products": { "add_to_cart": "Add to cart", "sold_out": "Sold out", "quantity": "Quantity" },
+  "collections": { "all": "Collections", "empty": "No products in this collection." },
+  "cart": { "subtotal": "Subtotal", "update": "Update", "checkout": "Check out", "empty": "Your cart is empty.", "continue": "Continue shopping" }
+}

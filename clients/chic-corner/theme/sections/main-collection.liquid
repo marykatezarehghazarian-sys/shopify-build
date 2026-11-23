@@ -1,0 +1,13 @@
+<div class="section page-width">
+  <h1>{{ collection.title | escape }}</h1>
+  {{ collection.description }}
+  {%- paginate collection.products by section.settings.per_page -%}
+    <div class="grid">
+      {%- for product in collection.products -%}{% render 'product-card', product: product %}{%- else -%}<p>{{ 'collections.empty' | t }}</p>{%- endfor -%}
+    </div>
+    {%- if paginate.pages > 1 %}<nav class="section">{{ paginate | default_pagination }}</nav>{% endif -%}
+  {%- endpaginate -%}
+</div>
+{% schema %}
+{ "name": "Collection grid", "settings": [{ "type": "range", "id": "per_page", "label": "Products per page", "min": 8, "max": 48, "step": 4, "default": 24 }] }
+{% endschema %}
