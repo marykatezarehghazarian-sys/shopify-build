@@ -1,0 +1,232 @@
+{%- comment -%} ===== CHIC CORNER — Build Your Order (offer-ladder builder) ===== {%- endcomment -%}
+{%- liquid
+  assign accent = settings.color_palette.color3 | default: '#9C7A4D'
+  assign s = section.settings
+  assign col = collections[s.collection]
+  if col == blank or col.products_count == 0
+    assign col = collections['all']
+  endif
+-%}
+
+<div class="cc-bo" style="--cc-accent: {{ accent }};">
+  <div class="cc-bo__head">
+    <p class="cc-bo__eyebrow">{{ s.eyebrow }}</p>
+    <h1 class="cc-bo__title">{{ s.heading }}</h1>
+    <p class="cc-bo__sub">{{ s.subheading }}</p>
+  </div>
+
+  {%- comment -%} BOGO banner {%- endcomment -%}
+  <div class="cc-bo__tiers">
+    <div class="cc-bo__tier"><span class="cc-bo__tier-top">Any order</span><span class="cc-bo__tier-bot">Full price</span></div>
+    <div class="cc-bo__tier"><span class="cc-bo__tier-top">Spend $49</span><span class="cc-bo__tier-bot cc-bo__accent">−10%</span></div>
+    <div class="cc-bo__tier"><span class="cc-bo__tier-top">Spend $75</span><span class="cc-bo__tier-bot cc-bo__accent">−15%</span></div>
+    <div class="cc-bo__tier cc-bo__tier--gift"><span class="cc-bo__gift">★ FREE GIFT 🎁</span><span class="cc-bo__tier-top">Spend $100</span><span class="cc-bo__tier-bot cc-bo__accent">−20% + gift</span></div>
+  </div>
+
+  {%- comment -%} Category filters {%- endcomment -%}
+  <div class="cc-bo__filters">
+    <button class="cc-bo__pill is-active" data-filter="all">All</button>
+    <button class="cc-bo__pill" data-filter="sunglasses">Sunglasses</button>
+    <button class="cc-bo__pill" data-filter="caps">Caps</button>
+    <button class="cc-bo__pill" data-filter="perfumes">Perfumes</button>
+    <button class="cc-bo__pill" data-filter="wallets">Wallets</button>
+    <button class="cc-bo__pill" data-filter="bracelet">Bracelets</button>
+  </div>
+
+  {%- comment -%} Product grid {%- endcomment -%}
+  <div class="cc-bo__grid">
+    {%- for product in col.products limit: 60 -%}
+      {%- assign col_handles = product.collections | map: 'handle' | join: ' ' -%}
+      <div class="cc-bo__card" data-collections="{{ col_handles }}">
+        <a href="{{ product.url }}" class="cc-bo__imgwrap">
+          {%- if product.featured_media -%}
+            <img src="{{ product.featured_media | image_url: width: 400 }}" alt="{{ product.title | escape }}" loading="lazy" width="400" height="400">
+          {%- endif -%}
+        </a>
+        <h3 class="cc-bo__name">{{ product.title }}</h3>
+        <p class="cc-bo__price">{{ product.price | money }}</p>
+        {%- if product.variants.size > 1 -%}
+          <select class="cc-bo__variant" aria-label="Choose option">
+            {%- for v in product.variants -%}
+              <option value="{{ v.id }}" {% unless v.available %}disabled{% endunless %}>{{ v.title }}{% unless v.available %} — sold out{% endunless %}</option>
+            {%- endfor -%}
+          </select>
+        {%- else -%}
+          <input type="hidden" class="cc-bo__variant-single" value="{{ product.selected_or_first_available_variant.id }}">
+        {%- endif -%}
+        <button class="cc-bo__add"{% unless product.available %} disabled{% endunless %}>
+          {%- if product.available -%}Add to kit{%- else -%}Sold out{%- endif -%}
+        </button>
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{%- comment -%} Sticky total / ladder bar {%- endcomment -%}
+<div class="cc-bo__bar" style="--cc-accent: {{ accent }};">
+  <div class="cc-bo__bar-inner">
+    <div class="cc-bo__bar-msg">Your kit is empty — start adding your favourites</div>
+    <div class="cc-bo__bar-right">
+      <span class="cc-bo__bar-total">$0.00</span>
+      <a href="{{ routes.cart_url }}" class="cc-bo__bar-btn">Order my kit</a>
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .cc-bo-section { background: #FBF9F4; }
+  .cc-bo { max-width: 1200px; margin: 0 auto; padding: 56px 24px 40px; background: #FBF9F4; }
+  .cc-bo__head { text-align: center; margin-bottom: 40px; }
+  .cc-bo__eyebrow { color: var(--cc-accent); letter-spacing: .22em; font-size: 12px; font-weight: 600; margin: 0 0 12px; }
+  .cc-bo__title { font-family: var(--font-primary--family, serif); font-size: clamp(32px, 5vw, 52px); line-height: 1.05; margin: 0 0 14px; color: #1C1714; }
+  .cc-bo__sub { max-width: 620px; margin: 0 auto; color: #6e655a; line-height: 1.6; }
+  .cc-bo__tiers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; background: color-mix(in srgb, var(--cc-accent) 8%, #fff); border: 1px solid color-mix(in srgb, var(--cc-accent) 22%, transparent); border-radius: 18px; overflow: hidden; margin-bottom: 40px; }
+  .cc-bo__tier { position: relative; padding: 22px 16px; text-align: center; display: flex; flex-direction: column; gap: 4px; }
+  .cc-bo__tier + .cc-bo__tier::before { content: ''; position: absolute; left: 0; top: 18%; bottom: 18%; width: 1px; background: color-mix(in srgb, var(--cc-accent) 20%, transparent); }
+  .cc-bo__tier--gift { background: color-mix(in srgb, var(--cc-accent) 15%, transparent); }
+  .cc-bo__tier-top { font-weight: 600; font-size: 15px; color: #1C1714; }
+  .cc-bo__tier-bot { font-size: 15px; color: #6e655a; }
+  .cc-bo__accent { color: var(--cc-accent); font-weight: 600; }
+  .cc-bo__gift { font-size: 11px; color: var(--cc-accent); font-weight: 700; letter-spacing: .04em; margin-bottom: 2px; }
+  .cc-bo__filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
+  .cc-bo__pill { border: 1px solid rgba(28,23,20,0.18); background: transparent; color: #1C1714; border-radius: 999px; padding: 9px 20px; font-size: 14px; cursor: pointer; transition: all .2s; }
+  .cc-bo__pill.is-active { background: #1C1714; color: #F4EEE4; border-color: #1C1714; }
+  .cc-bo__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+  .cc-bo__card { display: flex; flex-direction: column; }
+  .cc-bo__card[hidden] { display: none; }
+  .cc-bo__imgwrap { display: block; aspect-ratio: 1; overflow: hidden; border-radius: 14px; background: rgba(28,23,20,0.05); }
+  .cc-bo__imgwrap img { width: 100%; height: 100%; object-fit: cover; }
+  .cc-bo__name { font-size: 15px; margin: 12px 0 4px; color: #1C1714; }
+  .cc-bo__price { font-size: 15px; font-weight: 600; margin: 0 0 10px; color: #1C1714; }
+  .cc-bo__variant { width: 100%; border: 1px solid rgba(28,23,20,0.18); border-radius: 10px; padding: 9px 12px; margin-bottom: 10px; font-size: 13px; background: #fff; color: #1C1714; }
+  .cc-bo__add { margin-top: auto; background: #1C1714; color: #F4EEE4; border: none; border-radius: 999px; padding: 12px; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; cursor: pointer; transition: opacity .2s; }
+  .cc-bo__add:hover { opacity: .88; }
+  .cc-bo__add[disabled] { opacity: .4; cursor: not-allowed; }
+  .cc-bo__add.is-added { background: var(--cc-accent); }
+
+  .cc-bo__bar { position: sticky; bottom: 0; z-index: 40; background: #1C1714; color: #F4EEE4; box-shadow: 0 -6px 24px rgba(0,0,0,.18); }
+  .cc-bo__bar-inner { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+  .cc-bo__bar-msg { font-size: 14px; opacity: .92; }
+  .cc-bo__bar-msg strong { color: var(--cc-accent); }
+  .cc-bo__bar-right { display: flex; align-items: center; gap: 18px; }
+  .cc-bo__bar-total { font-size: 20px; font-weight: 700; }
+  .cc-bo__was { text-decoration: line-through; opacity: .5; font-weight: 400; font-size: 15px; margin-right: 5px; }
+  .cc-bo__bar-btn { background: var(--cc-accent); color: #1C1714; text-decoration: none; border-radius: 999px; padding: 13px 28px; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; }
+
+  @media (min-width: 750px) { .cc-bo__grid { grid-template-columns: repeat(4, 1fr); gap: 26px; } }
+  @media (max-width: 600px) {
+    .cc-bo__tiers { grid-template-columns: repeat(2, 1fr); }
+    .cc-bo__tier:nth-child(3)::before, .cc-bo__tier:nth-child(2n+1)::before { display: none; }
+    .cc-bo__bar-msg { display: none; }
+    .cc-bo__bar-inner { justify-content: space-between; }
+  }
+{% endstylesheet %}
+
+<script>
+(function () {
+  var root = document.currentScript.closest('body') || document;
+  var wrap = document.querySelector('.cc-bo');
+  var bar = document.querySelector('.cc-bo__bar');
+  if (!wrap || !bar) return;
+
+  var msgEl = bar.querySelector('.cc-bo__bar-msg');
+  var totalEl = bar.querySelector('.cc-bo__bar-total');
+
+  function money(cents) { return '$' + (cents / 100).toFixed(2); }
+
+  var T1 = 4900, T2 = 7500, T3 = 10000;
+  function pctFor(cents) { if (cents >= T3) return 20; if (cents >= T2) return 15; if (cents >= T1) return 10; return 0; }
+
+  function renderBar(cents, count) {
+    var pct = pctFor(cents);
+    var saved = Math.round(cents * pct / 100);
+    if (pct > 0) {
+      totalEl.innerHTML = '<span class="cc-bo__was">' + money(cents) + '</span> ' + money(cents - saved);
+    } else {
+      totalEl.textContent = money(cents);
+    }
+    if (count <= 0) { msgEl.innerHTML = 'Your kit is empty — start adding your favourites'; return; }
+    var parts = [];
+    if (pct > 0) {
+      var unlocked = cents >= T3 ? '20% off + free gift' : (pct + '% off');
+      parts.push('★ <strong>' + unlocked + '</strong> — you save <strong>' + money(saved) + '</strong>');
+    }
+    if (cents < T3) {
+      var next = cents >= T2 ? T3 : (cents >= T1 ? T2 : T1);
+      var label = cents >= T2 ? '20% off + a gift' : (cents >= T1 ? '15% off' : '10% off');
+      parts.push('Spend <strong>' + money(next - cents) + ' more</strong> for <strong>' + label + '</strong>');
+    }
+    msgEl.innerHTML = parts.join(' &nbsp;·&nbsp; ');
+  }
+
+  function refresh() {
+    fetch('/cart.js', { headers: { 'Accept': 'application/json' } })
+      .then(function (r) { return r.json(); })
+      .then(function (c) { renderBar(c.items_subtotal_price, c.item_count); updateBubble(c.item_count); })
+      .catch(function () {});
+  }
+
+  function updateBubble(count) {
+    document.querySelectorAll('[ref="cartBubble"], .cart-bubble, [data-cart-count]').forEach(function (el) {
+      if (el) el.textContent = count;
+    });
+  }
+
+  // Filters
+  wrap.querySelectorAll('.cc-bo__pill').forEach(function (pill) {
+    pill.addEventListener('click', function () {
+      wrap.querySelectorAll('.cc-bo__pill').forEach(function (p) { p.classList.remove('is-active'); });
+      pill.classList.add('is-active');
+      var f = pill.getAttribute('data-filter');
+      wrap.querySelectorAll('.cc-bo__card').forEach(function (card) {
+        var cols = ' ' + (card.getAttribute('data-collections') || '') + ' ';
+        card.hidden = !(f === 'all' || cols.indexOf(' ' + f + ' ') !== -1);
+      });
+    });
+  });
+
+  // Add to cart
+  wrap.querySelectorAll('.cc-bo__add').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      if (btn.disabled) return;
+      var card = btn.closest('.cc-bo__card');
+      var sel = card.querySelector('.cc-bo__variant');
+      var single = card.querySelector('.cc-bo__variant-single');
+      var id = sel ? sel.value : (single ? single.value : null);
+      if (!id) return;
+      btn.disabled = true;
+      var original = btn.textContent;
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ items: [{ id: parseInt(id, 10), quantity: 1 }] })
+      })
+        .then(function (r) { return r.json(); })
+        .then(function () {
+          btn.textContent = 'Added ✓';
+          btn.classList.add('is-added');
+          refresh();
+          setTimeout(function () { btn.textContent = original; btn.classList.remove('is-added'); btn.disabled = false; }, 1400);
+        })
+        .catch(function () { btn.textContent = original; btn.disabled = false; });
+    });
+  });
+
+  refresh();
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Chic Corner Build Order",
+  "tag": "section",
+  "class": "cc-bo-section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "BUILD YOUR ORDER" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Build your order" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Add your favourites and the more you spend, the more you save — the discount is applied automatically at checkout." },
+    { "type": "collection", "id": "collection", "label": "Products from collection" }
+  ],
+  "presets": [ { "name": "Chic Corner Build Order" } ]
+}
+{% endschema %}

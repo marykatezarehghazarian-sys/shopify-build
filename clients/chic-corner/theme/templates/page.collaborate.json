@@ -1,0 +1,30 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "collab": {
+      "type": "cc-collab",
+      "settings": {
+        "eyebrow": "LET'S CREATE TOGETHER ✦",
+        "heading": "Join the Chic Corner creator family",
+        "subheading": "Are you a creator, influencer or partner who loves accessories? Fill in the form and our team will craft a collaboration made for you.",
+        "why_heading": "Why create with us"
+      },
+      "blocks": {
+        "b1": { "type": "benefit", "settings": { "icon": "money", "title": "Earn on every sale", "text": "Enjoy a generous commission on every order made through your personal link or code." } },
+        "b2": { "type": "benefit", "settings": { "icon": "tag", "title": "Your own discount code", "text": "Give your community an exclusive discount with a promo code in your name." } },
+        "b3": { "type": "benefit", "settings": { "icon": "star", "title": "Featured on our channels", "text": "We reshare and tag your content across Chic Corner's social platforms." } },
+        "b4": { "type": "benefit", "settings": { "icon": "gift", "title": "Gifts & long-term partnerships", "text": "PR packages, early access to drops and the chance to co-create with us." } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4"]
+    }
+  },
+  "order": ["collab"]
+}

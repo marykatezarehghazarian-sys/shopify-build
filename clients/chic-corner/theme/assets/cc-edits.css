@@ -1,0 +1,53 @@
+/* Chic Corner edits (2026-11-23) */
+
+/* Header: pure black bar, logo in light grey, no account icon */
+.header-logo img { filter: grayscale(1) brightness(0.82); }
+.account-button { display: none !important; }
+
+/* Menu drawer: clean sans font, lines between items */
+.menu-drawer__menu-item-text { font-family: var(--font-body--family); font-weight: 500; letter-spacing: 0.01em; }
+.menu-drawer__menu-item--mainlist .menu-drawer__menu-item-text { font-size: 1.15rem; }
+
+/* Product cards: smaller, centred images with space around them */
+@media screen and (max-width: 749px) {
+  .product-grid { column-gap: 12px !important; row-gap: 20px !important; }
+}
+
+/* Product page: Add to cart bigger, no bag icon, clean font; Buy now under it */
+.product-details .add-to-cart-button .add-to-cart-icon { display: none !important; }
+.product-details .add-to-cart-button,
+.cc-buy-now {
+  min-height: 56px;
+  width: 100%;
+  font-family: var(--font-body--family);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.cc-buy-now {
+  margin-top: 10px;
+  background: transparent;
+  color: var(--color-foreground, #1c1714);
+  border: 1.5px solid currentColor;
+  border-radius: var(--style-border-radius-buttons-primary, 0);
+  cursor: pointer;
+}
+.cc-buy-now:hover { background: #1c1714; color: #f3ece1; }
+.cc-buy-now[aria-busy="true"] { opacity: 0.6; }
+
+/* Product recommendations: smaller cards with gaps on phones (only the outer carousel, not the image sliders inside each card) */
+@media screen and (max-width: 749px) {
+  .resource-list__carousel > slideshow-container > slideshow-slides { gap: 12px !important; }
+  .resource-list__carousel .resource-list__slide { width: 44% !important; flex: 0 0 44% !important; }
+}
+
+/* Collection grid: space at the sides on phones so images sit centred, not edge to edge */
+@media screen and (max-width: 749px) {
+  .main-collection-grid .product-grid { padding-inline: 14px !important; box-sizing: border-box; }
+}
+/* Details panel now sits between the colour options and Add to cart */
+.product-details .accordion { margin-block: 4px 8px; }
+
+/* Stop the page from being slightly wider than the phone screen (a wide element made it scroll sideways) */
+html, body { overflow-x: clip; max-width: 100%; }

@@ -1,0 +1,109 @@
+{%- comment -%} ===== CHIC CORNER — Promise / trust bar ===== {%- endcomment -%}
+{%- liquid
+  assign accent = settings.color_palette.color3 | default: '#9C7A4D'
+-%}
+
+<div class="cc-promise" style="--cc-accent: {{ accent }};">
+  <div class="cc-promise__inner">
+    {%- if section.settings.heading != blank -%}
+      <div class="cc-promise__head">
+        <span class="cc-promise__rule"></span>
+        <h2 class="cc-promise__title">{{ section.settings.heading }}</h2>
+        <span class="cc-promise__rule"></span>
+      </div>
+    {%- endif -%}
+    <div class="cc-promise__grid">
+      {%- for block in section.blocks -%}
+        <div class="cc-promise__item" {{ block.shopify_attributes }}>
+          <span class="cc-promise__icon">
+            {%- case block.settings.icon -%}
+              {%- when 'card' -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+              {%- when 'box' -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg>
+              {%- when 'truck' -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="6" width="14" height="10" rx="1"/><path d="M15 9h4l3 3v4h-7z"/><circle cx="6" cy="18" r="1.6"/><circle cx="18" cy="18" r="1.6"/></svg>
+              {%- when 'exchange' -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8a8 8 0 0 1 14-4l3 3"/><path d="M20 4v4h-4"/><path d="M21 16a8 8 0 0 1-14 4l-3-3"/><path d="M4 20v-4h4"/></svg>
+              {%- else -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
+            {%- endcase -%}
+          </span>
+          <h3 class="cc-promise__label">{{ block.settings.title }}</h3>
+          <p class="cc-promise__text">{{ block.settings.text }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+    {%- if section.settings.show_payments -%}
+      <div class="cc-promise__pay" style="color: rgb(var(--color-foreground-rgb));">
+        {% render 'cc-payments' %}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .cc-promise { background: rgb(var(--color-background-rgb, 239 231 216)); padding: 0; }
+  .cc-promise__inner { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+  .cc-promise__head { display: flex; align-items: center; justify-content: center; gap: 18px; margin-bottom: 34px; }
+  .cc-promise__rule { flex: 0 1 120px; height: 1px; background: rgb(var(--color-foreground-rgb) / 0.18); }
+  .cc-promise__title { font-size: .82rem; letter-spacing: .28em; text-transform: uppercase; color: var(--cc-accent); margin: 0; font-weight: 600; }
+  .cc-promise__pay { margin-top: 34px; padding-top: 26px; border-top: 1px solid rgb(var(--color-foreground-rgb) / 0.12); }
+  .cc-promise__grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .cc-promise__item { text-align: center; padding: 4px 22px; position: relative; }
+  .cc-promise__item + .cc-promise__item::before { content: ''; position: absolute; left: 0; top: 6px; bottom: 6px; width: 1px; background: rgb(var(--color-foreground-rgb) / 0.14); }
+  .cc-promise__icon { display: inline-flex; color: var(--cc-accent); }
+  .cc-promise__icon svg { width: 30px; height: 30px; }
+  .cc-promise__label { font-size: 1.15rem; margin: 14px 0 8px; color: rgb(var(--color-foreground-rgb)); font-weight: 600; line-height: 1.15; }
+  .cc-promise__text { font-size: .92rem; color: rgb(var(--color-foreground-rgb) / 0.62); margin: 0; line-height: 1.4; }
+  @media (max-width: 749px) {
+    .cc-promise__grid { grid-template-columns: repeat(2, 1fr); gap: 28px 0; }
+    .cc-promise__item:nth-child(3)::before { display: none; }
+    .cc-promise__head { gap: 10px; margin-bottom: 26px; }
+    .cc-promise__rule { flex-basis: 40px; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Chic Corner Promise",
+  "tag": "section",
+  "class": "cc-promise-section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The Chic Corner Promise" },
+    { "type": "checkbox", "id": "show_payments", "label": "Show payment methods (Whish + Cash on Delivery)", "default": true }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Promise",
+      "settings": [
+        {
+          "type": "select", "id": "icon", "label": "Icon", "default": "card",
+          "options": [
+            { "value": "card", "label": "Card / Payment" },
+            { "value": "box", "label": "Box / Package" },
+            { "value": "truck", "label": "Truck / Delivery" },
+            { "value": "exchange", "label": "Exchange" },
+            { "value": "check", "label": "Check" }
+          ]
+        },
+        { "type": "text", "id": "title", "label": "Title", "default": "Promise" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Details" }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Chic Corner Promise",
+      "blocks": [
+        { "type": "item", "settings": { "icon": "card", "title": "Pay on delivery", "text": "Cash on delivery across Lebanon" } },
+        { "type": "item", "settings": { "icon": "box", "title": "Check before you pay", "text": "Open & inspect your order" } },
+        { "type": "item", "settings": { "icon": "truck", "title": "Swift delivery", "text": "Most orders in 1–3 days" } },
+        { "type": "item", "settings": { "icon": "exchange", "title": "72-hour exchange", "text": "Wrong item? Swap it easily" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

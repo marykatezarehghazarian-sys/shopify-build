@@ -1,0 +1,92 @@
+{%- comment -%} ===== CHIC CORNER — homepage offer ladder highlight ===== {%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign accent = s.accent_color | default: '#B08D57'
+-%}
+
+<div class="cc-offer" style="--cc-accent: {{ accent }}; --cc-bg: {{ s.bg_color }}; --cc-heading: {{ s.heading_color }}; --cc-body: {{ s.body_color }};">
+  <div class="cc-offer__inner">
+    <p class="cc-offer__eyebrow">{{ s.eyebrow }}</p>
+    <h2 class="cc-offer__title">{{ s.heading }}</h2>
+    <p class="cc-offer__sub">{{ s.subheading }}</p>
+
+    <div class="cc-offer__tiers">
+      {%- for block in section.blocks -%}
+        <div class="cc-offer__tier{% if block.settings.highlight %} is-gift{% endif %}" {{ block.shopify_attributes }}>
+          {%- if block.settings.badge != blank -%}<span class="cc-offer__badge">{{ block.settings.badge }}</span>{%- endif -%}
+          <span class="cc-offer__amount">{{ block.settings.amount }}</span>
+          <span class="cc-offer__reward">{{ block.settings.reward }}</span>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- if s.button_label != blank -%}
+      <a href="{{ s.button_link | default: '/pages/build-your-order' }}" class="cc-offer__btn">{{ s.button_label }}</a>
+    {%- endif -%}
+    {%- if s.foot_note != blank -%}<p class="cc-offer__note">{{ s.foot_note }}</p>{%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .cc-offer { background: var(--cc-bg, #1C1714); }
+  .cc-offer__inner { max-width: 1080px; margin: 0 auto; padding: 84px 24px; text-align: center; }
+  .cc-offer__eyebrow { color: var(--cc-accent); letter-spacing: .24em; font-size: 12px; font-weight: 600; text-transform: uppercase; margin: 0 0 18px; }
+  .cc-offer__title { font-family: var(--font-primary--family, serif); color: var(--cc-heading, #F4EEE4); font-size: clamp(38px, 6vw, 68px); line-height: 1.02; margin: 0 0 16px; }
+  .cc-offer__sub { color: var(--cc-body, #D8CDBB); font-size: 16px; margin: 0 auto 54px; max-width: 520px; line-height: 1.6; }
+  .cc-offer__tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 48px; }
+  .cc-offer__tier { position: relative; padding: 30px 16px; border: 1px solid color-mix(in srgb, var(--cc-accent) 30%, transparent); border-radius: 16px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .cc-offer__tier.is-gift { background: color-mix(in srgb, var(--cc-accent) 12%, transparent); border-color: var(--cc-accent); }
+  .cc-offer__badge { position: absolute; top: -11px; background: var(--cc-accent); color: #1C1714; font-size: 10px; letter-spacing: .1em; font-weight: 700; text-transform: uppercase; padding: 4px 12px; border-radius: 999px; }
+  .cc-offer__amount { font-family: var(--font-primary--family, serif); color: var(--cc-accent); font-size: clamp(44px, 6vw, 72px); line-height: 1; }
+  .cc-offer__reward { color: var(--cc-heading, #F4EEE4); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; }
+  .cc-offer__btn { display: inline-block; background: var(--cc-accent); color: #1C1714; text-decoration: none; padding: 16px 44px; border-radius: 999px; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; transition: filter .2s; }
+  .cc-offer__btn:hover { filter: brightness(1.08); }
+  .cc-offer__note { color: color-mix(in srgb, var(--cc-body, #D8CDBB) 80%, transparent); font-size: 13px; margin: 20px 0 0; }
+  @media (max-width: 749px) {
+    .cc-offer__tiers { grid-template-columns: 1fr; gap: 16px; }
+    .cc-offer__inner { padding: 60px 20px; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Offer Ladder Highlight",
+  "tag": "section",
+  "class": "cc-offer-section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "LIMITED OFFER" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Buy More, Save More" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "The more you add, the more you save — discounts apply automatically at checkout." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop the offer" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "text", "id": "foot_note", "label": "Footnote", "default": "Free gift on orders over $100 — discounts apply automatically at checkout." },
+    { "type": "color", "id": "bg_color", "label": "Background", "default": "#1C1714" },
+    { "type": "color", "id": "accent_color", "label": "Accent", "default": "#B08D57" },
+    { "type": "color", "id": "heading_color", "label": "Heading color", "default": "#F4EEE4" },
+    { "type": "color", "id": "body_color", "label": "Body color", "default": "#D8CDBB" }
+  ],
+  "blocks": [
+    {
+      "type": "tier",
+      "name": "Tier",
+      "settings": [
+        { "type": "text", "id": "amount", "label": "Amount", "default": "$49" },
+        { "type": "text", "id": "reward", "label": "Reward", "default": "10% OFF" },
+        { "type": "text", "id": "badge", "label": "Badge (optional)" },
+        { "type": "checkbox", "id": "highlight", "label": "Highlight this tier", "default": false }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Offer Ladder Highlight",
+      "blocks": [
+        { "type": "tier", "settings": { "amount": "$49", "reward": "10% OFF" } },
+        { "type": "tier", "settings": { "amount": "$75", "reward": "15% OFF" } },
+        { "type": "tier", "settings": { "amount": "$100", "reward": "20% OFF + GIFT", "badge": "Best value", "highlight": true } }
+      ]
+    }
+  ]
+}
+{% endschema %}

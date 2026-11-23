@@ -1,0 +1,143 @@
+{%- comment -%}
+  Chic Corner — spend-based offer ladder for the cart (drawer + page).
+  Tiers: $49 -> 10% off, $75 -> 15% off, $100 -> 20% off.
+  The actual money-off is applied by matching AUTOMATIC discounts in Shopify admin.
+{%- endcomment -%}
+{%- liquid
+  assign t1 = 4900
+  assign t2 = 7500
+  assign t3 = 10000
+  assign cur = cart.items_subtotal_price
+  assign accent = settings.color_palette.color3 | default: '#9C7A4D'
+
+  assign r1 = false
+  assign r2 = false
+  assign r3 = false
+  if cur >= t1
+    assign r1 = true
+  endif
+  if cur >= t2
+    assign r2 = true
+  endif
+  if cur >= t3
+    assign r3 = true
+  endif
+
+  if r3
+    assign fill = 100
+  elsif r2
+    assign seg = cur | minus: t2 | times: 33.33 | divided_by: 2500
+    assign fill = seg | plus: 66.67
+  elsif r1
+    assign seg = cur | minus: t1 | times: 33.33 | divided_by: 2600
+    assign fill = seg | plus: 33.33
+  else
+    assign fill = cur | times: 33.33 | divided_by: 4900
+  endif
+  if fill > 100
+    assign fill = 100
+  endif
+
+  if r3
+    assign next_amt = 0
+  elsif r2
+    assign next_amt = t3
+    assign next_label = '20% off + a gift'
+  elsif r1
+    assign next_amt = t2
+    assign next_label = '15% off'
+  else
+    assign next_amt = t1
+    assign next_label = '10% off'
+  endif
+  assign remaining = next_amt | minus: cur
+
+  assign unlocked_pct = 0
+  if r3
+    assign unlocked_pct = 20
+  elsif r2
+    assign unlocked_pct = 15
+  elsif r1
+    assign unlocked_pct = 10
+  endif
+  assign savings = cur | times: unlocked_pct | divided_by: 100
+-%}
+
+<div class="cc-ladder" style="--cc-accent: {{ accent }};">
+  <div class="cc-ladder__msg">
+    {%- if unlocked_pct > 0 -%}
+      <p class="cc-ladder__saved">★ <strong>{% if r3 %}20% off + free gift{% else %}{{ unlocked_pct }}% off{% endif %}</strong> unlocked — you save <strong>{{ savings | money }}</strong></p>
+    {%- endif -%}
+    {%- unless r3 -%}
+      <p class="cc-ladder__next">Spend <strong>{{ remaining | money }} more</strong> for <strong>{{ next_label }}</strong></p>
+    {%- endunless -%}
+  </div>
+  <div class="cc-ladder__bar">
+    <div class="cc-ladder__line"><span class="cc-ladder__fill" style="width: {{ fill }}%;"></span></div>
+    <div class="cc-ladder__nodes">
+      <div class="cc-ladder__node is-done">
+        <span class="cc-ladder__dot">{% render 'cc-ladder-check' %}</span>
+        <span class="cc-ladder__cap">Start</span>
+      </div>
+      <div class="cc-ladder__node{% if r1 %} is-done{% endif %}">
+        <span class="cc-ladder__dot">{% if r1 %}{% render 'cc-ladder-check' %}{% else %}1{% endif %}</span>
+        <span class="cc-ladder__cap">$49 · 10%</span>
+      </div>
+      <div class="cc-ladder__node{% if r2 %} is-done{% endif %}">
+        <span class="cc-ladder__dot">{% if r2 %}{% render 'cc-ladder-check' %}{% else %}2{% endif %}</span>
+        <span class="cc-ladder__cap">$75 · 15%</span>
+      </div>
+      <div class="cc-ladder__node{% if r3 %} is-done{% endif %}">
+        <span class="cc-ladder__dot">{% if r3 %}🎁{% else %}3{% endif %}</span>
+        <span class="cc-ladder__cap">$100 · Gift</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .cc-ladder {
+    background: color-mix(in srgb, var(--cc-accent) 9%, #fff);
+    border: 1px solid color-mix(in srgb, var(--cc-accent) 32%, transparent);
+    border-radius: 16px;
+    padding: 16px 18px 12px;
+    margin: 0 0 18px;
+  }
+  .cc-ladder__msg {
+    text-align: center;
+    font-size: 14px;
+    margin: 0 0 16px;
+    color: rgb(var(--color-foreground-rgb));
+  }
+  .cc-ladder__msg strong { color: var(--cc-accent); }
+  .cc-ladder__saved { margin: 0 0 4px; color: var(--cc-accent); font-size: 14px; }
+  .cc-ladder__saved strong { color: var(--cc-accent); }
+  .cc-ladder__next { margin: 0; font-size: 13px; opacity: .85; }
+  .cc-ladder__bar { position: relative; }
+  .cc-ladder__line {
+    position: absolute; left: 17px; right: 17px; top: 15px; height: 3px;
+    background: color-mix(in srgb, var(--cc-accent) 22%, transparent);
+    border-radius: 3px; overflow: hidden;
+  }
+  .cc-ladder__fill {
+    display: block; height: 100%; background: var(--cc-accent);
+    border-radius: 3px; transition: width .45s ease;
+  }
+  .cc-ladder__nodes { position: relative; display: flex; justify-content: space-between; }
+  .cc-ladder__node { display: flex; flex-direction: column; align-items: center; gap: 7px; }
+  .cc-ladder__dot {
+    width: 34px; height: 34px; border-radius: 50%;
+    background: #fff; border: 2px solid color-mix(in srgb, var(--cc-accent) 35%, transparent);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 600; color: var(--cc-accent);
+  }
+  .cc-ladder__node.is-done .cc-ladder__dot {
+    background: var(--cc-accent); border-color: var(--cc-accent); color: #fff;
+  }
+  .cc-ladder__dot svg { width: 15px; height: 15px; }
+  .cc-ladder__cap {
+    font-size: 11px; letter-spacing: .01em;
+    color: rgb(var(--color-foreground-rgb) / 0.55); text-align: center; white-space: nowrap;
+  }
+  .cc-ladder__node.is-done .cc-ladder__cap { color: var(--cc-accent); font-weight: 600; }
+{% endstylesheet %}

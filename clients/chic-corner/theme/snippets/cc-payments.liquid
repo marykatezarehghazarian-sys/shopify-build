@@ -1,0 +1,28 @@
+{%- comment -%}
+  Chic Corner — accepted payments (Whish Pay + Cash on Delivery).
+  Uses currentColor so it adapts to dark (footer) and light (product) contexts.
+  @param {string} [align] - flex justify value (default center)
+{%- endcomment -%}
+<div class="cc-pay" style="justify-content: {{ align | default: 'center' }};">
+  <span class="cc-pay__label">We accept</span>
+  <span class="cc-pay__badge">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="2.5" width="16" height="19" rx="3"/><path d="M10 18.5h4"/><path d="M8.5 7.5h7M8.5 11h5"/></svg>
+    Whish Pay
+  </span>
+  <span class="cc-pay__badge">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.4"/><path d="M6 9.5v5M18 9.5v5"/></svg>
+    Cash on Delivery
+  </span>
+</div>
+
+{% stylesheet %}
+  .cc-pay { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+  .cc-pay__label { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; opacity: .6; }
+  .cc-pay__badge {
+    display: inline-flex; align-items: center; gap: 7px;
+    border: 1px solid currentColor; border-radius: 999px;
+    padding: 7px 14px; font-size: 13px; font-weight: 600;
+    opacity: .9;
+  }
+  .cc-pay__badge svg { opacity: .85; }
+{% endstylesheet %}

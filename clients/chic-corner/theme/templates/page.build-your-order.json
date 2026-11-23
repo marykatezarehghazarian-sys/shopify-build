@@ -1,0 +1,23 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "build": {
+      "type": "cc-build-order",
+      "settings": {
+        "eyebrow": "BUILD YOUR ORDER",
+        "heading": "Build your order",
+        "subheading": "Add your favourites and the more you spend, the more you save — the discount is applied automatically at checkout.",
+        "collection": "all"
+      }
+    }
+  },
+  "order": ["build"]
+}

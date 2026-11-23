@@ -7,3 +7,14 @@
 - Brand details, conventions and decisions: (none yet)
 - 2026-11-23: my first Chic Corner authorize links lacked the `state` parameter (every link that returned a code for other clients had one) and Shopify sent the owner to the app URL instead (hmac/host/shop only, no code). New link with state sent. Same client ID/secret as saved.
 - 2026-11-23: IP restriction removed by the owner; API works. Store facts: name "Chic Corner", domain chiccornerlb.com (Lebanon), currency USD, timezone Asia/Beirut, Basic plan, 147 products, 184 orders all-time. Live theme "gatello-EDITS" (135489454135).
+- 2026-11-23 theme: live theme "gatello-EDITS" (135489454135) is Shopify Fabric 4.1.1 with custom cc-* sections. Work copy: "Chic Corner edits (preview)" (161514913847, unpublished) via themeDuplicate; `theme/` = pull of that copy. Changes from the owner's annotated phone screenshots:
+  - Fonts: heading + accent Playfair Display → Geist 500 (body already Geist).
+  - Header: bar #000000, logo shown light grey (CSS filter on the image logo), account icon hidden, no transparent header on product pages (photo starts below the header).
+  - Menu: new menu `main-menu-new` (Home, Shop All, Sunglasses, Bracelets, Perfumes, Caps, Wallets); removed All Products heading, Exclusive Offers, Build your order; drawer dividers on; featured products in the drawer turned off; drawer font = Geist.
+  - Cards: SALE badge removed (sold-out badge kept); quick add shows "+" only; phone grid has side margins + 12px gaps.
+  - Product page: title h2 → h3; details accordion (Product details / Care / Size & fit) moved under the colour swatches; Add to cart larger, no bag icon, Geist uppercase; new "Buy now" button (adds the variant via /cart/add.js then goes to /checkout; tested, reaches checkout).
+  - Recommendations: 4 columns desktop, 16px gap; phones ~44% wide cards with 12px gaps.
+  - Fixed a pre-existing sideways scroll on phones (page was 423px wide on a 390px phone): html/body overflow-x: clip.
+  - Custom CSS lives in assets/cc-edits.css (loaded from layout/theme.liquid).
+  - Note: only 2 of 147 products have a description, so "Product details" is empty on most products.
+  - Open questions to the owner: what "White" under the Sunglasses title means; whether to write product descriptions.
