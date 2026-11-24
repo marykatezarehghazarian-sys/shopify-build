@@ -35,3 +35,4 @@
 - 2026-11-24 card text like lurexia (owner): no 'USD' on product cards and product pages (currency_code_enabled_product_cards/_pages false; cart keeps it), name regular weight 0.9rem, price bold black 0.95rem with old price light grey beside it. Brand line above the name NOT added: vendor field is 'Chic Corner'/'My Store', not the brand. Live.
 - 2026-11-24 owner: cards 'too small' → phones: photo ratio 1.08 (almost square), grid side padding 10px / gap 8px, name 0.95rem, price 1rem. 2 full rows + ~70% of the third per iPhone screen. Live.
 - 2026-11-24 owner chose the 3-rows version → reverted the 'too small' tweak (cards 5:4 photos, name 0.9rem, price 0.95rem). Live.
+- 2026-11-24 owner picked the earlier card look (screenshot 10:11): square photos, bold one-line names, 'USD' shown, colour dots shown, old price beside the new one. Removed the later 5:4/no-swatch/price-style tweaks and turned currency codes back on. Live.
