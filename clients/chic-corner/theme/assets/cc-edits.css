@@ -145,3 +145,12 @@ html, body { overflow-x: clip; max-width: 100%; }
 .product-card product-price .price-item--sale, .product-card product-price .price__regular .price { font-size: 0.95rem; font-weight: 600; color: #121212; }
 .product-card product-price .compare-at-price { font-size: 0.85rem; opacity: 0.45; }
 .product-card product-price .price-item__group { gap: 8px !important; }
+
+/* Owner: "too small" — bigger photos and text again, still ~3 rows per phone screen */
+@media screen and (max-width: 749px) {
+  .product-card .card-gallery { --gallery-aspect-ratio: 1.08 !important; }
+  .product-grid { column-gap: 8px !important; padding-inline: 10px !important; }
+}
+.product-card .text-block[class*="product_titl"] p { font-size: 0.95rem !important; }
+.product-card product-price .price-item--sale, .product-card product-price .price__regular .price { font-size: 1rem; }
+.product-card product-price .compare-at-price { font-size: 0.9rem; }
