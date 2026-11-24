@@ -36,3 +36,4 @@
 - 2026-11-24 owner: cards 'too small' → phones: photo ratio 1.08 (almost square), grid side padding 10px / gap 8px, name 0.95rem, price 1rem. 2 full rows + ~70% of the third per iPhone screen. Live.
 - 2026-11-24 owner chose the 3-rows version → reverted the 'too small' tweak (cards 5:4 photos, name 0.9rem, price 0.95rem). Live.
 - 2026-11-24 owner picked the earlier card look (screenshot 10:11): square photos, bold one-line names, 'USD' shown, colour dots shown, old price beside the new one. Removed the later 5:4/no-swatch/price-style tweaks and turned currency codes back on. Live.
+- 2026-11-24 owner: no page numbers → main-collection enable_infinite_scroll true (more products load as you scroll; tested /collections/all on iPhone: 24 → 143 loaded by scrolling). Live.
