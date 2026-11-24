@@ -64,9 +64,10 @@ html, body { overflow-x: clip; max-width: 100%; }
 .product-details .product-form-buttons > span .add-to-cart-button { width: 100%; }
 .cc-buy-now { margin-top: 0; }
 
-/* Home hero: centred text, a bigger Shop Now button */
-.hero .button, .hero .button-secondary { min-height: 58px; font-size: 1.05rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
-.hero .text-block p { font-weight: 500; letter-spacing: 0.01em; text-wrap: balance; }
+/* Home hero: content at the bottom left, headline, small text, full-width button (like the owner's reference site) */
+.hero .button, .hero .button-secondary { min-height: 52px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
+.hero h1 { font-weight: 500 !important; letter-spacing: -0.01em; line-height: 1.05 !important; }
+.hero .text-block p { font-weight: 400; }
 
 /* Product names on cards a little bolder, like the owner's mockup */
 .product-card .text-block p, .product-card [class*="product-title"] { font-weight: 600; }
@@ -83,3 +84,20 @@ html, body { overflow-x: clip; max-width: 100%; }
 
 .accordion .details__header, .accordion .details__header * { font-size: 1rem !important; font-weight: 500 !important; font-family: var(--font-body--family) !important; }
 .accordion .details-content, .accordion .details-content p { font-size: 0.92rem !important; line-height: 1.6 !important; }
+
+/* Compact "Buy more, save more" on phones: three offers side by side, smaller numbers */
+@media screen and (max-width: 749px) {
+  .cc-offer__inner { padding: 44px 16px !important; }
+  .cc-offer__title { font-size: 28px !important; margin-bottom: 10px !important; }
+  .cc-offer__sub { font-size: 14px !important; margin-bottom: 28px !important; }
+  .cc-offer__tiers { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 8px !important; margin-bottom: 22px; }
+  .cc-offer__tier { padding: 18px 6px 14px !important; border-radius: 12px !important; gap: 4px !important; }
+  .cc-offer__amount { font-size: 28px !important; }
+  .cc-offer__reward { font-size: 10px !important; letter-spacing: .08em !important; text-align: center; }
+  .cc-offer__badge { font-size: 8px !important; padding: 3px 8px !important; }
+  .cc-offer__btn { padding: 14px 30px !important; }
+  /* Our promise strip: 2 x 2 instead of 4 rows */
+  [id$="__advantages_bar"] .section-content-wrapper { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 22px 14px !important; }
+  [id$="__advantages_bar"] .section-content-wrapper > * { width: auto !important; min-width: 0; }
+  [id$="__advantages_bar"] p { font-size: 0.82rem; }
+}

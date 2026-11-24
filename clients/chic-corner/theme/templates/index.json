@@ -12,47 +12,17 @@
     "hero_rhMed7": {
       "type": "hero",
       "blocks": {
-        "spacer_iqNMWF": {
-          "type": "spacer",
-          "name": "t:names.spacer",
-          "settings": {
-            "size": "percent",
-            "percent_size": 0,
-            "pixel_size": 36,
-            "custom_mobile_size": false,
-            "size_mobile": "percent",
-            "percent_size_mobile": 100,
-            "pixel_size_mobile": 120
-          },
-          "blocks": {}
-        },
-        "jumbo_text_QKnaBY": {
-          "type": "jumbo-text",
-          "name": "t:names.jumbo_text",
-          "settings": {
-            "text": "Chic Corner.",
-            "font": "heading",
-            "alignment": "center",
-            "line_height": "0.8",
-            "letter_spacing": "-0.03em",
-            "case": "none",
-            "text_effect": "none",
-            "animation_repeat": false,
-            "text_color": "{{ settings.color_palette.background }}"
-          },
-          "blocks": {}
-        },
         "tagline_hero": {
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>Sunglasses, wallets, bracelets, caps and perfumes. Delivered across Lebanon, cash on delivery.</p>",
+            "text": "<p>Sunglasses, wallets, bracelets and caps. Delivered across Lebanon, cash on delivery.</p>",
             "width": "fit-content",
             "max_width": "narrow",
-            "alignment": "center",
+            "alignment": "left",
             "type_preset": "paragraph",
-            "font": "var(--font-subheading--family)",
-            "font_size": "1rem",
+            "font": "var(--font-body--family)",
+            "font_size": "0.95rem",
             "line_height": "normal",
             "letter_spacing": "normal",
             "case": "none",
@@ -72,7 +42,7 @@
           "type": "button",
           "name": "t:names.button",
           "settings": {
-            "label": "Shop Now",
+            "label": "Shop all products",
             "link": "shopify://collections/all",
             "open_in_new_tab": false,
             "style_class": "button",
@@ -81,16 +51,68 @@
             "custom_button_border": "#f4eee4",
             "link_text_color": "#f4eee4",
             "width": "custom",
-            "custom_width": 22,
+            "custom_width": 32,
             "width_mobile": "custom",
-            "custom_width_mobile": 78
+            "custom_width_mobile": 100
+          },
+          "blocks": {}
+        },
+        "cc_eyebrow": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p>CHIC CORNER</p>",
+            "width": "fit-content",
+            "max_width": "narrow",
+            "alignment": "left",
+            "type_preset": "paragraph",
+            "font": "var(--font-body--family)",
+            "font_size": "0.8rem",
+            "line_height": "normal",
+            "letter_spacing": "0.14em",
+            "case": "uppercase",
+            "wrap": "pretty",
+            "text_color": "#f4eee4",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 16,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "cc_headline": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<h1>Complete your look.</h1>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h1",
+            "font": "var(--font-heading--family)",
+            "font_size": "2.4rem",
+            "line_height": "tight",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "#f4eee4",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 16,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
           },
           "blocks": {}
         }
       },
       "block_order": [
-        "spacer_iqNMWF",
-        "jumbo_text_QKnaBY",
+        "cc_eyebrow",
+        "cc_headline",
         "tagline_hero",
         "button_3cL8kq"
       ],
@@ -110,21 +132,21 @@
         "horizontal_alignment": "flex-start",
         "vertical_alignment": "center",
         "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "space-between",
-        "gap": 32,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "flex-end",
+        "gap": 16,
         "section_width": "page-width",
         "section_height": "full-screen",
         "section_height_custom": 50,
         "background_color": "rgba(0,0,0,0)",
         "toggle_overlay": true,
-        "overlay_color": "#0000008c",
-        "overlay_style": "solid",
+        "overlay_color": "#000000c4",
+        "overlay_style": "gradient",
         "gradient_direction": "to top",
         "blurred_reflection": false,
         "reflection_opacity": 75,
         "padding-block-start": 0,
-        "padding-block-end": 48,
+        "padding-block-end": 32,
         "image_1_mobile": "shopify://shop_images/chic-corner-hero-mobile.jpg"
       }
     },
