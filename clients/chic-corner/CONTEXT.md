@@ -31,3 +31,4 @@
 - 2026-11-24: last gold accent (cc-promise title/icons on product pages) → white. Scan of 8 live pages: no beige/brown/gold backgrounds or text left.
 - 2026-11-24 (owner: drop the home picture lower): transparent header on the home page turned off (photo now starts under the black header, like product pages) and the logo shown on the home page header (hide_logo_on_home_page false); hero text has a side margin on phones. Live.
 - 2026-11-24 product cards (owner): all card photos square instead of 4:5 (_product-card-gallery image_ratio → square in every template: smaller), tighter grid on phones (14px rows / 10px columns), card text aligned with the photo, product name 0.85rem on one line (long names end in …), sale price and old price on the same line. Live.
+- 2026-11-24 (owner: show ~3 rows per screen): on phones card photos 5:4 (--gallery-aspect-ratio 1.25) and colour dots hidden on cards → card 192px tall; 6 photos fully visible per iPhone screen. Live.
