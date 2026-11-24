@@ -30,9 +30,9 @@
           "type": "jumbo-text",
           "name": "t:names.jumbo_text",
           "settings": {
-            "text": "Timeless.",
+            "text": "Chic Corner.",
             "font": "heading",
-            "alignment": "left",
+            "alignment": "center",
             "line_height": "0.8",
             "letter_spacing": "-0.03em",
             "case": "none",
@@ -46,13 +46,13 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>Signature accessories, crafted to last. Sunglasses, caps, perfumes, wallets and bracelets for a life well styled.</p>",
+            "text": "<p>Sunglasses, wallets, bracelets, caps and perfumes. Delivered across Lebanon, cash on delivery.</p>",
             "width": "fit-content",
             "max_width": "narrow",
-            "alignment": "left",
+            "alignment": "center",
             "type_preset": "paragraph",
-            "font": "var(--font-body--family)",
-            "font_size": "1.125rem",
+            "font": "var(--font-subheading--family)",
+            "font_size": "1rem",
             "line_height": "normal",
             "letter_spacing": "normal",
             "case": "none",
@@ -80,10 +80,10 @@
             "custom_button_text": "#2a241e",
             "custom_button_border": "#f4eee4",
             "link_text_color": "#f4eee4",
-            "width": "fit-content",
-            "custom_width": 15,
-            "width_mobile": "fit-content",
-            "custom_width_mobile": 100
+            "width": "custom",
+            "custom_width": 22,
+            "width_mobile": "custom",
+            "custom_width_mobile": 78
           },
           "blocks": {}
         }
@@ -97,10 +97,10 @@
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "image",
-        "image_1": "shopify://shop_images/hf_20260711_144304_26b6ce28-fda8-48fd-8162-5edd223d57db.png",
+        "image_1": "shopify://shop_images/chic-corner-hero-desktop.jpg",
         "media_type_2": "image",
         "stack_media_on_mobile": false,
-        "custom_mobile_media": false,
+        "custom_mobile_media": true,
         "media_type_1_mobile": "image",
         "media_type_2_mobile": "image",
         "link": "shopify://collections/all",
@@ -110,7 +110,7 @@
         "horizontal_alignment": "flex-start",
         "vertical_alignment": "center",
         "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
+        "horizontal_alignment_flex_direction_column": "center",
         "vertical_alignment_flex_direction_column": "space-between",
         "gap": 32,
         "section_width": "page-width",
@@ -118,13 +118,14 @@
         "section_height_custom": 50,
         "background_color": "rgba(0,0,0,0)",
         "toggle_overlay": true,
-        "overlay_color": "#00000040",
-        "overlay_style": "gradient",
+        "overlay_color": "#0000008c",
+        "overlay_style": "solid",
         "gradient_direction": "to top",
         "blurred_reflection": false,
         "reflection_opacity": 75,
         "padding-block-start": 0,
-        "padding-block-end": 48
+        "padding-block-end": 48,
+        "image_1_mobile": "shopify://shop_images/chic-corner-hero-mobile.jpg"
       }
     },
     "marquee_xCXLcR": {

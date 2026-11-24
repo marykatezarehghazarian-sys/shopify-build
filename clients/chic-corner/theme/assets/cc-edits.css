@@ -63,3 +63,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 .product-details .product-form-buttons > .cc-buy-now { flex: 1 1 100% !important; width: 100%; }
 .product-details .product-form-buttons > span .add-to-cart-button { width: 100%; }
 .cc-buy-now { margin-top: 0; }
+
+/* Home hero: centred text, a bigger Shop Now button */
+.hero .button, .hero .button-secondary { min-height: 58px; font-size: 1.05rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+.hero .text-block p { font-weight: 500; letter-spacing: 0.01em; text-wrap: balance; }
