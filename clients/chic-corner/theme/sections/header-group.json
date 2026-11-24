@@ -46,8 +46,8 @@
         "m4"
       ],
       "settings": {
-        "bg_color": "#9c7a4d",
-        "text_color": "#1c1714",
+        "bg_color": "#f2f2f2",
+        "text_color": "#111111",
         "speed": 50
       }
     },
