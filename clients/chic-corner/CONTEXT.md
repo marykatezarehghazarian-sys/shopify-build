@@ -28,3 +28,4 @@
 - Footer social links are placeholders from the original theme (instagram.com / tiktok.com without a handle) — need the real handles.
 - 2026-11-24 PUBLISHED (user: "Publish"): theme 161517535287 "Chic Corner (live, Lurexia layout)" is MAIN. Backups: "Chic Corner backup (23 Nov)" (161514913847) and the original "gatello-EDITS" (135489454135). Checked live on a phone: home/collection/product/cart 200, new hero + footer + Buy now present, no JS errors, no sideways scroll.
 - 2026-11-24 colours (owner): 'Details that make the difference' panel beige #e6d6c6 → #f5f5f5 with proper side padding; 'Buy more, save more' dark brown/gold → light grey #f5f5f5, white offer cards, black text/badge/button. Pushed to the live theme directly (small colour fix the owner asked for).
+- 2026-11-24: last gold accent (cc-promise title/icons on product pages) → white. Scan of 8 live pages: no beige/brown/gold backgrounds or text left.

@@ -111,3 +111,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 .cc-offer__badge { background: #121212 !important; color: #fff !important; }
 .cc-offer__btn { background: #121212 !important; color: #fff !important; border-radius: 0 !important; }
 .cc-offer__reward { color: #555 !important; }
+
+/* "The Chic Corner Promise" (product pages): white accents instead of gold, to match the black-and-white site */
+.cc-promise { --cc-accent: #ffffff !important; }
+.cc-promise__rule { opacity: 0.25; }
