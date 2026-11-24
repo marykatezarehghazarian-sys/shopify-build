@@ -111,7 +111,9 @@
       "color1": "#d8cdbb",
       "color2": "#eae2d5",
       "color3": "#9c7a4d"
-    }
+    },
+    "currency_code_enabled_product_cards": false,
+    "currency_code_enabled_product_pages": false
   },
   "presets": {
     "Fabric": {
