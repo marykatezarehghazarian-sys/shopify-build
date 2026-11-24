@@ -120,3 +120,15 @@ html, body { overflow-x: clip; max-width: 100%; }
 @media screen and (max-width: 749px) {
   .hero .section-content-wrapper { padding-inline: 16px !important; }
 }
+
+/* Product cards (owner's notes): text lines up with the photo, name on one line, sale price next to the old price, tighter grid */
+.product-card .product-card__content > .group-block { padding: 10px 2px 0 !important; margin-inline: -8px !important; }
+.product-card .text-block[class*="product_titl"] p { font-size: 0.85rem !important; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+.product-card .text-block[class*="product_titl"] { min-width: 0; width: 100%; }
+.product-card product-price .price__sale, .product-card product-price .price__regular { white-space: nowrap; font-size: 0.8rem; }
+.product-card product-price .price-item__group { display: inline-flex !important; gap: 6px; align-items: baseline; }
+.product-card product-price .compare-at-price { opacity: 0.55; }
+@media screen and (max-width: 749px) {
+  .product-grid { row-gap: 14px !important; column-gap: 10px !important; }
+  .product-card .product-card__content { gap: 2px !important; }
+}
