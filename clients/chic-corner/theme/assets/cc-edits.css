@@ -101,3 +101,13 @@ html, body { overflow-x: clip; max-width: 100%; }
   [id$="__advantages_bar"] .section-content-wrapper > * { width: auto !important; min-width: 0; }
   [id$="__advantages_bar"] p { font-size: 0.82rem; }
 }
+
+/* Black-and-white palette for the last two coloured sections */
+.media-with-content__content > .group-block-content { padding: 32px 16px 36px !important; }
+@media screen and (min-width: 750px) { .media-with-content__content > .group-block-content { padding: 56px 48px !important; } }
+.cc-offer__title, .cc-offer__amount { font-family: var(--font-heading--family) !important; font-weight: 500; }
+.cc-offer__tier { background: #fff; border-color: #dcdcdc !important; }
+.cc-offer__tier.is-gift { border-color: #121212 !important; background: #fff !important; }
+.cc-offer__badge { background: #121212 !important; color: #fff !important; }
+.cc-offer__btn { background: #121212 !important; color: #fff !important; border-radius: 0 !important; }
+.cc-offer__reward { color: #555 !important; }
