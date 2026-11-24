@@ -115,3 +115,8 @@ html, body { overflow-x: clip; max-width: 100%; }
 /* "The Chic Corner Promise" (product pages): white accents instead of gold, to match the black-and-white site */
 .cc-promise { --cc-accent: #ffffff !important; }
 .cc-promise__rule { opacity: 0.25; }
+
+/* Home hero: picture starts under the black header; text keeps a margin from the screen edge */
+@media screen and (max-width: 749px) {
+  .hero .section-content-wrapper { padding-inline: 16px !important; }
+}
