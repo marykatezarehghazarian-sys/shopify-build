@@ -34,3 +34,4 @@
 - 2026-11-24 (owner: show ~3 rows per screen): on phones card photos 5:4 (--gallery-aspect-ratio 1.25) and colour dots hidden on cards → card 192px tall; 6 photos fully visible per iPhone screen. Live.
 - 2026-11-24 card text like lurexia (owner): no 'USD' on product cards and product pages (currency_code_enabled_product_cards/_pages false; cart keeps it), name regular weight 0.9rem, price bold black 0.95rem with old price light grey beside it. Brand line above the name NOT added: vendor field is 'Chic Corner'/'My Store', not the brand. Live.
 - 2026-11-24 owner: cards 'too small' → phones: photo ratio 1.08 (almost square), grid side padding 10px / gap 8px, name 0.95rem, price 1rem. 2 full rows + ~70% of the third per iPhone screen. Live.
+- 2026-11-24 owner chose the 3-rows version → reverted the 'too small' tweak (cards 5:4 photos, name 0.9rem, price 0.95rem). Live.
