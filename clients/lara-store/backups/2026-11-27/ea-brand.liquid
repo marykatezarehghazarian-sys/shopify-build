@@ -1,0 +1,69 @@
+{%- comment -%}
+  Elle.ay brand layer: warm off-white page, charcoal ink, Cormorant Garamond headings, light Inter in
+  spaced capitals for navigation, labels and buttons, square corners. Loaded after the theme styles.
+  Remove the render in layout/theme.liquid to return to plain Horizon.
+{%- endcomment -%}
+{{ 'ea-cormorant-garamond.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+<style>
+  @font-face { font-family: 'EA Cormorant'; src: url('{{ 'ea-cormorant-garamond.woff2' | asset_url }}') format('woff2'); font-weight: 300 700; font-display: swap; }
+  @font-face { font-family: 'EA Inter'; src: url('{{ 'ea-inter.woff2' | asset_url }}') format('woff2'); font-weight: 100 900; font-display: swap; }
+
+  :root {
+    --ea-serif: 'EA Cormorant', 'Cormorant Garamond', Georgia, serif;
+    --ea-sans: 'EA Inter', 'Inter', system-ui, sans-serif;
+    --ea-ink: #2a2522;
+    --ea-bg: #faf7f3;
+    --ea-stone: #efe7dd;
+    --ea-blush: #ead3cc;
+    --ea-muted: #6b5f58;
+    --ea-line: #e7ded4;
+    --font-body--family: var(--ea-sans);
+    --font-body--weight: 300;
+    --font-subheading--family: var(--ea-sans);
+    --font-heading--family: var(--ea-serif);
+    --font-heading--weight: 400;
+    --font-accent--family: var(--ea-serif);
+  }
+  body { background: var(--ea-bg); color: var(--ea-ink); font-family: var(--ea-sans); font-weight: 300; }
+
+  /* Headings: elegant serif, light weight */
+  h1, h2, h3, h4, .h1, .h2, .h3, .h4 { font-family: var(--ea-serif); font-weight: 400; letter-spacing: 0; }
+  h5, h6, .h5, .h6 { font-family: var(--ea-sans); font-weight: 400; text-transform: uppercase; letter-spacing: .18em; }
+
+  /* Navigation, labels and buttons: light sans in spaced capitals */
+  .menu-list__link, .header-actions__action, .header-actions__text-style, .announcement-bar__text,
+  .ea-eyebrow, .button, .button-secondary, .shopify-payment-button__button, .product-badges__badge {
+    font-family: var(--ea-sans) !important; font-weight: 400; letter-spacing: .16em; text-transform: uppercase;
+  }
+  .button, .button-secondary, .shopify-payment-button__button--unbranded { font-size: 12px !important; min-height: 48px; padding-inline: 28px; }
+  .ea-eyebrow { display: block; font-size: 11px; color: var(--ea-muted); margin: 0 0 14px; }
+
+  /* Product cards: serif name, small sans price */
+  product-card .product-title, product-card .text-block p { font-family: var(--ea-serif) !important; font-size: 19px !important; font-weight: 400 !important; letter-spacing: 0 !important; }
+  product-card .price, product-card product-price { font-family: var(--ea-sans); font-size: 13px; letter-spacing: .04em; color: var(--ea-muted); }
+
+  /* Product page */
+  .product-information .product-details :is(h1, .product-title) { font-family: var(--ea-serif) !important; font-weight: 400 !important; font-size: clamp(30px, 3.2vw, 42px) !important; letter-spacing: 0 !important; }
+  .product-information .price { font-family: var(--ea-sans); font-size: 16px; letter-spacing: .04em; }
+  .product-information .variant-option legend, .product-information .variant-option__label { font-family: var(--ea-sans); text-transform: uppercase; letter-spacing: .16em; font-size: 11px; color: var(--ea-muted); }
+  .product-information accordion-custom summary, .product-information details summary { font-family: var(--ea-sans); text-transform: uppercase; letter-spacing: .16em; font-size: 12px; }
+
+  /* Focus that stays visible on the light background */
+  :focus-visible { outline: 2px solid var(--ea-ink); outline-offset: 3px; }
+  shopify-account:focus-within { outline: 2px solid var(--ea-ink); outline-offset: 3px; }
+
+  /* Comfortable 44px tap targets for small header controls on phones */
+  @media (max-width: 749px) {
+    .header__icon--menu, .header-actions__action { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+  }
+
+  /* Studio photos: blend their white/light-grey backdrops into the cream page (multiply keeps the product's own colors) */
+  .ea-tile__media, media-gallery .product-media-container, media-gallery .product-media, media-gallery slideshow-slide { background: var(--ea-bg) !important; }
+  .ea-tile__media img, media-gallery .product-media img { mix-blend-mode: multiply; filter: brightness(1.06) contrast(1.03); }
+</style>
+{%- render 'ea-motion' -%}
+
+{%- comment -%} Elle.ay: products tagged true-colour show their photos exactly as supplied (no brightening or blend), so colours match the source file on every device {%- endcomment -%}
+{%- if product and product.tags contains 'true-colour' -%}
+<style>media-gallery .product-media img { mix-blend-mode: normal !important; filter: none !important; }</style>
+{%- endif -%}
